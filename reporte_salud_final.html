@@ -1,0 +1,1070 @@
+
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <title>Análisis Profesional de Salud y Longevidad</title>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+        .container { max-width: 1400px; margin: auto; }
+        header h1 { color: #58a6ff; } 
+        header p { color: #8b949e; }
+        .banner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .banner-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; text-align: center; }
+        .banner-title { font-size: 0.9em; color: #8b949e; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;}
+        .banner-value { font-size: 1.8em; font-weight: 600; color: #c9d1d9; }
+        .banner-goal { font-size: 0.6em; color: #58a6ff; font-weight: normal; margin-left: 5px; }
+        .tsb-details { display: flex; justify-content: space-around; font-size: 0.8em; margin-top: 10px; color: #8b949e; }
+        .card { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .card h2 { margin-top: 0; color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+        .styled-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        .styled-table th, .styled-table td { padding: 10px 12px; border-bottom: 1px solid #30363d; text-align: left; vertical-align: middle; }
+        .styled-table thead th { background-color: #21262d; border-bottom: 2px solid #58a6ff; }
+        .styled-table tbody tr:last-child td { border-bottom: none; }
+        .trend-icon { font-weight: bold; margin-right: 5px; }
+        .trend-up { color: #3fb950; }
+        .trend-down { color: #f85149; }
+        .disclaimer { text-align: center; color: #8b949e; font-size: 0.8em; padding-top: 20px; border-top: 1px solid #30363d; margin-top: 20px; }
+        .insight-list { list-style: none; padding: 0; }
+        .insight-list li { background-color: #0d1117; padding: 12px; margin-bottom: 8px; border-left: 4px solid #58a6ff; border-radius: 4px; }
+        .plot-container { height: 400px; }
+        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0;}
+        .status-dot.success { background-color: #2ca02c; }
+        .status-dot.warning { background-color: #ffbb28; }
+        .status-dot.danger { background-color: #d62728; }
+        .value-cell { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .unit { color: #8b949e; font-size: 0.9em; margin-left: 4px; }
+        .lab-table .group-header { background-color: #21262d; color: #58a6ff; font-weight: bold; text-align: center; }
+        .workouts-list { display: flex; flex-direction: column; gap: 15px; }
+        .workout-item { background-color: #0d1117; padding: 15px; border-radius: 6px; border: 1px solid #30363d; }
+        .workout-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .workout-title { font-weight: bold; color: #c9d1d9; font-size: 1.1em; }
+        .workout-date { font-size: 0.9em; color: #8b949e; }
+        .workout-details { font-size: 0.9em; color: #8b949e; }
+        .workout-details strong { color: #c9d1d9; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .summary-item { background-color: #0d1117; padding: 15px; border-radius: 6px; }
+        .summary-label { font-size: 0.9em; color: #8b949e; }
+        .summary-value { font-size: 1.5em; font-weight: 600; color: #c9d1d9; }
+        .longevity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .longevity-column h3 { color: #8b949e; font-size: 1em; text-align: center; margin-bottom: 15px; }
+        .longevity-item { display: flex; margin-bottom: 10px; font-size: 0.9em; }
+        .longevity-item-icon { font-size: 1.2em; margin-right: 10px; }
+        .longevity-item-text .metric { font-weight: bold; color: #c9d1d9; }
+        .longevity-item-text .reason { font-size: 0.9em; color: #8b949e; }
+        </style>
+        </head>
+        <body>
+        <div class="container">
+            <header>
+                <h1>Análisis Profesional de Salud y Longevidad</h1>
+                <p>Generado el: 14-09-2025 18:54:11</p>
+            </header>
+
+            
+        <div class="banner-grid">
+            <div class="banner-card">
+                <div class="banner-title">Estado de Forma</div>
+                <div class="banner-value">-5.7 <span style="font-size: 0.6em;">TSB</span></div>
+                <div class="tsb-details"><span>CTL: 2.3</span><span>ATL: 8.0</span></div>
+            </div>
+            <div class="banner-card">
+                <div class="banner-title">PAI (Hoy / 7 Días)</div>
+                <div class="banner-value">15 / 110</div>
+            </div>
+            <div class="banner-card">
+                <div class="banner-title">Peso Actual (Kg)</div>
+                <div class="banner-value">85.00 <span class="banner-goal">(Meta: 79.0)</span></div>
+            </div>
+            <div class="banner-card">
+                <div class="banner-title">% Grasa Corporal</div>
+                <div class="banner-value">24.20 <span class="banner-goal">(Meta: 20.0)</span></div>
+            </div>
+        </div>
+        
+            
+        <div class="card">
+            <h2>📋 Resumen Ejecutivo del Reporte</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-label">Días Analizados</div>
+                    <div class="summary-value">45</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Anomalías Detectadas</div>
+                    <div class="summary-value">3 días (6.7%)</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Métricas Activas</div>
+                    <div class="summary-value">19</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Entrenamientos (7d)</div>
+                    <div class="summary-value">2</div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <h2>🧬 Ranking de Impacto en Longevidad</h2>
+            <div class="longevity-grid">
+                <div class="longevity-column">
+                    <h3>👍 Impactos Favorables</h3>
+                    
+            <div class="longevity-item">
+                <div class="longevity-item-icon">1.</div>
+                <div class="longevity-item-text">
+                    <div class="metric">Datos Insuficientes</div>
+                    <div class="reason">Necesitamos más tiempo para generar análisis.</div>
+                </div>
+            </div>
+            
+                </div>
+                <div class="longevity-column">
+                    <h3>🔬 Áreas de Enfoque</h3>
+                    
+            <div class="longevity-item">
+                <div class="longevity-item-icon">1.</div>
+                <div class="longevity-item-text">
+                    <div class="metric">Calidad del Sueño</div>
+                    <div class="reason">Valor bajo que puede impactar la recuperación.</div>
+                </div>
+            </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <h2>📈 Tendencias Clave del Período (90 días)</h2>
+            <ul class="insight-list">
+                <li>📈 **Peso (kg)**: Tendencia bajando (fuerte) - R² = 0.60</li><li>📈 **Pasos**: Tendencia bajando (fuerte) - R² = 0.60</li><li>📈 **% Grasa Corporal**: Tendencia bajando (fuerte) - R² = 0.60</li><li>📈 **Frecuencia Cardíaca**: Tendencia subiendo (fuerte) - R² = 0.60</li>
+            </ul>
+        </div>
+        
+        
+            
+        <div class="card">
+            <h2>📊 Análisis Comparativo y de Tendencias</h2>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Métrica</th>
+                        <th>Valor Actual (Prom. 7 Días)</th>
+                        <th>Tendencia (7d)</th>
+                        <th>Comp. vs 30 Días</th>
+                        <th>Comp. vs 90 Días</th>
+                        <th>Consistencia (Var. %)</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>Peso (kg)</td>
+                <td>86.0</td>
+                <td><span class="trend-icon trend-down">▼</span> Fuerte</td>
+                <td>+3.5%</td>
+                <td>+3.8%</td>
+                <td>Muy Estable (1.4%)</td>
+            </tr>
+            
+            <tr>
+                <td>Pasos</td>
+                <td>104.6</td>
+                <td><span class="trend-icon trend-down">▼</span> Fuerte</td>
+                <td>-40.4%</td>
+                <td>-13.8%</td>
+                <td>Irregular (569.5%)</td>
+            </tr>
+            
+            <tr>
+                <td>% Grasa Corporal</td>
+                <td>25.5</td>
+                <td><span class="trend-icon trend-down">▼</span> Fuerte</td>
+                <td>-1.6%</td>
+                <td>-2.6%</td>
+                <td>Estable (7.2%)</td>
+            </tr>
+            
+            <tr>
+                <td>Frecuencia Cardíaca</td>
+                <td>71.5</td>
+                <td><span class="trend-icon trend-up">▲</span> Fuerte</td>
+                <td>-4.1%</td>
+                <td>-13.8%</td>
+                <td>Moderada (21.1%)</td>
+            </tr>
+            
+            <tr>
+                <td>Distancia (km)</td>
+                <td>0.1</td>
+                <td><span class="trend-icon trend-down">▼</span> Fuerte</td>
+                <td>-19.2%</td>
+                <td>+54.5%</td>
+                <td>Irregular (496.1%)</td>
+            </tr>
+            
+            <tr>
+                <td>Calorías Quemadas</td>
+                <td>255.5</td>
+                <td><span class="trend-icon trend-up">▲</span> Fuerte</td>
+                <td>+284.5%</td>
+                <td>+314.9%</td>
+                <td>Irregular (185.8%)</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+        
+            <div class="card"><h2>Resumen Ejecutivo y Alertas IA</h2><ul class="insight-list"><li>🚨 **Alerta de Biomarcador:** Su nivel de **Urea** (51 mg/dL) está fuera del rango (13-50). (Causas comunes incluyen deshidratación o una función renal reducida. A corto plazo puede generar fatiga y a largo plazo es un marcador de estrés cardiovascular que impacta la longevidad).</li><li>⚠️ **Atención a Biomarcador:** Su nivel de **Creatinina** (1.19 mg/dL) está en el límite del rango (0.70-1.20). (Dado que tomas suplementos de creatina, es común y esperado ver un nivel de creatinina elevado, ya que la creatina se convierte en creatinina en el músculo. Generalmente esto no indica daño renal en personas sanas, pero es fundamental que tu médico esté al tanto de tu suplementación para interpretar correctamente estos resultados).</li><li>⚠️ **Atención a Biomarcador:** Su nivel de **Fosfatasa Alcalina** (37 UI/L) está en el límite del rango (30-129). (Un valor en el límite inferior es poco común, pero podría sugerir deficiencias nutricionales, como falta de zinc o magnesio. No suele ser un riesgo por sí solo, pero justifica revisar la dieta).</li><li>📉 **Ajustar Déficit Calórico:** En la última semana, mantienes un déficit promedio de (554 kcal).</li><li>❗️ **Prioridad de Sueño:** Su calidad de sueño (2.1/10) es muy baja...</li><li>🧐 **Optimizar Proteína:** Su ingesta de proteínas (16%) es baja...</li></ul></div>
+            <div class="card"><h2>Estado de Entrenamiento (Performance)</h2><div id="training-plot" class="plot-container"></div></div>
+            <div class="card"><h2 style="margin-bottom: 20px;">Entrenamientos (Últimos 7 Días)</h2><div class="workouts-list">
+            <div class="workout-item">
+                <div class="workout-header">
+                    <span class="workout-title">Correr en cinta</span>
+                    <span class="workout-date">13 de Sep, 2025 - 17:16</span>
+                </div>
+                <div class="workout-details">
+                    <strong>Duración:</strong> 44 min | <strong>Calorías:</strong> 0 kcal | <strong>FC Prom:</strong> 135 lpm | <strong>FC Max:</strong> 170 lpm | <strong>Distancia:</strong> 1.0 km
+                </div>
+            </div>
+            
+            <div class="workout-item">
+                <div class="workout-header">
+                    <span class="workout-title">Entrenamiento de fuerza</span>
+                    <span class="workout-date">08 de Sep, 2025 - 22:47</span>
+                </div>
+                <div class="workout-details">
+                    <strong>Duración:</strong> 12 min | <strong>Calorías:</strong> 0 kcal | <strong>FC Prom:</strong> 84 lpm | <strong>FC Max:</strong> 101 lpm | <strong>Distancia:</strong> 1.15 km
+                </div>
+            </div>
+            </div></div>
+            <div class="grid"><div class="card"><h2>Análisis de Sueño</h2><div id="sleep-plot" class="plot-container"></div></div><div class="card"><h2>Balance Calórico</h2><div id="calorie-plot" class="plot-container"></div></div><div class="card"><h2>Distribución de Macronutrientes</h2><div id="macro-pie-plot" class="plot-container"></div></div></div>
+            
+        <div class="card">
+            <h2>Panel de Biomarcadores Completo</h2>
+            <div style="overflow-x:auto;">
+                <table class="styled-table lab-table">
+                    <thead><tr><th>Biomarcador</th><th>Último Valor</th><th>Rango de Referencia</th><th>Tendencia Histórica</th></tr></thead>
+                    <tbody><tr><td colspan="4" class="group-header">Función Renal</td></tr>
+                <tr>
+                    <td>Urea</td>
+                    <td class="value-cell"><span class="status-dot danger"></span> 51 <span class="unit">mg/dL</span></td>
+                    <td>13-50</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,8.00 L 50.00,18.00 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Creatinina</td>
+                    <td class="value-cell"><span class="status-dot warning"></span> 1.19 <span class="unit">mg/dL</span></td>
+                    <td>0.70-1.20</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,8.10 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Sodio</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 138 <span class="unit">mEq/L</span></td>
+                    <td>135-145</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,2.00 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Potasio</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 4.7 <span class="unit">mEq/L</span></td>
+                    <td>3.5-5.1</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,18.00 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Hemograma</td></tr>
+                <tr>
+                    <td>Eritrocitos</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 4.93 <span class="unit">mill/mm³</span></td>
+                    <td>4.50-5.90</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,10.23 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Hemoglobina</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 15.0 <span class="unit">g/dL</span></td>
+                    <td>13.0-17.5</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,8.40 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Hematocrito</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 45.0 <span class="unit">%</span></td>
+                    <td>37.0-53.0</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,7.33 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Plaquetas</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 366 <span class="unit">mil/mm³</span></td>
+                    <td>150-440</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,2.00 L 100.00,5.38" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Leucocitos</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 6.26 <span class="unit">mil/mm³</span></td>
+                    <td>3.8-10.6</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,2.00 L 50.00,15.43 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Otros Marcadores</td></tr>
+                <tr>
+                    <td>Proteína C Reactiva</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 0.6 <span class="unit">mg/L</span></td>
+                    <td>< 5.0</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Perfil Hepático</td></tr>
+                <tr>
+                    <td>GOT (AST)</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 21 <span class="unit">UI/L</span></td>
+                    <td>0-50</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,8.00 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>GPT (ALT)</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 18 <span class="unit">UI/L</span></td>
+                    <td>0-50</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,2.00 L 50.00,10.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Fosfatasa Alcalina</td>
+                    <td class="value-cell"><span class="status-dot warning"></span> 37 <span class="unit">UI/L</span></td>
+                    <td>30-129</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Perfil Lipídico</td></tr>
+                <tr>
+                    <td>Colesterol Total</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 139 <span class="unit">mg/dL</span></td>
+                    <td>< 200</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,4.50 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Colesterol HDL</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 49 <span class="unit">mg/dL</span></td>
+                    <td>> 40</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,2.00 L 100.00,3.60" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Colesterol LDL</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 79 <span class="unit">mg/dL</span></td>
+                    <td>< 100</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,4.15 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Triglicéridos</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 55 <span class="unit">mg/dL</span></td>
+                    <td>< 150</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,14.80 L 50.00,18.00 L 100.00,2.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Perfil Metabólico</td></tr>
+                <tr>
+                    <td>Glucosa en Ayunas</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 91 <span class="unit">mg/dL</span></td>
+                    <td>74-100</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,14.00 L 50.00,2.00 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            
+                <tr>
+                    <td>Hemoglobina Glicosilada (HbA1c)</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 5.7 <span class="unit">%</span></td>
+                    <td>4.8-5.9</td>
+                    <td></td>
+                </tr>
+            
+                <tr>
+                    <td>Ácido Úrico</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 6.1 <span class="unit">mg/dL</span></td>
+                    <td>3.5-7.2</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,18.00 L 50.00,2.00 L 100.00,5.20" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            <tr><td colspan="4" class="group-header">Perfil Tiroideo</td></tr>
+                <tr>
+                    <td>TSH (Tirotrofina)</td>
+                    <td class="value-cell"><span class="status-dot success"></span> 2.21 <span class="unit">µUI/mL</span></td>
+                    <td>0.27-4.20</td>
+                    <td><svg width="100" height="20" class="sparkline" preserveAspectRatio="none"><path d="M 0.00,2.00 L 50.00,11.76 L 100.00,18.00" stroke="#58a6ff" stroke-width="1.5" fill="none"></path></svg></td>
+                </tr>
+            </tbody>
+                </table>
+            </div>
+        </div>
+        
+            
+        <div class="card">
+            <h2>📊 Análisis Estadístico Detallado (Últimos 90 días)</h2>
+            <div style="overflow-x:auto;"><table class="dataframe styled-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Promedio</th>
+      <th>Mediana</th>
+      <th>Desv.Std</th>
+      <th>Rango (25%-75%)</th>
+      <th>Variabilidad (%)</th>
+      <th>Total Registros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>distance</th>
+      <td>0.04</td>
+      <td>0.01</td>
+      <td>0.21</td>
+      <td>0.0 - 0.0</td>
+      <td>496.1</td>
+      <td>10189</td>
+    </tr>
+    <tr>
+      <th>steps</th>
+      <td>121.29</td>
+      <td>43.00</td>
+      <td>690.69</td>
+      <td>15.0 - 109.0</td>
+      <td>569.4</td>
+      <td>7087</td>
+    </tr>
+    <tr>
+      <th>sleepSession</th>
+      <td>3.84</td>
+      <td>3.52</td>
+      <td>2.55</td>
+      <td>1.6 - 6.1</td>
+      <td>66.5</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td>1.77</td>
+      <td>1.76</td>
+      <td>0.01</td>
+      <td>1.8 - 1.8</td>
+      <td>0.5</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td>82.92</td>
+      <td>82.68</td>
+      <td>1.16</td>
+      <td>82.3 - 82.9</td>
+      <td>1.4</td>
+      <td>251</td>
+    </tr>
+    <tr>
+      <th>respiratoryRate</th>
+      <td>15.04</td>
+      <td>15.00</td>
+      <td>0.92</td>
+      <td>14.0 - 16.0</td>
+      <td>6.1</td>
+      <td>5905</td>
+    </tr>
+    <tr>
+      <th>elevationGained</th>
+      <td>10.47</td>
+      <td>6.50</td>
+      <td>17.45</td>
+      <td>0.0 - 14.8</td>
+      <td>166.6</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>vo2Max</th>
+      <td>39.01</td>
+      <td>39.52</td>
+      <td>1.42</td>
+      <td>39.5 - 39.5</td>
+      <td>3.6</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>totalCaloriesBurned</th>
+      <td>61.57</td>
+      <td>19.00</td>
+      <td>114.38</td>
+      <td>5.6 - 66.6</td>
+      <td>185.8</td>
+      <td>2406</td>
+    </tr>
+    <tr>
+      <th>bodyFat</th>
+      <td>26.18</td>
+      <td>26.85</td>
+      <td>1.89</td>
+      <td>24.6 - 27.7</td>
+      <td>7.2</td>
+      <td>218</td>
+    </tr>
+    <tr>
+      <th>activeCaloriesBurned</th>
+      <td>148.53</td>
+      <td>97.00</td>
+      <td>107.41</td>
+      <td>71.8 - 199.2</td>
+      <td>72.3</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>hydration</th>
+      <td>0.34</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.2 - 0.2</td>
+      <td>72.4</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <th>bloodGlucose</th>
+      <td>98.86</td>
+      <td>97.92</td>
+      <td>5.62</td>
+      <td>94.9 - 101.9</td>
+      <td>5.7</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>oxygenSaturation</th>
+      <td>97.74</td>
+      <td>98.00</td>
+      <td>1.72</td>
+      <td>97.0 - 99.0</td>
+      <td>1.8</td>
+      <td>2544</td>
+    </tr>
+    <tr>
+      <th>heartRate</th>
+      <td>82.91</td>
+      <td>82.00</td>
+      <td>17.48</td>
+      <td>70.0 - 95.0</td>
+      <td>21.1</td>
+      <td>13212</td>
+    </tr>
+    <tr>
+      <th>boneMass</th>
+      <td>3.49</td>
+      <td>3.04</td>
+      <td>0.57</td>
+      <td>3.0 - 4.2</td>
+      <td>16.4</td>
+      <td>113</td>
+    </tr>
+    <tr>
+      <th>restingHeartRate</th>
+      <td>58.23</td>
+      <td>57.50</td>
+      <td>2.36</td>
+      <td>57.0 - 59.8</td>
+      <td>4.1</td>
+      <td>26</td>
+    </tr>
+  </tbody>
+</table></div>
+        </div>
+        
+        <details>
+            <summary>Ver Métricas Detalladas por Período (Micro View)</summary>
+            <div style="overflow-x:auto;"><table class="dataframe styled-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>distance</th>
+      <th>steps</th>
+      <th>sleepSession</th>
+      <th>height</th>
+      <th>bloodPressure</th>
+      <th>weight</th>
+      <th>respiratoryRate</th>
+      <th>elevationGained</th>
+      <th>vo2Max</th>
+      <th>totalCaloriesBurned</th>
+      <th>bodyFat</th>
+      <th>activeCaloriesBurned</th>
+      <th>hydration</th>
+      <th>bloodGlucose</th>
+      <th>oxygenSaturation</th>
+      <th>heartRate</th>
+      <th>boneMass</th>
+      <th>restingHeartRate</th>
+    </tr>
+    <tr>
+      <th>Período</th>
+      <th>Cálculo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Hoy</th>
+      <th>Promedio</th>
+      <td>0.02</td>
+      <td>21.37</td>
+      <td>3.23</td>
+      <td>-</td>
+      <td>119.0 / 73.0</td>
+      <td>85.00</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>24.20</td>
+      <td>-</td>
+      <td>0.27</td>
+      <td>101.91</td>
+      <td>-</td>
+      <td>67.25</td>
+      <td>4.30</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Mediana</th>
+      <td>0.02</td>
+      <td>18.00</td>
+      <td>3.23</td>
+      <td>-</td>
+      <td>119 / 73</td>
+      <td>85.00</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>24.20</td>
+      <td>-</td>
+      <td>0.25</td>
+      <td>101.91</td>
+      <td>-</td>
+      <td>66.00</td>
+      <td>4.30</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Min</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>1.78</td>
+      <td>-</td>
+      <td>119 / 73</td>
+      <td>85.00</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>24.20</td>
+      <td>-</td>
+      <td>0.20</td>
+      <td>98.91</td>
+      <td>-</td>
+      <td>60.00</td>
+      <td>4.30</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Max</th>
+      <td>0.04</td>
+      <td>60.00</td>
+      <td>4.68</td>
+      <td>-</td>
+      <td>119 / 73</td>
+      <td>85.00</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>24.20</td>
+      <td>-</td>
+      <td>0.60</td>
+      <td>104.91</td>
+      <td>-</td>
+      <td>89.00</td>
+      <td>4.30</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Total Registros</th>
+      <td>12</td>
+      <td>30</td>
+      <td>6</td>
+      <td>-</td>
+      <td>2</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1</td>
+      <td>-</td>
+      <td>11</td>
+      <td>6</td>
+      <td>-</td>
+      <td>120</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Últimos 7 días</th>
+      <th>Promedio</th>
+      <td>0.06</td>
+      <td>104.60</td>
+      <td>2.66</td>
+      <td>1.76</td>
+      <td>122.6 / 78.6</td>
+      <td>86.04</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>255.47</td>
+      <td>25.49</td>
+      <td>-</td>
+      <td>0.29</td>
+      <td>99.63</td>
+      <td>93.33</td>
+      <td>71.50</td>
+      <td>3.60</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Mediana</th>
+      <td>0.03</td>
+      <td>30.00</td>
+      <td>1.62</td>
+      <td>1.76</td>
+      <td>123 / 79</td>
+      <td>86.03</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>103.43</td>
+      <td>25.05</td>
+      <td>-</td>
+      <td>0.25</td>
+      <td>98.91</td>
+      <td>93.00</td>
+      <td>67.00</td>
+      <td>3.12</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Min</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.29</td>
+      <td>1.76</td>
+      <td>114 / 70</td>
+      <td>84.70</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>13.07</td>
+      <td>22.00</td>
+      <td>-</td>
+      <td>0.15</td>
+      <td>92.92</td>
+      <td>91.00</td>
+      <td>50.00</td>
+      <td>3.08</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Max</th>
+      <td>0.57</td>
+      <td>9380.00</td>
+      <td>8.01</td>
+      <td>1.78</td>
+      <td>132 / 89</td>
+      <td>86.80</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1010.14</td>
+      <td>28.40</td>
+      <td>-</td>
+      <td>0.90</td>
+      <td>110.90</td>
+      <td>96.00</td>
+      <td>166.00</td>
+      <td>4.30</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Total Registros</th>
+      <td>90</td>
+      <td>276</td>
+      <td>53</td>
+      <td>10</td>
+      <td>50</td>
+      <td>26</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>19</td>
+      <td>21</td>
+      <td>-</td>
+      <td>78</td>
+      <td>21</td>
+      <td>6</td>
+      <td>1178</td>
+      <td>7</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Últimos 30 días</th>
+      <th>Promedio</th>
+      <td>0.08</td>
+      <td>175.37</td>
+      <td>3.80</td>
+      <td>1.76</td>
+      <td>119.1 / 76.9</td>
+      <td>83.14</td>
+      <td>15.21</td>
+      <td>14.81</td>
+      <td>37.18</td>
+      <td>66.44</td>
+      <td>25.89</td>
+      <td>150.17</td>
+      <td>0.34</td>
+      <td>99.98</td>
+      <td>97.75</td>
+      <td>74.54</td>
+      <td>3.50</td>
+      <td>57.79</td>
+    </tr>
+    <tr>
+      <th>Mediana</th>
+      <td>0.01</td>
+      <td>63.50</td>
+      <td>3.47</td>
+      <td>1.76</td>
+      <td>119 / 77</td>
+      <td>82.80</td>
+      <td>15.00</td>
+      <td>11.00</td>
+      <td>37.18</td>
+      <td>18.81</td>
+      <td>26.20</td>
+      <td>108.00</td>
+      <td>0.25</td>
+      <td>98.91</td>
+      <td>98.00</td>
+      <td>75.00</td>
+      <td>3.08</td>
+      <td>57.00</td>
+    </tr>
+    <tr>
+      <th>Min</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.29</td>
+      <td>1.76</td>
+      <td>102 / 63</td>
+      <td>81.80</td>
+      <td>11.00</td>
+      <td>0.00</td>
+      <td>35.00</td>
+      <td>0.00</td>
+      <td>21.04</td>
+      <td>45.00</td>
+      <td>0.15</td>
+      <td>90.92</td>
+      <td>87.00</td>
+      <td>50.00</td>
+      <td>2.93</td>
+      <td>53.00</td>
+    </tr>
+    <tr>
+      <th>Max</th>
+      <td>2.36</td>
+      <td>18442.00</td>
+      <td>9.93</td>
+      <td>1.78</td>
+      <td>132 / 89</td>
+      <td>86.80</td>
+      <td>19.00</td>
+      <td>140.00</td>
+      <td>39.36</td>
+      <td>1704.00</td>
+      <td>29.48</td>
+      <td>469.00</td>
+      <td>1.30</td>
+      <td>110.90</td>
+      <td>99.00</td>
+      <td>166.00</td>
+      <td>4.30</td>
+      <td>62.00</td>
+    </tr>
+    <tr>
+      <th>Total Registros</th>
+      <td>1655</td>
+      <td>1716</td>
+      <td>167</td>
+      <td>43</td>
+      <td>187</td>
+      <td>169</td>
+      <td>1383</td>
+      <td>47</td>
+      <td>2</td>
+      <td>1146</td>
+      <td>135</td>
+      <td>47</td>
+      <td>108</td>
+      <td>93</td>
+      <td>1181</td>
+      <td>3717</td>
+      <td>67</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Últimos 90 días</th>
+      <th>Promedio</th>
+      <td>0.04</td>
+      <td>121.29</td>
+      <td>3.84</td>
+      <td>1.77</td>
+      <td>121.0 / 78.2</td>
+      <td>82.92</td>
+      <td>15.04</td>
+      <td>10.47</td>
+      <td>39.01</td>
+      <td>61.57</td>
+      <td>26.18</td>
+      <td>148.53</td>
+      <td>0.34</td>
+      <td>98.86</td>
+      <td>97.74</td>
+      <td>82.91</td>
+      <td>3.49</td>
+      <td>58.23</td>
+    </tr>
+    <tr>
+      <th>Mediana</th>
+      <td>0.01</td>
+      <td>43.00</td>
+      <td>3.52</td>
+      <td>1.76</td>
+      <td>121 / 79</td>
+      <td>82.68</td>
+      <td>15.00</td>
+      <td>6.50</td>
+      <td>39.52</td>
+      <td>19.00</td>
+      <td>26.85</td>
+      <td>97.00</td>
+      <td>0.25</td>
+      <td>97.92</td>
+      <td>98.00</td>
+      <td>82.00</td>
+      <td>3.04</td>
+      <td>57.50</td>
+    </tr>
+    <tr>
+      <th>Min</th>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.29</td>
+      <td>1.76</td>
+      <td>100 / 63</td>
+      <td>81.80</td>
+      <td>6.00</td>
+      <td>0.00</td>
+      <td>35.00</td>
+      <td>0.00</td>
+      <td>21.04</td>
+      <td>45.00</td>
+      <td>0.15</td>
+      <td>82.93</td>
+      <td>80.00</td>
+      <td>49.00</td>
+      <td>2.93</td>
+      <td>53.00</td>
+    </tr>
+    <tr>
+      <th>Max</th>
+      <td>4.98</td>
+      <td>18530.00</td>
+      <td>9.93</td>
+      <td>1.78</td>
+      <td>143 / 93</td>
+      <td>86.80</td>
+      <td>19.00</td>
+      <td>140.00</td>
+      <td>39.58</td>
+      <td>1704.00</td>
+      <td>29.48</td>
+      <td>494.00</td>
+      <td>1.30</td>
+      <td>110.90</td>
+      <td>99.00</td>
+      <td>166.00</td>
+      <td>4.30</td>
+      <td>63.00</td>
+    </tr>
+    <tr>
+      <th>Total Registros</th>
+      <td>10189</td>
+      <td>7087</td>
+      <td>225</td>
+      <td>79</td>
+      <td>341</td>
+      <td>251</td>
+      <td>5905</td>
+      <td>106</td>
+      <td>9</td>
+      <td>2406</td>
+      <td>218</td>
+      <td>106</td>
+      <td>108</td>
+      <td>120</td>
+      <td>2544</td>
+      <td>13212</td>
+      <td>113</td>
+      <td>26</td>
+    </tr>
+  </tbody>
+</table></div>
+        </details>
+        
+
+            <footer class="disclaimer">
+                <p>Este reporte es una herramienta informativa y no reemplaza el consejo, diagnóstico o tratamiento médico profesional.</p>
+            </footer>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                try { Plotly.newPlot('training-plot', [{"x": ["2025-07-24", "2025-07-25", "2025-07-26", "2025-07-27", "2025-07-28", "2025-07-29", "2025-07-30", "2025-07-31", "2025-08-01", "2025-08-02", "2025-08-03", "2025-08-04", "2025-08-05", "2025-08-06", "2025-08-07", "2025-08-08", "2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 1.4, 1.4, 1.4, 1.4, 1.4, 1.3, 1.3, 2.4, 2.3], "type": "scatter", "mode": "lines", "name": "CTL (Fitness)", "line": {"color": "#1f77b4", "width": 3}}, {"x": ["2025-07-24", "2025-07-25", "2025-07-26", "2025-07-27", "2025-07-28", "2025-07-29", "2025-07-30", "2025-07-31", "2025-08-01", "2025-08-02", "2025-08-03", "2025-08-04", "2025-08-05", "2025-08-06", "2025-08-07", "2025-08-08", "2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4, 1.2, 7.7, 6.7, 6.4, 5.5, 4.8, 4.1, 3.6, 9.3, 8.0], "type": "scatter", "mode": "lines", "name": "ATL (Fatigue)", "line": {"color": "#ff7f0e", "width": 2, "dash": "dot"}}, {"x": ["2025-07-24", "2025-07-25", "2025-07-26", "2025-07-27", "2025-07-28", "2025-07-29", "2025-07-30", "2025-07-31", "2025-08-01", "2025-08-02", "2025-08-03", "2025-08-04", "2025-08-05", "2025-08-06", "2025-08-07", "2025-08-08", "2025-08-09", "2025-08-10", "2025-08-11", "2025-08-12", "2025-08-13", "2025-08-14", "2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.1, -0.9, -6.3, -5.3, -4.9, -4.1, -3.4, -2.8, -2.3, -6.9, -5.7], "type": "bar", "name": "TSB (Form)", "marker": {"color": ["#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28", "#ffbb28"]}}], {"paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)", "font": {"color": "#E0E0E0", "family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"}, "xaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "yaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "margin": {"l": 60, "r": 30, "b": 50, "t": 70}, "legend": {"font": {"color": "#c9d1d9"}, "orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1}, "title": {"text": "Fitness (CTL), Fatiga (ATL) y Forma (TSB)"}});Plotly.newPlot('sleep-plot', [{"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13"], "y": [1.88, 1.46, 1.77, 1.53, 2.67, 1.68, 2.64, 3.52, 2.68, 1.92, 2.53, 0.2, 0.85, 1.58, 1.42, 0.8, 2.35, 0.47, 3.26, 0.57, 1.21, 4.09, 1.1, 4.65, 0.85, 1.3, 0.72, 1.72, 12.65, 3.98], "type": "bar", "name": "Despierto", "marker": {"color": "#d62728"}}, {"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "type": "bar", "name": "REM", "marker": {"color": "#9467bd"}}, {"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13"], "y": [11.12, 13.9, 15.72, 11.88, 12.92, 13.47, 11.81, 9.17, 14.68, 11.85, 16.06, 4.83, 8.29, 8.83, 9.48, 8.23, 9.23, 5.35, 16.3, 11.33, 16.62, 13.2, 6.85, 13.9, 10.3, 13.85, 10.77, 3.12, 4.42, 19.53], "type": "bar", "name": "Ligero", "marker": {"color": "#1f77b4"}}, {"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13"], "y": [6.92, 10.94, 9.53, 7.84, 8.77, 9.93, 10.8, 2.43, 7.23, 6.12, 8.22, 0.07, 3.43, 9.53, 7.0, 3.13, 6.15, 4.18, 7.25, 7.57, 3.49, 3.34, 2.85, 3.82, 3.15, 6.52, 1.5, 0.0, 1.52, 8.99], "type": "bar", "name": "Profundo", "marker": {"color": "#2ca02c"}}], {"paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)", "font": {"color": "#E0E0E0", "family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"}, "xaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "yaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}, "title": "Horas"}, "margin": {"l": 60, "r": 30, "b": 50, "t": 70}, "legend": {"font": {"color": "#c9d1d9"}, "orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1}, "title": {"text": "Horas por Fase de Sue\u00f1o (30d)"}, "barmode": "stack"});Plotly.newPlot('calorie-plot', [{"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-04", "2025-09-06", "2025-09-08", "2025-09-13", "2025-09-14"], "y": [537.0, 3326.0, 1190.0, 2862.0, 2244.0, 1243.0, 2472.0, 2546.0, 1096.0, 904.0, 2465.0, 1884.0, 956.0, 4026.0, 1708.0, 480.0, 0, 0, 0, 0, 0, 0, 2208.0, 1538.0], "type": "bar", "name": "Consumidas", "marker": {"color": "#ff7f0e"}}, {"x": ["2025-08-15", "2025-08-16", "2025-08-17", "2025-08-18", "2025-08-19", "2025-08-20", "2025-08-21", "2025-08-22", "2025-08-23", "2025-08-24", "2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-04", "2025-09-06", "2025-09-08", "2025-09-13", "2025-09-14"], "y": [5064.039281442761, 4063.708558000624, 1922.142245054245, 5464.287342108786, 4460.011829704046, 4418.441872857511, 2294.3958591148257, 6216.236870661378, 5774.727723538876, 2116.7050951719284, 4606.680580311802, 6432.685265270993, 6373.239616468549, 3135.4162843280865, 1678.0, 3379.346903681755, 1722.0, 2849.9177372455597, 1716.313998345271, 1015.7997436523438, 1646.691162109375, 495.2272033691406, 4358.664298057556, 0], "type": "scatter", "mode": "lines", "name": "Quemadas", "line": {"color": "#1f77b4", "width": 3}}], {"paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)", "font": {"color": "#E0E0E0", "family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"}, "xaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "yaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}, "title": "Kcal"}, "margin": {"l": 60, "r": 30, "b": 50, "t": 70}, "legend": {"font": {"color": "#c9d1d9"}, "orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1}, "title": {"text": "Calor\u00edas Consumidas vs. Quemadas (30d)"}});Plotly.newPlot('macro-pie-plot', [{"labels": ["Prote\u00ednas", "Carbohidratos", "Grasas"], "values": [16, 44, 40], "type": "pie", "hole": 0.4, "textinfo": "percent+label", "marker": {"colors": ["#1f77b4", "#2ca02c", "#ff7f0e"]}}], {"paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgba(0,0,0,0)", "font": {"color": "#E0E0E0", "family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"}, "xaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "yaxis": {"gridcolor": "#30363d", "linecolor": "#8b949e", "zerolinecolor": "#8b949e", "tickfont": {"color": "#c9d1d9"}}, "margin": {"l": 60, "r": 30, "b": 50, "t": 70}, "legend": {"font": {"color": "#c9d1d9"}, "orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1}, "title": {"text": "Distribuci\u00f3n Cal\u00f3rica Promedio (30d)"}}); } catch (e) { console.error("Error al renderizar los gráficos:", e); }
+                window.onresize = function() {
+                    const plots = document.querySelectorAll('.plot-container');
+                    plots.forEach(plotDiv => { if (plotDiv.id) Plotly.Plots.resize(plotDiv.id); });
+                };
+            });
+        </script>
+        </body></html>
+        
