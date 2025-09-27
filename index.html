@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Salud - 2025-09-26 22:58:42</title>
+    <title>Dashboard de Salud - 2025-09-27 03:21:07</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
@@ -91,11 +91,27 @@
         .entrenamiento-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            align-items: center;
+            padding: 10px 0;
             border-bottom: 1px solid #30363d;
         }
         .entrenamiento-item:last-child {
             border-bottom: none;
+        }
+        .entrenamiento-tipo {
+            font-weight: bold;
+            color: #58a6ff;
+            min-width: 100px;
+        }
+        .entrenamiento-fecha {
+            color: #8b949e;
+            font-size: 0.9em;
+            min-width: 80px;
+        }
+        .entrenamiento-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -103,19 +119,19 @@
     <div class="container">
         <header>
             <h1>Dashboard de Salud y Entrenamiento</h1>
-            <p>Última actualización: 2025-09-26 22:58:42</p>
+            <p>Última actualización: 2025-09-27 03:21:07</p>
         </header>
         
         <div class="metrics-grid">
             <div class="metric-card">
                 <div class="metric-title">Estado de Forma (TSB)</div>
-                <div class="metric-value status-good">-0.9</div>
-                <div style="font-size: 0.8em; color: #8b949e;">CTL: 15.3 | ATL: 16.2</div>
+                <div class="metric-value status-good">-1.6</div>
+                <div style="font-size: 0.8em; color: #8b949e;">CTL: 13.7 | ATL: 15.4</div>
             </div>
             
             <div class="metric-card">
                 <div class="metric-title">PAI (Hoy / 7 días)</div>
-                <div class="metric-value">72.4 / 131.3</div>
+                <div class="metric-value">0 / 131.3</div>
                 <div style="font-size: 0.8em; color: #8b949e;">Objetivo: 100 sem.</div>
             </div>
             
@@ -137,38 +153,53 @@
             <h2 class="chart-title">Últimos Entrenamientos (3 días)</h2>
             
             <div class="entrenamiento-item">
-                <span>2025-09-26</span>
-                <span>156 min</span>
-                <span>FC: 107 bpm</span>
-                <span>TRIMP: 36.7</span>
+                <span class="entrenamiento-fecha">2025-09-26</span>
+                <span class="entrenamiento-tipo">Caminata/Trote</span>
+                <div class="entrenamiento-stats">
+                    <span>156 min</span>
+                    <span>FC: 107 bpm</span>
+                    <span>TRIMP: 36.7</span>
+                </div>
             </div>
             
             <div class="entrenamiento-item">
-                <span>2025-09-26</span>
-                <span>50 min</span>
-                <span>FC: 102 bpm</span>
-                <span>TRIMP: 10.1</span>
+                <span class="entrenamiento-fecha">2025-09-26</span>
+                <span class="entrenamiento-tipo">Natación</span>
+                <div class="entrenamiento-stats">
+                    <span>50 min</span>
+                    <span>FC: 102 bpm</span>
+                    <span>TRIMP: 10.1</span>
+                </div>
             </div>
             
             <div class="entrenamiento-item">
-                <span>2025-09-26</span>
-                <span>34 min</span>
-                <span>FC: 100 bpm</span>
-                <span>TRIMP: 6.4</span>
+                <span class="entrenamiento-fecha">2025-09-26</span>
+                <span class="entrenamiento-tipo">Caminata/Trote</span>
+                <div class="entrenamiento-stats">
+                    <span>34 min</span>
+                    <span>FC: 100 bpm</span>
+                    <span>TRIMP: 6.4</span>
+                </div>
             </div>
             
             <div class="entrenamiento-item">
-                <span>2025-09-25</span>
-                <span>45 min</span>
-                <span>FC: 113 bpm</span>
-                <span>TRIMP: 12.6</span>
+                <span class="entrenamiento-fecha">2025-09-25</span>
+                <span class="entrenamiento-tipo">Natación</span>
+                <div class="entrenamiento-stats">
+                    <span>45 min</span>
+                    <span>FC: 113 bpm</span>
+                    <span>TRIMP: 12.6</span>
+                </div>
             </div>
             
             <div class="entrenamiento-item">
-                <span>2025-09-25</span>
-                <span>12 min</span>
-                <span>FC: 88 bpm</span>
-                <span>TRIMP: 1.5</span>
+                <span class="entrenamiento-fecha">2025-09-25</span>
+                <span class="entrenamiento-tipo">Caminata/Trote</span>
+                <div class="entrenamiento-stats">
+                    <span>12 min</span>
+                    <span>FC: 88 bpm</span>
+                    <span>TRIMP: 1.5</span>
+                </div>
             </div>
             
         </div>
@@ -226,8 +257,8 @@
         
         
         const tsbTrace = {
-            x: ["2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26"],
-            y: [-0.7, -0.7, -4.8, -4.9, -6.1, -6.7, -7.4, -7.0, -10.5, -6.6, -7.0, -5.8, -5.1, -4.3, -3.4, 1.3, 2.3, 2.1, -1.7, -4.8, -10.1, -14.1, -14.8, -12.4, -11.8, -8.3, -5.8, 0.4, 4.0, -0.9],
+            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
+            y: [-0.7, -4.6, -4.8, -5.9, -6.6, -7.2, -6.9, -10.3, -6.4, -6.8, -5.6, -5.1, -4.3, -3.4, 1.3, 2.3, 2.1, -1.7, -4.8, -10.1, -14.1, -14.8, -12.4, -11.8, -8.3, -5.8, 0.4, 4.0, -0.9, -1.6],
             type: 'scatter',
             mode: 'lines',
             name: 'TSB (Forma)',
@@ -235,8 +266,8 @@
         };
         
         const ctlTrace = {
-            x: ["2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26"],
-            y: [0.5, 0.4, 2.8, 2.7, 3.0, 3.1, 3.2, 3.4, 4.5, 5.2, 5.1, 5.0, 5.0, 5.0, 5.0, 5.0, 5.7, 5.9, 7.2, 8.2, 10.0, 11.4, 11.6, 11.8, 11.8, 12.4, 12.9, 13.2, 13.4, 15.3],
+            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
+            y: [0.5, 3.0, 2.8, 3.2, 3.3, 3.4, 3.5, 4.7, 5.5, 5.3, 5.2, 5.0, 5.0, 5.0, 5.0, 5.7, 5.9, 7.2, 8.2, 10.0, 11.4, 11.6, 11.8, 11.8, 12.4, 12.9, 13.2, 13.4, 15.3, 13.7],
             type: 'scatter',
             mode: 'lines',
             name: 'CTL (Fitness)',
@@ -244,8 +275,8 @@
         };
         
         const atlTrace = {
-            x: ["2025-08-28", "2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26"],
-            y: [1.1, 1.1, 7.6, 7.6, 9.1, 9.9, 10.6, 10.4, 15.1, 11.9, 12.1, 10.8, 10.0, 9.3, 8.4, 3.7, 3.4, 3.8, 8.9, 13.0, 20.2, 25.5, 26.4, 24.2, 23.6, 20.7, 18.7, 12.8, 9.5, 16.2],
+            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
+            y: [1.1, 7.6, 7.6, 9.1, 9.9, 10.6, 10.4, 15.1, 11.9, 12.1, 10.8, 10.0, 9.3, 8.4, 3.7, 3.4, 3.8, 8.9, 13.0, 20.2, 25.5, 26.4, 24.2, 23.6, 20.7, 18.7, 12.8, 9.5, 16.2, 15.4],
             type: 'scatter',
             mode: 'lines',
             name: 'ATL (Fatiga)',
