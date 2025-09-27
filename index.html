@@ -1,300 +1,93 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Salud - 2025-09-27 03:21:07</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Health Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: linear-gradient(135deg, #161b22, #21262d);
-            border-radius: 12px;
-            border: 1px solid #30363d;
-        }
-        header h1 {
-            color: #58a6ff;
-            margin: 0 0 10px 0;
-            font-size: 2.5em;
-        }
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .metric-card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        .metric-title {
-            font-size: 0.9em;
-            color: #8b949e;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .metric-value {
-            font-size: 2em;
-            font-weight: 600;
-            color: #c9d1d9;
-            margin-bottom: 5px;
-        }
-        .status-good { color: #3fb950; }
-        .status-warning { color: #ffbb28; }
-        .status-danger { color: #f85149; }
-        .chart-container {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .chart-title {
-            color: #58a6ff;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-        .recommendation {
-            background-color: #1f2937;
-            border-left: 4px solid #58a6ff;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 4px;
-        }
-        .recommendation h3 {
-            color: #58a6ff;
-            margin-top: 0;
-        }
-        .entrenamientos-banner {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .entrenamiento-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #30363d;
-        }
-        .entrenamiento-item:last-child {
-            border-bottom: none;
-        }
-        .entrenamiento-tipo {
-            font-weight: bold;
-            color: #58a6ff;
-            min-width: 100px;
-        }
-        .entrenamiento-fecha {
-            color: #8b949e;
-            font-size: 0.9em;
-            min-width: 80px;
-        }
-        .entrenamiento-stats {
-            display: flex;
-            gap: 15px;
-            font-size: 0.9em;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; text-align: center; border-radius: 10px; margin-bottom: 20px; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .stat-value { font-size: 2em; font-weight: bold; color: #667eea; }
+        .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+        .chart-container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Dashboard de Salud y Entrenamiento</h1>
-            <p>Última actualización: 2025-09-27 03:21:07</p>
-        </header>
-        
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-title">Estado de Forma (TSB)</div>
-                <div class="metric-value status-good">-1.6</div>
-                <div style="font-size: 0.8em; color: #8b949e;">CTL: 13.7 | ATL: 15.4</div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-title">PAI (Hoy / 7 días)</div>
-                <div class="metric-value">0 / 131.3</div>
-                <div style="font-size: 0.8em; color: #8b949e;">Objetivo: 100 sem.</div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-title">Peso Actual</div>
-                <div class="metric-value">82.0 kg</div>
-                <div style="font-size: 0.8em; color: #8b949e;">Objetivo: 79.0 kg</div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-title">Entrenamientos</div>
-                <div class="metric-value">71</div>
-                <div style="font-size: 0.8em; color: #8b949e;">Total registrados</div>
-            </div>
+    <div class="header">
+        <h1>💪 Health Dashboard</h1>
+        <p>Actualizado: 2025-09-27 04:29:25</p>
+    </div>
+    
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-value">0.0</div>
+            <div>Peso Actual (kg)</div>
         </div>
-        
-        
-        <div class="entrenamientos-banner">
-            <h2 class="chart-title">Últimos Entrenamientos (3 días)</h2>
-            
-            <div class="entrenamiento-item">
-                <span class="entrenamiento-fecha">2025-09-26</span>
-                <span class="entrenamiento-tipo">Caminata/Trote</span>
-                <div class="entrenamiento-stats">
-                    <span>156 min</span>
-                    <span>FC: 107 bpm</span>
-                    <span>TRIMP: 36.7</span>
-                </div>
-            </div>
-            
-            <div class="entrenamiento-item">
-                <span class="entrenamiento-fecha">2025-09-26</span>
-                <span class="entrenamiento-tipo">Natación</span>
-                <div class="entrenamiento-stats">
-                    <span>50 min</span>
-                    <span>FC: 102 bpm</span>
-                    <span>TRIMP: 10.1</span>
-                </div>
-            </div>
-            
-            <div class="entrenamiento-item">
-                <span class="entrenamiento-fecha">2025-09-26</span>
-                <span class="entrenamiento-tipo">Caminata/Trote</span>
-                <div class="entrenamiento-stats">
-                    <span>34 min</span>
-                    <span>FC: 100 bpm</span>
-                    <span>TRIMP: 6.4</span>
-                </div>
-            </div>
-            
-            <div class="entrenamiento-item">
-                <span class="entrenamiento-fecha">2025-09-25</span>
-                <span class="entrenamiento-tipo">Natación</span>
-                <div class="entrenamiento-stats">
-                    <span>45 min</span>
-                    <span>FC: 113 bpm</span>
-                    <span>TRIMP: 12.6</span>
-                </div>
-            </div>
-            
-            <div class="entrenamiento-item">
-                <span class="entrenamiento-fecha">2025-09-25</span>
-                <span class="entrenamiento-tipo">Caminata/Trote</span>
-                <div class="entrenamiento-stats">
-                    <span>12 min</span>
-                    <span>FC: 88 bpm</span>
-                    <span>TRIMP: 1.5</span>
-                </div>
-            </div>
-            
+        <div class="stat-card">
+            <div class="stat-value">0</div>
+            <div>Total Ejercicios</div>
         </div>
-        
-        
+    </div>
+    
+    <div class="charts">
         <div class="chart-container">
-            <h2 class="chart-title">Evolución del Peso</h2>
-            <div id="peso-chart" style="height: 400px;"></div>
+            <h3>📊 Peso</h3>
+            <canvas id="pesoChart"></canvas>
         </div>
-        
         <div class="chart-container">
-            <h2 class="chart-title">Estado de Entrenamiento (TSB/CTL/ATL)</h2>
-            <div id="tsb-chart" style="height: 400px;"></div>
-        </div>
-        
-        <div class="recommendation">
-            <h3>Recomendación de Entrenamiento</h3>
-            <p>Estás en un estado de entrenamiento equilibrado. Continúa con tu rutina normal.</p>
-            <p><strong>Estado:</strong> Estado óptimo - Mantén el entrenamiento</p>
+            <h3>🏃 Ejercicio</h3>
+            <canvas id="ejercicioChart"></canvas>
         </div>
     </div>
     
     <script>
+        const pesoData = [];
+        const exerciseData = [];
         
-        const pesoTrace = {
-            x: ["2025-08-28", "2025-08-28", "2025-08-29", "2025-08-30", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-05", "2025-09-06", "2025-09-11", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-21", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-25", "2025-09-26", "2025-09-26"],
-            y: [82.2, 82.2, 82.0, 82.3, 82.9, 82.5, 81.9, 81.8, 82.2, 82.1, 82.5, 86.8, 86.7, 86.6, 85.9, 83.1, 83.2, 82.8, 84.3, 83.7, 82.6, 82.4, 82.5, 83.0, 82.1, 82.0],
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Peso',
-            line: { color: '#58a6ff', width: 3 },
-            marker: { size: 6 }
-        };
+        if (pesoData.length > 0) {
+            const ctx1 = document.getElementById('pesoChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: pesoData.map(d => d.date),
+                    datasets: [{
+                        label: 'Peso (kg)',
+                        data: pesoData.map(d => d.weight),
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
         
-        const pesoObjetivoTrace = {
-            x: ["2025-08-28", "2025-08-28", "2025-08-29", "2025-08-30", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-05", "2025-09-06", "2025-09-11", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-21", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-25", "2025-09-26", "2025-09-26"],
-            y: Array(26).fill(79.0),
-            type: 'scatter',
-            mode: 'lines',
-            name: 'Objetivo (79.0 kg)',
-            line: { color: '#3fb950', width: 2, dash: 'dash' }
-        };
-        
-        const pesoLayout = {
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)',
-            font: { color: '#c9d1d9' },
-            xaxis: { gridcolor: '#30363d', linecolor: '#8b949e' },
-            yaxis: { gridcolor: '#30363d', linecolor: '#8b949e', title: 'Peso (kg)' },
-            margin: { l: 50, r: 50, t: 30, b: 50 },
-            showlegend: true
-        };
-        
-        Plotly.newPlot('peso-chart', [pesoTrace, pesoObjetivoTrace], pesoLayout);
-        
-        
-        const tsbTrace = {
-            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
-            y: [-0.7, -4.6, -4.8, -5.9, -6.6, -7.2, -6.9, -10.3, -6.4, -6.8, -5.6, -5.1, -4.3, -3.4, 1.3, 2.3, 2.1, -1.7, -4.8, -10.1, -14.1, -14.8, -12.4, -11.8, -8.3, -5.8, 0.4, 4.0, -0.9, -1.6],
-            type: 'scatter',
-            mode: 'lines',
-            name: 'TSB (Forma)',
-            line: { color: '#ffbb28', width: 3 }
-        };
-        
-        const ctlTrace = {
-            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
-            y: [0.5, 3.0, 2.8, 3.2, 3.3, 3.4, 3.5, 4.7, 5.5, 5.3, 5.2, 5.0, 5.0, 5.0, 5.0, 5.7, 5.9, 7.2, 8.2, 10.0, 11.4, 11.6, 11.8, 11.8, 12.4, 12.9, 13.2, 13.4, 15.3, 13.7],
-            type: 'scatter',
-            mode: 'lines',
-            name: 'CTL (Fitness)',
-            line: { color: '#3fb950', width: 2 }
-        };
-        
-        const atlTrace = {
-            x: ["2025-08-29", "2025-08-30", "2025-08-31", "2025-09-01", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-06", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-20", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-27"],
-            y: [1.1, 7.6, 7.6, 9.1, 9.9, 10.6, 10.4, 15.1, 11.9, 12.1, 10.8, 10.0, 9.3, 8.4, 3.7, 3.4, 3.8, 8.9, 13.0, 20.2, 25.5, 26.4, 24.2, 23.6, 20.7, 18.7, 12.8, 9.5, 16.2, 15.4],
-            type: 'scatter',
-            mode: 'lines',
-            name: 'ATL (Fatiga)',
-            line: { color: '#f85149', width: 2 }
-        };
-        
-        const tsbLayout = {
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)',
-            font: { color: '#c9d1d9' },
-            xaxis: { gridcolor: '#30363d', linecolor: '#8b949e' },
-            yaxis: { gridcolor: '#30363d', linecolor: '#8b949e', title: 'Puntuación', zeroline: true, zerolinecolor: '#30363d' },
-            margin: { l: 50, r: 50, t: 30, b: 50 },
-            showlegend: true
-        };
-        
-        Plotly.newPlot('tsb-chart', [tsbTrace, ctlTrace, atlTrace], tsbLayout);
-        
+        if (exerciseData.length > 0) {
+            const actividadPorDia = {};
+            exerciseData.forEach(ex => {
+                if (!actividadPorDia[ex.date]) actividadPorDia[ex.date] = 0;
+                actividadPorDia[ex.date] += ex.duration / 60;
+            });
+            
+            const fechas = Object.keys(actividadPorDia).slice(-14);
+            const valores = fechas.map(f => actividadPorDia[f]);
+            
+            const ctx2 = document.getElementById('ejercicioChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: fechas,
+                    datasets: [{
+                        label: 'Minutos',
+                        data: valores,
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)'
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
     </script>
 </body>
 </html>
