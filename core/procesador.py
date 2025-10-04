@@ -12,6 +12,70 @@ from config import INPUT_DIR, ARCHIVO_PREFIX, ARCHIVO_EXTENSION, FC_REPOSO, FC_M
 from utils.logger import logger
 
 
+def _traducir_tipo_ejercicio(tipo_id):
+    """
+    Traduce el código numérico de tipo de ejercicio al nombre.
+    Basado en los códigos de HealthConnect/Samsung Health.
+    """
+    if tipo_id is None:
+        return "Desconocido"
+    
+    tipos = {
+        13: "Badminton",
+        56: "Baseball",
+        57: "Basketball",
+        58: "Biathlon",
+        59: "Calisthenics",
+        60: "Cricket",
+        61: "Dancing",
+        62: "Elliptical",
+        63: "Fencing",
+        64: "Football (American)",
+        65: "Football (Soccer)",
+        66: "Frisbee",
+        67: "Golf",
+        68: "Guided Breathing",
+        69: "Gymnastics",
+        70: "Handball",
+        71: "HIIT",
+        72: "Hiking",
+        73: "Ice Hockey",
+        74: "Swimming",
+        75: "Ice Skating",
+        76: "Martial Arts",
+        77: "Paddling",
+        78: "Paragliding",
+        79: "Walking",
+        80: "Pilates",
+        81: "Racquetball",
+        82: "Rock Climbing",
+        83: "Roller Hockey",
+        84: "Rowing",
+        85: "Running",
+        86: "Sailing",
+        87: "Scuba Diving",
+        88: "Skating",
+        89: "Skiing",
+        90: "Snowboarding",
+        91: "Snowshoeing",
+        92: "Softball",
+        93: "Squash",
+        94: "Stair Climbing",
+        95: "Strength Training",
+        96: "Stretching",
+        97: "Surfing",
+        98: "Table Tennis",
+        99: "Tennis",
+        100: "Volleyball",
+        101: "Water Polo",
+        102: "Weightlifting",
+        103: "Wheelchair",
+        104: "Yoga",
+    }
+    
+    return tipos.get(tipo_id, f"Otro ({tipo_id})")
+
+
 def obtener_archivos_pendientes(archivos_procesados):
     """
     Obtiene lista de archivos JSON pendientes de procesar.
@@ -103,7 +167,7 @@ def _procesar_ejercicios(datos, cache, nombre_archivo):
     for e in ejercicios_data:
         entrada = {
             "fecha": e.get("start_time"),
-            "tipo": e.get("exercise_type_name", "Desconocido"),
+            "tipo": e.get("exercise_type_name") or _traducir_tipo_ejercicio(e.get("exercise_type")),
             "duracion": e.get("duration_minutes", 0),
             "calorias": e.get("calories_burned", 0),
             "distancia": e.get("distance_meters", 0),
