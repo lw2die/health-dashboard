@@ -1,0 +1,3 @@
+client_secret_*.json 
+__pycache__/ 
+cache_datos.json 

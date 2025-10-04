@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Longevidad</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 { margin: 0; padding-bottom: 10px; }
+        .container { max-width: 1400px; margin: auto; }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #30363d;
+            transition: transform 0.2s;
+        }
+        .metric-card:hover { transform: translateY(-5px); }
+        .metric-card h3 { color: #58a6ff; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
+        .metric-value { font-size: 2.5em; font-weight: bold; margin: 10px 0; }
+        .metric-subtitle { font-size: 0.85em; color: #8b949e; }
+        .info-box {
+            background: #161b22;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid #30363d;
+        }
+        .info-box h3 { color: #58a6ff; margin-bottom: 15px; }
+        .info-box ul { list-style-position: inside; padding: 0; margin: 10px 0; }
+        .info-box li { padding: 8px 0; border-bottom: 1px solid #21262d; }
+        .info-box li:last-child { border-bottom: none; }
+        .chart-container { margin-top: 30px; }
+        .recommendations {
+            background: linear-gradient(135deg, #1f6feb 0%, #1158c7 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1f6feb 0%, #1158c7 100%);
+            border-radius: 12px;
+        }
+        .score-grande {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class='container'>
+        
+        <header>
+            <h1>Dashboard de Longevidad Integral</h1>
+            <p style="margin: 5px 0;">Última actualización: 2025-10-04 19:13:29</p>
+            <p style="font-size: 0.9em; margin: 0;">Edad: 61 años | Altura: 177 cm | FC Max: 159 bpm | FC Reposo: 55 bpm</p>
+        </header>
+    
+        
+        <div style="text-align: center; background: #161b22; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
+            <h2>Score de Longevidad</h2>
+            <div class='score-grande' style="color: #d29922">63</div>
+            <p style="color: #8b949e;">Basado en composición corporal, fitness, sueño y balance de entrenamiento</p>
+        </div>
+    
+        
+        <div class='metrics-grid'>
+            <div class='metric-card'>
+                <h3>PAI Semanal</h3>
+                <div class='metric-value' style="color: #3fb950">141.2</div>
+                <div class='metric-subtitle'>Objetivo: ≥100/semana</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>Peso Actual</h3>
+                <div class='metric-value'>82.5 kg</div>
+                <div class='metric-subtitle'>Objetivo: 79.0 kg (+3.5 kg)</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>VO2max</h3>
+                <div class='metric-value'>27.7</div>
+                <div class='metric-subtitle'>ml/kg/min (Promedio)</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>TSB (Balance)</h3>
+                <div class='metric-value' style="color: #3fb950">-5.9</div>
+                <div class='metric-subtitle'>CTL: 14.3 | ATL: 20.2</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>Sueño (7d)</h3>
+                <div class='metric-value'>3.6h</div>
+                <div class='metric-subtitle'>Profundo: 10.5%</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>Entrenamientos</h3>
+                <div class='metric-value'>70</div>
+                <div class='metric-subtitle'>Total registrados</div>
+            </div>
+        </div>
+    
+        
+        <div class='recommendations'>
+            <h3>Recomendaciones Priorizadas para Optimizar Longevidad</h3>
+            <div style="margin-top: 15px;"><strong>Ajuste Fino:</strong> Estás 3.5 kg sobre objetivo. Con un déficit moderado de 300 kcal/día alcanzarás el objetivo en 12 semanas.<br><br><strong>Sueño Insuficiente:</strong> Promedias 3.6h/noche. El sueño <7h está asociado con mayor mortalidad y dificulta la pérdida de peso.</div>
+        </div>
+    
+        
+        <div class='chart-container'>
+            <div id="pai-chart" style="height:400px;"></div>
+        </div>
+        
+        <div class='chart-container'>
+            <div id="peso-chart" style="height:400px;"></div>
+        </div>
+        
+        <div class='chart-container'>
+            <div id="tsb-chart" style="height:400px;"></div>
+        </div>
+    
+        
+        <div class="info-box">
+            <h3>Entrenamientos Recientes (Últimos 7 días)</h3>
+            <ul><li>
+            <strong>2025-10-04:</strong> 
+            Desconocido - 77 min 
+            (FC: 106 bpm, PAI: 21.5, Zona: Aeróbico)
+        </li><li>
+            <strong>2025-10-03:</strong> 
+            Desconocido - 62 min 
+            (FC: 102 bpm, PAI: 14.7, Zona: Aeróbico)
+        </li><li>
+            <strong>2025-10-03:</strong> 
+            Desconocido - 11 min 
+            (FC: 82 bpm, PAI: 0.9, Zona: Recuperación)
+        </li><li>
+            <strong>2025-10-02:</strong> 
+            Desconocido - 16 min 
+            (FC: 100 bpm, PAI: 3.5, Zona: Aeróbico)
+        </li><li>
+            <strong>2025-10-02:</strong> 
+            Desconocido - 16 min 
+            (FC: 95 bpm, PAI: 2.7, Zona: Recuperación)
+        </li><li>
+            <strong>2025-10-02:</strong> 
+            Desconocido - 11 min 
+            (FC: 91 bpm, PAI: 1.5, Zona: Recuperación)
+        </li><li>
+            <strong>2025-10-02:</strong> 
+            Desconocido - 55 min 
+            (FC: 104 bpm, PAI: 14.2, Zona: Aeróbico)
+        </li><li>
+            <strong>2025-10-02:</strong> 
+            Desconocido - 13 min 
+            (FC: 89 bpm, PAI: 1.6, Zona: Recuperación)
+        </li><li>
+            <strong>2025-10-01:</strong> 
+            Desconocido - 10 min 
+            (FC: 94 bpm, PAI: 1.6, Zona: Recuperación)
+        </li><li>
+            <strong>2025-10-01:</strong> 
+            Desconocido - 60 min 
+            (FC: 123 bpm, PAI: 29.8, Zona: Tempo)
+        </li></ul>
+        </div>
+    
+        
+        <div class="info-box">
+            <h3>Interpretación del Score de Longevidad</h3>
+            <p>El score combina las métricas más importantes para healthspan:</p>
+            <ul>
+                <li><strong>80-100:</strong> Excelente. Estás en el camino óptimo para longevidad.</li>
+                <li><strong>60-79:</strong> Bueno. Hay áreas específicas que mejorar (ver recomendaciones).</li>
+                <li><strong>&lt;60:</strong> Necesita atención. Las recomendaciones son prioritarias.</li>
+            </ul>
+            <p><strong>Componentes del Score:</strong></p>
+            <ul>
+                <li>Composición Corporal (40%): Peso y % grasa cerca de objetivos</li>
+                <li>Fitness Cardiovascular (30%): VO2max y PAI semanal</li>
+                <li>Sueño (20%): Cantidad y calidad de descanso</li>
+                <li>Balance Entrenamiento (10%): TSB óptimo para evitar lesiones</li>
+            </ul>
+        </div>
+    
+    </div>
+    
+    <script>
+        
+        const layout = {
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { color: '#c9d1d9', family: 'Arial' },
+            xaxis: { gridcolor: '#30363d' },
+            yaxis: { gridcolor: '#30363d' },
+            margin: { l: 60, r: 40, t: 60, b: 60 }
+        };
+        
+        // Gráfico PAI Semanal
+        Plotly.newPlot('pai-chart', [
+            {
+                x: ['2025-09-05', '2025-09-06', '2025-09-07', '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: [46.1, 79.0, 81.0, 82.2, 82.2, 82.2, 82.2, 36.1, 33.4, 36.3, 82.6, 119.2, 184.1, 230.7, 236.2, 212.0, 207.1, 178.6, 160.8, 106.7, 77.7, 136.6, 133.5, 133.5, 129.1, 143.2, 165.5, 171.4, 122.6, 141.2],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'PAI Semanal',
+                fill: 'tozeroy',
+                line: { color: '#58a6ff', width: 3 },
+                marker: { 
+                    size: 8,
+                    color: [46.1, 79.0, 81.0, 82.2, 82.2, 82.2, 82.2, 36.1, 33.4, 36.3, 82.6, 119.2, 184.1, 230.7, 236.2, 212.0, 207.1, 178.6, 160.8, 106.7, 77.7, 136.6, 133.5, 133.5, 129.1, 143.2, 165.5, 171.4, 122.6, 141.2].map(v => v >= 100 ? '#3fb950' : v >= 75 ? '#d29922' : '#f85149')
+                }
+            },
+            {
+                x: ['2025-09-05', '2025-09-06', '2025-09-07', '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: Array(30).fill(100),
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Objetivo (100)',
+                line: { color: '#3fb950', dash: 'dash', width: 2 }
+            }
+        ], {
+            ...layout,
+            title: 'PAI Semanal (ventana móvil 7 días) - Últimos 30 días',
+            yaxis: { ...layout.yaxis, title: 'PAI Acumulado (7 días)' },
+            showlegend: true
+        });
+        
+        // Gráfico Peso
+        Plotly.newPlot('peso-chart', [
+            {
+                x: ['2025-09-05', '2025-09-05', '2025-09-06', '2025-09-11', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-21', '2025-09-21', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-29', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: [82.2, 82.1, 82.5, 86.8, 86.7, 86.6, 85.9, 83.1, 83.2, 82.8, 84.3, 83.7, 82.6, 82.4, 82.5, 83.0, 82.1, 82.0, 83.3, 83.5, 83.1, 82.6, 83.7, 82.9, 83.5, 82.8, 82.5],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Peso',
+                line: { color: '#58a6ff', width: 3 },
+                marker: { size: 8 }
+            },
+            {
+                x: ['2025-09-05', '2025-09-05', '2025-09-06', '2025-09-11', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-21', '2025-09-21', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-29', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: Array(27).fill(79.0),
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Objetivo',
+                line: { color: '#3fb950', dash: 'dash', width: 2 }
+            }
+        ], {
+            ...layout,
+            title: 'Evolución del Peso',
+            yaxis: { ...layout.yaxis, title: 'Peso (kg)' }
+        });
+        
+        // Gráfico TSB
+        Plotly.newPlot('tsb-chart', [
+            {
+                x: ['2025-09-05', '2025-09-06', '2025-09-07', '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: [-5.5, -9.4, -9.6, -9.8, -9.8, -9.8, -9.8, -3.2, -2.1, -2.4, -7.9, -12.2, -20.0, -25.5, -26.2, -22.6, -21.9, -17.3, -14.3, -6.4, -1.8, -8.7, -8.2, -8.2, -7.2, -8.4, -10.8, -11.1, -3.8, -5.9],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'TSB',
+                fill: 'tozeroy',
+                line: { color: '#ffbb28', width: 3 }
+            },
+            {
+                x: ['2025-09-05', '2025-09-06', '2025-09-07', '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: [1.1, 1.9, 1.9, 2.0, 2.0, 2.0, 2.0, 2.0, 2.7, 2.8, 3.9, 4.8, 6.3, 7.4, 7.6, 7.7, 7.7, 8.2, 8.6, 8.9, 9.3, 10.8, 10.9, 10.9, 11.2, 12.0, 12.8, 13.4, 13.8, 14.3],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'CTL (Fitness)',
+                line: { color: '#3fb950', width: 2 }
+            },
+            {
+                x: ['2025-09-05', '2025-09-06', '2025-09-07', '2025-09-08', '2025-09-09', '2025-09-10', '2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04'],
+                y: [6.6, 11.3, 11.6, 11.7, 11.7, 11.7, 11.7, 5.2, 4.8, 5.2, 11.8, 17.0, 26.3, 33.0, 33.7, 30.3, 29.6, 25.5, 23.0, 15.2, 11.1, 19.5, 19.1, 19.1, 18.4, 20.5, 23.6, 24.5, 17.5, 20.2],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'ATL (Fatiga)',
+                line: { color: '#f85149', width: 2 }
+            }
+        ], {
+            ...layout,
+            title: 'Balance de Entrenamiento (TSB)',
+            yaxis: { ...layout.yaxis, title: 'Puntuación' }
+        });
+    
+    </script>
+</body>
+</html>
