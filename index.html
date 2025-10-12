@@ -74,7 +74,7 @@
         
         <header>
             <h1>Dashboard de Longevidad Integral</h1>
-            <p style="margin: 5px 0;">Última actualización: 2025-10-11 22:17:19</p>
+            <p style="margin: 5px 0;">Última actualización: 2025-10-11 22:27:10</p>
             <p style="font-size: 0.9em; margin: 0;">Edad: 61 años | Altura: 177 cm | FC Max: 159 bpm | FC Reposo: 55 bpm</p>
         </header>
     
@@ -114,13 +114,37 @@
             <div class='metric-card'>
                 <h3>Sueño (7d)</h3>
                 <div class='metric-value'>2.6h</div>
-                <div class='metric-subtitle'>Profundo: 12.0%</div>
+                <div class='metric-subtitle'>Profundo: 12.3%</div>
             </div>
             
             <div class='metric-card'>
                 <h3>Entrenamientos</h3>
                 <div class='metric-value'>277</div>
                 <div class='metric-subtitle'>Total registrados</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>SpO2 Actual</h3>
+                <div class='metric-value'>98.0%</div>
+                <div class='metric-subtitle'>Saturación de Oxígeno</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>Grasa Corporal</h3>
+                <div class='metric-value'>21.7%</div>
+                <div class='metric-subtitle'>Composición Corporal</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>Masa Muscular</h3>
+                <div class='metric-value'>62.8 kg</div>
+                <div class='metric-subtitle'>Lean Body Mass</div>
+            </div>
+            
+            <div class='metric-card'>
+                <h3>VO2max Real</h3>
+                <div class='metric-value'>0.0</div>
+                <div class='metric-subtitle'>Medido por Dispositivo</div>
             </div>
         </div>
     
@@ -141,6 +165,18 @@
         
         <div class='chart-container'>
             <div id="tsb-chart" style="height:400px;"></div>
+        </div>
+        
+        <div class='chart-container'>
+            <div id="spo2-chart" style="height:400px;"></div>
+        </div>
+        
+        <div class='chart-container'>
+            <div id="grasa-chart" style="height:400px;"></div>
+        </div>
+        
+        <div class='chart-container'>
+            <div id="masa-chart" style="height:400px;"></div>
         </div>
     
         
@@ -306,6 +342,70 @@
             ...layout,
             title: 'Balance de Entrenamiento (TSB)',
             yaxis: { ...layout.yaxis, title: 'Puntuación' }
+        });
+        
+        // Gráfico SpO2
+        Plotly.newPlot('spo2-chart', [
+            {
+                x: ['2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11'],
+                y: [97.0, 96.0, 97.5, 96.0, 96.0, 95.5, 96.0, 95.0, 96.33333333333333, 96.5, 96.0, 97.0, 97.0, 97.4, 95.42105263157895, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.25, 98.0, 97.66666666666667],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'SpO2',
+                line: { color: '#ff6b6b', width: 3 },
+                marker: { 
+                    size: 8,
+                    color: [97.0, 96.0, 97.5, 96.0, 96.0, 95.5, 96.0, 95.0, 96.33333333333333, 96.5, 96.0, 97.0, 97.0, 97.4, 95.42105263157895, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.25, 98.0, 97.66666666666667].map(v => v >= 95 ? '#3fb950' : v >= 92 ? '#d29922' : '#f85149')
+                }
+            },
+            {
+                x: ['2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11'],
+                y: Array(28).fill(95),
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Normal (≥95%)',
+                line: { color: '#3fb950', dash: 'dash', width: 2 }
+            }
+        ], {
+            ...layout,
+            title: 'Saturación de Oxígeno (SpO2) - Últimos 30 días',
+            yaxis: { ...layout.yaxis, title: 'SpO2 (%)' }
+        });
+        
+        // Gráfico Grasa Corporal
+        Plotly.newPlot('grasa-chart', [
+            {
+                x: ['2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11'],
+                y: [26.7207235622406, 25.26424009128274, 22.77144421168736, 24.200000381469728, 26.905964216747616, 24.100000190734864, 25.29416324191623, 25.899023056030273, 25.273968859102755, 26.193472044581437, 23.052382922172548, 24.799999618530272, 25.136354189786047, 24.620701353285046, 24.27003764682346, 25.058992156760894, 26.865729016820385, 25.10968581870563, 24.398866204281937, 24.623330713999376, 24.82709503132704, 26.752231605735556, 24.335267439981084, 26.179435566937087, 25.209855082163834, 25.69773481934703, 26.273384229289217, 24.584050566191753, 24.18041175261923, 24.459530615997107, 24.7169162903322],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Grasa Corporal',
+                fill: 'tozeroy',
+                line: { color: '#ff9f43', width: 3 },
+                marker: { size: 8 }
+            }
+        ], {
+            ...layout,
+            title: 'Evolución Grasa Corporal - Últimos 90 días',
+            yaxis: { ...layout.yaxis, title: 'Grasa Corporal (%)' }
+        });
+        
+        // Gráfico Masa Muscular
+        Plotly.newPlot('masa-chart', [
+            {
+                x: ['2025-09-11', '2025-09-12', '2025-09-13', '2025-09-15', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11'],
+                y: [62.05, 62.92880009969076, 67.00098419189453, 57.76, 62.019115219116216, 61.65208740234375, 59.70922637939453, 58.94, 64.41496231079101, 62.429553833007816, 62.75979888916015, 62.58743949890137, 58.793261820475266, 57.73875015258789, 61.18699989318848, 61.85310912238227, 61.483755404154465, 60.522833747863764, 58.75775033315023, 56.26, 56.1625, 57.553333333333335, 57.22666666666667, 56.25, 57.385, 57.05, 59.047500400543214, 59.49433372497558],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Masa Muscular',
+                fill: 'tozeroy',
+                line: { color: '#00d2d3', width: 3 },
+                marker: { size: 8 }
+            }
+        ], {
+            ...layout,
+            title: 'Evolución Masa Muscular (Lean Body Mass) - Últimos 90 días',
+            yaxis: { ...layout.yaxis, title: 'Masa Muscular (kg)' }
         });
     
     </script>
