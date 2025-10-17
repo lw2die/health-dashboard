@@ -1,699 +1,570 @@
-<!DOCTYPE html>
-<html lang='es'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Longevidad</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard de Salud - HealthConnect</title>
+        <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+        
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            background: #0d1117;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
             color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
-        h1, h2, h3, h4 { margin: 0; padding-bottom: 10px; }
-        .container { max-width: 1400px; margin: auto; }
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .metric-card {
-            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #30363d;
-            transition: transform 0.2s;
-        }
-        .metric-card:hover { transform: translateY(-5px); }
-        .metric-card h3 { color: #58a6ff; font-size: 0.9em; text-transform: uppercase; }
-        .metric-value { font-size: 2em; font-weight: bold; margin: 10px 0; }
-        .metric-unit { color: #8b949e; font-size: 0.9em; }
-        .score-section {
-            background: linear-gradient(135deg, #1e2f45 0%, #0d1117 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-            border: 2px solid #30363d;
-        }
-        .score-value { font-size: 4em; font-weight: bold; }
-        .score-label { color: #8b949e; margin-top: 10px; }
-        .chart-container {
-            background: #161b22;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #30363d;
-        }
-        .recommendations {
-            background: linear-gradient(135deg, #1e3a2f 0%, #0d1117 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid #3fb950;
-        }
-        .workouts-section {
-            background: #161b22;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        .workout-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px;
-            margin: 8px 0;
-            background: #0d1117;
-            border-radius: 8px;
-            border-left: 3px solid #58a6ff;
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        /* Estilos para laboratorio */
-        .laboratorio-section {
-            margin: 40px 0;
-        }
-        .score-card {
-            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
-            padding: 20px;
-            border-radius: 12px;
+        header {
             text-align: center;
-            border: 1px solid #30363d;
-            transition: all 0.3s;
+            margin-bottom: 40px;
         }
-        .score-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .score-card h4 {
+        
+        h1 {
+            font-size: 2.5em;
             color: #58a6ff;
             margin-bottom: 10px;
         }
-        .score-value {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 10px 0;
+        
+        h2 {
+            color: #58a6ff;
+            margin: 30px 0 20px 0;
+            font-size: 1.8em;
         }
-        .score-label {
-            color: #8b949e;
-            font-size: 0.9em;
-        }
-        .alerta-card {
-            background: #161b22;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-        }
-        .alerta-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .alerta-icon {
+        
+        h3 {
+            color: #79c0ff;
+            margin-bottom: 15px;
             font-size: 1.2em;
         }
-        .alerta-titulo {
-            flex: 1;
-            font-weight: bold;
+        
+        .subtitle {
+            color: #8b949e;
+            font-size: 1.1em;
         }
-        .alerta-severidad {
-            font-size: 0.9em;
-            text-transform: uppercase;
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
-        .alerta-descripcion {
-            color: #c9d1d9;
-            margin-bottom: 8px;
+        
+        .metric-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .alerta-accion, .alerta-impacto {
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+        }
+        
+        .metric-label {
             color: #8b949e;
             font-size: 0.9em;
-            margin-top: 5px;
+            margin-bottom: 10px;
         }
-        .parametros-tabla {
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-detail {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+        
+        .charts-section {
+            margin: 40px 0;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+        
+        .chart-container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .training-section, .recommendations-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 15px;
         }
-        .parametros-tabla th {
-            background: #1c2128;
-            color: #58a6ff;
+        
+        th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 2px solid #30363d;
-        }
-        .parametros-tabla td {
-            padding: 10px;
             border-bottom: 1px solid #30363d;
         }
-        .parametros-tabla tr:hover {
-            background: #161b22;
+        
+        th {
+            color: #58a6ff;
+            font-weight: 600;
         }
-    
-    </style>
-</head>
-<body>
-    <div class='container'>
         
-        <h1 style='text-align: center; color: #58a6ff; margin-bottom: 30px;'>
-            📊 Dashboard de Longevidad - HealthConnect
-        </h1>
-        <p style='text-align: center; color: #8b949e; margin-bottom: 30px;'>
-            Última actualización: 17/10/2025 17:09
-        </p>
-    
+        tr:hover {
+            background: #0d1117;
+        }
         
-    <section class="laboratorio-section">
-        <h2 style="text-align: center; color: #58a6ff; margin-bottom: 30px;">
-            🧬 DASHBOARD CIENTÍFICO DE LONGEVIDAD
-        </h2>
+        .recommendations-list {
+            list-style: none;
+            padding: 0;
+        }
         
-        <!-- Longevity Score Principal -->
-        <div class="longevity-score-container" style="text-align: center; margin-bottom: 40px;">
-            <div class="longevity-score-card" style="
-                background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-                padding: 30px;
-                border-radius: 20px;
-                border: 2px solid #00ff00;
-                display: inline-block;
-                box-shadow: 0 0 30px #00ff0040;
-            ">
-                <h3 style="color: #fff; margin-bottom: 10px;">LONGEVITY SCORE</h3>
-                <div style="font-size: 60px; font-weight: bold; color: #00ff00;">
-                    83.5<span style="font-size: 30px;">/100</span>
-                </div>
-                <div style="color: #00ff00; font-size: 20px; margin-top: 10px;">
-                    normal
-                </div>
-            </div>
-        </div>
+        .recommendations-list li {
+            padding: 12px;
+            margin: 10px 0;
+            background: #0d1117;
+            border-left: 3px solid #58a6ff;
+            border-radius: 4px;
+        }
         
-        <!-- Scores Individuales -->
-        <div class="scores-grid" style="
+        .laboratorio-section {
+            background: #161b22;
+            border: 2px solid #58a6ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .scores-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
-        ">
+            margin: 20px 0;
+        }
+        
+        .score-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .score-main {
+            grid-column: 1 / -1;
+            border: 2px solid #58a6ff;
+        }
+        
+        .score-label {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .score-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .alertas-section {
+            margin-top: 30px;
+        }
+        
+        .alerta-item {
+            background: #0d1117;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>📊 Dashboard de Salud</h1>
+                <p class="subtitle">Última actualización: 17/10/2025 17:29</p>
+            </header>
+            
+            
+    <div class="laboratorio-section">
+        <h2>🧬 Dashboard Científico</h2>
+        <div class="scores-grid">
+            <div class="score-card score-main">
+                <div class="score-label">Longevity Score</div>
+                <div class="score-value" style="color: #3fb950;">83.5/100</div>
+            </div>
             <div class="score-card">
-                <h4>❤️ CardioScore</h4>
-                <div class="score-value" style="color: #00ff00;">
-                    90.0/100
-                </div>
-                <div class="score-label">Riesgo Cardiovascular</div>
+                <div class="score-label">CardioScore</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
-            
             <div class="score-card">
-                <h4>🔥 MetabolicScore</h4>
-                <div class="score-value" style="color: #ffff00;">
-                    65.0/100
-                </div>
-                <div class="score-label">Salud Metabólica</div>
+                <div class="score-label">MetabolicScore</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
-            
             <div class="score-card">
-                <h4>🛡️ InflammationScore</h4>
-                <div class="score-value" style="color: #00ff00;">
-                    100.0/100
-                </div>
-                <div class="score-label">Nivel Inflamatorio</div>
+                <div class="score-label">InflammationScore</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
-            
             <div class="score-card">
-                <h4>⚡ HormoneScore</h4>
-                <div class="score-value" style="color: #00ff00;">
-                    80.0/100
-                </div>
-                <div class="score-label">Balance Hormonal</div>
+                <div class="score-label">HormoneScore</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
         </div>
-        
-        <!-- Alertas -->
-        
-        <div class="alertas-container">
-            <h3 style="color: #58a6ff;">🚨 Alertas y Recomendaciones Médicas</h3>
+        <div class="alertas-section">
+            <h3>⚠️ Alertas</h3>
             
-                    <div class="alerta-card" style="border-left: 4px solid #ff0000;">
-                        <div class="alerta-header">
-                            <span class="alerta-icon">🔴</span>
-                            <span class="alerta-titulo">Prediabetes Detectada</span>
-                            <span class="alerta-severidad" style="color: #ff0000;">CRITICA</span>
-                        </div>
-                        <div class="alerta-descripcion">HbA1c en 5.7% indica prediabetes</div>
-                        <div class="alerta-accion"><strong>Acción:</strong> Consultar endocrinólogo. Considerar Metformina.</div>
-                        <div class="alerta-impacto"><strong>Impacto:</strong> -5 a -10 años si progresa a diabetes</div>
-                    </div>
-                    
-                    <div class="alerta-card" style="border-left: 4px solid #ff9900;">
-                        <div class="alerta-header">
-                            <span class="alerta-icon">🟠</span>
-                            <span class="alerta-titulo">Hipotiroidismo Subclínico</span>
-                            <span class="alerta-severidad" style="color: #ff9900;">ALTA</span>
-                        </div>
-                        <div class="alerta-descripcion">TSH en 5.2 mUI/L indica tiroides lenta</div>
-                        <div class="alerta-accion"><strong>Acción:</strong> Evaluar T3/T4. Posible levotiroxina.</div>
-                        <div class="alerta-impacto"><strong>Impacto:</strong> Fatiga crónica, metabolismo lento</div>
-                    </div>
-                    
-                    <div class="alerta-card" style="border-left: 4px solid #00ff00;">
-                        <div class="alerta-header">
-                            <span class="alerta-icon">🟢</span>
-                            <span class="alerta-titulo">LDL Excelente</span>
-                            <span class="alerta-severidad" style="color: #00ff00;">BUENA</span>
-                        </div>
-                        <div class="alerta-descripcion">LDL en 27 mg/dL es óptimo</div>
-                        <div class="alerta-accion"><strong>Acción:</strong> Mantener régimen actual</div>
-                        <div class="alerta-impacto"><strong>Impacto:</strong> +3 años de protección CV</div>
-                    </div>
-                    
+        <div class="alerta-item" style="border-left: 4px solid #f85149;">
+            <div style="font-weight: bold; color: #f85149;">Prediabetes Detectada</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">HbA1c en 5.7% indica prediabetes</div>
         </div>
         
-        
-        <!-- Parámetros de Laboratorio -->
-        
-        <div class="parametros-container">
-            <h3 style="color: #58a6ff;">📋 Parámetros de Laboratorio</h3>
-            <table class="parametros-tabla">
-                <thead>
-                    <tr>
-                        <th>Parámetro</th>
-                        <th>Valor</th>
-                        <th>Rango</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-        
-                <tr>
-                    <td>Colesterol Total</td>
-                    <td>75</td>
-                    <td>120-200</td>
-                    <td style="color: #ff9900;">bajo</td>
-                </tr>
-            
-                <tr>
-                    <td>LDL</td>
-                    <td>27</td>
-                    <td><100</td>
-                    <td style="color: #00ff00;">óptimo</td>
-                </tr>
-            
-                <tr>
-                    <td>HDL</td>
-                    <td>43</td>
-                    <td>>55</td>
-                    <td style="color: #ff9900;">bajo</td>
-                </tr>
-            
-                <tr>
-                    <td>Triglicéridos</td>
-                    <td>31</td>
-                    <td><150</td>
-                    <td style="color: #00ff00;">óptimo</td>
-                </tr>
-            
-                <tr>
-                    <td>Glucemia</td>
-                    <td>91</td>
-                    <td>70-100</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>HbA1c</td>
-                    <td>5.7</td>
-                    <td><5.7</td>
-                    <td style="color: #00ff00;">prediabetes</td>
-                </tr>
-            
-                <tr>
-                    <td>PCR</td>
-                    <td>0.8</td>
-                    <td><1.0</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>TSH</td>
-                    <td>5.2</td>
-                    <td>0.4-4.0</td>
-                    <td style="color: #ff9900;">alto</td>
-                </tr>
-            
-                <tr>
-                    <td>Vitamina D</td>
-                    <td>32</td>
-                    <td>30-100</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>B12</td>
-                    <td>450</td>
-                    <td>200-900</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>Ferritina</td>
-                    <td>120</td>
-                    <td>20-300</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>Creatinina</td>
-                    <td>1.15</td>
-                    <td>0.7-1.3</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>Urea</td>
-                    <td>38</td>
-                    <td>15-45</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>Ácido Úrico</td>
-                    <td>5.8</td>
-                    <td>3.5-7.0</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>GOT/AST</td>
-                    <td>28</td>
-                    <td>10-40</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                <tr>
-                    <td>GPT/ALT</td>
-                    <td>35</td>
-                    <td>10-40</td>
-                    <td style="color: #00ff00;">normal</td>
-                </tr>
-            
-                </tbody>
-            </table>
+        <div class="alerta-item" style="border-left: 4px solid #f0883e;">
+            <div style="font-weight: bold; color: #f0883e;">Hipotiroidismo Subclínico</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">TSH en 5.2 mUI/L indica tiroides lenta</div>
         </div>
         
-        
-    </section>
-    <hr style="border: 1px solid #30363d; margin: 40px 0;">
-    
-        
-        <div class='score-section'>
-            <h2>Score de Longevidad</h2>
-            <div class='score-value' style='color: #f85149;'>63</div>
-            <div class='score-label'>de 100 puntos posibles</div>
-        </div>
-    
-        
-        <div class='metrics-grid'>
-            <div class='metric-card'>
-                <h3>PAI Semanal</h3>
-                <div class='metric-value' style='color: #3fb950;'>1335</div>
-                <div class='metric-unit'>de 100 objetivo</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>VO2max</h3>
-                <div class='metric-value' style='color: #f85149;'>27.7</div>
-                <div class='metric-unit'>ml/kg/min</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Peso Actual</h3>
-                <div class='metric-value' style='color: #d29922;'>83.5</div>
-                <div class='metric-unit'>kg (objetivo: 79.0)</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Form (TSB)</h3>
-                <div class='metric-value' style='color: #f85149;'>179.9</div>
-                <div class='metric-unit'>Training Stress Balance</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Sueño Promedio</h3>
-                <div class='metric-value' style='color: #f85149;'>N/A</div>
-                <div class='metric-unit'>horas/noche</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>SpO2 Promedio</h3>
-                <div class='metric-value' style='color: #3fb950;'>97.7</div>
-                <div class='metric-unit'>% saturación</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Grasa Corporal</h3>
-                <div class='metric-value' style='color: #f85149;'>24.3</div>
-                <div class='metric-unit'>%</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Masa Muscular</h3>
-                <div class='metric-value' style='color: #d29922;'>58.8</div>
-                <div class='metric-unit'>kg</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Entrenamientos</h3>
-                <div class='metric-value' style='color: #d29922;'>2326</div>
-                <div class='metric-unit'>sesiones totales</div>
-            </div>
-        </div>
-    
-        
-        <div class='recommendations'>
-            <h3>💡 Recomendaciones Personalizadas</h3>
-            <ul style='margin-left: 20px; line-height: 1.8;'>
-                <li><strong>Ajuste Fino:</strong> Estás 4.5 kg sobre objetivo. Con un déficit moderado de 300 kcal/día alcanzarás el objetivo en 16 semanas.</li>
-            </ul>
-        </div>
-    
-        
-        <h2 style='margin-top: 40px; color: #58a6ff;'>📈 Análisis Temporal</h2>
-        
-        <div class='chart-container'>
-            <h3>PAI Histórico (30 días)</h3>
-            <div id='pai-chart'></div>
+        <div class="alerta-item" style="border-left: 4px solid #d29922;">
+            <div style="font-weight: bold; color: #d29922;">LDL Excelente</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">LDL en 27 mg/dL es óptimo</div>
         </div>
         
-        <div class='chart-container'>
-            <h3>Evolución del Peso (90 días)</h3>
-            <div id='peso-chart'></div>
         </div>
-        
-        <div class='chart-container'>
-            <h3>Training Stress Balance (30 días)</h3>
-            <div id='tsb-chart'></div>
-        </div>
-        
-        <div class='chart-container'>
-            <h3>SpO2 - Saturación de Oxígeno (30 días)</h3>
-            <div id='spo2-chart'></div>
-        </div>
-        
-        <div class='chart-container'>
-            <h3>Composición Corporal (90 días)</h3>
-            <div id='grasa-chart'></div>
-            <div id='masa-chart'></div>
-        </div>
-    
-        
-        <div class='workouts-section'>
-            <h3>🏃 Entrenamientos Recientes</h3>
-            
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Walking
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Walking
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Walking
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Walking
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Press Banca
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Press Banca
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Press Banca
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Press Banca
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Abdominales
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-            <div class='workout-item'>
-                <div>
-                    <strong>16/10</strong> - Abdominales
-                </div>
-                <div>
-                    0 min | 0 PAI
-                </div>
-            </div>
-        
-        </div>
-    
-        
-        <div style='background: #161b22; padding: 20px; border-radius: 12px; margin-top: 40px;'>
-            <h3 style='color: #58a6ff;'>📖 Interpretación de Métricas</h3>
-            
-            <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;'>
-                <div>
-                    <h4>PAI (Personal Activity Intelligence)</h4>
-                    <ul style='color: #8b949e; line-height: 1.6;'>
-                        <li>≥100/semana: Óptimo (25% menos riesgo CV)</li>
-                        <li>50-99: Bueno</li>
-                        <li><50: Necesita mejora</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4>VO2max (ml/kg/min)</h4>
-                    <ul style='color: #8b949e; line-height: 1.6;'>
-                        <li>≥40: Excelente para tu edad</li>
-                        <li>35-39: Bueno</li>
-                        <li><35: Por debajo del promedio</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4>TSB (Training Stress Balance)</h4>
-                    <ul style='color: #8b949e; line-height: 1.6;'>
-                        <li>+5 a +15: Forma óptima</li>
-                        <li>-10 a +5: Neutral</li>
-                        <li><-10: Fatiga acumulada</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4>Score de Longevidad</h4>
-                    <ul style='color: #8b949e; line-height: 1.6;'>
-                        <li>≥85: Excelente longevidad</li>
-                        <li>70-84: Buena salud</li>
-                        <li><70: Oportunidades de mejora</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    
     </div>
     
-    <script>
+            
+            <div class="metrics-grid">
+                
+    <div class="metric-card">
+        <div class="metric-label">PAI Semanal</div>
+        <div class="metric-value" style="color: #3fb950;">1335</div>
+        <div class="metric-detail">Óptimo (Objetivo: 100)</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">Peso Actual</div>
+        <div class="metric-value" style="color: #d29922;">83.5 kg</div>
+        <div class="metric-detail">Cerca (+4.5 kg)</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">VO2max (Medido)</div>
+        <div class="metric-value" style="color: #d29922;">38.8</div>
+        <div class="metric-detail">Bueno</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">TSB Actual</div>
+        <div class="metric-value" style="color: #f85149;">179.9</div>
+        <div class="metric-detail">Sobreentrenamiento</div>
+        <div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 370.6 | ATL: 190.7</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">Sueño (7 días)</div>
+        <div class="metric-value" style="color: #f85149;">0.0h</div>
+        <div class="metric-detail">Insuficiente</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">SpO2 (7 días)</div>
+        <div class="metric-value" style="color: #3fb950;">97.7%</div>
+        <div class="metric-detail">Normal</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">Grasa Corporal</div>
+        <div class="metric-value" style="color: #f85149;">24.3%</div>
+        <div class="metric-detail">Alto</div>
+    </div>
+    
+                
+    <div class="metric-card">
+        <div class="metric-label">Masa Muscular</div>
+        <div class="metric-value" style="color: #d29922;">58.8 kg</div>
+    </div>
+    
+                
+        <div class="metric-card">
+            <div class="metric-label">FC Reposo (7d)</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+        </div>
         
-        // Configuración común
+                
+    <div class="metric-card">
+        <div class="metric-label">Pasos (7d)</div>
+        <div class="metric-value" style="color: #f85149;">6,592</div>
+        <div class="metric-detail">Bajo</div>
+    </div>
+    
+                
+        <div class="metric-card">
+            <div class="metric-label">Presión (7d)</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+        </div>
+        
+                
+    <div class="metric-card">
+        <div class="metric-label">Score Longevidad</div>
+        <div class="metric-value" style="color: #d29922;">70/100</div>
+        <div class="metric-detail">Bueno</div>
+    </div>
+    
+            </div>
+            
+            <div class="charts-section">
+                <h2>📈 Evolución Temporal</h2>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>PAI (Diario + Ventana Móvil 7 días)</h3>
+                        <div id="pai-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Peso</h3>
+                        <div id="peso-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>TSB + CTL + ATL</h3>
+                        <div id="tsb-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>SpO2</h3>
+                        <div id="spo2-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Grasa Corporal</h3>
+                        <div id="grasa-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Masa Muscular</h3>
+                        <div id="masa-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>FC en Reposo</h3>
+                        <div id="fc-reposo-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Pasos Diarios</h3>
+                        <div id="pasos-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Presión Arterial</h3>
+                        <div id="presion-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="training-section">
+                <h2>🏃 Entrenamientos Recientes</h2>
+                
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Duración</th>
+                <th>FC Prom</th>
+                <th>PAI</th>
+                <th>Zona</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        <tr>
+            <td>16/10 19:12</td>
+            <td>Walking</td>
+            <td>33 min</td>
+            <td>102</td>
+            <td style="color: #d29922; font-weight: bold;">7.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:12</td>
+            <td>Walking</td>
+            <td>33 min</td>
+            <td>102</td>
+            <td style="color: #d29922; font-weight: bold;">7.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:12</td>
+            <td>Walking</td>
+            <td>33 min</td>
+            <td>102</td>
+            <td style="color: #d29922; font-weight: bold;">7.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:12</td>
+            <td>Walking</td>
+            <td>33 min</td>
+            <td>102</td>
+            <td style="color: #d29922; font-weight: bold;">7.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:07</td>
+            <td>Press Banca</td>
+            <td>4 min</td>
+            <td>99</td>
+            <td style="color: #f85149; font-weight: bold;">0.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:07</td>
+            <td>Press Banca</td>
+            <td>4 min</td>
+            <td>99</td>
+            <td style="color: #f85149; font-weight: bold;">0.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:07</td>
+            <td>Press Banca</td>
+            <td>4 min</td>
+            <td>99</td>
+            <td style="color: #f85149; font-weight: bold;">0.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 19:07</td>
+            <td>Press Banca</td>
+            <td>4 min</td>
+            <td>99</td>
+            <td style="color: #f85149; font-weight: bold;">0.8</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 18:58</td>
+            <td>Abdominales</td>
+            <td>8 min</td>
+            <td>108</td>
+            <td style="color: #f85149; font-weight: bold;">2.4</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        <tr>
+            <td>16/10 18:58</td>
+            <td>Abdominales</td>
+            <td>8 min</td>
+            <td>108</td>
+            <td style="color: #f85149; font-weight: bold;">2.4</td>
+            <td>Aeróbico</td>
+        </tr>
+        
+        </tbody>
+    </table>
+    
+            </div>
+            
+            <div class="recommendations-section">
+                <h2>💡 Recomendaciones</h2>
+                
+    <ul class="recommendations-list">
+        <li><strong>Ajuste Fino:</strong> Estás 4.5 kg sobre objetivo. Con un déficit moderado de 300 kcal/día alcanzarás el objetivo en 16 semanas.</li>
+    </ul>
+    
+            </div>
+        </div>
+        
+        <script>
+            
         const layout_config = {
             paper_bgcolor: '#0d1117',
             plot_bgcolor: '#161b22',
             font: { color: '#c9d1d9' },
             margin: { l: 40, r: 20, t: 20, b: 40 },
-            showlegend: false,
+            showlegend: true,
             height: 300
         };
         
-        // Gráfico PAI
-        const pai_data = {
-            x: ['2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
-            y: [4054.4, 4254.6, 4375.2, 5843.3, 6235.7, 6228.9, 4989.5, 3922.3, 4631.7, 4477.7, 3074.7, 2917.1, 3017.0, 3303.1, 3246.1, 2482.3, 2648.8, 2928.5, 2681.6, 2497.5, 2300.6, 2402.0, 2862.8, 3363.5, 3034.0, 3064.6, 2698.0, 2299.0, 1941.4, 1334.8],
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: { color: '#58a6ff', width: 2 },
-            marker: { size: 6 }
+        // PAI: Diario + Ventana Móvil 7 días
+        const pai_diario = {
+            x: ['2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16'],
+            y: [822.5999999999989, 1547.1999999999998, 200.2000000000001, 181.00000000000003, 1482.800000000001, 534.8999999999999, 653.8000000000003, 389.6, 480.0, 909.5999999999997, 27.0, 79.80000000000001, 377.2999999999997, 753.6999999999995, 675.7000000000005, 422.99999999999983, 145.80000000000004, 193.5, 359.4999999999999, 130.40000000000006, 569.5999999999998, 478.7999999999998, 524.4000000000001, 606.6000000000001, 694.1999999999996, 30.0, 161.0, 203.00000000000003, 79.8, 166.8],
+            type: 'bar',
+            name: 'PAI Diario',
+            marker: { color: '#58a6ff' }
         };
         
-        Plotly.newPlot('pai-chart', [pai_data], {
+        const pai_ventana = {
+            x: ['2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16'],
+            y: [822.5999999999989, 2369.799999999999, 2569.9999999999986, 2750.9999999999986, 4233.8, 4768.7, 5422.5, 4989.500000000001, 3922.3000000000015, 4631.700000000001, 4477.700000000001, 3074.7, 2917.1, 3016.999999999999, 3303.0999999999995, 3246.0999999999995, 2482.2999999999997, 2648.7999999999997, 2928.4999999999995, 2681.6, 2497.5, 2300.5999999999995, 2401.9999999999995, 2862.7999999999997, 3363.4999999999995, 3033.9999999999995, 3064.5999999999995, 2697.9999999999995, 2299.0, 1941.3999999999999],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Ventana 7d',
+            line: { color: '#f85149', width: 3 },
+            marker: { size: 8 },
+            yaxis: 'y2'
+        };
+        
+        Plotly.newPlot('pai-chart', [pai_diario, pai_ventana], {
             ...layout_config,
-            yaxis: { 
-                title: 'PAI', 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
+            yaxis: { title: 'PAI Diario', gridcolor: '#30363d' },
+            yaxis2: {
+                title: 'PAI Acumulado 7d',
+                overlaying: 'y',
+                side: 'right',
+                gridcolor: '#30363d'
             },
-            xaxis: { 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
-            },
+            xaxis: { gridcolor: '#30363d' },
             shapes: [{
                 type: 'line',
                 x0: 0, x1: 1, xref: 'paper',
+                yref: 'y2',
                 y0: 100, y1: 100,
-                line: { color: '#3fb950', width: 1, dash: 'dot' }
+                line: { color: '#3fb950', width: 2, dash: 'dot' }
             }]
         });
         
-        // Gráfico Peso
+        // Peso
         const peso_data = {
             x: ['2025-10-16', '2025-10-16', '2025-10-16', '2025-09-16', '2025-09-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-12', '2025-10-13', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-09-12', '2025-09-12', '2025-09-12', '2025-09-12', '2025-09-12', '2025-09-12', '2025-09-13', '2025-09-13', '2025-09-13', '2025-09-13', '2025-09-14', '2025-09-14', '2025-09-15', '2025-09-15', '2025-09-15', '2025-09-15', '2025-09-15', '2025-09-16', '2025-09-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-09-16', '2025-09-16', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-10-16', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-15', '2025-10-12', '2025-10-15', '2025-10-15', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-13', '2025-10-17', '2025-10-16', '2025-10-17', '2025-10-12', '2025-10-16', '2025-10-17', '2025-10-14', '2025-10-16', '2025-10-16', '2025-10-13', '2025-10-13', '2025-10-15', '2025-10-16', '2025-10-13', '2025-10-14', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-18', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-19', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-20', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-21', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-22', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-23', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-24', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-25', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-26', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-27', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-28', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-29', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-09-30', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-01', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-02', '2025-10-03', '2025-10-03', '2025-10-03', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-04', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-05', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-06', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-07', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-08', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-09', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-10', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-11', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-12', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-13', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-14', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-15', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-16', '2025-10-17', '2025-10-17', '2025-10-17'],
             y: [83.5, 83.38400268554688, 83.384, 83.5, 83.5, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.9000015258789, 82.80000305175781, 82.9000015258789, 83.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 83.02000427246094, 83.02, 82.9000015258789, 86.655, 86.65499877929688, 86.5999984741211, 86.5999984741211, 85.9000015258789, 85.9000015258789, 84.69999694824219, 84.69999694824219, 85.9000015258789, 85.9000015258789, 85.0, 85.0, 85.0, 85.0, 85.0, 85.0, 85.445, 83.5, 83.5, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5999984741211, 83.5999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.0999984741211, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.7, 82.69999694824219, 82.3, 82.30000305175781, 82.4, 82.4000015258789, 82.1, 82.0999984741211, 80.0, 80.0, 82.8, 87.7, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.3, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9, 82.9000015258789, 83.0, 83.0, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.8, 82.8, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 82.8, 82.7, 82.5, 82.4, 86.0, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 83.5, 83.6, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.3, 82.30000305175781, 82.391, 82.30000305175781, 82.3, 82.4, 82.4, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.41, 83.5, 83.5, 83.30000305175781, 83.4000015258789, 82.69999694824219, 83.5, 83.0999984741211, 82.9000015258789, 83.0, 83.02000427246094, 82.80000305175781, 82.80000305175781, 83.02, 83.0, 83.0, 83.0, 82.80000305175781, 83.5, 83.5, 83.41, 82.9000015258789, 83.5999984741211, 83.5, 83.0, 83.38400268554688, 83.384, 82.80000305175781, 83.80000305175781, 82.9000015258789, 83.30000305175781, 82.80000305175781, 83.0, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 82.80000305175781, 83.042, 82.80000305175781, 82.80000305175781, 84.856, 84.69999694824219, 84.69999694824219, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.5999984741211, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 84.30000305175781, 83.69999694824219, 83.69999694824219, 83.69999694824219, 82.80000305175781, 82.80000305175781, 82.69999694824219, 82.30000305175781, 82.4000015258789, 82.0999984741211, 80.0, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.30000305175781, 82.30000305175781, 82.5999984741211, 82.5999984741211, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.4000015258789, 82.4000015258789, 82.4000015258789, 82.80000305175781, 82.80000305175781, 82.5, 82.5, 82.5, 82.5, 82.5, 82.5, 83.0, 83.0, 83.0, 83.0, 83.0, 82.0999984741211, 82.0999984741211, 82.383, 82.38300323486328, 82.0999984741211, 82.0999984741211, 81.80000305175781, 81.80000305175781, 82.046, 82.0459976196289, 82.0, 82.0, 82.0, 82.0, 82.0, 82.30000305175781, 82.30000305175781, 82.325, 82.32499694824219, 82.30000305175781, 82.30000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.006, 83.00599670410156, 84.30000305175781, 84.30000305175781, 83.30000305175781, 83.30000305175781, 83.658, 83.65799713134766, 83.30000305175781, 83.30000305175781, 83.5, 83.617, 83.61699676513672, 83.5, 83.5, 83.5, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.19999694824219, 83.19999694824219, 83.19999694824219, 83.19999694824219, 82.9000015258789, 83.0, 83.0, 83.0999984741211, 83.0999984741211, 83.151, 83.1510009765625, 83.0999984741211, 83.0999984741211, 83.9000015258789, 83.98200225830078, 83.982, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.895, 82.89500427246094, 82.5999984741211, 82.86900329589844, 82.869, 82.5999984741211, 83.69999694824219, 83.87999725341797, 83.88, 83.69999694824219, 82.9000015258789, 83.03900146484375, 83.039, 82.9000015258789, 83.10599517822266, 83.106, 83.5, 83.77799987792969, 83.778, 83.5, 82.80000305175781, 82.887, 82.80000305175781, 82.5999984741211, 82.362, 81.9000015258789, 81.94, 82.5, 82.64, 82.5, 82.95, 82.414, 82.5, 82.353, 82.5, 82.30000305175781, 82.391, 82.30000305175781, 82.5999984741211, 82.959, 82.5999984741211, 82.80000305175781, 83.031, 82.80000305175781, 83.0, 83.26, 82.9000015258789, 82.9000015258789, 83.125, 82.9000015258789, 83.5, 83.804, 83.5, 82.0999984741211, 82.632, 82.0999984741211, 82.5, 82.522, 82.5, 82.5, 82.0999984741211, 81.994, 83.0999984741211, 83.198, 83.197998046875, 83.0999984741211, 82.5999984741211, 82.732, 82.73200225830078, 82.5999984741211, 82.5999984741211, 82.5999984741211, 82.717, 82.71700286865234, 82.5999984741211, 82.69999694824219, 82.80000305175781, 82.634, 82.63400268554688, 82.80000305175781, 82.9000015258789, 82.80000305175781, 83.19999694824219, 83.435, 83.43499755859375, 83.19999694824219, 83.19999694824219, 82.9000015258789, 82.991, 82.99099731445312, 82.9000015258789, 82.9000015258789, 82.9000015258789, 83.80000305175781, 83.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 82.80000305175781, 83.0, 83.0, 83.0, 83.0, 83.0, 82.80000305175781, 83.4000015258789, 82.69999694824219, 83.0, 83.0999984741211, 82.9000015258789, 83.02, 83.02000427246094, 83.5, 83.384, 83.38400268554688, 83.5999984741211, 83.5, 83.30000305175781, 83.30000305175781, 83.5, 83.41, 83.5],
@@ -705,15 +576,8 @@
         
         Plotly.newPlot('peso-chart', [peso_data], {
             ...layout_config,
-            yaxis: { 
-                title: 'Peso (kg)', 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
-            },
-            xaxis: { 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
-            },
+            yaxis: { title: 'Peso (kg)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' },
             shapes: [{
                 type: 'line',
                 x0: 0, x1: 1, xref: 'paper',
@@ -722,39 +586,49 @@
             }]
         });
         
-        // Gráfico TSB
+        // TSB + CTL + ATL
         const tsb_data = {
             x: ['2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
             y: [-482.7, -506.5, -519.4, -693.8, -737.2, -720.6, -534.3, -370.4, -450.1, -427.5, -225.1, -193.6, -189.9, -214.7, -196.5, -83.9, -103.1, -134.5, -96.1, -56.3, -16.7, -18.7, -70.1, -125.1, -77.3, -77.9, -20.7, 38.2, 93.3, 179.9],
             type: 'scatter',
             mode: 'lines',
+            name: 'TSB',
             fill: 'tozeroy',
             line: { color: '#ffa657', width: 2 }
         };
         
-        Plotly.newPlot('tsb-chart', [tsb_data], {
+        const ctl_data = {
+            x: ['2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
+            y: [96.5, 101.3, 105.6, 140.9, 153.7, 169.2, 178.5, 189.9, 211.6, 212.2, 214.1, 223.1, 241.1, 257.1, 267.2, 270.7, 275.3, 283.8, 287.0, 300.5, 311.9, 324.4, 338.8, 355.4, 356.1, 359.9, 364.8, 366.7, 370.6, 370.6],
+            type: 'scatter',
+            mode: 'lines',
+            name: 'CTL (Fitness)',
+            line: { color: '#3fb950', width: 2 }
+        };
+        
+        const atl_data = {
+            x: ['2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
+            y: [579.2, 607.8, 625.0, 834.8, 890.8, 889.8, 712.8, 560.3, 661.7, 639.7, 439.2, 416.7, 431.0, 471.9, 463.7, 354.6, 378.4, 418.4, 383.1, 356.8, 328.7, 343.1, 409.0, 480.5, 433.4, 437.8, 385.4, 328.4, 277.3, 190.7],
+            type: 'scatter',
+            mode: 'lines',
+            name: 'ATL (Fatiga)',
+            line: { color: '#f85149', width: 2 }
+        };
+        
+        Plotly.newPlot('tsb-chart', [tsb_data, ctl_data, atl_data], {
             ...layout_config,
-            yaxis: { 
-                title: 'TSB', 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
-            },
-            xaxis: { 
-                gridcolor: '#30363d',
-                zerolinecolor: '#30363d'
-            },
-            shapes: [
-                {
-                    type: 'rect',
-                    x0: 0, x1: 1, xref: 'paper',
-                    y0: -10, y1: 10,
-                    fillcolor: '#3fb950', opacity: 0.1,
-                    line: { width: 0 }
-                }
-            ]
+            yaxis: { title: 'Puntuación', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' },
+            shapes: [{
+                type: 'rect',
+                x0: 0, x1: 1, xref: 'paper',
+                y0: -10, y1: 10,
+                fillcolor: '#3fb950', opacity: 0.1,
+                line: { width: 0 }
+            }]
         });
         
-        // Gráfico SpO2
+        // SpO2
         const spo2_data = {
             x: ['2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
             y: [95.0, 96.0, 95.0, 96.33333333333333, 96.5, 96.0, 97.0, 97.0, 97.44444444444444, 95.4, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.5, 98.0, 97.08695652173913, 95.0, 97.52631578947368, 98.22222222222223, 97.5, 97.0, 99.0],
@@ -767,16 +641,8 @@
         if (spo2_data.x.length > 0) {
             Plotly.newPlot('spo2-chart', [spo2_data], {
                 ...layout_config,
-                yaxis: { 
-                    title: 'SpO2 (%)', 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d',
-                    range: [90, 100]
-                },
-                xaxis: { 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d'
-                },
+                yaxis: { title: 'SpO2 (%)', gridcolor: '#30363d', range: [90, 100] },
+                xaxis: { gridcolor: '#30363d' },
                 shapes: [{
                     type: 'line',
                     x0: 0, x1: 1, xref: 'paper',
@@ -786,7 +652,7 @@
             });
         }
         
-        // Gráfico Grasa Corporal
+        // Grasa
         const grasa_data = {
             x: ['2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
             y: [25.50638131666676, 22.9000244140625, 24.200000762939453, 26.90692843349523, 24.066666920979817, 25.284578323364258, 25.89856719970703, 25.295905714879588, 26.19361075582954, 23.013154983520508, 24.799999237060547, 25.207986068725585, 24.717718601226807, 24.303431510925293, 25.170845995332986, 26.864791366974103, 25.109371637411257, 24.468982435142287, 24.614039275751068, 24.807207647068367, 26.85803675123929, 24.615583463674938, 26.30216731710703, 25.40092989305706, 25.74828904947869, 26.293584858982783, 24.72851794098713, 24.237081324400574, 24.664190002440947, 24.716916290332197, 25.60402001692155, 25.387867343041204, 25.255800628662108, 25.421043598325458, 26.295305167104885, 25.110377404356598],
@@ -799,19 +665,12 @@
         if (grasa_data.x.length > 0) {
             Plotly.newPlot('grasa-chart', [grasa_data], {
                 ...layout_config,
-                yaxis: { 
-                    title: 'Grasa Corporal (%)', 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d'
-                },
-                xaxis: { 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d'
-                }
+                yaxis: { title: 'Grasa (%)', gridcolor: '#30363d' },
+                xaxis: { gridcolor: '#30363d' }
             });
         }
         
-        // Gráfico Masa Muscular
+        // Masa Muscular
         const masa_data = {
             x: ['2025-09-12', '2025-09-13', '2025-09-15', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-15', '2025-10-16', '2025-10-17'],
             y: [62.927600199381516, 67.00196838378906, 57.76, 62.01823043823242, 61.6541748046875, 59.708452758789065, 58.94, 64.41492462158203, 62.429107666015625, 62.75959777832031, 62.58821233113607, 58.79319030761719, 57.737500305175786, 61.18649978637695, 61.852884911431204, 61.48417747497558, 60.52233416239421, 58.75716733296713, 56.26, 56.1625, 57.553333333333335, 57.22666666666666, 56.25, 57.385, 57.050000000000004, 59.04750080108642, 59.49433372497559, 60.77622750066942, 61.89924645423889, 58.70000061035156, 56.97700035095215, 58.84],
@@ -824,18 +683,88 @@
         if (masa_data.x.length > 0) {
             Plotly.newPlot('masa-chart', [masa_data], {
                 ...layout_config,
-                yaxis: { 
-                    title: 'Masa Muscular (kg)', 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d'
-                },
-                xaxis: { 
-                    gridcolor: '#30363d',
-                    zerolinecolor: '#30363d'
-                }
+                yaxis: { title: 'Masa Muscular (kg)', gridcolor: '#30363d' },
+                xaxis: { gridcolor: '#30363d' }
+            });
+        }
+        
+        // FC Reposo
+        const fc_data = {
+            x: [],
+            y: [],
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { color: '#f85149', width: 2 },
+            marker: { size: 6 }
+        };
+        
+        if (fc_data.x.length > 0) {
+            Plotly.newPlot('fc-reposo-chart', [fc_data], {
+                ...layout_config,
+                yaxis: { title: 'FC Reposo (bpm)', gridcolor: '#30363d' },
+                xaxis: { gridcolor: '#30363d' },
+                shapes: [{
+                    type: 'line',
+                    x0: 0, x1: 1, xref: 'paper',
+                    y0: 60, y1: 60,
+                    line: { color: '#3fb950', width: 1, dash: 'dot' }
+                }]
+            });
+        }
+        
+        // Pasos
+        const pasos_data = {
+            x: ['2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17'],
+            y: [301380, 177928, 59304, 36750, 308974, 181405, 131888, 228270, 95313, 282987, 23156],
+            type: 'bar',
+            marker: { color: '#3fb950' }
+        };
+        
+        if (pasos_data.x.length > 0) {
+            Plotly.newPlot('pasos-chart', [pasos_data], {
+                ...layout_config,
+                yaxis: { title: 'Pasos', gridcolor: '#30363d' },
+                xaxis: { gridcolor: '#30363d' },
+                shapes: [{
+                    type: 'line',
+                    x0: 0, x1: 1, xref: 'paper',
+                    y0: 10000, y1: 10000,
+                    line: { color: '#58a6ff', width: 1, dash: 'dot' }
+                }]
+            });
+        }
+        
+        // Presión Arterial
+        const presion_sistolica = {
+            x: [],
+            y: [],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Sistólica',
+            line: { color: '#f85149', width: 2 },
+            marker: { size: 6 }
+        };
+        
+        const presion_diastolica = {
+            x: [],
+            y: [],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Diastólica',
+            line: { color: '#79c0ff', width: 2 },
+            marker: { size: 6 }
+        };
+        
+        if (presion_sistolica.x.length > 0) {
+            Plotly.newPlot('presion-chart', [presion_sistolica, presion_diastolica], {
+                ...layout_config,
+                yaxis: { title: 'Presión (mmHg)', gridcolor: '#30363d' },
+                xaxis: { gridcolor: '#30363d' },
+                legend: { bgcolor: '#161b22', bordercolor: '#30363d', borderwidth: 1 }
             });
         }
     
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
+    
