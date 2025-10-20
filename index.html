@@ -216,7 +216,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 20/10/2025 11:37</p>
+                <p class="subtitle">Última actualización: 20/10/2025 11:40</p>
             </header>
             
             
@@ -229,19 +229,19 @@
             </div>
             <div class="score-card">
                 <div class="score-label">CardioScore</div>
-                <div class="score-value" style="color: #f85149;">0.0</div>
+                <div class="score-value" style="color: #3fb950;">90.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">MetabolicScore</div>
-                <div class="score-value" style="color: #f85149;">0.0</div>
+                <div class="score-value" style="color: #d29922;">65.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">InflammationScore</div>
-                <div class="score-value" style="color: #f85149;">0.0</div>
+                <div class="score-value" style="color: #3fb950;">100.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">HormoneScore</div>
-                <div class="score-value" style="color: #f85149;">0.0</div>
+                <div class="score-value" style="color: #3fb950;">80.0</div>
             </div>
         </div>
         <div class="alertas-section">
@@ -274,21 +274,18 @@
         <div class="metric-detail">Óptimo (Objetivo: 100)</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Peso Actual</div>
         <div class="metric-value" style="color: #d29922;">83.6 kg</div>
         <div class="metric-detail">Cerca (+4.6 kg)</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">VO2max (Medido)</div>
         <div class="metric-value" style="color: #d29922;">38.8</div>
         <div class="metric-detail">Bueno</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">TSB Actual</div>
         <div class="metric-value" style="color: #f85149;">982.9</div>
@@ -296,54 +293,46 @@
         <div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 1159.9 | ATL: 176.9</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Sueño (7 días)</div>
-        <div class="metric-value" style="color: #f85149;">0.0h</div>
+        <div class="metric-value" style="color: #f85149;">2.8h</div>
         <div class="metric-detail">Insuficiente</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">SpO2 (7 días)</div>
         <div class="metric-value" style="color: #3fb950;">95.3%</div>
         <div class="metric-detail">Normal</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Grasa Corporal</div>
         <div class="metric-value" style="color: #f85149;">24.4%</div>
         <div class="metric-detail">Alto</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Masa Muscular</div>
         <div class="metric-value" style="color: #d29922;">56.9 kg</div>
     </div>
     
-                
         <div class="metric-card">
             <div class="metric-label">FC Reposo (7d)</div>
             <div class="metric-value" style="color: #8b949e;">Sin datos</div>
         </div>
         
-                
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
         <div class="metric-value" style="color: #f85149;">4,257</div>
         <div class="metric-detail">Bajo</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Presión (7d)</div>
         <div class="metric-value" style="color: #3fb950;">112/77</div>
         <div class="metric-detail">Normal</div>
     </div>
     
-                
     <div class="metric-card">
         <div class="metric-label">Score Longevidad</div>
         <div class="metric-value" style="color: #d29922;">70/100</div>
@@ -509,7 +498,7 @@
                 <h2>💡 Recomendaciones</h2>
                 
     <ul class="recommendations-list">
-        <li><strong>Ajuste Fino:</strong> Estás 4.6 kg sobre objetivo. Con un déficit moderado de 300 kcal/día alcanzarás el objetivo en 16 semanas.</li>
+        <li><strong>Ajuste Fino:</strong> Estás 4.6 kg sobre objetivo. Con un déficit moderado de 300 kcal/día alcanzarás el objetivo en 16 semanas.</li><li><strong>Sueño Insuficiente:</strong> Promedias 2.8h/noche. El sueño <7h está asociado con mayor mortalidad y dificulta la pérdida de peso.</li>
     </ul>
     
             </div>
@@ -619,151 +608,96 @@
         Plotly.newPlot('tsb-chart', [tsb_data, ctl_data, atl_data], {
             ...layout_config,
             yaxis: { title: 'Puntuación', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' },
-            shapes: [{
-                type: 'rect',
-                x0: 0, x1: 1, xref: 'paper',
-                y0: -10, y1: 10,
-                fillcolor: '#3fb950', opacity: 0.1,
-                line: { width: 0 }
-            }]
+            xaxis: { gridcolor: '#30363d' }
         });
         
         // SpO2
-        const spo2_data = {
+        Plotly.newPlot('spo2-chart', [{
             x: ['2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20'],
             y: [97.0, 96.5, 96.0, 97.0, 97.0, 97.43529411764706, 95.40425531914893, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.45833333333333, 98.0, 97.06451612903226, 95.0, 97.58333333333333, 98.15, 97.5, 97.0, 99.0, 95.51851851851852, 97.0, 97.66666666666667],
             type: 'scatter',
             mode: 'lines+markers',
-            line: { color: '#79c0ff', width: 2 },
-            marker: { size: 6 }
-        };
+            line: { color: '#79c0ff', width: 2 }
+        }], {
+            ...layout_config,
+            yaxis: { title: 'SpO2 (%)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
-        if (spo2_data.x.length > 0) {
-            Plotly.newPlot('spo2-chart', [spo2_data], {
-                ...layout_config,
-                yaxis: { title: 'SpO2 (%)', gridcolor: '#30363d', range: [90, 100] },
-                xaxis: { gridcolor: '#30363d' },
-                shapes: [{
-                    type: 'line',
-                    x0: 0, x1: 1, xref: 'paper',
-                    y0: 95, y1: 95,
-                    line: { color: '#3fb950', width: 1, dash: 'dot' }
-                }]
-            });
-        }
-        
-        // Grasa
-        const grasa_data = {
+        // Grasa Corporal
+        Plotly.newPlot('grasa-chart', [{
             x: ['2025-09-11', '2025-09-12', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20'],
             y: [26.7207235622406, 25.339909224215248, 22.8100182723999, 24.200000508626303, 26.906285622330156, 24.087500286102294, 25.28690979003906, 25.8796446361239, 25.2930998379779, 26.193594436859176, 23.0183421489621, 24.79999928193934, 25.198823851651923, 24.70506417758223, 24.299075789520707, 25.156642333292087, 26.864901678720724, 25.10940859991648, 24.460252009509873, 24.61518562202846, 24.809717705275773, 26.84468270374853, 24.577848614331533, 26.286937829859667, 25.37430471448997, 25.741695019461517, 26.29086554344711, 24.709070409764674, 24.229928854175743, 24.637782339674, 24.7169162903322, 25.562619202970467, 25.446722428003948, 25.255800628662108, 25.421043598325454, 26.295305167104882, 25.110377404356598, 25.189020818960106, 24.92002694439205, 26.364034645134595],
             type: 'scatter',
             mode: 'lines+markers',
-            line: { color: '#ff7b72', width: 2 },
-            marker: { size: 6 }
-        };
-        
-        if (grasa_data.x.length > 0) {
-            Plotly.newPlot('grasa-chart', [grasa_data], {
-                ...layout_config,
-                yaxis: { title: 'Grasa (%)', gridcolor: '#30363d' },
-                xaxis: { gridcolor: '#30363d' }
-            });
-        }
+            line: { color: '#ffa657', width: 2 }
+        }], {
+            ...layout_config,
+            yaxis: { title: 'Grasa (%)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
         // Masa Muscular
-        const masa_data = {
+        Plotly.newPlot('masa-chart', [{
             x: ['2025-09-11', '2025-09-12', '2025-09-13', '2025-09-15', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20'],
             y: [62.05, 62.928400132921006, 67.00131225585938, 57.76, 62.0184270562066, 61.65382690429687, 59.70854377297794, 58.94, 64.41492905560662, 62.429160156250006, 62.75962143841912, 62.5881214096967, 58.793198720894615, 57.737647346047794, 61.18655862247243, 61.85291128919016, 61.48412781958486, 60.52239293715533, 58.75723592122396, 56.26, 56.1625, 57.55333333333333, 57.22666666666667, 56.25, 57.385, 57.050000000000004, 59.04750075396369, 59.49433372497558, 60.82964264307266, 61.803841874406146, 58.70000061035156, 56.97700035095215, 58.84000000000001, 58.45133333333333, 56.96, 56.89],
             type: 'scatter',
             mode: 'lines+markers',
-            line: { color: '#a371f7', width: 2 },
-            marker: { size: 6 }
-        };
-        
-        if (masa_data.x.length > 0) {
-            Plotly.newPlot('masa-chart', [masa_data], {
-                ...layout_config,
-                yaxis: { title: 'Masa Muscular (kg)', gridcolor: '#30363d' },
-                xaxis: { gridcolor: '#30363d' }
-            });
-        }
+            line: { color: '#3fb950', width: 2 }
+        }], {
+            ...layout_config,
+            yaxis: { title: 'Masa (kg)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
         // FC Reposo
-        const fc_data = {
+        Plotly.newPlot('fc-reposo-chart', [{
             x: [],
             y: [],
             type: 'scatter',
             mode: 'lines+markers',
-            line: { color: '#f85149', width: 2 },
-            marker: { size: 6 }
-        };
-        
-        if (fc_data.x.length > 0) {
-            Plotly.newPlot('fc-reposo-chart', [fc_data], {
-                ...layout_config,
-                yaxis: { title: 'FC Reposo (bpm)', gridcolor: '#30363d' },
-                xaxis: { gridcolor: '#30363d' },
-                shapes: [{
-                    type: 'line',
-                    x0: 0, x1: 1, xref: 'paper',
-                    y0: 60, y1: 60,
-                    line: { color: '#3fb950', width: 1, dash: 'dot' }
-                }]
-            });
-        }
+            line: { color: '#f85149', width: 2 }
+        }], {
+            ...layout_config,
+            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
         // Pasos
-        const pasos_data = {
+        Plotly.newPlot('pasos-chart', [{
             x: ['2025-09-21', '2025-09-22', '2025-09-23', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20'],
             y: [275952, 130602, 19001, 124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 3008],
             type: 'bar',
-            marker: { color: '#3fb950' }
-        };
-        
-        if (pasos_data.x.length > 0) {
-            Plotly.newPlot('pasos-chart', [pasos_data], {
-                ...layout_config,
-                yaxis: { title: 'Pasos', gridcolor: '#30363d' },
-                xaxis: { gridcolor: '#30363d' },
-                shapes: [{
-                    type: 'line',
-                    x0: 0, x1: 1, xref: 'paper',
-                    y0: 10000, y1: 10000,
-                    line: { color: '#58a6ff', width: 1, dash: 'dot' }
-                }]
-            });
-        }
+            marker: { color: '#58a6ff' }
+        }], {
+            ...layout_config,
+            yaxis: { title: 'Pasos', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
         // Presión Arterial
-        const presion_sistolica = {
-            x: ['2025-10-20'],
-            y: [112.0],
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Sistólica',
-            line: { color: '#f85149', width: 2 },
-            marker: { size: 6 }
-        };
-        
-        const presion_diastolica = {
-            x: ['2025-10-20'],
-            y: [77.0],
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Diastólica',
-            line: { color: '#79c0ff', width: 2 },
-            marker: { size: 6 }
-        };
-        
-        if (presion_sistolica.x.length > 0) {
-            Plotly.newPlot('presion-chart', [presion_sistolica, presion_diastolica], {
-                ...layout_config,
-                yaxis: { title: 'Presión (mmHg)', gridcolor: '#30363d' },
-                xaxis: { gridcolor: '#30363d' },
-                legend: { bgcolor: '#161b22', bordercolor: '#30363d', borderwidth: 1 }
-            });
-        }
+        Plotly.newPlot('presion-chart', [
+            {
+                x: ['2025-10-20'],
+                y: [112.0],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Sistólica',
+                line: { color: '#f85149', width: 2 }
+            },
+            {
+                x: ['2025-10-20'],
+                y: [77.0],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Diastólica',
+                line: { color: '#58a6ff', width: 2 }
+            }
+        ], {
+            ...layout_config,
+            yaxis: { title: 'mmHg', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
     
         </script>
     </body>
