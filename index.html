@@ -223,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 22/10/2025 19:49</p>
+                <p class="subtitle">Última actualización: 22/10/2025 20:06</p>
             </header>
             
             
@@ -377,8 +377,12 @@
                         <div id="masa-chart"></div>
                     </div>
                     <div class="chart-container">
-                        <h3>FC en Reposo</h3>
+                        <h3>FC en Reposo (Nocturna)</h3>
                         <div id="fc-reposo-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>FC Diurna (Continua)</h3>
+                        <div id="fc-diurna-chart"></div>
                     </div>
                     <div class="chart-container">
                         <h3>Pasos Diarios</h3>
@@ -670,6 +674,8 @@
             yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
             xaxis: { gridcolor: '#30363d' }
         });
+        
+        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
