@@ -109,6 +109,13 @@
             padding: 20px;
         }
         
+        .chart-empty {
+            color: #8b949e;
+            text-align: center;
+            padding: 40px;
+            font-style: italic;
+        }
+        
         .training-section, .recommendations-section {
             background: #161b22;
             border: 1px solid #30363d;
@@ -216,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 22/10/2025 19:26</p>
+                <p class="subtitle">Última actualización: 22/10/2025 19:33</p>
             </header>
             
             
@@ -457,7 +464,7 @@
             <td>21/10 14:28</td>
             <td>Walking</td>
             <td>–</td>
-            <td>None</td>
+            <td>–</td>
             <td style="color: #f85149; font-weight: bold;">0.0</td>
             <td>Sin FC</td>
         </tr>
@@ -514,7 +521,7 @@
             showlegend: true,
             height: 300
         };
-        
+    
         // PAI: Diario + Ventana Móvil 7 días
         const pai_diario = {
             x: ['2025-09-23', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22'],
@@ -650,18 +657,7 @@
             xaxis: { gridcolor: '#30363d' }
         });
         
-        // FC Reposo
-        Plotly.newPlot('fc-reposo-chart', [{
-            x: [],
-            y: [],
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: { color: '#f85149', width: 2 }
-        }], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
@@ -698,7 +694,7 @@
             yaxis: { title: 'mmHg', gridcolor: '#30363d' },
             xaxis: { gridcolor: '#30363d' }
         });
-    
+        
         </script>
     </body>
     </html>
