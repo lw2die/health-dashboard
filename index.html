@@ -223,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 22/10/2025 21:03</p>
+                <p class="subtitle">Última actualización: 22/10/2025 21:06</p>
             </header>
             
             
@@ -279,13 +279,13 @@
     
     <div class="metric-card">
         <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">55 bpm</div>
+        <div class="metric-value" style="color: #3fb950;">57 bpm</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">15,191</div>
+        <div class="metric-value" style="color: #3fb950;">17,819</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -642,8 +642,8 @@
         
         // FC Reposo
         Plotly.newPlot('fc-reposo-chart', [{
-            x: ['2025-09-23'],
-            y: [56.432432432432435],
+            x: ['2025-09-23', '2025-10-22'],
+            y: [56.432432432432435, 68.0],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#f85149', width: 2 }
@@ -656,8 +656,8 @@
         // Frecuencia Cardíaca Diurna
         Plotly.newPlot('fc-diurna-chart', [
             {
-                x: ['2025-09-23'],
-                y: [51],
+                x: ['2025-09-23', '2025-10-22'],
+                y: [51, 64],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Mínima',
@@ -665,16 +665,16 @@
                 fill: 'tonexty'
             },
             {
-                x: ['2025-09-23'],
-                y: [78.72589792060492],
+                x: ['2025-09-23', '2025-10-22'],
+                y: [78.72589792060492, 70.5],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
                 line: { color: '#ffa657', width: 2 }
             },
             {
-                x: ['2025-09-23'],
-                y: [159],
+                x: ['2025-09-23', '2025-10-22'],
+                y: [159, 81],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Máxima',
@@ -689,8 +689,8 @@
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
-            x: ['2025-09-23', '2025-09-24'],
-            y: [52708, 40025],
+            x: ['2025-09-23', '2025-09-24', '2025-10-22'],
+            y: [52708, 40025, 49018],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
