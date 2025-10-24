@@ -8,13 +8,13 @@ Importa y coordina todos los módulos de generación
 from datetime import datetime, timedelta
 from config import OUTPUT_HTML, EDAD, ALTURA_CM
 from utils.logger import logger
+# ✅ NUEVO: Import para logs
+from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
 
 # Importar módulos de métricas
 from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
 from metricas.score import calcular_score_longevidad, generar_recomendaciones
-# from outputs.graficos import preparar_datos_peso  # ❌ Comentado - usaremos versión local
-
 
 def _preparar_datos_peso_deduplicado(peso_data, dias=90):
     """
@@ -176,12 +176,20 @@ def generar_dashboard(cache):
     # ═══════════════════════════════════════════════
     # 6. CONSTRUIR HTML COMPLETO
     # ═══════════════════════════════════════════════
+    # ✅ NUEVO: Generar sección de logs
+    logs_lineas = leer_ultimos_logs(100)
+    logs_html_content = formatear_logs_html(logs_lineas)
+    resumen_ejecucion = generar_resumen_ejecucion(cache)
+    
     html = construir_html_completo(
         html_laboratorio,
         cards_html,
         entrenamientos_html,
         recomendaciones_html,
         datos_graficos
+        datos_graficos,
+        logs_html_content,  # ✅ NUEVO
+        resumen_ejecucion   # ✅ NUEVO
     )
     
     # ═══════════════════════════════════════════════

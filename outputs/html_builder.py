@@ -221,6 +221,72 @@ def generar_css():
                 font-size: 1.8em;
             }
         }
+
+        
+        /* ✅ ESTILOS PARA SECCIÓN DE LOGS */
+        .logs-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .logs-summary {
+            background: #0d1117;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .logs-summary p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        
+        .logs-toggle-btn {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        
+        .logs-toggle-btn:hover {
+            background: #2ea043;
+        }
+        
+        .logs-toggle-btn.expanded {
+            background: #da3633;
+        }
+        
+        .logs-toggle-btn.expanded:hover {
+            background: #e5534b;
+        }
+        
+        #logs-content {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c9d1d9;
+        }
+        
+        .log-info { color: #58a6ff; }
+        .log-warning { color: #d29922; }
+        .log-error { color: #f85149; }
+        .log-success { color: #3fb950; }
     </style>
     """
 
@@ -688,7 +754,7 @@ def generar_javascript(datos_graficos):
     return js
 
 
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos):
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None):
     """Construye el HTML completo del dashboard"""
     return f"""
     <!DOCTYPE html>
@@ -791,6 +857,20 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
             <div class="recommendations-section">
                 <h2>💡 Recomendaciones</h2>
                 {recomendaciones_html}
+            </div>
+
+            
+            <div class="logs-section">
+                <h2>📋 Última Ejecución</h2>
+                <div class="logs-summary">
+                    <p>✅ <strong>Fecha:</strong> {fecha}</p>
+                    <p>✅ <strong>Archivos procesados:</strong> {archivos}</p>
+                    <p>✅ <strong>Total ejercicios:</strong> {ejercicios}</p>
+                    <p>✅ <strong>Total registros peso:</strong> {peso}</p>
+                    <p>✅ <strong>Total registros pasos:</strong> {pasos}</p>
+                    <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 100 líneas)</button>
+                </div>
+                <pre id="logs-content" style="display:none">{logs_content}</pre>
             </div>
         </div>
         
