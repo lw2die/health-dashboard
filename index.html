@@ -223,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 24/10/2025 14:19</p>
+                <p class="subtitle">Última actualización: 24/10/2025 14:25</p>
             </header>
             
             
@@ -232,43 +232,28 @@
         <div class="scores-grid">
             <div class="score-card score-main">
                 <div class="score-label">Longevity Score</div>
-                <div class="score-value" style="color: #3fb950;">83.5/100</div>
+                <div class="score-value" style="color: #f85149;">0.0/100</div>
             </div>
             <div class="score-card">
                 <div class="score-label">CardioScore</div>
-                <div class="score-value" style="color: #3fb950;">90.0</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">MetabolicScore</div>
-                <div class="score-value" style="color: #d29922;">65.0</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">InflammationScore</div>
-                <div class="score-value" style="color: #3fb950;">100.0</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
             <div class="score-card">
                 <div class="score-label">HormoneScore</div>
-                <div class="score-value" style="color: #3fb950;">80.0</div>
+                <div class="score-value" style="color: #f85149;">0.0</div>
             </div>
         </div>
         <div class="alertas-section">
             <h3>⚠️ Alertas</h3>
-            
-        <div class="alerta-item" style="border-left: 4px solid #f85149;">
-            <div style="font-weight: bold; color: #f85149;">Prediabetes Detectada</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">HbA1c en 5.7% indica prediabetes</div>
-        </div>
-        
-        <div class="alerta-item" style="border-left: 4px solid #f0883e;">
-            <div style="font-weight: bold; color: #f0883e;">Hipotiroidismo Subclínico</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">TSH en 5.2 mUI/L indica tiroides lenta</div>
-        </div>
-        
-        <div class="alerta-item" style="border-left: 4px solid #d29922;">
-            <div style="font-weight: bold; color: #d29922;">LDL Excelente</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">LDL en 27 mg/dL es óptimo</div>
-        </div>
-        
+            <p style='color: #8b949e;'>Sin alertas</p>
         </div>
     </div>
     
@@ -330,7 +315,7 @@
         
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">11,166</div>
+        <div class="metric-value" style="color: #3fb950;">17,262</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -687,44 +672,12 @@
         
         document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
         
-        // Frecuencia Cardíaca Diurna
-        Plotly.newPlot('fc-diurna-chart', [
-            {
-                x: ['2025-10-24'],
-                y: [58],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Mínima',
-                line: { color: '#58a6ff', width: 1 },
-                fill: 'tonexty'
-            },
-            {
-                x: ['2025-10-24'],
-                y: [68.25],
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'Promedio',
-                line: { color: '#ffa657', width: 2 }
-            },
-            {
-                x: ['2025-10-24'],
-                y: [82],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Máxima',
-                line: { color: '#f85149', width: 1 },
-                fill: 'tonexty'
-            }
-        ], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-24'],
-            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 6145],
+            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 2603],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
