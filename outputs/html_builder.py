@@ -221,6 +221,67 @@ def generar_css():
                 font-size: 1.8em;
             }
         }
+        
+        /* ESTILOS PARA SECCIÓN DE LOGS */
+        .logs-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .logs-summary {
+            background: #0d1117;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .logs-summary p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        
+        .logs-toggle-btn {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        
+        .logs-toggle-btn:hover {
+            background: #2ea043;
+        }
+        
+        .logs-toggle-btn.expanded {
+            background: #da3633;
+        }
+        
+        #logs-content {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c9d1d9;
+        }
+        
+        .log-info { color: #58a6ff; }
+        .log-warning { color: #d29922; }
+        .log-error { color: #f85149; }
+        .log-success { color: #3fb950; }
     </style>
     """
 
@@ -685,10 +746,71 @@ def generar_javascript(datos_graficos):
         document.getElementById('calorias-chart').innerHTML = '<div class="chart-empty">Sin datos de calorías</div>';
         """
     
+    # JavaScript para logs
+    js += """
+    
+    // FUNCIONES PARA LOGS
+    function toggleLogs() {
+        const logsContent = document.getElementById('logs-content');
+        const toggleBtn = document.getElementById('logs-toggle-btn');
+        
+        if (logsContent.style.display === 'none') {
+            logsContent.style.display = 'block';
+            toggleBtn.textContent = '▲ Ocultar logs';
+            toggleBtn.classList.add('expanded');
+        } else {
+            logsContent.style.display = 'none';
+            toggleBtn.textContent = '▼ Ver logs completos';
+            toggleBtn.classList.remove('expanded');
+        }
+    }
+    
+    function formatearLogs() {
+        const logsContent = document.getElementById('logs-content');
+        if (!logsContent) return;
+        
+        let html = logsContent.innerHTML;
+        
+        // Colorear según nivel de log
+        html = html.replace(/\\[INFO\\]/g, '<span class="log-info">[INFO]</span>');
+        html = html.replace(/\\[WARNING\\]/g, '<span class="log-warning">[WARNING]</span>');
+        html = html.replace(/\\[ERROR\\]/g, '<span class="log-error">[ERROR]</span>');
+        html = html.replace(/✅/g, '<span class="log-success">✅</span>');
+        html = html.replace(/❌/g, '<span class="log-error">❌</span>');
+        html = html.replace(/⚠️/g, '<span class="log-warning">⚠️</span>');
+        
+        logsContent.innerHTML = html;
+    }
+    
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', formatearLogs);
+    """
+    
     return js
 
 
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos):
+def _generar_seccion_logs(logs_content, resumen):
+    """Genera la sección HTML de logs"""
+    if not resumen:
+        return ""
+    
+    return f"""
+    <div class="logs-section">
+        <h2>📋 Última Ejecución</h2>
+        <div class="logs-summary">
+            <p>✅ <strong>Fecha:</strong> {resumen.get('fecha', 'N/A')}</p>
+            <p>✅ <strong>Archivos procesados:</strong> {resumen.get('archivos_procesados', 0)}</p>
+            <p>✅ <strong>Total ejercicios:</strong> {resumen.get('total_ejercicios', 0)}</p>
+            <p>✅ <strong>Total registros peso:</strong> {resumen.get('total_peso', 0)}</p>
+            <p>✅ <strong>Total registros pasos:</strong> {resumen.get('total_pasos', 0)}</p>
+            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 100 líneas)</button>
+        </div>
+        <pre id="logs-content" style="display:none">{logs_content}</pre>
+    </div>
+    """
+
+
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None):
     """Construye el HTML completo del dashboard"""
     return f"""
     <!DOCTYPE html>
@@ -792,6 +914,8 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
                 <h2>💡 Recomendaciones</h2>
                 {recomendaciones_html}
             </div>
+            
+            {_generar_seccion_logs(logs_html_content, resumen_ejecucion)}
         </div>
         
         <script>
