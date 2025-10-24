@@ -14,7 +14,6 @@ from utils.logger import logger
 def calcular_pai_semanal(ejercicios):
     """
     Calcula PAI semanal con ventana móvil de 7 días desde fecha actual.
-    Muestra desglose de entrenamientos incluidos en la ventana.
     
     Args:
         ejercicios (list): Lista de entrenamientos
@@ -41,15 +40,10 @@ def calcular_pai_semanal(ejercicios):
             if fecha_inicio <= fecha_entrenamiento <= fecha_actual:
                 pai_total += e.get("pai", 0)
                 entrenamientos_ventana.append(e)
-                logger.info(
-                    f"  {fecha_entrenamiento}: {e['tipo']} - "
-                    f"PAI={e.get('pai', 0):.1f}, FC={e.get('fc_promedio')} bpm, "
-                    f"{e.get('duracion')} min"
-                )
+                # ✂️ LOGS DETALLADOS ELIMINADOS - info ya está en el dashboard HTML
         except:
             continue
     
-    logger.info("")
     logger.info(f"PAI TOTAL SEMANAL: {pai_total:.1f}")
     logger.info(f"Entrenamientos en ventana: {len(entrenamientos_ventana)}")
     logger.info("=" * 50)

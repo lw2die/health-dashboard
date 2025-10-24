@@ -79,10 +79,10 @@ def procesar_presion_arterial(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['presion_arterial']) - count_antes
-    logger.info(f"  → Presión arterial agregada: {agregados}")
     if agregados > 0:
+        logger.info(f"  → Presión arterial agregada: {agregados}")
         reportar_por_fuente(cache['presion_arterial'][-agregados:], "Presión Arterial")
-    return True
+    return agregados > 0
 
 
 def procesar_vo2max(datos, cache, nombre_archivo):
@@ -108,10 +108,10 @@ def procesar_vo2max(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['vo2max']) - count_antes
-    logger.info(f"  → VO2max registros agregados: {agregados}")
     if agregados > 0:
+        logger.info(f"  → VO2max registros agregados: {agregados}")
         reportar_por_fuente(cache['vo2max'][-agregados:], "VO2max", "vo2max")
-    return True
+    return agregados > 0
 
 
 def procesar_frecuencia_cardiaca(datos, cache, nombre_archivo):

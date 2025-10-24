@@ -58,8 +58,8 @@ def procesar_ejercicios(datos, cache, nombre_archivo):
         cache["ejercicio"].append(entrada)
     
     agregados = len(cache['ejercicio']) - count_antes
-    logger.info(f"  → Ejercicios agregados: {agregados}")
     if agregados > 0:
+        logger.info(f"  → Ejercicios agregados: {agregados}")
         reportar_ejercicios_por_tipo(cache['ejercicio'][-agregados:])
     
-    return True
+    return agregados > 0

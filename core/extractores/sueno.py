@@ -7,6 +7,7 @@ Procesa sleep_sessions y sleep_changes
 
 from datetime import datetime
 from utils.logger import logger
+from collections import defaultdict
 
 
 def procesar_sueno(datos, cache):
@@ -22,9 +23,11 @@ def procesar_sueno(datos, cache):
         return False
     
     count_antes = len(cache["sueno"])
+    por_fuente = defaultdict(int)
     
     for s in sueno_data:
         fases = s.get("stages", [])
+        fuente = s.get("source", "Desconocido")
         
         # Calcular duración total y profundo
         duracion_total = 0
@@ -48,8 +51,17 @@ def procesar_sueno(datos, cache):
             "porcentaje_profundo": round(
                 (duracion_profundo / duracion_total * 100) if duracion_total > 0 else 0,
                 1
-            )
+            ),
+            "fuente": fuente
         })
+        
+        por_fuente[fuente] += 1
     
-    logger.info(f"  → Registros de sueño agregados: {len(cache['sueno']) - count_antes}")
-    return True
+    agregados = len(cache["sueno"]) - count_antes
+    if agregados > 0:
+        logger.info(f"  → Sueño agregado: {agregados} sesiones")
+        logger.info(f"     📊 Sueño por fuente:")
+        for fuente, count in sorted(por_fuente.items()):
+            logger.info(f"        • {fuente}: {count} sesiones")
+    
+    return agregados > 0

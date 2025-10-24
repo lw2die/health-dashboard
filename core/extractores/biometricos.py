@@ -29,10 +29,12 @@ def procesar_peso(datos, cache):
     
     # ✅ Agrupar por DÍA y promediar ANTES de agregar al cache
     por_dia = {}
+    por_fuente = {}
     
     for p in peso_data:
         peso_kg = p.get("weight_kg", 0)
         timestamp = p.get("timestamp")
+        fuente = p.get("source", "Desconocido")
         
         # ✅ VALIDACIÓN: Rechazar pesos absurdos
         if peso_kg < 30 or peso_kg > 200:
@@ -44,8 +46,14 @@ def procesar_peso(datos, cache):
         try:
             dia = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).strftime("%Y-%m-%d")
             if dia not in por_dia:
-                por_dia[dia] = {"pesos": [], "timestamp_primero": timestamp}
+                por_dia[dia] = {"pesos": [], "timestamp_primero": timestamp, "fuente": fuente}
             por_dia[dia]["pesos"].append(peso_kg)
+            
+            # Contar por fuente
+            if fuente not in por_fuente:
+                por_fuente[fuente] = 0
+            por_fuente[fuente] += 1
+            
         except Exception as ex:
             logger.warning(f"Error procesando fecha peso: {ex}")
             rechazados += 1
@@ -70,7 +78,10 @@ def procesar_peso(datos, cache):
     
     agregados = len(cache['peso']) - count_antes
     if agregados > 0:
-        logger.info(f"  → Pesos agregados: {agregados} días (rechazados: {rechazados})")
+        logger.info(f"  → Peso agregado: {agregados} días (rechazados: {rechazados})")
+        logger.info(f"     📊 Peso por fuente:")
+        for fuente, count in sorted(por_fuente.items()):
+            logger.info(f"        • {fuente}: {count} registros")
     return agregados > 0
 
 
@@ -96,10 +107,10 @@ def procesar_grasa_corporal(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['grasa_corporal']) - count_antes
-    logger.info(f"  → Grasa corporal agregada: {agregados}")
     if agregados > 0:
-        reportar_por_fuente(cache['grasa_corporal'][-agregados:], "Grasa Corporal")
-    return True
+        logger.info(f"  → Grasa corporal agregada: {agregados}")
+        reportar_por_fuente(cache['grasa_corporal'][-agregados:], "Grasa Corporal", "porcentaje")
+    return agregados > 0
 
 
 def procesar_masa_muscular(datos, cache, nombre_archivo):
@@ -124,10 +135,10 @@ def procesar_masa_muscular(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['masa_muscular']) - count_antes
-    logger.info(f"  → Masa muscular agregada: {agregados}")
     if agregados > 0:
+        logger.info(f"  → Masa muscular agregada: {agregados}")
         reportar_por_fuente(cache['masa_muscular'][-agregados:], "Masa Muscular", "masa_kg")
-    return True
+    return agregados > 0
 
 
 def procesar_masa_agua(datos, cache, nombre_archivo):
@@ -152,10 +163,10 @@ def procesar_masa_agua(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['masa_agua']) - count_antes
-    logger.info(f"  → Masa de agua agregada: {agregados}")
     if agregados > 0:
+        logger.info(f"  → Masa de agua agregada: {agregados}")
         reportar_por_fuente(cache['masa_agua'][-agregados:], "Masa de Agua", "masa_kg")
-    return True
+    return agregados > 0
 
 
 def procesar_masa_osea(datos, cache, nombre_archivo):
@@ -180,7 +191,7 @@ def procesar_masa_osea(datos, cache, nombre_archivo):
         })
     
     agregados = len(cache['masa_osea']) - count_antes
-    logger.info(f"  → Masa ósea agregada: {agregados}")
     if agregados > 0:
+        logger.info(f"  → Masa ósea agregada: {agregados}")
         reportar_por_fuente(cache['masa_osea'][-agregados:], "Masa Ósea", "masa_kg")
-    return True
+    return agregados > 0
