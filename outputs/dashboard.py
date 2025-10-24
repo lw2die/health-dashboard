@@ -16,6 +16,7 @@ from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
 from metricas.score import calcular_score_longevidad, generar_recomendaciones
 from outputs.graficos import preparar_datos_peso
 from utils.logger import logger
+from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
 
 # ========================================
 # IMPORTACIÃ“N PARA LABORATORIO
@@ -245,7 +246,13 @@ def generar_dashboard(cache):
     }
     
     entrenamientos_recientes = _obtener_entrenamientos_recientes(ejercicios)
-    html = _generar_html(metricas, datos_graficos, entrenamientos_recientes, len(ejercicios), datos_laboratorio)
+    
+    # Generar sección de logs
+    logs_lineas = leer_ultimos_logs(100)
+    logs_html_content = formatear_logs_html(logs_lineas)
+    resumen_ejecucion = generar_resumen_ejecucion(cache)
+    
+    html = _generar_html(metricas, datos_graficos, entrenamientos_recientes, len(ejercicios), datos_laboratorio, logs_html_content, resumen_ejecucion)
     
     with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
         f.write(html)
@@ -354,7 +361,28 @@ def _obtener_entrenamientos_recientes(ejercicios, dias=7):
     return recientes[:10]
 
 
-def _generar_html(metricas, datos_graficos, entrenamientos, total_ejercicios, datos_laboratorio):
+def _generar_seccion_logs(logs_content, resumen):
+    """Genera la sección HTML de logs"""
+    if not resumen:
+        return ""
+    
+    return f"""
+    <div class="logs-section">
+        <h2>📋 Última Ejecución</h2>
+        <div class="logs-summary">
+            <p>✅ <strong>Fecha:</strong> {resumen.get('fecha', 'N/A')}</p>
+            <p>✅ <strong>Archivos procesados:</strong> {resumen.get('archivos_procesados', 0)}</p>
+            <p>✅ <strong>Total ejercicios:</strong> {resumen.get('total_ejercicios', 0)}</p>
+            <p>✅ <strong>Total registros peso:</strong> {resumen.get('total_peso', 0)}</p>
+            <p>✅ <strong>Total registros pasos:</strong> {resumen.get('total_pasos', 0)}</p>
+            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 100 líneas)</button>
+        </div>
+        <pre id="logs-content" style="display:none">{logs_content}</pre>
+    </div>
+    """
+
+
+def _generar_html(metricas, datos_graficos, entrenamientos, total_ejercicios, datos_laboratorio, logs_html_content="", resumen_ejecucion=None):
     """Genera HTML completo."""
     html_laboratorio = ""
     if datos_laboratorio:
@@ -445,6 +473,8 @@ def _generar_html(metricas, datos_graficos, entrenamientos, total_ejercicios, da
                 <h2>ðŸ’¡ Recomendaciones</h2>
                 {_generar_recomendaciones_html(metricas["recomendaciones"])}
             </div>
+            
+            {_generar_seccion_logs(logs_html_content, resumen_ejecucion)}
         </div>
         
         <script>
@@ -1143,6 +1173,67 @@ def _generar_css():
                 font-size: 1.8em;
             }
         }
+        
+        /* ESTILOS PARA SECCIÓN DE LOGS */
+        .logs-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .logs-summary {
+            background: #0d1117;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .logs-summary p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        
+        .logs-toggle-btn {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+        
+        .logs-toggle-btn:hover {
+            background: #2ea043;
+        }
+        
+        .logs-toggle-btn.expanded {
+            background: #da3633;
+        }
+        
+        #logs-content {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c9d1d9;
+        }
+        
+        .log-info { color: #58a6ff; }
+        .log-warning { color: #d29922; }
+        .log-error { color: #f85149; }
+        .log-success { color: #3fb950; }
     </style>
     """
 
@@ -1397,4 +1488,40 @@ def _generar_javascript(datos_graficos):
                 legend: {{ bgcolor: '#161b22', bordercolor: '#30363d', borderwidth: 1 }}
             }});
         }}
+        
+        // FUNCIONES PARA LOGS
+        function toggleLogs() {{
+            const logsContent = document.getElementById('logs-content');
+            const toggleBtn = document.getElementById('logs-toggle-btn');
+            
+            if (logsContent.style.display === 'none') {{
+                logsContent.style.display = 'block';
+                toggleBtn.textContent = '▲ Ocultar logs';
+                toggleBtn.classList.add('expanded');
+            }} else {{
+                logsContent.style.display = 'none';
+                toggleBtn.textContent = '▼ Ver logs completos';
+                toggleBtn.classList.remove('expanded');
+            }}
+        }}
+        
+        function formatearLogs() {{
+            const logsContent = document.getElementById('logs-content');
+            if (!logsContent) return;
+            
+            let html = logsContent.innerHTML;
+            
+            // Colorear según nivel de log
+            html = html.replace(/\[INFO\]/g, '<span class="log-info">[INFO]</span>');
+            html = html.replace(/\[WARNING\]/g, '<span class="log-warning">[WARNING]</span>');
+            html = html.replace(/\[ERROR\]/g, '<span class="log-error">[ERROR]</span>');
+            html = html.replace(/✅/g, '<span class="log-success">✅</span>');
+            html = html.replace(/❌/g, '<span class="log-error">❌</span>');
+            html = html.replace(/⚠️/g, '<span class="log-warning">⚠️</span>');
+            
+            logsContent.innerHTML = html;
+        }}
+        
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', formatearLogs);
     """

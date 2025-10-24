@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Helper para leer y formatear logs del sistema
-"""
+"""Helper para leer y formatear logs del sistema"""
 
 from datetime import datetime
 
@@ -19,28 +17,16 @@ def leer_ultimos_logs(num_lineas=100):
     except Exception as e:
         return [f"# Error leyendo logs: {str(e)}\n"]
 
-
 def generar_resumen_ejecucion(cache):
     """Genera resumen de la última ejecución"""
     try:
         archivos_procesados = cache.get("_archivos_procesados", [])
-        num_archivos = len(archivos_procesados)
-        
-        # Obtener último archivo procesado si existe
-        ultimo_archivo = archivos_procesados[-1] if archivos_procesados else "Ninguno"
-        
-        # Contar métricas totales
-        ejercicios = len(cache.get("ejercicio", []))
-        peso = len(cache.get("peso", []))
-        pasos = len(cache.get("pasos", []))
-        
         return {
             "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC"),
-            "archivos_procesados": num_archivos,
-            "ultimo_archivo": ultimo_archivo,
-            "total_ejercicios": ejercicios,
-            "total_peso": peso,
-            "total_pasos": pasos
+            "archivos_procesados": len(archivos_procesados),
+            "total_ejercicios": len(cache.get("ejercicio", [])),
+            "total_peso": len(cache.get("peso", [])),
+            "total_pasos": len(cache.get("pasos", []))
         }
     except Exception as e:
         return {
@@ -49,15 +35,7 @@ def generar_resumen_ejecucion(cache):
             "error": str(e)
         }
 
-
 def formatear_logs_html(lineas_log):
-    """Convierte líneas de log a HTML escapado"""
+    """Convierte líneas de log a HTML escapado (seguridad)"""
     import html
-    
-    html_lines = []
-    for linea in lineas_log:
-        # Escapar HTML para evitar problemas
-        linea_safe = html.escape(linea)
-        html_lines.append(linea_safe)
-    
-    return ''.join(html_lines)
+    return ''.join([html.escape(linea) for linea in lineas_log])
