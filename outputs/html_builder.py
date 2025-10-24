@@ -1,602 +1,802 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Dashboard Generator - Orquestador Principal (MODULAR)
-Importa y coordina todos los módulos de generación
+Constructor HTML - CSS, JavaScript y estructura del dashboard
+VERSIÓN CORREGIDA - Maneja gráficos vacíos
 """
 
-from datetime import datetime, timedelta
-from config import OUTPUT_HTML, EDAD, ALTURA_CM
-from utils.logger import logger
-# ✅ NUEVO: Import para logs
-from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
-
-# Importar módulos de métricas
-from metricas.pai import calcular_pai_semanal
-from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
-from metricas.score import calcular_score_longevidad, generar_recomendaciones
-
-def _preparar_datos_peso_deduplicado(peso_data, dias=90):
-    """
-    Prepara datos de peso DEDUPLICADOS por día.
-    Si hay múltiples mediciones en un día, usa el promedio.
-    """
-    if not peso_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        p for p in peso_data
-        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    # ✅ Deduplicar por día - promediar si hay múltiples mediciones
-    por_dia = {}
-    for p in recientes:
-        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(p["peso"])
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-# Importar módulos de dashboard
-from outputs.cards import (
-    generar_card_pai, generar_card_peso, generar_card_vo2max,
-    generar_card_tsb, generar_card_sueno, generar_card_spo2,
-    generar_card_grasa, generar_card_masa_muscular, generar_card_fc_reposo,
-    generar_card_pasos, generar_card_presion, generar_card_score
-)
-from outputs.html_builder import construir_html_completo
-from outputs.laboratorio_renderer import (
-    generar_html_laboratorio, generar_tabla_entrenamientos,
-    generar_recomendaciones_html
-)
-
-# Laboratorio (opcional)
-try:
-    from metricas.laboratorio import obtener_datos_laboratorio_y_alertas
-    LABORATORIO_DISPONIBLE = True
-except ImportError:
-    logger.warning("⚠️ Módulo laboratorio no disponible")
-    LABORATORIO_DISPONIBLE = False
+from datetime import datetime
+from config import PAI_OBJETIVO_SEMANAL, PESO_OBJETIVO
 
 
-def generar_dashboard(cache):
-    """
-    Genera dashboard HTML completo.
-    Orquesta todos los módulos para construir el dashboard.
-    """
-    logger.info("Generando dashboard HTML con gráficos...")
-    
-    # ═══════════════════════════════════════════════
-    # 1. EXTRAER DATOS DEL CACHE
-    # ═══════════════════════════════════════════════
-    ejercicios = cache.get("ejercicio", [])
-    peso = cache.get("peso", [])
-    sueno = cache.get("sueno", [])
-    spo2 = cache.get("spo2", [])
-    grasa_corporal = cache.get("grasa_corporal", [])
-    masa_muscular = cache.get("masa_muscular", [])
-    vo2max_medido = cache.get("vo2max", [])
-    fc_reposo = cache.get("fc_reposo", [])
-    pasos = cache.get("pasos", [])
-    presion_arterial = cache.get("presion_arterial", [])
-    # ✅ NUEVAS MÉTRICAS
-    glucosa = cache.get("glucosa", [])
-    masa_osea = cache.get("masa_osea", [])
-    masa_agua = cache.get("masa_agua", [])
-    tasa_metabolica = cache.get("tasa_metabolica", [])
-    distancia = cache.get("distancia", [])
-    calorias_totales = cache.get("calorias_totales", [])
-    
-    # ═══════════════════════════════════════════════
-    # 2. CALCULAR MÉTRICAS
-    # ═══════════════════════════════════════════════
-    metricas = _calcular_metricas(
-        ejercicios, peso, sueno, spo2, grasa_corporal,
-        masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial
-    )
-    
-    # ═══════════════════════════════════════════════
-    # 3. PROCESAR LABORATORIO (si está disponible)
-    # ═══════════════════════════════════════════════
-    datos_laboratorio = {}
-    if LABORATORIO_DISPONIBLE:
-        try:
-            datos_laboratorio = obtener_datos_laboratorio_y_alertas(
-                edad=EDAD,
-                altura_cm=ALTURA_CM,
-                peso_kg=metricas.get("peso_actual", 83),
-                vo2max_medido=metricas.get("vo2max", 38)
-            )
-            logger.info(f"✅ Laboratorio procesado: Longevity Score = {datos_laboratorio.get('longevity_score', 'N/A')}/100")
-        except Exception as e:
-            logger.error(f"❌ Error procesando laboratorio: {e}")
-    
-    # ═══════════════════════════════════════════════
-    # 4. PREPARAR DATOS PARA GRÁFICOS
-    # ═══════════════════════════════════════════════
-    # Extraer frecuencia_cardiaca del cache
-    frecuencia_cardiaca = cache.get("frecuencia_cardiaca", [])
-    
-    datos_graficos = {
-        "pai": _preparar_datos_pai_completo(ejercicios),
-        "peso": _preparar_datos_peso_deduplicado(peso),  # ✅ Deduplicado
-        "tsb": preparar_datos_tsb_historico(ejercicios),
-        "spo2": _preparar_datos_spo2(spo2),
-        "grasa": _preparar_datos_metrica_corporal(grasa_corporal, "porcentaje"),
-        "masa_muscular": _preparar_datos_metrica_corporal(masa_muscular, "masa_kg"),
-        "fc_reposo": _preparar_datos_fc_reposo(fc_reposo),
-        "frecuencia_cardiaca": _preparar_datos_fc_diurna(frecuencia_cardiaca),  # ✅ AGREGADO
-        "pasos": _preparar_datos_pasos(pasos),
-        "presion_arterial": _preparar_datos_presion_arterial(presion_arterial),
-        # ✅ NUEVAS MÉTRICAS
-        "glucosa": _preparar_datos_glucosa(glucosa),
-        "masa_osea": _preparar_datos_metrica_corporal(masa_osea, "masa_kg"),
-        "masa_agua": _preparar_datos_metrica_corporal(masa_agua, "masa_kg"),
-        "tasa_metabolica": _preparar_datos_tasa_metabolica(tasa_metabolica),
-        "distancia": _preparar_datos_distancia(distancia),
-        "calorias_totales": _preparar_datos_calorias(calorias_totales)
-    }
-    
-    # ═══════════════════════════════════════════════
-    # 5. GENERAR COMPONENTES HTML
-    # ═══════════════════════════════════════════════
-    
-    # Laboratorio
-    html_laboratorio = generar_html_laboratorio(datos_laboratorio) if datos_laboratorio else ""
-    
-    # Cards
-    cards_html = "".join([
-        generar_card_pai(metricas),
-        generar_card_peso(metricas),
-        generar_card_vo2max(metricas),
-        generar_card_tsb(metricas),
-        generar_card_sueno(metricas),
-        generar_card_spo2(metricas),
-        generar_card_grasa(metricas),
-        generar_card_masa_muscular(metricas),
-        generar_card_fc_reposo(metricas),
-        generar_card_pasos(metricas),
-        generar_card_presion(metricas),
-        generar_card_score(metricas)
-    ])
-    
-    # Entrenamientos recientes
-    entrenamientos = _obtener_entrenamientos_recientes(ejercicios)
-    entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
-    
-    # Recomendaciones
-    recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
-    
-    # ═══════════════════════════════════════════════
-    # 6. CONSTRUIR HTML COMPLETO
-    # ═══════════════════════════════════════════════
-    # ✅ NUEVO: Generar sección de logs
-    logs_lineas = leer_ultimos_logs(100)
-    logs_html_content = formatear_logs_html(logs_lineas)
-    resumen_ejecucion = generar_resumen_ejecucion(cache)
-    
-    html = construir_html_completo(
-        html_laboratorio,
-        cards_html,
-        entrenamientos_html,
-        recomendaciones_html,
-        datos_graficos,
-        logs_html_content,  # ✅ NUEVO
-        resumen_ejecucion   # ✅ NUEVO
-    )
-    
-    # ═══════════════════════════════════════════════
-    # 7. GUARDAR ARCHIVO
-    # ═══════════════════════════════════════════════
-    with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
-        f.write(html)
-    
-    logger.info(f"Dashboard generado: {OUTPUT_HTML}")
-
-
-# ═══════════════════════════════════════════════════════════════
-# FUNCIONES AUXILIARES
-# ═══════════════════════════════════════════════════════════════
-
-def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial):
-    """Calcula todas las métricas del dashboard"""
-    
-    # PAI semanal
-    pai_semanal = calcular_pai_semanal(ejercicios)
-    
-    # Peso actual
-    peso_actual = peso[-1]["peso"] if peso else None
-    
-    # VO2max MEDIDO
-    vo2max = vo2max_medido[-1]["vo2max"] if vo2max_medido else None
-    
-    # TSB actual
-    tsb_dict = calcular_tsb(ejercicios) if ejercicios else {"tsb": 0, "ctl": 0, "atl": 0}
-    tsb_actual = tsb_dict.get("tsb", 0) if isinstance(tsb_dict, dict) else tsb_dict
-    
-    # Sueño (últimos 7 días)
-    promedio_sueno_horas = None
-    if sueno:
-        suenos_recientes = sueno[-7:] if len(sueno) >= 7 else sueno
-        total_minutos = sum(s.get("duracion", 0) for s in suenos_recientes)
-        promedio_sueno_horas = (total_minutos / len(suenos_recientes) / 60) if suenos_recientes else None
-    
-    # SpO2 promedio
-    spo2_promedio = None
-    if spo2:
-        spo2_recientes = spo2[-7:] if len(spo2) >= 7 else spo2
-        spo2_promedio = sum(s.get("porcentaje", 0) for s in spo2_recientes) / len(spo2_recientes)
-    
-    # Grasa corporal actual
-    grasa_actual = grasa_corporal[-1]["porcentaje"] if grasa_corporal else None
-    
-    # Masa muscular actual
-    masa_muscular_actual = masa_muscular[-1]["masa_kg"] if masa_muscular else None
-    
-    # FC en reposo promedio
-    fc_reposo_promedio = None
-    if fc_reposo:
-        fc_recientes = fc_reposo[-7:] if len(fc_reposo) >= 7 else fc_reposo
-        fc_reposo_promedio = sum(fc.get("bpm", 0) for fc in fc_recientes) / len(fc_recientes)
-    
-    # Pasos promedio
-    pasos_promedio = None
-    if pasos:
-        pasos_recientes = pasos[-7:] if len(pasos) >= 7 else pasos
-        pasos_promedio = sum(p.get("pasos", 0) for p in pasos_recientes) / len(pasos_recientes)
-    
-    # Presión arterial promedio
-    presion_sistolica = None
-    presion_diastolica = None
-    if presion_arterial:
-        presion_recientes = presion_arterial[-7:] if len(presion_arterial) >= 7 else presion_arterial
-        presion_sistolica = sum(p.get("sistolica", 0) for p in presion_recientes) / len(presion_recientes)
-        presion_diastolica = sum(p.get("diastolica", 0) for p in presion_recientes) / len(presion_recientes)
-    
-    # Score de longevidad
-    score_longevidad = calcular_score_longevidad(
-        peso_actual, pai_semanal, vo2max, promedio_sueno_horas
-    )
-    
-    # Recomendaciones
-    recomendaciones = generar_recomendaciones(
-        peso_actual, pai_semanal, promedio_sueno_horas
-    )
-    
-    return {
-        "pai_semanal": pai_semanal,
-        "peso_actual": peso_actual,
-        "vo2max": vo2max,
-        "tsb_actual": tsb_actual,
-        "tsb_dict": tsb_dict,
-        "promedio_sueno": promedio_sueno_horas,
-        "spo2_promedio": spo2_promedio,
-        "grasa_actual": grasa_actual,
-        "masa_muscular_actual": masa_muscular_actual,
-        "fc_reposo_promedio": fc_reposo_promedio,
-        "pasos_promedio": pasos_promedio,
-        "presion_sistolica": presion_sistolica,
-        "presion_diastolica": presion_diastolica,
-        "score_longevidad": score_longevidad,
-        "recomendaciones": recomendaciones
-    }
-
-
-def _obtener_entrenamientos_recientes(ejercicios, dias=7):
-    """Obtiene entrenamientos de los últimos N días"""
-    if not ejercicios:
-        return []
-    
-    fecha_limite = datetime.now().replace(tzinfo=None) - timedelta(days=dias)
-    recientes = [
-        e for e in ejercicios
-        if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    recientes.sort(key=lambda x: x["fecha"], reverse=True)
-    return recientes[:10]
-
-
-# ═══════════════════════════════════════════════════════════════
-# PREPARADORES DE DATOS PARA GRÁFICOS
-# ═══════════════════════════════════════════════════════════════
-
-def _preparar_datos_pai_completo(ejercicios, dias=30):
-    """Prepara PAI diario + ventana móvil 7 días"""
-    if not ejercicios:
-        return {"fechas": [], "pai_diario": [], "pai_ventana_7d": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        e for e in ejercicios
-        if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    # Agrupar PAI por día
-    por_dia = {}
-    for e in recientes:
-        fecha = datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = 0
-        por_dia[fecha] += e.get("pai", 0)
-    
-    fechas = sorted(por_dia.keys())
-    pai_diario = [por_dia[f] for f in fechas]
-    
-    # Calcular ventana móvil de 7 días
-    pai_ventana_7d = []
-    for i, fecha in enumerate(fechas):
-        fecha_obj = datetime.strptime(fecha, "%Y-%m-%d")
-        inicio_ventana = fecha_obj - timedelta(days=6)
+def generar_css():
+    """Genera todo el CSS del dashboard"""
+    return """
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        suma_ventana = sum(
-            por_dia[f] for f in fechas
-            if inicio_ventana <= datetime.strptime(f, "%Y-%m-%d") <= fecha_obj
-        )
-        pai_ventana_7d.append(suma_ventana)
-    
-    return {
-        "fechas": fechas,
-        "pai_diario": pai_diario,
-        "pai_ventana_7d": pai_ventana_7d
-    }
-
-
-def _preparar_datos_spo2(spo2_data, dias=30):
-    """Prepara datos de SpO2"""
-    if not spo2_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        s for s in spo2_data
-        if datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for s in recientes:
-        fecha = datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(s["porcentaje"])
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_metrica_corporal(datos, campo, dias=90):
-    """Prepara datos de métricas corporales"""
-    if not datos:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        d for d in datos
-        if datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for d in recientes:
-        fecha = datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(d[campo])
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_fc_reposo(fc_reposo_data, dias=30):
-    """Prepara datos de FC en reposo"""
-    if not fc_reposo_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        fc for fc in fc_reposo_data
-        if datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for fc in recientes:
-        fecha = datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(fc["bpm"])
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_fc_diurna(fc_diurna_data, dias=30):
-    """Prepara datos de FC diurna (continua) - min, max, promedio"""
-    if not fc_diurna_data:
-        return {"fechas": [], "bpm_min": [], "bpm_max": [], "bpm_promedio": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        fc for fc in fc_diurna_data
-        if datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for fc in recientes:
-        fecha = datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = {
-                "bpm_min": [],
-                "bpm_max": [],
-                "bpm_promedio": []
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            color: #c9d1d9;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #58a6ff;
+            margin: 30px 0 20px 0;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #79c0ff;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .subtitle {
+            color: #8b949e;
+            font-size: 1.1em;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+        }
+        
+        .metric-label {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .metric-detail {
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+        
+        .charts-section {
+            margin: 40px 0;
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+        
+        .chart-container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .chart-empty {
+            color: #8b949e;
+            text-align: center;
+            padding: 40px;
+            font-style: italic;
+        }
+        
+        .training-section, .recommendations-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        th {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #0d1117;
+        }
+        
+        .recommendations-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .recommendations-list li {
+            padding: 12px;
+            margin: 10px 0;
+            background: #0d1117;
+            border-left: 3px solid #58a6ff;
+            border-radius: 4px;
+        }
+        
+        .laboratorio-section {
+            background: #161b22;
+            border: 2px solid #58a6ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .score-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .score-main {
+            grid-column: 1 / -1;
+            border: 2px solid #58a6ff;
+        }
+        
+        .score-label {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .score-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .alertas-section {
+            margin-top: 30px;
+        }
+        
+        .alerta-item {
+            background: #0d1117;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
             }
-        por_dia[fecha]["bpm_min"].append(fc.get("bpm_min", 0))
-        por_dia[fecha]["bpm_max"].append(fc.get("bpm_max", 0))
-        por_dia[fecha]["bpm_promedio"].append(fc.get("bpm_promedio", 0))
-    
-    fechas = sorted(por_dia.keys())
-    bpm_min = [min(por_dia[f]["bpm_min"]) for f in fechas]
-    bpm_max = [max(por_dia[f]["bpm_max"]) for f in fechas]
-    bpm_promedio = [sum(por_dia[f]["bpm_promedio"]) / len(por_dia[f]["bpm_promedio"]) for f in fechas]
-    
-    return {
-        "fechas": fechas,
-        "bpm_min": bpm_min,
-        "bpm_max": bpm_max,
-        "bpm_promedio": bpm_promedio
-    }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+    """
 
 
-def _preparar_datos_pasos(pasos_data, dias=30):
-    """Prepara datos de pasos diarios"""
-    if not pasos_data:
-        return {"fechas": [], "valores": []}
+def generar_javascript(datos_graficos):
+    """Genera todo el JavaScript para los gráficos Plotly - CORREGIDO"""
     
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        p for p in pasos_data
-        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
+    # ✅ Validar que cada gráfico tenga datos
+    def tiene_datos(datos, campo='fechas'):
+        return datos and datos.get(campo) and len(datos.get(campo, [])) > 0
     
-    por_dia = {}
-    for p in recientes:
-        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = 0
-        por_dia[fecha] += p["pasos"]
+    js = """
+        const layout_config = {
+            paper_bgcolor: '#0d1117',
+            plot_bgcolor: '#161b22',
+            font: { color: '#c9d1d9' },
+            margin: { l: 40, r: 20, t: 20, b: 40 },
+            showlegend: true,
+            height: 300
+        };
+    """
     
-    fechas = sorted(por_dia.keys())
-    valores = [por_dia[f] for f in fechas]
+    # PAI
+    if tiene_datos(datos_graficos.get('pai', {})):
+        js += f"""
+        // PAI: Diario + Ventana Móvil 7 días
+        const pai_diario = {{
+            x: {datos_graficos['pai']['fechas']},
+            y: {datos_graficos['pai']['pai_diario']},
+            type: 'bar',
+            name: 'PAI Diario',
+            marker: {{ color: '#58a6ff' }}
+        }};
+        
+        const pai_ventana = {{
+            x: {datos_graficos['pai']['fechas']},
+            y: {datos_graficos['pai']['pai_ventana_7d']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Ventana 7d',
+            line: {{ color: '#f85149', width: 3 }},
+            marker: {{ size: 8 }},
+            yaxis: 'y2'
+        }};
+        
+        Plotly.newPlot('pai-chart', [pai_diario, pai_ventana], {{
+            ...layout_config,
+            yaxis: {{ title: 'PAI Diario', gridcolor: '#30363d' }},
+            yaxis2: {{
+                title: 'PAI Acumulado 7d',
+                overlaying: 'y',
+                side: 'right',
+                gridcolor: '#30363d'
+            }},
+            xaxis: {{ gridcolor: '#30363d' }},
+            shapes: [{{
+                type: 'line',
+                x0: 0, x1: 1, xref: 'paper',
+                yref: 'y2',
+                y0: {PAI_OBJETIVO_SEMANAL}, y1: {PAI_OBJETIVO_SEMANAL},
+                line: {{ color: '#3fb950', width: 2, dash: 'dot' }}
+            }}]
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('pai-chart').innerHTML = '<div class="chart-empty">Sin datos de PAI</div>';
+        """
     
-    return {"fechas": fechas, "valores": valores}
+    # Peso
+    if tiene_datos(datos_graficos.get('peso', {})):
+        js += f"""
+        // Peso
+        const peso_data = {{
+            x: {datos_graficos['peso']['fechas']},
+            y: {datos_graficos['peso']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#f85149', width: 2 }},
+            marker: {{ size: 6 }}
+        }};
+        
+        Plotly.newPlot('peso-chart', [peso_data], {{
+            ...layout_config,
+            yaxis: {{ title: 'Peso (kg)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }},
+            shapes: [{{
+                type: 'line',
+                x0: 0, x1: 1, xref: 'paper',
+                y0: {PESO_OBJETIVO}, y1: {PESO_OBJETIVO},
+                line: {{ color: '#3fb950', width: 1, dash: 'dot' }}
+            }}]
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('peso-chart').innerHTML = '<div class="chart-empty">Sin datos de peso</div>';
+        """
+    
+    # TSB
+    if tiene_datos(datos_graficos.get('tsb', {})):
+        js += f"""
+        // TSB + CTL + ATL
+        const tsb_data = {{
+            x: {datos_graficos['tsb']['fechas']},
+            y: {datos_graficos['tsb']['tsb']},
+            type: 'scatter',
+            mode: 'lines',
+            name: 'TSB',
+            fill: 'tozeroy',
+            line: {{ color: '#ffa657', width: 2 }}
+        }};
+        
+        const ctl_data = {{
+            x: {datos_graficos['tsb']['fechas']},
+            y: {datos_graficos['tsb']['ctl']},
+            type: 'scatter',
+            mode: 'lines',
+            name: 'CTL (Fitness)',
+            line: {{ color: '#3fb950', width: 2 }}
+        }};
+        
+        const atl_data = {{
+            x: {datos_graficos['tsb']['fechas']},
+            y: {datos_graficos['tsb']['atl']},
+            type: 'scatter',
+            mode: 'lines',
+            name: 'ATL (Fatiga)',
+            line: {{ color: '#f85149', width: 2 }}
+        }};
+        
+        Plotly.newPlot('tsb-chart', [tsb_data, ctl_data, atl_data], {{
+            ...layout_config,
+            yaxis: {{ title: 'Puntuación', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('tsb-chart').innerHTML = '<div class="chart-empty">Sin datos de TSB</div>';
+        """
+    
+    # SpO2
+    if tiene_datos(datos_graficos.get('spo2', {})):
+        js += f"""
+        // SpO2
+        Plotly.newPlot('spo2-chart', [{{
+            x: {datos_graficos['spo2']['fechas']},
+            y: {datos_graficos['spo2']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#79c0ff', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'SpO2 (%)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('spo2-chart').innerHTML = '<div class="chart-empty">Sin datos de SpO2</div>';
+        """
+    
+    # Grasa Corporal
+    if tiene_datos(datos_graficos.get('grasa', {})):
+        js += f"""
+        // Grasa Corporal
+        Plotly.newPlot('grasa-chart', [{{
+            x: {datos_graficos['grasa']['fechas']},
+            y: {datos_graficos['grasa']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#ffa657', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Grasa (%)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('grasa-chart').innerHTML = '<div class="chart-empty">Sin datos de grasa corporal</div>';
+        """
+    
+    # Masa Muscular
+    if tiene_datos(datos_graficos.get('masa_muscular', {})):
+        js += f"""
+        // Masa Muscular
+        Plotly.newPlot('masa-chart', [{{
+            x: {datos_graficos['masa_muscular']['fechas']},
+            y: {datos_graficos['masa_muscular']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#3fb950', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Masa (kg)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('masa-chart').innerHTML = '<div class="chart-empty">Sin datos de masa muscular</div>';
+        """
+    
+    # FC Reposo
+    if tiene_datos(datos_graficos.get('fc_reposo', {})):
+        js += f"""
+        // FC Reposo
+        Plotly.newPlot('fc-reposo-chart', [{{
+            x: {datos_graficos['fc_reposo']['fechas']},
+            y: {datos_graficos['fc_reposo']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#f85149', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'FC (bpm)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
+        """
+    
+    # FC Diurna (Continua) - ✅ AGREGADO
+    if tiene_datos(datos_graficos.get('frecuencia_cardiaca', {})):
+        js += f"""
+        // Frecuencia Cardíaca Diurna
+        Plotly.newPlot('fc-diurna-chart', [
+            {{
+                x: {datos_graficos['frecuencia_cardiaca']['fechas']},
+                y: {datos_graficos['frecuencia_cardiaca']['bpm_min']},
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Mínima',
+                line: {{ color: '#58a6ff', width: 1 }},
+                fill: 'tonexty'
+            }},
+            {{
+                x: {datos_graficos['frecuencia_cardiaca']['fechas']},
+                y: {datos_graficos['frecuencia_cardiaca']['bpm_promedio']},
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Promedio',
+                line: {{ color: '#ffa657', width: 2 }}
+            }},
+            {{
+                x: {datos_graficos['frecuencia_cardiaca']['fechas']},
+                y: {datos_graficos['frecuencia_cardiaca']['bpm_max']},
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Máxima',
+                line: {{ color: '#f85149', width: 1 }},
+                fill: 'tonexty'
+            }}
+        ], {{
+            ...layout_config,
+            yaxis: {{ title: 'FC (bpm)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
+        """
+    
+    # Pasos
+    if tiene_datos(datos_graficos.get('pasos', {})):
+        js += f"""
+        // Pasos
+        Plotly.newPlot('pasos-chart', [{{
+            x: {datos_graficos['pasos']['fechas']},
+            y: {datos_graficos['pasos']['valores']},
+            type: 'bar',
+            marker: {{ color: '#58a6ff' }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Pasos', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('pasos-chart').innerHTML = '<div class="chart-empty">Sin datos de pasos</div>';
+        """
+    
+    # Presión Arterial
+    if tiene_datos(datos_graficos.get('presion_arterial', {})):
+        js += f"""
+        // Presión Arterial
+        Plotly.newPlot('presion-chart', [
+            {{
+                x: {datos_graficos['presion_arterial']['fechas']},
+                y: {datos_graficos['presion_arterial']['sistolica']},
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Sistólica',
+                line: {{ color: '#f85149', width: 2 }}
+            }},
+            {{
+                x: {datos_graficos['presion_arterial']['fechas']},
+                y: {datos_graficos['presion_arterial']['diastolica']},
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Diastólica',
+                line: {{ color: '#58a6ff', width: 2 }}
+            }}
+        ], {{
+            ...layout_config,
+            yaxis: {{ title: 'mmHg', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('presion-chart').innerHTML = '<div class="chart-empty">Sin datos de presión arterial</div>';
+        """
+    
+    # Glucosa en Sangre
+    if tiene_datos(datos_graficos.get('glucosa', {})):
+        js += f"""
+        // Glucosa en Sangre
+        Plotly.newPlot('glucosa-chart', [{{
+            x: {datos_graficos['glucosa']['fechas']},
+            y: {datos_graficos['glucosa']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#d29922', width: 2 }},
+            marker: {{ size: 8 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'mg/dL', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }},
+            shapes: [
+                {{
+                    type: 'rect',
+                    xref: 'paper',
+                    x0: 0, x1: 1,
+                    y0: 70, y1: 100,
+                    fillcolor: '#3fb950',
+                    opacity: 0.1,
+                    line: {{ width: 0 }}
+                }}
+            ]
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('glucosa-chart').innerHTML = '<div class="chart-empty">Sin datos de glucosa</div>';
+        """
+    
+    # Masa Ósea
+    if tiene_datos(datos_graficos.get('masa_osea', {})):
+        js += f"""
+        // Masa Ósea
+        Plotly.newPlot('masa-osea-chart', [{{
+            x: {datos_graficos['masa_osea']['fechas']},
+            y: {datos_graficos['masa_osea']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#79c0ff', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Masa (kg)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('masa-osea-chart').innerHTML = '<div class="chart-empty">Sin datos de masa ósea</div>';
+        """
+    
+    # Masa de Agua
+    if tiene_datos(datos_graficos.get('masa_agua', {})):
+        js += f"""
+        // Masa de Agua Corporal
+        Plotly.newPlot('masa-agua-chart', [{{
+            x: {datos_graficos['masa_agua']['fechas']},
+            y: {datos_graficos['masa_agua']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#58a6ff', width: 2 }},
+            fill: 'tozeroy',
+            fillcolor: 'rgba(88, 166, 255, 0.1)'
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Masa (kg)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('masa-agua-chart').innerHTML = '<div class="chart-empty">Sin datos de masa de agua</div>';
+        """
+    
+    # Tasa Metabólica Basal
+    if tiene_datos(datos_graficos.get('tasa_metabolica', {})):
+        js += f"""
+        // Tasa Metabólica Basal
+        Plotly.newPlot('tmb-chart', [{{
+            x: {datos_graficos['tasa_metabolica']['fechas']},
+            y: {datos_graficos['tasa_metabolica']['valores']},
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {{ color: '#ffa657', width: 2 }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'kcal/día', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('tmb-chart').innerHTML = '<div class="chart-empty">Sin datos de tasa metabólica</div>';
+        """
+    
+    # Distancia Recorrida
+    if tiene_datos(datos_graficos.get('distancia', {})):
+        js += f"""
+        // Distancia Recorrida
+        Plotly.newPlot('distancia-chart', [{{
+            x: {datos_graficos['distancia']['fechas']},
+            y: {datos_graficos['distancia']['valores']},
+            type: 'bar',
+            marker: {{ 
+                color: '#58a6ff',
+                line: {{ color: '#1f6feb', width: 1 }}
+            }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Distancia (km)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('distancia-chart').innerHTML = '<div class="chart-empty">Sin datos de distancia</div>';
+        """
+    
+    # Calorías Totales
+    if tiene_datos(datos_graficos.get('calorias_totales', {})):
+        js += f"""
+        // Calorías Totales
+        Plotly.newPlot('calorias-chart', [{{
+            x: {datos_graficos['calorias_totales']['fechas']},
+            y: {datos_graficos['calorias_totales']['valores']},
+            type: 'bar',
+            marker: {{ 
+                color: '#ffa657',
+                line: {{ color: '#d4a72c', width: 1 }}
+            }}
+        }}], {{
+            ...layout_config,
+            yaxis: {{ title: 'Calorías (kcal)', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('calorias-chart').innerHTML = '<div class="chart-empty">Sin datos de calorías</div>';
+        """
+    
+    return js
 
 
-def _preparar_datos_presion_arterial(presion_data, dias=90):
-    """Prepara datos de presión arterial"""
-    if not presion_data:
-        return {"fechas": [], "sistolica": [], "diastolica": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        p for p in presion_data
-        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for p in recientes:
-        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = {"sistolica": [], "diastolica": []}
-        por_dia[fecha]["sistolica"].append(p["sistolica"])
-        por_dia[fecha]["diastolica"].append(p["diastolica"])
-    
-    fechas = sorted(por_dia.keys())
-    sistolica = [sum(por_dia[f]["sistolica"]) / len(por_dia[f]["sistolica"]) for f in fechas]
-    diastolica = [sum(por_dia[f]["diastolica"]) / len(por_dia[f]["diastolica"]) for f in fechas]
-    
-    return {"fechas": fechas, "sistolica": sistolica, "diastolica": diastolica}
-
-
-def _preparar_datos_glucosa(glucosa_data, dias=90):
-    """Prepara datos de glucosa en sangre"""
-    if not glucosa_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        g for g in glucosa_data
-        if datetime.fromisoformat(g["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for g in recientes:
-        fecha = datetime.fromisoformat(g["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(g.get("nivel_mg_dl", 0))
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_tasa_metabolica(tmb_data, dias=90):
-    """Prepara datos de tasa metabólica basal"""
-    if not tmb_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        t for t in tmb_data
-        if datetime.fromisoformat(t["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for t in recientes:
-        fecha = datetime.fromisoformat(t["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(t.get("kcal_dia", 0))
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_distancia(distancia_data, dias=90):
-    """Prepara datos de distancia recorrida"""
-    if not distancia_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        d for d in distancia_data
-        if datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for d in recientes:
-        fecha = datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(d.get("distancia_km", 0))
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) for f in fechas]  # Sumar distancia del día
-    
-    return {"fechas": fechas, "valores": valores}
-
-
-def _preparar_datos_calorias(calorias_data, dias=90):
-    """Prepara datos de calorías totales quemadas"""
-    if not calorias_data:
-        return {"fechas": [], "valores": []}
-    
-    fecha_limite = datetime.now() - timedelta(days=dias)
-    recientes = [
-        c for c in calorias_data
-        if datetime.fromisoformat(c["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
-    ]
-    
-    por_dia = {}
-    for c in recientes:
-        fecha = datetime.fromisoformat(c["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = []
-        por_dia[fecha].append(c.get("energia_kcal", 0))
-    
-    fechas = sorted(por_dia.keys())
-    valores = [sum(por_dia[f]) for f in fechas]  # Sumar calorías del día
-    
-    return {"fechas": fechas, "valores": valores}
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos):
+    """Construye el HTML completo del dashboard"""
+    return f"""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard de Salud - HealthConnect</title>
+        <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+        {generar_css()}
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>📊 Dashboard de Salud</h1>
+                <p class="subtitle">Última actualización: {datetime.now().strftime("%d/%m/%Y %H:%M")}</p>
+            </header>
+            
+            {html_laboratorio}
+            
+            <div class="metrics-grid">
+                {cards_html}
+            </div>
+            
+            <div class="charts-section">
+                <h2>📈 Evolución Temporal</h2>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>PAI (Diario + Ventana Móvil 7 días)</h3>
+                        <div id="pai-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Peso</h3>
+                        <div id="peso-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>TSB + CTL + ATL</h3>
+                        <div id="tsb-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>SpO2</h3>
+                        <div id="spo2-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Grasa Corporal</h3>
+                        <div id="grasa-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Masa Muscular</h3>
+                        <div id="masa-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>FC en Reposo (Nocturna)</h3>
+                        <div id="fc-reposo-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>FC Diurna (Continua)</h3>
+                        <div id="fc-diurna-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Pasos Diarios</h3>
+                        <div id="pasos-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Presión Arterial</h3>
+                        <div id="presion-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Glucosa en Sangre</h3>
+                        <div id="glucosa-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Masa Ósea</h3>
+                        <div id="masa-osea-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Masa de Agua Corporal</h3>
+                        <div id="masa-agua-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Tasa Metabólica Basal</h3>
+                        <div id="tmb-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Distancia Recorrida</h3>
+                        <div id="distancia-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Calorías Totales</h3>
+                        <div id="calorias-chart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="training-section">
+                <h2>🏃 Entrenamientos Recientes</h2>
+                {entrenamientos_html}
+            </div>
+            
+            <div class="recommendations-section">
+                <h2>💡 Recomendaciones</h2>
+                {recomendaciones_html}
+            </div>
+        </div>
+        
+        <script>
+            {generar_javascript(datos_graficos)}
+        </script>
+    </body>
+    </html>
+    """
