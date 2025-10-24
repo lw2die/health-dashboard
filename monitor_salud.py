@@ -81,6 +81,7 @@ def procesar_datos_nuevos():
 def mostrar_resumen(cache):
     """
     Muestra resumen de métricas en consola.
+    🤫 Llama a calcular_pai_semanal en modo SILENCIOSO (sin logs)
     """
     ejercicios = cache.get("ejercicio", [])
     peso = cache.get("peso", [])
@@ -89,7 +90,8 @@ def mostrar_resumen(cache):
     # Asumo que su lógica interna ya extrae el peso actual correctamente.
     peso_actual = peso[-1]["peso"] if peso and peso[-1].get("peso") is not None else None
     
-    pai_semanal = calcular_pai_semanal(ejercicios)
+    # 🤫 LLAMADA SILENCIOSA - No imprime logs
+    pai_semanal = calcular_pai_semanal(ejercicios, silencioso=True)
     vo2max = calcular_vo2max(ejercicios)
     
     # Aseguramos que la función reciba el peso actual (o None)

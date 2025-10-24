@@ -11,12 +11,13 @@ from config import PAI_VENTANA_DIAS, GRAFICOS_DIAS_HISTORICO
 from utils.logger import logger
 
 
-def calcular_pai_semanal(ejercicios):
+def calcular_pai_semanal(ejercicios, silencioso=False):
     """
     Calcula PAI semanal con ventana móvil de 7 días desde fecha actual.
     
     Args:
         ejercicios (list): Lista de entrenamientos
+        silencioso (bool): Si es True, no imprime logs (para resumen final)
     
     Returns:
         float: PAI total de los últimos 7 días
@@ -24,9 +25,10 @@ def calcular_pai_semanal(ejercicios):
     fecha_actual = datetime.now().date()
     fecha_inicio = fecha_actual - timedelta(days=PAI_VENTANA_DIAS - 1)
     
-    logger.info("=" * 50)
-    logger.info(f"CÁLCULO PAI SEMANAL - Fecha actual: {fecha_actual}")
-    logger.info(f"Ventana de {PAI_VENTANA_DIAS} días: {fecha_inicio} a {fecha_actual}")
+    if not silencioso:
+        logger.info("=" * 50)
+        logger.info(f"CÁLCULO PAI SEMANAL - Fecha actual: {fecha_actual}")
+        logger.info(f"Ventana de {PAI_VENTANA_DIAS} días: {fecha_inicio} a {fecha_actual}")
     
     pai_total = 0
     entrenamientos_ventana = []
@@ -40,13 +42,14 @@ def calcular_pai_semanal(ejercicios):
             if fecha_inicio <= fecha_entrenamiento <= fecha_actual:
                 pai_total += e.get("pai", 0)
                 entrenamientos_ventana.append(e)
-                # ✂️ LOGS DETALLADOS ELIMINADOS - info ya está en el dashboard HTML
+                #✂️ LOGS DETALLADOS ELIMINADOS - info ya está en el dashboard HTML
         except:
             continue
     
-    logger.info(f"PAI TOTAL SEMANAL: {pai_total:.1f}")
-    logger.info(f"Entrenamientos en ventana: {len(entrenamientos_ventana)}")
-    logger.info("=" * 50)
+    if not silencioso:
+        logger.info(f"PAI TOTAL SEMANAL: {pai_total:.1f}")
+        logger.info(f"Entrenamientos en ventana: {len(entrenamientos_ventana)}")
+        logger.info("=" * 50)
     
     return round(pai_total, 1)
 
