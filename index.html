@@ -223,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 24/10/2025 15:31</p>
+                <p class="subtitle">Última actualización: 24/10/2025 15:46</p>
             </header>
             
             
@@ -330,7 +330,7 @@
         
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">17,262</div>
+        <div class="metric-value" style="color: #3fb950;">14,385</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -687,12 +687,44 @@
         
         document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
         
-        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
+        // Frecuencia Cardíaca Diurna
+        Plotly.newPlot('fc-diurna-chart', [
+            {
+                x: ['2025-10-24'],
+                y: [53],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Mínima',
+                line: { color: '#58a6ff', width: 1 },
+                fill: 'tonexty'
+            },
+            {
+                x: ['2025-10-24'],
+                y: [64.4],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Promedio',
+                line: { color: '#ffa657', width: 2 }
+            },
+            {
+                x: ['2025-10-24'],
+                y: [85],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Máxima',
+                line: { color: '#f85149', width: 1 },
+                fill: 'tonexty'
+            }
+        ], {
+            ...layout_config,
+            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' }
+        });
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-24'],
-            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 2603],
+            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 5050],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
