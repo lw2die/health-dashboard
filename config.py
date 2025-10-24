@@ -1,21 +1,30 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Configuración global del Monitor de Longevidad v4.0
-Centraliza todas las constantes y parámetros del sistema
-"""
-
 from pathlib import Path
 
 # ============================================================================
-# RUTAS DEL SISTEMA
+# RUTAS DEL SISTEMA (CORREGIDAS PARA ENTORNO LINUX LOCAL)
 # ============================================================================
 
-BASE_DIR = Path(r"H:\My Drive\HealthConnect Exports\SCRIPT")
-INPUT_DIR = BASE_DIR.parent  # H:\My Drive\HealthConnect Exports
+# La carpeta base es el directorio donde se ejecuta el script (LOCALMENTE: /tmp/monitor_local)
+BASE_DIR = Path(".")
+
+# La carpeta de entrada de JSONs debe ser relativa.
+# Asumimos que los datos de entrada JSON (la carpeta HealthConnect Exports)
+# está un nivel arriba del código SCRIPT, lo cual es manejado por el shell script.
+INPUT_DIR = Path("..") 
+
+# Carpeta de JSONs procesados (relativa al INPUT_DIR)
+PROCESADOS_DIR = INPUT_DIR / "procesados"
+
 CACHE_JSON = BASE_DIR / "cache_datos.json"
 OUTPUT_HTML = BASE_DIR / "index.html"
 GIT_REPO = BASE_DIR
+
+# Crear carpetas si no existen (crea subcarpetas dentro del entorno local de /tmp)
+# Esto garantiza que las rutas de salida existan.
+BASE_DIR.mkdir(parents=True, exist_ok=True)
+INPUT_DIR.mkdir(parents=True, exist_ok=True)
+PROCESADOS_DIR.mkdir(parents=True, exist_ok=True)
+
 
 # ============================================================================
 # PARÁMETROS DEL USUARIO
@@ -24,63 +33,46 @@ GIT_REPO = BASE_DIR
 EDAD = 61
 ALTURA_CM = 177
 FC_REPOSO = 55
-FC_MAX = 220 - EDAD  # 159 bpm
+FC_MAX = 220 - EDAD  # 179 bpm
 PESO_OBJETIVO = 79.0
 
 # ============================================================================
 # CONFIGURACIÓN DE MÉTRICAS
 # ============================================================================
 
-# PAI (Personal Activity Intelligence)
 PAI_OBJETIVO_SEMANAL = 100
 PAI_VENTANA_DIAS = 7
-
-# VO2max
-VO2MAX_EXCELENTE = 35  # ml/kg/min para edad 61
+VO2MAX_EXCELENTE = 35
 VO2MAX_BUENO = 30
-
-# Training Stress Balance (TSB)
-TSB_CTL_DIAS = 42  # Chronic Training Load (fitness de largo plazo)
-TSB_ATL_DIAS = 7   # Acute Training Load (fatiga aguda)
+TSB_CTL_DIAS = 42
+TSB_ATL_DIAS = 7
 TSB_OPTIMO_MIN = -10
 TSB_OPTIMO_MAX = 10
-
-# Sueño
 SUENO_OBJETIVO_HORAS = 7
 SUENO_MINIMO_HORAS = 6
 
-# ============================================================================
-# ZONAS DE FRECUENCIA CARDÍACA
-# ============================================================================
-
 ZONAS_FC = {
-    "recuperacion": (0.00, 0.60),      # < 60% FC_max
-    "aerobico": (0.60, 0.70),          # 60-70% FC_max
-    "tempo": (0.70, 0.80),             # 70-80% FC_max
-    "umbral": (0.80, 0.90),            # 80-90% FC_max
-    "vo2max": (0.90, 1.00)             # > 90% FC_max
+    "recuperacion": (0.00, 0.60),
+    "aerobico": (0.60, 0.70),
+    "tempo": (0.70, 0.80),
+    "umbral": (0.80, 0.90),
+    "vo2max": (0.90, 1.00)
 }
 
 # ============================================================================
 # CONFIGURACIÓN DE PROCESAMIENTO
 # ============================================================================
 
-# Archivos a procesar
 ARCHIVO_PREFIX = "health_data"
 ARCHIVO_EXTENSION = ".json"
-
-# Estrategia de limpieza
-LIMPIEZA_AGRESIVA_FULL = True  # Archivos FULL: 1 sesión/día
-LIMPIEZA_DIFF = False          # Archivos DIFF: sin limpieza
+LIMPIEZA_AGRESIVA_FULL = True
+LIMPIEZA_DIFF = False
 
 # ============================================================================
 # CONFIGURACIÓN DE VISUALIZACIÓN
 # ============================================================================
 
-# Gráficos
-GRAFICOS_DIAS_HISTORICO = 30  # Mostrar últimos 30 días en gráficos
-
-# Colores (tema oscuro GitHub)
+GRAFICOS_DIAS_HISTORICO = 30
 COLOR_EXCELENTE = "#3fb950"
 COLOR_BUENO = "#d29922"
 COLOR_MALO = "#f85149"
@@ -91,10 +83,7 @@ COLOR_FONDO = "#0d1117"
 # CONFIGURACIÓN DE EJECUCIÓN
 # ============================================================================
 
-# Loop principal
-INTERVALO_MINUTOS = 30  # Ejecutar cada 30 minutos
-
-# GitHub Pages
+INTERVALO_MINUTOS = 30
 GITHUB_REPO_URL = "https://lw2die.github.io/health-dashboard/"
 GITHUB_BRANCH = "main"
 

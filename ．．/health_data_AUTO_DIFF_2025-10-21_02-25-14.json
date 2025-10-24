@@ -1,0 +1,91 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-21T02:25:14.889108",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_changes": {
+    "count": 0,
+    "data": []
+  },
+  "sleep_changes": {
+    "count": 1,
+    "data": [
+      {
+        "session_id": "6114e81e-0016-3d14-bbc8-723d2750d820",
+        "title": "2025-10-21",
+        "start_time": "2025-10-21T03:00:00Z",
+        "end_time": "2025-10-21T04:54:00Z",
+        "stages": [],
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "vo2max_changes": {
+    "count": 0,
+    "data": []
+  },
+  "steps_changes": {
+    "count": 0,
+    "data": []
+  },
+  "distance_changes": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_changes": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

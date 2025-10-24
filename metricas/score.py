@@ -1,157 +1,135 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Cálculo del Score de Longevidad (0-100)
-Combina múltiples métricas de salud
+Cálculo de Score de Longevidad
 """
 
-from config import (
-    PESO_OBJETIVO,
-    PAI_OBJETIVO_SEMANAL,
-    VO2MAX_EXCELENTE,
-    VO2MAX_BUENO,
-    SUENO_OBJETIVO_HORAS
-)
+from config import PESO_OBJETIVO, PAI_OBJETIVO_SEMANAL, VO2MAX_EXCELENTE, VO2MAX_BUENO, SUENO_OBJETIVO_HORAS
 
 
-def calcular_score_longevidad(peso_actual, pai_semanal, vo2max, sueno_promedio):
+def calcular_score_longevidad(peso_actual, pai_semanal, vo2max, promedio_sueno_horas):
     """
-    Calcula score de longevidad (0-100) basado en múltiples factores.
-    
-    Distribución de puntos:
-    - Composición corporal: 40%
-    - Fitness cardiovascular: 30% (PAI 20% + VO2max 10%)
-    - Sueño: 20%
-    - Balance entrenamiento: 10%
+    Calcula score de longevidad (0-100).
     
     Args:
-        peso_actual (float): Peso actual en kg
-        pai_semanal (float): PAI de los últimos 7 días
-        vo2max (float): VO2max estimado
-        sueno_promedio (float): Horas de sueño promedio
+        peso_actual: Peso actual en kg
+        pai_semanal: PAI semanal acumulado
+        vo2max: VO2max calculado o None
+        promedio_sueno_horas: Horas promedio de sueño
     
     Returns:
-        int: Score de 0 a 100
+        int: Score de 0-100
     """
     score = 0
     
-    # Composición corporal (40 puntos)
+    # Peso (25 puntos) - VALIDACIÓN AHORA ESTÁ DENTRO DE _puntaje_peso
     score += _puntaje_peso(peso_actual)
     
-    # Fitness cardiovascular (30 puntos)
+    # PAI (25 puntos)
     score += _puntaje_pai(pai_semanal)
-    score += _puntaje_vo2max(vo2max)
     
-    # Sueño (20 puntos)
-    score += _puntaje_sueno(sueno_promedio)
+    # VO2max (25 puntos)
+    if vo2max is not None:
+        score += _puntaje_vo2max(vo2max)
+    else:
+        # Si no hay VO2max, dar 15 puntos base
+        score += 15
     
-    # Balance de entrenamiento (10 puntos)
-    # Por ahora siempre otorga 10 puntos
-    # En el futuro podría considerar TSB
-    score += 10
+    # Sueño (25 puntos)
+    score += _puntaje_sueno(promedio_sueno_horas)
     
-    return min(100, score)
+    return max(0, min(100, int(score)))
 
 
 def _puntaje_peso(peso_actual):
-    """
-    Calcula puntaje de composición corporal (0-40 puntos).
-    """
-    if peso_actual <= 0:
-        return 0
+    """Calcula puntaje por peso (0-25)."""
+    # 🚨 CORRECCIÓN CLAVE: Manejar None o cero antes de la resta 🚨
+    if peso_actual is None or peso_actual <= 0:
+        return 10  # Puntaje base si el dato de peso falta
     
-    delta_peso = abs(peso_actual - PESO_OBJETIVO)
+    # Línea 49 original que causaba el error:
+    diferencia = abs(peso_actual - PESO_OBJETIVO)
     
-    if delta_peso == 0:
-        return 40
-    elif delta_peso <= 2:
-        return 35
-    elif delta_peso <= 5:
+    if diferencia <= 2:
         return 25
-    elif delta_peso <= 10:
+    elif diferencia <= 5:
+        return 20
+    elif diferencia <= 10:
         return 15
     else:
-        return 5
+        return 10
 
 
 def _puntaje_pai(pai_semanal):
-    """
-    Calcula puntaje de PAI semanal (0-20 puntos).
-    """
-    if pai_semanal >= PAI_OBJETIVO_SEMANAL:
+    """Calcula puntaje por PAI (0-25)."""
+    if pai_semanal >= PAI_OBJETIVO_SEMANAL * 1.5:
+        return 25
+    elif pai_semanal >= PAI_OBJETIVO_SEMANAL:
         return 20
-    elif pai_semanal >= 75:
+    elif pai_semanal >= PAI_OBJETIVO_SEMANAL * 0.75:
         return 15
-    elif pai_semanal >= 50:
+    elif pai_semanal >= PAI_OBJETIVO_SEMANAL * 0.5:
         return 10
     else:
         return 5
 
 
 def _puntaje_vo2max(vo2max):
-    """
-    Calcula puntaje de VO2max (0-10 puntos).
-    """
+    """Calcula puntaje por VO2max (0-25). Valida que no sea None."""
+    # Nota: Aunque la función principal ya verifica 'vo2max is not None', mantenemos la validación aquí
+    if vo2max is None or vo2max == 0:
+        return 15  # Puntaje neutral si no hay datos
+    
     if vo2max >= VO2MAX_EXCELENTE:
-        return 10
+        return 25
     elif vo2max >= VO2MAX_BUENO:
-        return 7
-    else:
-        return 3
-
-
-def _puntaje_sueno(sueno_promedio):
-    """
-    Calcula puntaje de sueño (0-20 puntos).
-    """
-    if sueno_promedio >= SUENO_OBJETIVO_HORAS:
         return 20
-    elif sueno_promedio >= 6:
+    elif vo2max >= VO2MAX_BUENO * 0.9:
         return 15
-    elif sueno_promedio >= 5:
-        return 10
     else:
-        return 5
+        return 10
 
 
-def generar_recomendaciones(peso_actual, pai_semanal, sueno_promedio):
-    """
-    Genera recomendaciones personalizadas basadas en métricas.
+def _puntaje_sueno(promedio_sueno_horas):
+    """Calcula puntaje por sueño (0-25)."""
+    if promedio_sueno_horas == 0:
+        return 0
     
-    Args:
-        peso_actual (float): Peso actual en kg
-        pai_semanal (float): PAI semanal
-        sueno_promedio (float): Horas de sueño promedio
-    
-    Returns:
-        list: Lista de recomendaciones HTML
-    """
+    if promedio_sueno_horas >= SUENO_OBJETIVO_HORAS:
+        return 25
+    elif promedio_sueno_horas >= SUENO_OBJETIVO_HORAS - 1:
+        return 20
+    elif promedio_sueno_horas >= SUENO_OBJETIVO_HORAS - 2:
+        return 15
+    else:
+        return 10
+
+
+def generar_recomendaciones(peso_actual, pai_semanal, promedio_sueno_horas):
+    """Genera recomendaciones personalizadas."""
     recomendaciones = []
     
-    # Recomendación de peso
-    delta_peso = peso_actual - PESO_OBJETIVO
-    if delta_peso > 0:
-        deficit_diario = 300 if delta_peso <= 5 else 400
-        semanas_objetivo = int((delta_peso * 7700) / (deficit_diario * 7))
-        recomendaciones.append(
-            f"<strong>Ajuste Fino:</strong> Estás {abs(delta_peso):.1f} kg sobre objetivo. "
-            f"Con un déficit moderado de {deficit_diario} kcal/día alcanzarás el objetivo "
-            f"en {semanas_objetivo} semanas."
-        )
+    # Peso
+    # 🚨 CORRECCIÓN CLAVE: Validar que haya datos de peso antes de calcular la diferencia 🚨
+    if peso_actual is not None and peso_actual > 0:
+        diferencia_peso = peso_actual - PESO_OBJETIVO
+        if abs(diferencia_peso) > 5:
+            if diferencia_peso > 0:
+                recomendaciones.append(f"🎯 Reducir {abs(diferencia_peso):.1f} kg para peso objetivo")
+            else:
+                recomendaciones.append(f"🎯 Ganar {abs(diferencia_peso):.1f} kg para peso objetivo")
     
-    # Recomendación de sueño
-    if sueno_promedio < SUENO_OBJETIVO_HORAS and sueno_promedio > 0:
-        recomendaciones.append(
-            f"<strong>Sueño Insuficiente:</strong> Promedias {sueno_promedio:.1f}h/noche. "
-            f"El sueño <{SUENO_OBJETIVO_HORAS}h está asociado con mayor mortalidad y "
-            f"dificulta la pérdida de peso."
-        )
-    
-    # Recomendación de PAI
+    # PAI
     if pai_semanal < PAI_OBJETIVO_SEMANAL:
-        recomendaciones.append(
-            f"<strong>PAI Bajo:</strong> Alcanzaste {pai_semanal:.1f} PAI esta semana "
-            f"(objetivo: {PAI_OBJETIVO_SEMANAL}). Aumenta intensidad o frecuencia de entrenamientos."
-        )
+        deficit = PAI_OBJETIVO_SEMANAL - pai_semanal
+        recomendaciones.append(f"💪 Aumentar PAI en {deficit:.0f} para objetivo semanal")
+    
+    # Sueño
+    if promedio_sueno_horas < SUENO_OBJETIVO_HORAS:
+        deficit_sueno = SUENO_OBJETIVO_HORAS - promedio_sueno_horas
+        recomendaciones.append(f"😴 Dormir {deficit_sueno:.1f}h más por noche")
+    
+    if not recomendaciones:
+        recomendaciones.append("🎉 ¡Excelente! Mantén tu rutina actual")
     
     return recomendaciones

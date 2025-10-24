@@ -4,9 +4,9 @@
 Monitor de Longevidad v4.0 - Sistema Integral de Salud
 Script principal - orquesta todos los módulos
 
-ESTRATEGIA DE LIMPIEZA:
-- Archivos FULL: limpieza agresiva (1 sesión/día, elimina duplicados)
-- Archivos DIFF: sin limpieza (datos ya validados por la app)
+ESTRATEGIA: SIN LIMPIEZA
+- Permisos configurados en Health Connect para evitar duplicados en origen
+- Reporte por fuente para monitorear y detectar apps problemáticas
 """
 
 import sys
@@ -18,7 +18,7 @@ from config import INTERVALO_MINUTOS
 from utils.logger import logger
 from core.cache import cargar_cache, guardar_cache, obtener_archivos_procesados, marcar_archivo_procesado
 from core.procesador import obtener_archivos_pendientes, procesar_archivo, mover_archivo_procesado
-from core.limpieza import validar_y_limpiar_ejercicios
+# from core.limpieza import validar_y_limpiar_ejercicios  # DESACTIVADO - sin duplicados en origen
 from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_vo2max
 from metricas.score import calcular_score_longevidad
@@ -34,18 +34,8 @@ def procesar_datos_nuevos():
     # Cargar cache existente
     cache = cargar_cache()
     
-    # Limpieza inicial (solo la primera vez)
-    if len(cache.get("ejercicio", [])) > 0 and len(cache.get("procesados", [])) <= 1:
-        ejercicios_originales = len(cache["ejercicio"])
-        cache["ejercicio"] = validar_y_limpiar_ejercicios(cache["ejercicio"])
-        ejercicios_limpiados = len(cache["ejercicio"])
-        
-        if ejercicios_originales != ejercicios_limpiados:
-            logger.info(
-                f"Limpieza inicial: {ejercicios_originales} → {ejercicios_limpiados} "
-                f"entrenamientos (-{ejercicios_originales - ejercicios_limpiados} duplicados)"
-            )
-            guardar_cache(cache)
+    # LIMPIEZA DESACTIVADA - datos ya vienen limpios desde Health Connect
+    # (permisos configurados para evitar duplicados en origen)
     
     # Obtener archivos pendientes
     archivos_procesados = obtener_archivos_procesados(cache)
@@ -75,19 +65,8 @@ def procesar_datos_nuevos():
         else:
             logger.warning(f"  ⚠ No se detectaron campos en {archivo}")
         
-        # Limpiar duplicados solo si es archivo FULL
-        if es_full and "ejercicio" in campos:
-            ejercicios_antes = len(cache["ejercicio"])
-            cache["ejercicio"] = validar_y_limpiar_ejercicios(cache["ejercicio"])
-            ejercicios_despues = len(cache["ejercicio"])
-            
-            if ejercicios_antes != ejercicios_despues:
-                logger.info(
-                    f"  Limpieza FULL: {ejercicios_antes} → {ejercicios_despues} "
-                    f"(-{ejercicios_antes - ejercicios_despues} duplicados)"
-                )
-        elif es_diff:
-            logger.info("  ✓ DIFF procesado sin limpieza (datos confiables)")
+        # LIMPIEZA DESACTIVADA - datos limpios desde origen
+        logger.info(f"  ✓ Archivo procesado sin limpieza (datos confiables)")
         
         # Marcar como procesado y mover archivo
         marcar_archivo_procesado(cache, archivo)
@@ -106,9 +85,14 @@ def mostrar_resumen(cache):
     ejercicios = cache.get("ejercicio", [])
     peso = cache.get("peso", [])
     
-    peso_actual = peso[-1]["peso"] if peso else 0
+    # Corrección de seguridad: Usar .get() o [0] con validación en la lógica de su proyecto
+    # Asumo que su lógica interna ya extrae el peso actual correctamente.
+    peso_actual = peso[-1]["peso"] if peso and peso[-1].get("peso") is not None else None
+    
     pai_semanal = calcular_pai_semanal(ejercicios)
     vo2max = calcular_vo2max(ejercicios)
+    
+    # Aseguramos que la función reciba el peso actual (o None)
     score = calcular_score_longevidad(peso_actual, pai_semanal, vo2max, 0)
     
     from config import PESO_OBJETIVO, PAI_OBJETIVO_SEMANAL
@@ -120,7 +104,7 @@ def mostrar_resumen(cache):
     logger.info(f"Score Longevidad: {score}/100")
     logger.info(f"PAI Semanal: {pai_semanal:.1f} (objetivo ≥{PAI_OBJETIVO_SEMANAL})")
     logger.info(f"VO2max: {vo2max} ml/kg/min")
-    logger.info(f"Peso: {peso_actual:.1f} kg (objetivo {PESO_OBJETIVO})")
+    logger.info(f"Peso: {peso_actual:.1f} kg (objetivo {PESO_OBJETIVO})" if peso_actual is not None else f"Peso: Dato no disponible (objetivo {PESO_OBJETIVO})")
     logger.info(f"Total entrenamientos únicos: {len(ejercicios)}")
     logger.info("=" * 80)
 
@@ -134,7 +118,7 @@ def ciclo_principal():
     4. Mostrar resumen
     """
     logger.info("=" * 80)
-    logger.info("PROCESAMIENTO - Monitor de Longevidad v4.0 [MODO HÍBRIDO]")
+    logger.info("PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]")
     logger.info("=" * 80)
     
     try:
@@ -157,43 +141,23 @@ def ciclo_principal():
 
 def main():
     """
-    Punto de entrada principal con loop de monitoreo.
-    Ejecuta cada N minutos (configurado en config.py).
+    Punto de entrada principal - Ejecuta un ciclo de monitoreo y termina.
     """
     logger.info("")
     logger.info("=" * 80)
-    logger.info("MONITOR DE LONGEVIDAD v4.0 - MODO HÍBRIDO [MODULAR]")
+    logger.info("MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON")
     logger.info("=" * 80)
-    logger.info("Configuración: FULL=limpieza agresiva | DIFF=sin limpieza")
-    logger.info(f"Intervalo: cada {INTERVALO_MINUTOS} minutos")
-    logger.info("Presiona Ctrl+C para detener.")
+    logger.info("Configuración: SIN LIMPIEZA - datos limpios desde origen")
+    logger.info("Ejecución: Un ciclo, controlado por Crontab de Ubuntu.")
     logger.info("=" * 80)
     logger.info("")
     
     try:
-        while True:
-            ciclo_principal()
+        ciclo_principal()
             
-            # Countdown timer
-            segundos_espera = INTERVALO_MINUTOS * 60
-            for remaining in range(segundos_espera, 0, -1):
-                mins, secs = divmod(remaining, 60)
-                barra = "█" * 50
-                sys.stdout.write(
-                    f"\r{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} [INFO] - "
-                    f"[{barra}] {mins:02d}:{secs:02d} → Próxima ejecución"
-                )
-                sys.stdout.flush()
-                time.sleep(1)
-            
-            print()  # Nueva línea después del countdown
-            
-    except KeyboardInterrupt:
-        logger.info("")
-        logger.info("=" * 80)
-        logger.info("Monitor detenido por el usuario.")
-        logger.info("=" * 80)
-        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Fallo en la ejecución principal: {str(e)}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,85 @@
+{
+  "export_type": "AUTO_FULL_EXPORT",
+  "timestamp": "2025-10-18T08:21:58.925928",
+  "data_source": "Health Connect - All Sources",
+  "weight_records": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_sessions": {
+    "count": 0,
+    "data": []
+  },
+  "sleep_sessions": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_records": {
+    "count": 0,
+    "data": []
+  },
+  "steps_records": {
+    "count": 0,
+    "data": []
+  },
+  "distance_records": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_records": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_records": {
+    "count": 0,
+    "data": []
+  },
+  "height_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_records": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_pressure_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_records": {
+    "count": 0,
+    "data": []
+  },
+  "nutrition_records": {
+    "count": 0,
+    "data": []
+  },
+  "active_calories_burned_records": {
+    "count": 0,
+    "data": []
+  }
+}

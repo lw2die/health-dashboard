@@ -1,455 +1,595 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Generación del dashboard HTML con gráficos interactivos
+Dashboard Generator - Orquestador Principal (MODULAR)
+Importa y coordina todos los módulos de generación
 """
 
 from datetime import datetime, timedelta
-from config import (
-    OUTPUT_HTML, EDAD, ALTURA_CM, FC_MAX, FC_REPOSO, PESO_OBJETIVO,
-    PAI_OBJETIVO_SEMANAL, COLOR_EXCELENTE, COLOR_BUENO, COLOR_MALO,
-    TSB_OPTIMO_MIN, TSB_OPTIMO_MAX
-)
-from metricas.pai import calcular_pai_semanal, preparar_datos_pai_historico
-from metricas.fitness import calcular_vo2max, calcular_tsb, preparar_datos_tsb_historico
-from metricas.score import calcular_score_longevidad, generar_recomendaciones
-from outputs.graficos import preparar_datos_peso
+from config import OUTPUT_HTML, EDAD, ALTURA_CM
 from utils.logger import logger
+
+# Importar módulos de métricas
+from metricas.pai import calcular_pai_semanal
+from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
+from metricas.score import calcular_score_longevidad, generar_recomendaciones
+# from outputs.graficos import preparar_datos_peso  # ❌ Comentado - usaremos versión local
+
+
+def _preparar_datos_peso_deduplicado(peso_data, dias=90):
+    """
+    Prepara datos de peso DEDUPLICADOS por día.
+    Si hay múltiples mediciones en un día, usa el promedio.
+    """
+    if not peso_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        p for p in peso_data
+        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    # ✅ Deduplicar por día - promediar si hay múltiples mediciones
+    por_dia = {}
+    for p in recientes:
+        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(p["peso"])
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+# Importar módulos de dashboard
+from outputs.cards import (
+    generar_card_pai, generar_card_peso, generar_card_vo2max,
+    generar_card_tsb, generar_card_sueno, generar_card_spo2,
+    generar_card_grasa, generar_card_masa_muscular, generar_card_fc_reposo,
+    generar_card_pasos, generar_card_presion, generar_card_score
+)
+from outputs.html_builder import construir_html_completo
+from outputs.laboratorio_renderer import (
+    generar_html_laboratorio, generar_tabla_entrenamientos,
+    generar_recomendaciones_html
+)
+
+# Laboratorio (opcional)
+try:
+    from metricas.laboratorio import obtener_datos_laboratorio_y_alertas
+    LABORATORIO_DISPONIBLE = True
+except ImportError:
+    logger.warning("⚠️ Módulo laboratorio no disponible")
+    LABORATORIO_DISPONIBLE = False
 
 
 def generar_dashboard(cache):
     """
-    Genera dashboard HTML completo con métricas y gráficos.
-    
-    Args:
-        cache (dict): Cache con todos los datos
+    Genera dashboard HTML completo.
+    Orquesta todos los módulos para construir el dashboard.
     """
     logger.info("Generando dashboard HTML con gráficos...")
     
+    # ═══════════════════════════════════════════════
+    # 1. EXTRAER DATOS DEL CACHE
+    # ═══════════════════════════════════════════════
     ejercicios = cache.get("ejercicio", [])
     peso = cache.get("peso", [])
     sueno = cache.get("sueno", [])
+    spo2 = cache.get("spo2", [])
+    grasa_corporal = cache.get("grasa_corporal", [])
+    masa_muscular = cache.get("masa_muscular", [])
+    vo2max_medido = cache.get("vo2max", [])
+    fc_reposo = cache.get("fc_reposo", [])
+    pasos = cache.get("pasos", [])
+    presion_arterial = cache.get("presion_arterial", [])
+    # ✅ NUEVAS MÉTRICAS
+    glucosa = cache.get("glucosa", [])
+    masa_osea = cache.get("masa_osea", [])
+    masa_agua = cache.get("masa_agua", [])
+    tasa_metabolica = cache.get("tasa_metabolica", [])
+    distancia = cache.get("distancia", [])
+    calorias_totales = cache.get("calorias_totales", [])
     
-    # Calcular métricas principales
-    metricas = _calcular_metricas(ejercicios, peso, sueno)
+    # ═══════════════════════════════════════════════
+    # 2. CALCULAR MÉTRICAS
+    # ═══════════════════════════════════════════════
+    metricas = _calcular_metricas(
+        ejercicios, peso, sueno, spo2, grasa_corporal,
+        masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial
+    )
     
-    # Preparar datos para gráficos
+    # ═══════════════════════════════════════════════
+    # 3. PROCESAR LABORATORIO (si está disponible)
+    # ═══════════════════════════════════════════════
+    datos_laboratorio = {}
+    if LABORATORIO_DISPONIBLE:
+        try:
+            datos_laboratorio = obtener_datos_laboratorio_y_alertas(
+                edad=EDAD,
+                altura_cm=ALTURA_CM,
+                peso_kg=metricas.get("peso_actual", 83),
+                vo2max_medido=metricas.get("vo2max", 38)
+            )
+            logger.info(f"✅ Laboratorio procesado: Longevity Score = {datos_laboratorio.get('longevity_score', 'N/A')}/100")
+        except Exception as e:
+            logger.error(f"❌ Error procesando laboratorio: {e}")
+    
+    # ═══════════════════════════════════════════════
+    # 4. PREPARAR DATOS PARA GRÁFICOS
+    # ═══════════════════════════════════════════════
+    # Extraer frecuencia_cardiaca del cache
+    frecuencia_cardiaca = cache.get("frecuencia_cardiaca", [])
+    
     datos_graficos = {
-        "pai": preparar_datos_pai_historico(ejercicios),
-        "peso": preparar_datos_peso(peso),
-        "tsb": preparar_datos_tsb_historico(ejercicios)
+        "pai": _preparar_datos_pai_completo(ejercicios),
+        "peso": _preparar_datos_peso_deduplicado(peso),  # ✅ Deduplicado
+        "tsb": preparar_datos_tsb_historico(ejercicios),
+        "spo2": _preparar_datos_spo2(spo2),
+        "grasa": _preparar_datos_metrica_corporal(grasa_corporal, "porcentaje"),
+        "masa_muscular": _preparar_datos_metrica_corporal(masa_muscular, "masa_kg"),
+        "fc_reposo": _preparar_datos_fc_reposo(fc_reposo),
+        "frecuencia_cardiaca": _preparar_datos_fc_diurna(frecuencia_cardiaca),  # ✅ AGREGADO
+        "pasos": _preparar_datos_pasos(pasos),
+        "presion_arterial": _preparar_datos_presion_arterial(presion_arterial),
+        # ✅ NUEVAS MÉTRICAS
+        "glucosa": _preparar_datos_glucosa(glucosa),
+        "masa_osea": _preparar_datos_metrica_corporal(masa_osea, "masa_kg"),
+        "masa_agua": _preparar_datos_metrica_corporal(masa_agua, "masa_kg"),
+        "tasa_metabolica": _preparar_datos_tasa_metabolica(tasa_metabolica),
+        "distancia": _preparar_datos_distancia(distancia),
+        "calorias_totales": _preparar_datos_calorias(calorias_totales)
     }
     
-    # Obtener entrenamientos recientes
-    entrenamientos_recientes = _obtener_entrenamientos_recientes(ejercicios)
+    # ═══════════════════════════════════════════════
+    # 5. GENERAR COMPONENTES HTML
+    # ═══════════════════════════════════════════════
     
-    # Generar HTML
-    html = _generar_html(metricas, datos_graficos, entrenamientos_recientes, len(ejercicios))
+    # Laboratorio
+    html_laboratorio = generar_html_laboratorio(datos_laboratorio) if datos_laboratorio else ""
     
-    # Guardar archivo
+    # Cards
+    cards_html = "".join([
+        generar_card_pai(metricas),
+        generar_card_peso(metricas),
+        generar_card_vo2max(metricas),
+        generar_card_tsb(metricas),
+        generar_card_sueno(metricas),
+        generar_card_spo2(metricas),
+        generar_card_grasa(metricas),
+        generar_card_masa_muscular(metricas),
+        generar_card_fc_reposo(metricas),
+        generar_card_pasos(metricas),
+        generar_card_presion(metricas),
+        generar_card_score(metricas)
+    ])
+    
+    # Entrenamientos recientes
+    entrenamientos = _obtener_entrenamientos_recientes(ejercicios)
+    entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
+    
+    # Recomendaciones
+    recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
+    
+    # ═══════════════════════════════════════════════
+    # 6. CONSTRUIR HTML COMPLETO
+    # ═══════════════════════════════════════════════
+    html = construir_html_completo(
+        html_laboratorio,
+        cards_html,
+        entrenamientos_html,
+        recomendaciones_html,
+        datos_graficos
+    )
+    
+    # ═══════════════════════════════════════════════
+    # 7. GUARDAR ARCHIVO
+    # ═══════════════════════════════════════════════
     with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
         f.write(html)
     
     logger.info(f"Dashboard generado: {OUTPUT_HTML}")
 
 
-def _calcular_metricas(ejercicios, peso, sueno):
-    """
-    Calcula todas las métricas necesarias para el dashboard.
-    """
-    # PAI y fitness
-    pai_semanal = calcular_pai_semanal(ejercicios)
-    vo2max = calcular_vo2max(ejercicios)
-    tsb = calcular_tsb(ejercicios)
+# ═══════════════════════════════════════════════════════════════
+# FUNCIONES AUXILIARES
+# ═══════════════════════════════════════════════════════════════
+
+def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial):
+    """Calcula todas las métricas del dashboard"""
     
-    # Peso
-    peso_actual = peso[-1]["peso"] if peso else 0
-    delta_peso = peso_actual - PESO_OBJETIVO
+    # PAI semanal
+    pai_semanal = calcular_pai_semanal(ejercicios)
+    
+    # Peso actual
+    peso_actual = peso[-1]["peso"] if peso else None
+    
+    # VO2max MEDIDO
+    vo2max = vo2max_medido[-1]["vo2max"] if vo2max_medido else None
+    
+    # TSB actual
+    tsb_dict = calcular_tsb(ejercicios) if ejercicios else {"tsb": 0, "ctl": 0, "atl": 0}
+    tsb_actual = tsb_dict.get("tsb", 0) if isinstance(tsb_dict, dict) else tsb_dict
     
     # Sueño (últimos 7 días)
-    sueno_7d = [
-        s for s in sueno
-        if (datetime.now().replace(tzinfo=None) - 
-            datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).replace(tzinfo=None)).days <= 7
-    ]
-    sueno_promedio = sum(s["duracion"] for s in sueno_7d) / len(sueno_7d) / 60 if sueno_7d else 0
-    sueno_profundo_pct = sum(s["porcentaje_profundo"] for s in sueno_7d) / len(sueno_7d) if sueno_7d else 0
+    promedio_sueno_horas = None
+    if sueno:
+        suenos_recientes = sueno[-7:] if len(sueno) >= 7 else sueno
+        total_minutos = sum(s.get("duracion", 0) for s in suenos_recientes)
+        promedio_sueno_horas = (total_minutos / len(suenos_recientes) / 60) if suenos_recientes else None
+    
+    # SpO2 promedio
+    spo2_promedio = None
+    if spo2:
+        spo2_recientes = spo2[-7:] if len(spo2) >= 7 else spo2
+        spo2_promedio = sum(s.get("porcentaje", 0) for s in spo2_recientes) / len(spo2_recientes)
+    
+    # Grasa corporal actual
+    grasa_actual = grasa_corporal[-1]["porcentaje"] if grasa_corporal else None
+    
+    # Masa muscular actual
+    masa_muscular_actual = masa_muscular[-1]["masa_kg"] if masa_muscular else None
+    
+    # FC en reposo promedio
+    fc_reposo_promedio = None
+    if fc_reposo:
+        fc_recientes = fc_reposo[-7:] if len(fc_reposo) >= 7 else fc_reposo
+        fc_reposo_promedio = sum(fc.get("bpm", 0) for fc in fc_recientes) / len(fc_recientes)
+    
+    # Pasos promedio
+    pasos_promedio = None
+    if pasos:
+        pasos_recientes = pasos[-7:] if len(pasos) >= 7 else pasos
+        pasos_promedio = sum(p.get("pasos", 0) for p in pasos_recientes) / len(pasos_recientes)
+    
+    # Presión arterial promedio
+    presion_sistolica = None
+    presion_diastolica = None
+    if presion_arterial:
+        presion_recientes = presion_arterial[-7:] if len(presion_arterial) >= 7 else presion_arterial
+        presion_sistolica = sum(p.get("sistolica", 0) for p in presion_recientes) / len(presion_recientes)
+        presion_diastolica = sum(p.get("diastolica", 0) for p in presion_recientes) / len(presion_recientes)
     
     # Score de longevidad
-    score_longevidad = calcular_score_longevidad(peso_actual, pai_semanal, vo2max, sueno_promedio)
+    score_longevidad = calcular_score_longevidad(
+        peso_actual, pai_semanal, vo2max, promedio_sueno_horas
+    )
     
     # Recomendaciones
-    recomendaciones = generar_recomendaciones(peso_actual, pai_semanal, sueno_promedio)
-    recomendaciones_html = "<br><br>".join(recomendaciones) if recomendaciones else \
-        "<strong>Estado Óptimo:</strong> Todas las métricas dentro de rangos saludables."
-    
-    # Colores
-    score_color = COLOR_EXCELENTE if score_longevidad >= 80 else \
-                  COLOR_BUENO if score_longevidad >= 60 else COLOR_MALO
-    
-    pai_color = COLOR_EXCELENTE if pai_semanal >= PAI_OBJETIVO_SEMANAL else \
-                COLOR_BUENO if pai_semanal >= 75 else COLOR_MALO
-    
-    tsb_color = COLOR_EXCELENTE if TSB_OPTIMO_MIN < tsb["tsb"] < TSB_OPTIMO_MAX else \
-                COLOR_BUENO if -20 < tsb["tsb"] < 20 else COLOR_MALO
+    recomendaciones = generar_recomendaciones(
+        peso_actual, pai_semanal, promedio_sueno_horas
+    )
     
     return {
         "pai_semanal": pai_semanal,
-        "vo2max": vo2max,
-        "tsb": tsb,
         "peso_actual": peso_actual,
-        "delta_peso": delta_peso,
-        "sueno_promedio": sueno_promedio,
-        "sueno_profundo_pct": sueno_profundo_pct,
+        "vo2max": vo2max,
+        "tsb_actual": tsb_actual,
+        "tsb_dict": tsb_dict,
+        "promedio_sueno": promedio_sueno_horas,
+        "spo2_promedio": spo2_promedio,
+        "grasa_actual": grasa_actual,
+        "masa_muscular_actual": masa_muscular_actual,
+        "fc_reposo_promedio": fc_reposo_promedio,
+        "pasos_promedio": pasos_promedio,
+        "presion_sistolica": presion_sistolica,
+        "presion_diastolica": presion_diastolica,
         "score_longevidad": score_longevidad,
-        "recomendaciones_html": recomendaciones_html,
-        "score_color": score_color,
-        "pai_color": pai_color,
-        "tsb_color": tsb_color
+        "recomendaciones": recomendaciones
     }
 
 
 def _obtener_entrenamientos_recientes(ejercicios, dias=7):
-    """
-    Obtiene entrenamientos de los últimos N días.
-    """
+    """Obtiene entrenamientos de los últimos N días"""
+    if not ejercicios:
+        return []
+    
     fecha_limite = datetime.now().replace(tzinfo=None) - timedelta(days=dias)
     recientes = [
         e for e in ejercicios
         if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
     ]
     recientes.sort(key=lambda x: x["fecha"], reverse=True)
-    return recientes[:10]  # Máximo 10
+    return recientes[:10]
 
 
-def _generar_html(metricas, datos_graficos, entrenamientos_recientes, total_entrenamientos):
-    """
-    Genera el HTML completo del dashboard.
-    """
-    return f"""<!DOCTYPE html>
-<html lang='es'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Longevidad</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        {_generar_css()}
-    </style>
-</head>
-<body>
-    <div class='container'>
-        {_generar_header()}
-        {_generar_score_section(metricas)}
-        {_generar_metrics_grid(metricas, total_entrenamientos)}
-        {_generar_recomendaciones(metricas)}
-        {_generar_graficos_containers()}
-        {_generar_entrenamientos_recientes(entrenamientos_recientes)}
-        {_generar_interpretacion()}
-    </div>
+# ═══════════════════════════════════════════════════════════════
+# PREPARADORES DE DATOS PARA GRÁFICOS
+# ═══════════════════════════════════════════════════════════════
+
+def _preparar_datos_pai_completo(ejercicios, dias=30):
+    """Prepara PAI diario + ventana móvil 7 días"""
+    if not ejercicios:
+        return {"fechas": [], "pai_diario": [], "pai_ventana_7d": []}
     
-    <script>
-        {_generar_javascript(datos_graficos)}
-    </script>
-</body>
-</html>"""
-
-
-def _generar_css():
-    """CSS del dashboard"""
-    return """
-        body {
-            background: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        h1, h2, h3, h4 { margin: 0; padding-bottom: 10px; }
-        .container { max-width: 1400px; margin: auto; }
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .metric-card {
-            background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #30363d;
-            transition: transform 0.2s;
-        }
-        .metric-card:hover { transform: translateY(-5px); }
-        .metric-card h3 { color: #58a6ff; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
-        .metric-value { font-size: 2.5em; font-weight: bold; margin: 10px 0; }
-        .metric-subtitle { font-size: 0.85em; color: #8b949e; }
-        .info-box {
-            background: #161b22;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border: 1px solid #30363d;
-        }
-        .info-box h3 { color: #58a6ff; margin-bottom: 15px; }
-        .info-box ul { list-style-position: inside; padding: 0; margin: 10px 0; }
-        .info-box li { padding: 8px 0; border-bottom: 1px solid #21262d; }
-        .info-box li:last-child { border-bottom: none; }
-        .chart-container { margin-top: 30px; }
-        .recommendations {
-            background: linear-gradient(135deg, #1f6feb 0%, #1158c7 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            line-height: 1.8;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #1f6feb 0%, #1158c7 100%);
-            border-radius: 12px;
-        }
-        .score-grande {
-            font-size: 4em;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-    """
-
-
-def _generar_header():
-    """Header del dashboard"""
-    return f"""
-        <header>
-            <h1>Dashboard de Longevidad Integral</h1>
-            <p style="margin: 5px 0;">Última actualización: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
-            <p style="font-size: 0.9em; margin: 0;">Edad: {EDAD} años | Altura: {ALTURA_CM} cm | FC Max: {FC_MAX} bpm | FC Reposo: {FC_REPOSO} bpm</p>
-        </header>
-    """
-
-
-def _generar_score_section(metricas):
-    """Sección del score principal"""
-    return f"""
-        <div style="text-align: center; background: #161b22; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
-            <h2>Score de Longevidad</h2>
-            <div class='score-grande' style="color: {metricas['score_color']}">{metricas['score_longevidad']}</div>
-            <p style="color: #8b949e;">Basado en composición corporal, fitness, sueño y balance de entrenamiento</p>
-        </div>
-    """
-
-
-def _generar_metrics_grid(metricas, total_entrenamientos):
-    """Grid de métricas principales"""
-    return f"""
-        <div class='metrics-grid'>
-            <div class='metric-card'>
-                <h3>PAI Semanal</h3>
-                <div class='metric-value' style="color: {metricas['pai_color']}">{metricas['pai_semanal']}</div>
-                <div class='metric-subtitle'>Objetivo: ≥{PAI_OBJETIVO_SEMANAL}/semana</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Peso Actual</h3>
-                <div class='metric-value'>{metricas['peso_actual']:.1f} kg</div>
-                <div class='metric-subtitle'>Objetivo: {PESO_OBJETIVO} kg ({'+' if metricas['delta_peso'] > 0 else ''}{metricas['delta_peso']:.1f} kg)</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>VO2max</h3>
-                <div class='metric-value'>{metricas['vo2max']}</div>
-                <div class='metric-subtitle'>ml/kg/min (Promedio)</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>TSB (Balance)</h3>
-                <div class='metric-value' style="color: {metricas['tsb_color']}">{metricas['tsb']['tsb']}</div>
-                <div class='metric-subtitle'>CTL: {metricas['tsb']['ctl']} | ATL: {metricas['tsb']['atl']}</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Sueño (7d)</h3>
-                <div class='metric-value'>{metricas['sueno_promedio']:.1f}h</div>
-                <div class='metric-subtitle'>Profundo: {metricas['sueno_profundo_pct']:.1f}%</div>
-            </div>
-            
-            <div class='metric-card'>
-                <h3>Entrenamientos</h3>
-                <div class='metric-value'>{total_entrenamientos}</div>
-                <div class='metric-subtitle'>Total registrados</div>
-            </div>
-        </div>
-    """
-
-
-def _generar_recomendaciones(metricas):
-    """Sección de recomendaciones"""
-    return f"""
-        <div class='recommendations'>
-            <h3>Recomendaciones Priorizadas para Optimizar Longevidad</h3>
-            <div style="margin-top: 15px;">{metricas['recomendaciones_html']}</div>
-        </div>
-    """
-
-
-def _generar_graficos_containers():
-    """Contenedores para los gráficos"""
-    return """
-        <div class='chart-container'>
-            <div id="pai-chart" style="height:400px;"></div>
-        </div>
-        
-        <div class='chart-container'>
-            <div id="peso-chart" style="height:400px;"></div>
-        </div>
-        
-        <div class='chart-container'>
-            <div id="tsb-chart" style="height:400px;"></div>
-        </div>
-    """
-
-
-def _generar_entrenamientos_recientes(entrenamientos):
-    """Lista de entrenamientos recientes"""
-    items = ''.join([
-        f"""<li>
-            <strong>{datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")}:</strong> 
-            {e["tipo"]} - {e["duracion"]} min 
-            (FC: {e["fc_promedio"]} bpm, PAI: {e["pai"]:.1f}, Zona: {e["zona"]})
-        </li>"""
-        for e in entrenamientos
-    ])
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        e for e in ejercicios
+        if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
     
-    return f"""
-        <div class="info-box">
-            <h3>Entrenamientos Recientes (Últimos 7 días)</h3>
-            <ul>{items}</ul>
-        </div>
-    """
-
-
-def _generar_interpretacion():
-    """Sección de interpretación del score"""
-    return """
-        <div class="info-box">
-            <h3>Interpretación del Score de Longevidad</h3>
-            <p>El score combina las métricas más importantes para healthspan:</p>
-            <ul>
-                <li><strong>80-100:</strong> Excelente. Estás en el camino óptimo para longevidad.</li>
-                <li><strong>60-79:</strong> Bueno. Hay áreas específicas que mejorar (ver recomendaciones).</li>
-                <li><strong>&lt;60:</strong> Necesita atención. Las recomendaciones son prioritarias.</li>
-            </ul>
-            <p><strong>Componentes del Score:</strong></p>
-            <ul>
-                <li>Composición Corporal (40%): Peso y % grasa cerca de objetivos</li>
-                <li>Fitness Cardiovascular (30%): VO2max y PAI semanal</li>
-                <li>Sueño (20%): Cantidad y calidad de descanso</li>
-                <li>Balance Entrenamiento (10%): TSB óptimo para evitar lesiones</li>
-            </ul>
-        </div>
-    """
-
-
-def _generar_javascript(datos_graficos):
-    """JavaScript para los gráficos de Plotly"""
-    return f"""
-        const layout = {{
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)',
-            font: {{ color: '#c9d1d9', family: 'Arial' }},
-            xaxis: {{ gridcolor: '#30363d' }},
-            yaxis: {{ gridcolor: '#30363d' }},
-            margin: {{ l: 60, r: 40, t: 60, b: 60 }}
-        }};
+    # Agrupar PAI por día
+    por_dia = {}
+    for e in recientes:
+        fecha = datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = 0
+        por_dia[fecha] += e.get("pai", 0)
+    
+    fechas = sorted(por_dia.keys())
+    pai_diario = [por_dia[f] for f in fechas]
+    
+    # Calcular ventana móvil de 7 días
+    pai_ventana_7d = []
+    for i, fecha in enumerate(fechas):
+        fecha_obj = datetime.strptime(fecha, "%Y-%m-%d")
+        inicio_ventana = fecha_obj - timedelta(days=6)
         
-        // Gráfico PAI Semanal
-        Plotly.newPlot('pai-chart', [
-            {{
-                x: {datos_graficos["pai"]["fechas"]},
-                y: {datos_graficos["pai"]["valores"]},
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'PAI Semanal',
-                fill: 'tozeroy',
-                line: {{ color: '#58a6ff', width: 3 }},
-                marker: {{ 
-                    size: 8,
-                    color: {datos_graficos["pai"]["valores"]}.map(v => v >= {PAI_OBJETIVO_SEMANAL} ? '{COLOR_EXCELENTE}' : v >= 75 ? '{COLOR_BUENO}' : '{COLOR_MALO}')
-                }}
-            }},
-            {{
-                x: {datos_graficos["pai"]["fechas"]},
-                y: Array({len(datos_graficos["pai"]["fechas"])}).fill({PAI_OBJETIVO_SEMANAL}),
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Objetivo ({PAI_OBJETIVO_SEMANAL})',
-                line: {{ color: '{COLOR_EXCELENTE}', dash: 'dash', width: 2 }}
-            }}
-        ], {{
-            ...layout,
-            title: 'PAI Semanal (ventana móvil 7 días) - Últimos 30 días',
-            yaxis: {{ ...layout.yaxis, title: 'PAI Acumulado (7 días)' }},
-            showlegend: true
-        }});
-        
-        // Gráfico Peso
-        Plotly.newPlot('peso-chart', [
-            {{
-                x: {datos_graficos["peso"]["fechas"]},
-                y: {datos_graficos["peso"]["valores"]},
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'Peso',
-                line: {{ color: '#58a6ff', width: 3 }},
-                marker: {{ size: 8 }}
-            }},
-            {{
-                x: {datos_graficos["peso"]["fechas"]},
-                y: Array({len(datos_graficos["peso"]["fechas"])}).fill({datos_graficos["peso"]["objetivo"]}),
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Objetivo',
-                line: {{ color: '{COLOR_EXCELENTE}', dash: 'dash', width: 2 }}
-            }}
-        ], {{
-            ...layout,
-            title: 'Evolución del Peso',
-            yaxis: {{ ...layout.yaxis, title: 'Peso (kg)' }}
-        }});
-        
-        // Gráfico TSB
-        Plotly.newPlot('tsb-chart', [
-            {{
-                x: {datos_graficos["tsb"]["fechas"]},
-                y: {datos_graficos["tsb"]["tsb"]},
-                type: 'scatter',
-                mode: 'lines',
-                name: 'TSB',
-                fill: 'tozeroy',
-                line: {{ color: '#ffbb28', width: 3 }}
-            }},
-            {{
-                x: {datos_graficos["tsb"]["fechas"]},
-                y: {datos_graficos["tsb"]["ctl"]},
-                type: 'scatter',
-                mode: 'lines',
-                name: 'CTL (Fitness)',
-                line: {{ color: '{COLOR_EXCELENTE}', width: 2 }}
-            }},
-            {{
-                x: {datos_graficos["tsb"]["fechas"]},
-                y: {datos_graficos["tsb"]["atl"]},
-                type: 'scatter',
-                mode: 'lines',
-                name: 'ATL (Fatiga)',
-                line: {{ color: '{COLOR_MALO}', width: 2 }}
-            }}
-        ], {{
-            ...layout,
-            title: 'Balance de Entrenamiento (TSB)',
-            yaxis: {{ ...layout.yaxis, title: 'Puntuación' }}
-        }});
-    """
+        suma_ventana = sum(
+            por_dia[f] for f in fechas
+            if inicio_ventana <= datetime.strptime(f, "%Y-%m-%d") <= fecha_obj
+        )
+        pai_ventana_7d.append(suma_ventana)
+    
+    return {
+        "fechas": fechas,
+        "pai_diario": pai_diario,
+        "pai_ventana_7d": pai_ventana_7d
+    }
+
+
+def _preparar_datos_spo2(spo2_data, dias=30):
+    """Prepara datos de SpO2"""
+    if not spo2_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        s for s in spo2_data
+        if datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for s in recientes:
+        fecha = datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(s["porcentaje"])
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_metrica_corporal(datos, campo, dias=90):
+    """Prepara datos de métricas corporales"""
+    if not datos:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        d for d in datos
+        if datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for d in recientes:
+        fecha = datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(d[campo])
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_fc_reposo(fc_reposo_data, dias=30):
+    """Prepara datos de FC en reposo"""
+    if not fc_reposo_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        fc for fc in fc_reposo_data
+        if datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for fc in recientes:
+        fecha = datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(fc["bpm"])
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_fc_diurna(fc_diurna_data, dias=30):
+    """Prepara datos de FC diurna (continua) - min, max, promedio"""
+    if not fc_diurna_data:
+        return {"fechas": [], "bpm_min": [], "bpm_max": [], "bpm_promedio": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        fc for fc in fc_diurna_data
+        if datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for fc in recientes:
+        fecha = datetime.fromisoformat(fc["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = {
+                "bpm_min": [],
+                "bpm_max": [],
+                "bpm_promedio": []
+            }
+        por_dia[fecha]["bpm_min"].append(fc.get("bpm_min", 0))
+        por_dia[fecha]["bpm_max"].append(fc.get("bpm_max", 0))
+        por_dia[fecha]["bpm_promedio"].append(fc.get("bpm_promedio", 0))
+    
+    fechas = sorted(por_dia.keys())
+    bpm_min = [min(por_dia[f]["bpm_min"]) for f in fechas]
+    bpm_max = [max(por_dia[f]["bpm_max"]) for f in fechas]
+    bpm_promedio = [sum(por_dia[f]["bpm_promedio"]) / len(por_dia[f]["bpm_promedio"]) for f in fechas]
+    
+    return {
+        "fechas": fechas,
+        "bpm_min": bpm_min,
+        "bpm_max": bpm_max,
+        "bpm_promedio": bpm_promedio
+    }
+
+
+def _preparar_datos_pasos(pasos_data, dias=30):
+    """Prepara datos de pasos diarios"""
+    if not pasos_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        p for p in pasos_data
+        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for p in recientes:
+        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = 0
+        por_dia[fecha] += p["pasos"]
+    
+    fechas = sorted(por_dia.keys())
+    valores = [por_dia[f] for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_presion_arterial(presion_data, dias=90):
+    """Prepara datos de presión arterial"""
+    if not presion_data:
+        return {"fechas": [], "sistolica": [], "diastolica": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        p for p in presion_data
+        if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for p in recientes:
+        fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = {"sistolica": [], "diastolica": []}
+        por_dia[fecha]["sistolica"].append(p["sistolica"])
+        por_dia[fecha]["diastolica"].append(p["diastolica"])
+    
+    fechas = sorted(por_dia.keys())
+    sistolica = [sum(por_dia[f]["sistolica"]) / len(por_dia[f]["sistolica"]) for f in fechas]
+    diastolica = [sum(por_dia[f]["diastolica"]) / len(por_dia[f]["diastolica"]) for f in fechas]
+    
+    return {"fechas": fechas, "sistolica": sistolica, "diastolica": diastolica}
+
+
+def _preparar_datos_glucosa(glucosa_data, dias=90):
+    """Prepara datos de glucosa en sangre"""
+    if not glucosa_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        g for g in glucosa_data
+        if datetime.fromisoformat(g["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for g in recientes:
+        fecha = datetime.fromisoformat(g["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(g.get("nivel_mg_dl", 0))
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_tasa_metabolica(tmb_data, dias=90):
+    """Prepara datos de tasa metabólica basal"""
+    if not tmb_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        t for t in tmb_data
+        if datetime.fromisoformat(t["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for t in recientes:
+        fecha = datetime.fromisoformat(t["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(t.get("kcal_dia", 0))
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_distancia(distancia_data, dias=90):
+    """Prepara datos de distancia recorrida"""
+    if not distancia_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        d for d in distancia_data
+        if datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for d in recientes:
+        fecha = datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(d.get("distancia_km", 0))
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) for f in fechas]  # Sumar distancia del día
+    
+    return {"fechas": fechas, "valores": valores}
+
+
+def _preparar_datos_calorias(calorias_data, dias=90):
+    """Prepara datos de calorías totales quemadas"""
+    if not calorias_data:
+        return {"fechas": [], "valores": []}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        c for c in calorias_data
+        if datetime.fromisoformat(c["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = {}
+    for c in recientes:
+        fecha = datetime.fromisoformat(c["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        if fecha not in por_dia:
+            por_dia[fecha] = []
+        por_dia[fecha].append(c.get("energia_kcal", 0))
+    
+    fechas = sorted(por_dia.keys())
+    valores = [sum(por_dia[f]) for f in fechas]  # Sumar calorías del día
+    
+    return {"fechas": fechas, "valores": valores}

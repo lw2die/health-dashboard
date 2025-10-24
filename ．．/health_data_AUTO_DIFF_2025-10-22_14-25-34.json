@@ -1,0 +1,306 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-22T14:25:34.742099",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 3,
+    "data": [
+      {
+        "timestamp": "2025-10-22T15:52:05.019Z",
+        "weight_kg": 333.0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "timestamp": "2025-10-22T16:23:13Z",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit",
+        "change_type": "UPSERT"
+      },
+      {
+        "timestamp": "2025-10-22T16:23:19Z",
+        "weight_kg": 83.126,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "exercise_changes": {
+    "count": 3,
+    "data": [
+      {
+        "session_id": "25ac7202-f88a-4fc5-8b35-309838b1d2cd",
+        "title": "Exercise",
+        "exercise_type": 70,
+        "start_time": "2025-10-22T15:32:53.071Z",
+        "end_time": "2025-10-22T15:42:14.411Z",
+        "duration_minutes": 9,
+        "total_steps": null,
+        "distance_meters": null,
+        "calories_burned": 48590.00015258789,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "session_id": "2fe7245e-2045-4436-b0ab-bf5ef33d7ab6",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-22T14:38:01.164Z",
+        "end_time": "2025-10-22T15:27:17.746Z",
+        "duration_minutes": 49,
+        "total_steps": null,
+        "distance_meters": 4458.22998046875,
+        "calories_burned": 313621.0021972656,
+        "avg_heart_rate": 102,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "session_id": "d4cf70b3-7220-4af7-a2b4-648cea2b8a47",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-22T15:49:13.353Z",
+        "end_time": "2025-10-22T16:11:09.823Z",
+        "duration_minutes": 21,
+        "total_steps": null,
+        "distance_meters": 2155.89892578125,
+        "calories_burned": 136076.0040283203,
+        "avg_heart_rate": 101,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "sleep_changes": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_changes": {
+    "count": 2,
+    "data": [
+      {
+        "timestamp": "2025-10-22T14:38:01.164Z",
+        "vo2_max": 38.63999938964844,
+        "measurement_method": 0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "timestamp": "2025-10-22T15:49:13.353Z",
+        "vo2_max": 38.630001068115234,
+        "measurement_method": 0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "steps_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-22T03:00:00Z",
+        "end_time": "2025-10-23T02:59:59.999Z",
+        "count": 19858,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "distance_changes": {
+    "count": 2,
+    "data": [
+      {
+        "start_time": "2025-10-22T14:38:01.164Z",
+        "end_time": "2025-10-22T15:27:17.746Z",
+        "distance_meters": 4458.22998046875,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T15:49:13.353Z",
+        "end_time": "2025-10-22T16:11:09.823Z",
+        "distance_meters": 2155.89892578125,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "total_calories_changes": {
+    "count": 3,
+    "data": [
+      {
+        "start_time": "2025-10-22T15:32:53.071Z",
+        "end_time": "2025-10-22T15:42:14.411Z",
+        "energy_kcal": 48.59000015258789,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T14:38:01.164Z",
+        "end_time": "2025-10-22T15:27:17.746Z",
+        "energy_kcal": 313.6210021972656,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T15:49:13.353Z",
+        "end_time": "2025-10-22T16:11:09.823Z",
+        "energy_kcal": 136.0760040283203,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T15:52:05.019Z",
+        "height_meters": 1.76,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "body_fat_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T16:23:13Z",
+        "percentage": 24.0,
+        "source": "com.icomon.starfit.starfit",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "lean_body_mass_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T16:23:19Z",
+        "mass_kg": 59.22,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "bone_mass_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T16:23:13Z",
+        "mass_kg": 4.199999809265137,
+        "source": "com.icomon.starfit.starfit",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T16:23:13Z",
+        "kcal_per_day": 1730.0,
+        "source": "com.icomon.starfit.starfit",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "body_water_mass_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-22T16:23:19Z",
+        "mass_kg": 42.77,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "heart_rate_changes": {
+    "count": 6,
+    "data": [
+      {
+        "start_time": "2025-10-22T14:38:01.164Z",
+        "end_time": "2025-10-22T15:27:17.746Z",
+        "samples_count": 2878,
+        "avg_bpm": 102,
+        "min_bpm": 87,
+        "max_bpm": 122,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T15:32:53.071Z",
+        "end_time": "2025-10-22T15:42:14.411Z",
+        "samples_count": 517,
+        "avg_bpm": 91,
+        "min_bpm": 83,
+        "max_bpm": 101,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T15:00:00Z",
+        "end_time": "2025-10-22T15:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 96,
+        "min_bpm": 73,
+        "max_bpm": 112,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T16:00:00Z",
+        "end_time": "2025-10-22T16:04:17.559Z",
+        "samples_count": 4,
+        "avg_bpm": 103,
+        "min_bpm": 102,
+        "max_bpm": 107,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T14:00:00Z",
+        "end_time": "2025-10-22T14:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 97,
+        "min_bpm": 76,
+        "max_bpm": 115,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-22T15:49:13.353Z",
+        "end_time": "2025-10-22T16:11:09.823Z",
+        "samples_count": 1313,
+        "avg_bpm": 101,
+        "min_bpm": 73,
+        "max_bpm": 114,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

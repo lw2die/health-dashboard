@@ -116,3 +116,39 @@ def _log_resumen_limpieza(eliminados, finales, originales):
     logger.warning(f"Entrenamientos únicos: {finales} (de {originales} originales)")
     logger.warning("=" * 70)
     logger.warning("")
+
+
+def limpiar_metricas_corporales(cache):
+    """
+    Limpia duplicados de métricas corporales (1 registro por día).
+    """
+    eliminados = 0
+    
+    for metrica in ["spo2", "grasa_corporal", "masa_muscular", "vo2max", "fc_reposo"]:
+        if metrica not in cache:
+            continue
+        
+        datos = cache[metrica]
+        if not datos:
+            continue
+        
+        # Agrupar por fecha (YYYY-MM-DD)
+        por_fecha = {}
+        for d in datos:
+            fecha_str = d.get("fecha", "")[:10]
+            if fecha_str not in por_fecha:
+                por_fecha[fecha_str] = []
+            por_fecha[fecha_str].append(d)
+        
+        # Mantener solo el primero de cada día
+        limpiados = []
+        for fecha in sorted(por_fecha.keys()):
+            limpiados.append(por_fecha[fecha][0])
+            eliminados += len(por_fecha[fecha]) - 1
+        
+        cache[metrica] = limpiados
+    
+    if eliminados > 0:
+        logger.info(f"Métricas corporales: {eliminados} duplicados eliminados")
+    
+    return eliminados

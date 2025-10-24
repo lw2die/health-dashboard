@@ -1,0 +1,651 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-18T17:16:52.43635",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_changes": {
+    "count": 0,
+    "data": []
+  },
+  "sleep_changes": {
+    "count": 1,
+    "data": [
+      {
+        "session_id": "db02a887-9f69-3652-9037-e44ad8068dd2",
+        "title": "2025-10-18",
+        "start_time": "2025-10-18T18:00:00Z",
+        "end_time": "2025-10-18T19:28:00Z",
+        "stages": [
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:00:00Z",
+        "end_time": "2025-10-18T18:01:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:01:00Z",
+        "end_time": "2025-10-18T18:02:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:02:00Z",
+        "end_time": "2025-10-18T18:03:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:03:00Z",
+        "end_time": "2025-10-18T18:04:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:04:00Z",
+        "end_time": "2025-10-18T18:05:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:05:00Z",
+        "end_time": "2025-10-18T18:06:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:06:00Z",
+        "end_time": "2025-10-18T18:07:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:07:00Z",
+        "end_time": "2025-10-18T18:08:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:08:00Z",
+        "end_time": "2025-10-18T18:09:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:09:00Z",
+        "end_time": "2025-10-18T18:10:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:10:00Z",
+        "end_time": "2025-10-18T18:11:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:11:00Z",
+        "end_time": "2025-10-18T18:12:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:12:00Z",
+        "end_time": "2025-10-18T18:13:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:13:00Z",
+        "end_time": "2025-10-18T18:14:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-18T18:14:00Z",
+        "end_time": "2025-10-18T18:15:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:15:00Z",
+        "end_time": "2025-10-18T18:16:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:16:00Z",
+        "end_time": "2025-10-18T18:17:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:17:00Z",
+        "end_time": "2025-10-18T18:18:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:18:00Z",
+        "end_time": "2025-10-18T18:19:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:19:00Z",
+        "end_time": "2025-10-18T18:20:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:20:00Z",
+        "end_time": "2025-10-18T18:21:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-18T18:21:00Z",
+        "end_time": "2025-10-18T18:22:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:22:00Z",
+        "end_time": "2025-10-18T18:23:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:23:00Z",
+        "end_time": "2025-10-18T18:24:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:24:00Z",
+        "end_time": "2025-10-18T18:25:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:25:00Z",
+        "end_time": "2025-10-18T18:26:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:26:00Z",
+        "end_time": "2025-10-18T18:27:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:27:00Z",
+        "end_time": "2025-10-18T18:28:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:28:00Z",
+        "end_time": "2025-10-18T18:29:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:29:00Z",
+        "end_time": "2025-10-18T18:30:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:30:00Z",
+        "end_time": "2025-10-18T18:31:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:31:00Z",
+        "end_time": "2025-10-18T18:32:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:32:00Z",
+        "end_time": "2025-10-18T18:33:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:33:00Z",
+        "end_time": "2025-10-18T18:34:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:34:00Z",
+        "end_time": "2025-10-18T18:35:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:35:00Z",
+        "end_time": "2025-10-18T18:36:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:36:00Z",
+        "end_time": "2025-10-18T18:37:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:37:00Z",
+        "end_time": "2025-10-18T18:38:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:38:00Z",
+        "end_time": "2025-10-18T18:39:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:39:00Z",
+        "end_time": "2025-10-18T18:40:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:40:00Z",
+        "end_time": "2025-10-18T18:41:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:41:00Z",
+        "end_time": "2025-10-18T18:42:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:42:00Z",
+        "end_time": "2025-10-18T18:43:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:43:00Z",
+        "end_time": "2025-10-18T18:44:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:44:00Z",
+        "end_time": "2025-10-18T18:45:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:45:00Z",
+        "end_time": "2025-10-18T18:46:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:46:00Z",
+        "end_time": "2025-10-18T18:47:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:47:00Z",
+        "end_time": "2025-10-18T18:48:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:48:00Z",
+        "end_time": "2025-10-18T18:49:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:49:00Z",
+        "end_time": "2025-10-18T18:50:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:50:00Z",
+        "end_time": "2025-10-18T18:51:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:51:00Z",
+        "end_time": "2025-10-18T18:52:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:52:00Z",
+        "end_time": "2025-10-18T18:53:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:53:00Z",
+        "end_time": "2025-10-18T18:54:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:54:00Z",
+        "end_time": "2025-10-18T18:55:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:55:00Z",
+        "end_time": "2025-10-18T18:56:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:56:00Z",
+        "end_time": "2025-10-18T18:57:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:57:00Z",
+        "end_time": "2025-10-18T18:58:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:58:00Z",
+        "end_time": "2025-10-18T18:59:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T18:59:00Z",
+        "end_time": "2025-10-18T19:00:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:00:00Z",
+        "end_time": "2025-10-18T19:01:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:01:00Z",
+        "end_time": "2025-10-18T19:02:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:02:00Z",
+        "end_time": "2025-10-18T19:03:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:03:00Z",
+        "end_time": "2025-10-18T19:04:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:04:00Z",
+        "end_time": "2025-10-18T19:05:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:05:00Z",
+        "end_time": "2025-10-18T19:06:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:06:00Z",
+        "end_time": "2025-10-18T19:07:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:07:00Z",
+        "end_time": "2025-10-18T19:08:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:08:00Z",
+        "end_time": "2025-10-18T19:09:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:09:00Z",
+        "end_time": "2025-10-18T19:10:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:10:00Z",
+        "end_time": "2025-10-18T19:11:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:11:00Z",
+        "end_time": "2025-10-18T19:12:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:12:00Z",
+        "end_time": "2025-10-18T19:13:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:13:00Z",
+        "end_time": "2025-10-18T19:14:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:14:00Z",
+        "end_time": "2025-10-18T19:15:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:15:00Z",
+        "end_time": "2025-10-18T19:16:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:16:00Z",
+        "end_time": "2025-10-18T19:17:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:17:00Z",
+        "end_time": "2025-10-18T19:18:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:18:00Z",
+        "end_time": "2025-10-18T19:19:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:19:00Z",
+        "end_time": "2025-10-18T19:20:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:20:00Z",
+        "end_time": "2025-10-18T19:21:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:21:00Z",
+        "end_time": "2025-10-18T19:22:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:22:00Z",
+        "end_time": "2025-10-18T19:23:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:23:00Z",
+        "end_time": "2025-10-18T19:24:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:24:00Z",
+        "end_time": "2025-10-18T19:25:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:25:00Z",
+        "end_time": "2025-10-18T19:26:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:26:00Z",
+        "end_time": "2025-10-18T19:27:00Z"
+      },
+      {
+        "stage_type": 5,
+        "stage_name": "Deep sleep",
+        "start_time": "2025-10-18T19:27:00Z",
+        "end_time": "2025-10-18T19:28:00Z"
+      }
+    ],
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "vo2max_changes": {
+    "count": 0,
+    "data": []
+  },
+  "steps_changes": {
+    "count": 0,
+    "data": []
+  },
+  "distance_changes": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_changes": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_changes": {
+    "count": 3,
+    "data": [
+      {
+        "start_time": "2025-10-18T08:22:56.142Z",
+        "end_time": "2025-10-18T08:22:56.142Z",
+        "samples_count": 1,
+        "avg_bpm": 52,
+        "min_bpm": 52,
+        "max_bpm": 52,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-18T19:00:00Z",
+        "end_time": "2025-10-18T19:59:59.999Z",
+        "samples_count": 56,
+        "avg_bpm": 76,
+        "min_bpm": 70,
+        "max_bpm": 93,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-18T20:00:00Z",
+        "end_time": "2025-10-18T20:05:01.712Z",
+        "samples_count": 4,
+        "avg_bpm": 74,
+        "min_bpm": 71,
+        "max_bpm": 76,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

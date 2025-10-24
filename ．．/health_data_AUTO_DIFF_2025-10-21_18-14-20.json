@@ -1,0 +1,430 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-21T18:14:20.815176",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-21T21:00:03Z",
+        "weight_kg": 83.045,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "exercise_changes": {
+    "count": 0,
+    "data": []
+  },
+  "sleep_changes": {
+    "count": 1,
+    "data": [
+      {
+        "session_id": "7208c22a-d506-3f1f-89b2-705185ffcfdc",
+        "title": "2025-10-21",
+        "start_time": "2025-10-21T15:02:00Z",
+        "end_time": "2025-10-21T15:51:00Z",
+        "stages": [
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:02:00Z",
+        "end_time": "2025-10-21T15:03:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:03:00Z",
+        "end_time": "2025-10-21T15:04:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:04:00Z",
+        "end_time": "2025-10-21T15:05:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:05:00Z",
+        "end_time": "2025-10-21T15:06:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:06:00Z",
+        "end_time": "2025-10-21T15:07:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:07:00Z",
+        "end_time": "2025-10-21T15:08:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:08:00Z",
+        "end_time": "2025-10-21T15:09:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:09:00Z",
+        "end_time": "2025-10-21T15:10:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:10:00Z",
+        "end_time": "2025-10-21T15:11:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:11:00Z",
+        "end_time": "2025-10-21T15:12:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:12:00Z",
+        "end_time": "2025-10-21T15:13:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:13:00Z",
+        "end_time": "2025-10-21T15:14:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:14:00Z",
+        "end_time": "2025-10-21T15:15:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:15:00Z",
+        "end_time": "2025-10-21T15:16:00Z"
+      },
+      {
+        "stage_type": 1,
+        "stage_name": "Awake",
+        "start_time": "2025-10-21T15:16:00Z",
+        "end_time": "2025-10-21T15:17:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:17:00Z",
+        "end_time": "2025-10-21T15:18:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:18:00Z",
+        "end_time": "2025-10-21T15:19:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:19:00Z",
+        "end_time": "2025-10-21T15:20:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:20:00Z",
+        "end_time": "2025-10-21T15:21:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:21:00Z",
+        "end_time": "2025-10-21T15:22:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:22:00Z",
+        "end_time": "2025-10-21T15:23:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:23:00Z",
+        "end_time": "2025-10-21T15:24:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:24:00Z",
+        "end_time": "2025-10-21T15:25:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:25:00Z",
+        "end_time": "2025-10-21T15:26:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:26:00Z",
+        "end_time": "2025-10-21T15:27:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:27:00Z",
+        "end_time": "2025-10-21T15:28:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:28:00Z",
+        "end_time": "2025-10-21T15:29:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:29:00Z",
+        "end_time": "2025-10-21T15:30:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:30:00Z",
+        "end_time": "2025-10-21T15:31:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:31:00Z",
+        "end_time": "2025-10-21T15:32:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:32:00Z",
+        "end_time": "2025-10-21T15:33:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:33:00Z",
+        "end_time": "2025-10-21T15:34:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:34:00Z",
+        "end_time": "2025-10-21T15:35:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:35:00Z",
+        "end_time": "2025-10-21T15:36:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:36:00Z",
+        "end_time": "2025-10-21T15:37:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:37:00Z",
+        "end_time": "2025-10-21T15:38:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:38:00Z",
+        "end_time": "2025-10-21T15:39:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:39:00Z",
+        "end_time": "2025-10-21T15:40:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:40:00Z",
+        "end_time": "2025-10-21T15:41:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:41:00Z",
+        "end_time": "2025-10-21T15:42:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:42:00Z",
+        "end_time": "2025-10-21T15:43:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:43:00Z",
+        "end_time": "2025-10-21T15:44:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:44:00Z",
+        "end_time": "2025-10-21T15:45:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:45:00Z",
+        "end_time": "2025-10-21T15:46:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:46:00Z",
+        "end_time": "2025-10-21T15:47:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:47:00Z",
+        "end_time": "2025-10-21T15:48:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:48:00Z",
+        "end_time": "2025-10-21T15:49:00Z"
+      },
+      {
+        "stage_type": 6,
+        "stage_name": "REM sleep",
+        "start_time": "2025-10-21T15:50:00Z",
+        "end_time": "2025-10-21T15:51:00Z"
+      }
+    ],
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "vo2max_changes": {
+    "count": 0,
+    "data": []
+  },
+  "steps_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-21T03:00:00Z",
+        "end_time": "2025-10-22T02:59:59.999Z",
+        "count": 18725,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "distance_changes": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_changes": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-21T21:00:03Z",
+        "mass_kg": 59.83,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-21T21:00:03Z",
+        "mass_kg": 43.21,
+        "source": "com.withings.wiscale2",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "heart_rate_changes": {
+    "count": 2,
+    "data": [
+      {
+        "start_time": "2025-10-21T17:00:00Z",
+        "end_time": "2025-10-21T17:59:59.999Z",
+        "samples_count": 13,
+        "avg_bpm": 89,
+        "min_bpm": 77,
+        "max_bpm": 104,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T16:00:00Z",
+        "end_time": "2025-10-21T16:59:59.999Z",
+        "samples_count": 57,
+        "avg_bpm": 92,
+        "min_bpm": 76,
+        "max_bpm": 110,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}
