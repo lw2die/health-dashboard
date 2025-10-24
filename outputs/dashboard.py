@@ -186,7 +186,6 @@ def generar_dashboard(cache):
         cards_html,
         entrenamientos_html,
         recomendaciones_html,
-        datos_graficos
         datos_graficos,
         logs_html_content,  # ✅ NUEVO
         resumen_ejecucion   # ✅ NUEVO
