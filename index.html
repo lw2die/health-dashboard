@@ -223,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 23/10/2025 20:51</p>
+                <p class="subtitle">Última actualización: 23/10/2025 21:21</p>
             </header>
             
             
@@ -325,13 +325,13 @@
     
     <div class="metric-card">
         <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">59 bpm</div>
-        <div class="metric-detail">Excelente</div>
+        <div class="metric-value" style="color: #d29922;">63 bpm</div>
+        <div class="metric-detail">Bueno</div>
     </div>
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">15,429</div>
+        <div class="metric-value" style="color: #3fb950;">20,536</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -689,7 +689,7 @@
         // FC Reposo
         Plotly.newPlot('fc-reposo-chart', [{
             x: ['2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23'],
-            y: [50.0, 48.0, 47.0, 48.0, 52.0, 49.0, 55.0, 62.75, 59.18181818181818, 60.583333333333336],
+            y: [50.0, 48.0, 47.0, 48.0, 52.0, 49.0, 55.0, 62.75, 59.18181818181818, 61.53333333333333],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#f85149', width: 2 }
@@ -712,7 +712,7 @@
             },
             {
                 x: ['2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23'],
-                y: [75.0, 66.0, 66.0, 69.0, 63.0, 73.0, 69.0, 72.0, 79.97222222222221, 74.6421568627451, 72.77675213675214],
+                y: [75.0, 66.0, 66.0, 69.0, 63.0, 73.0, 69.0, 72.0, 79.97222222222221, 74.6421568627451, 72.76987179487179],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -736,7 +736,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-09-24', '2025-10-21', '2025-10-22', '2025-10-23'],
-            y: [40025, 152269, 344444, 121368],
+            y: [40025, 152269, 369424, 164644],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
