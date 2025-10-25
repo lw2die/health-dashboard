@@ -1,0 +1,177 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-21T06:01:37.931782",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_changes": {
+    "count": 0,
+    "data": []
+  },
+  "sleep_changes": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_changes": {
+    "count": 0,
+    "data": []
+  },
+  "steps_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-20T03:00:00Z",
+        "end_time": "2025-10-21T02:59:59.999Z",
+        "count": 11290,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "distance_changes": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_changes": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-21T03:28:00Z",
+        "percentage": 96.0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_changes": {
+    "count": 8,
+    "data": [
+      {
+        "start_time": "2025-10-21T04:00:00Z",
+        "end_time": "2025-10-21T04:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 57,
+        "min_bpm": 55,
+        "max_bpm": 63,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T03:00:00Z",
+        "end_time": "2025-10-21T03:59:59.999Z",
+        "samples_count": 54,
+        "avg_bpm": 56,
+        "min_bpm": 53,
+        "max_bpm": 66,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T01:00:00Z",
+        "end_time": "2025-10-21T01:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 66,
+        "min_bpm": 62,
+        "max_bpm": 74,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T07:00:00Z",
+        "end_time": "2025-10-21T07:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 56,
+        "min_bpm": 54,
+        "max_bpm": 62,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T05:00:00Z",
+        "end_time": "2025-10-21T05:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 57,
+        "min_bpm": 56,
+        "max_bpm": 65,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T08:00:00Z",
+        "end_time": "2025-10-21T08:41:23.481Z",
+        "samples_count": 36,
+        "avg_bpm": 59,
+        "min_bpm": 57,
+        "max_bpm": 66,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T02:00:00Z",
+        "end_time": "2025-10-21T02:59:59.999Z",
+        "samples_count": 21,
+        "avg_bpm": 60,
+        "min_bpm": 55,
+        "max_bpm": 71,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T06:00:00Z",
+        "end_time": "2025-10-21T06:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 58,
+        "min_bpm": 55,
+        "max_bpm": 63,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

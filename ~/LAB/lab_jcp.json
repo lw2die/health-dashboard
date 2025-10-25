@@ -1,0 +1,1163 @@
+{
+  "paciente": {
+    "nombre": "PARRILLA, JUAN CARLOS",
+    "documento": "16949408",
+    "fecha_nacimiento": "06/11/1963"
+  },
+  "informes": [
+    {
+      "tipo_informe": "Análisis Clínicos",
+      "fecha_estudio": "2023-02-13",
+      "institucion": "Sanatorio Las Lomas Sede Nordelta",
+      "resultados": {
+        "hemograma": [
+          {
+            "parametro": "Eritrocitos",
+            "valor": 5.1,
+            "unidad": "mill/mm3",
+            "rango_referencia": "4.50-5.90"
+          },
+          {
+            "parametro": "Hematocrito",
+            "valor": 46.4,
+            "unidad": "%",
+            "rango_referencia": "37.0-53.0"
+          },
+          {
+            "parametro": "Hemoglobina",
+            "valor": 15.6,
+            "unidad": "g/dl",
+            "rango_referencia": "13.0-17.5"
+          },
+          {
+            "parametro": "Volumen Corpuscular Medio",
+            "valor": 90.9,
+            "unidad": "fil",
+            "rango_referencia": "80.0-100.0"
+          },
+          {
+            "parametro": "Hemoglobina Corpuscular Media",
+            "valor": 30.5,
+            "unidad": "Pg",
+            "rango_referencia": "25.0-35.0"
+          },
+          {
+            "parametro": "Conc. Hemoglobina Corpuscular Media",
+            "valor": 33.6,
+            "unidad": "g/dl",
+            "rango_referencia": "31.0-37.0"
+          },
+          {
+            "parametro": "Ancho de Distrib. Eritrocitos (RDW)",
+            "valor": 14.2,
+            "unidad": "%",
+            "rango_referencia": "0.0-14.0"
+          },
+          {
+            "parametro": "Plaquetas",
+            "valor": 310,
+            "unidad": "mil/mm3",
+            "rango_referencia": "150-440"
+          },
+          {
+            "parametro": "Volumen Plaquetario Medio (MPV)",
+            "valor": 8.6,
+            "unidad": "fl",
+            "rango_referencia": "8.5-12.5"
+          },
+          {
+            "parametro": "Leucocitos",
+            "valor": 8,
+            "unidad": "mil/mm3",
+            "rango_referencia": "3.8-10.6"
+          },
+          {
+            "parametro": "Neutrofilos Segmentados %",
+            "valor": 64.7,
+            "unidad": "%",
+            "rango_referencia": "44.0-70.0"
+          },
+          {
+            "parametro": "Eosinófilos %",
+            "valor": 2.6,
+            "unidad": "%",
+            "rango_referencia": "0.0-7.0"
+          },
+          {
+            "parametro": "Basófilos %",
+            "valor": 0.7,
+            "unidad": "%",
+            "rango_referencia": "0.0-1.0"
+          },
+          {
+            "parametro": "Linfocitos %",
+            "valor": 20.7,
+            "unidad": "%",
+            "rango_referencia": "20.0-44.0"
+          },
+          {
+            "parametro": "Monocitos %",
+            "valor": 11.3,
+            "unidad": "%",
+            "rango_referencia": "5.0-11.0"
+          },
+          {
+            "parametro": "Neutrófilos Absolutos",
+            "valor": 5.2,
+            "unidad": "mil/mm3"
+          },
+          {
+            "parametro": "Linfocitos Absolutos",
+            "valor": 1.7,
+            "unidad": "mil/mm3"
+          }
+        ],
+        "quimica_sanguinea": [
+          {
+            "parametro": "Glucosa",
+            "valor": 94,
+            "unidad": "mg/dl",
+            "rango_referencia": "74-106"
+          },
+          {
+            "parametro": "Hemoglobina Glicosilada (A1C)",
+            "valor": 5.7,
+            "unidad": "%",
+            "rango_referencia": "4.8-5.9"
+          },
+          {
+            "parametro": "Urea",
+            "valor": 42,
+            "unidad": "mg/dl",
+            "rango_referencia": "13-45"
+          },
+          {
+            "parametro": "Creatinina",
+            "valor": 0.98,
+            "unidad": "mg/dl",
+            "rango_referencia": "0.90-1.30"
+          },
+          {
+            "parametro": "Ácido Úrico",
+            "valor": 5.7,
+            "unidad": "mg/dl",
+            "rango_referencia": "3.5-7.2"
+          }
+        ],
+        "hepatograma": [
+          {
+            "parametro": "Bilirrubina Directa",
+            "valor": 0.17,
+            "unidad": "mg/dl",
+            "rango_referencia": "0.00-0.20"
+          },
+          {
+            "parametro": "Bilirrubina Total",
+            "valor": 0.58,
+            "unidad": "mg/dl",
+            "rango_referencia": "0.30-1.20"
+          },
+          {
+            "parametro": "Aspartato Aminotransferasa (GOT)",
+            "valor": 26,
+            "unidad": "UI/I",
+            "rango_referencia": "0-50"
+          },
+          {
+            "parametro": "Alanina Aminotransferasa (GPT)",
+            "valor": 32,
+            "unidad": "UIM",
+            "rango_referencia": "0-50"
+          },
+          {
+            "parametro": "Fosfatasa Alcalina",
+            "valor": 37,
+            "unidad": "UI/I",
+            "rango_referencia": "30-120"
+          },
+          {
+            "parametro": "Proteinas Totales",
+            "valor": 7.38,
+            "unidad": "g/dl",
+            "rango_referencia": "6.30-7.90"
+          }
+        ],
+        "perfil_lipidico": [
+          {
+            "parametro": "Colesterol Total",
+            "valor": 75,
+            "unidad": "mg/dl",
+            "rango_referencia": "0-200"
+          },
+          {
+            "parametro": "Trigliceridos",
+            "valor": 39,
+            "unidad": "mg/dl",
+            "rango_referencia": "Normal: hasta 150"
+          },
+          {
+            "parametro": "Colesterol HDL",
+            "valor": 40,
+            "unidad": "mg/dl",
+            "rango_referencia": "Ausencia de riesgo: mayor de 55"
+          },
+          {
+            "parametro": "Colesterol LDL",
+            "valor": 27,
+            "unidad": "mg/dl",
+            "rango_referencia": "Optimo: Menor de 100"
+          }
+        ],
+        "ionograma": [
+          {
+            "parametro": "Sodio",
+            "valor": 140,
+            "unidad": "mEq/l",
+            "rango_referencia": "135-145"
+          },
+          {
+            "parametro": "Potasio",
+            "valor": 4.3,
+            "unidad": "mEq/l",
+            "rango_referencia": "3.5-5.1"
+          },
+          {
+            "parametro": "Cloro",
+            "valor": 101,
+            "unidad": "mEq/l",
+            "rango_referencia": "94-111"
+          },
+          {
+            "parametro": "Calcio",
+            "valor": 9.8,
+            "unidad": "mg/dl",
+            "rango_referencia": "8.8-10.6"
+          },
+          {
+            "parametro": "Fósforo",
+            "valor": 3.6,
+            "unidad": "mg/dl",
+            "rango_referencia": "2.5-4.5"
+          },
+          {
+            "parametro": "Magnesio",
+            "valor": 1.8,
+            "unidad": "mg/dl",
+            "rango_referencia": "1.8-2.6"
+          }
+        ],
+        "orina": [
+          {
+            "parametro": "Albuminuria en Orina de 24 Hs.",
+            "valor": "<5",
+            "unidad": "ug/ml"
+          },
+          {
+            "parametro": "Clearence de Creatinina en Orina de 24 Horas",
+            "valor": 157,
+            "unidad": "ml/min"
+          },
+          {
+            "parametro": "Clearence Endógeno Relativo",
+            "valor": 123.4,
+            "unidad": "ml/min",
+            "rango_referencia": "70.0-190.0"
+          }
+        ],
+        "endocrinologia": [
+          {
+            "parametro": "Tirotrofina (TSH)",
+            "valor": 3.39,
+            "unidad": "uUI/ml",
+            "rango_referencia": "0.27-4.20"
+          }
+        ]
+      }
+    },
+    {
+      "tipo_informe": "Análisis Clínicos",
+      "fecha_estudio": "2024-08-22",
+      "institucion": "LABORATORIO MAIPU",
+      "resultados": {
+        "hemograma": [
+          {
+            "parametro": "Hematíes",
+            "valor": 5280000,
+            "unidad": "/mm3",
+            "rango_referencia": "4380000-5820000"
+          },
+          {
+            "parametro": "Hemoglobina",
+            "valor": 16,
+            "unidad": "g/dL",
+            "rango_referencia": "13,2-16,8"
+          },
+          {
+            "parametro": "Hematocrito",
+            "valor": 47.1,
+            "unidad": "%",
+            "rango_referencia": "39,0-49,0"
+          },
+          {
+            "parametro": "V.C.M.",
+            "valor": 89.2,
+            "unidad": "fL",
+            "rango_referencia": "81,0-95,0"
+          },
+          {
+            "parametro": "H.C.M",
+            "valor": 30.3,
+            "unidad": "pg",
+            "rango_referencia": "26,7-32,5"
+          },
+          {
+            "parametro": "C.H.C.M",
+            "valor": 34,
+            "unidad": "g/dL",
+            "rango_referencia": "32,0-35,0"
+          },
+          {
+            "parametro": "ADE (RDW):",
+            "valor": 13.3,
+            "unidad": "%",
+            "rango_referencia": "11.6-14.8"
+          },
+          {
+            "parametro": "Recuento de Plaquetas",
+            "valor": 381000,
+            "unidad": "/mm3",
+            "rango_referencia": "135000-370000"
+          },
+          {
+            "parametro": "Leucocitos",
+            "valor": 6540,
+            "unidad": "/mm3",
+            "rango_referencia": "4600-10900"
+          },
+          {
+            "parametro": "Neutrófilos",
+            "valor": 51.9,
+            "valor_abs": 3394,
+            "unidad": "%",
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Eosinófilos:",
+            "valor": 7.3,
+            "valor_abs": 477,
+            "unidad": "%",
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Basófilos:",
+            "valor": 0.8,
+            "valor_abs": 52,
+            "unidad": "%",
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Linfocitos:",
+            "valor": 27.8,
+            "valor_abs": 1818,
+            "unidad": "%",
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Monocitos:",
+            "valor": 12.2,
+            "valor_abs": 798,
+            "unidad": "%",
+            "unidad_abs": "/mm3"
+          }
+        ],
+        "quimica_sanguinea": [
+          {
+            "parametro": "Eritrosedimentación",
+            "valor": 7,
+            "unidad": "mm/hora",
+            "rango_referencia": "hasta 15"
+          },
+          {
+            "parametro": "Proteina C Reactiva",
+            "valor": "Menor de 0.6",
+            "unidad": "mg/L",
+            "rango_referencia": "hasta 5,00"
+          },
+          {
+            "parametro": "Glucemia (Basal)",
+            "valor": 103,
+            "unidad": "mg/dL",
+            "rango_referencia": "74-100"
+          },
+          {
+            "parametro": "Urea en sangre",
+            "valor": 27,
+            "unidad": "mg/dL",
+            "rango_referencia": "hasta 50"
+          },
+          {
+            "parametro": "Creatinina en sangre",
+            "valor": 1.11,
+            "unidad": "mg/dL",
+            "rango_referencia": "0,70-1,20"
+          },
+          {
+            "parametro": "Acido Urico en sangre",
+            "valor": 6.2,
+            "unidad": "mg/dL",
+            "rango_referencia": "3,4-7,0"
+          }
+        ],
+        "ionograma_en_sangre": [
+          {
+            "parametro": "Sodio",
+            "valor": 140,
+            "unidad": "mEq/L",
+            "rango_referencia": "132-146"
+          },
+          {
+            "parametro": "Potasio",
+            "valor": 4.3,
+            "unidad": "mEq/L",
+            "rango_referencia": "3,3-5,1"
+          },
+          {
+            "parametro": "Cloro",
+            "valor": 98,
+            "unidad": "mEq/L",
+            "rango_referencia": "98-106"
+          }
+        ],
+        "hepatograma": [
+          {
+            "parametro": "Proteínas Totales",
+            "valor": 7.75,
+            "unidad": "g/dL",
+            "rango_referencia": "6,40-8,30"
+          },
+          {
+            "parametro": "Colesterol Total",
+            "valor": 129,
+            "unidad": "mg/dL",
+            "rango_referencia": "Deseable: Menor de 200"
+          },
+          {
+            "parametro": "Bilirrubina Total",
+            "valor": 0.62,
+            "unidad": "mg/dL",
+            "rango_referencia": "hasta 1,20"
+          },
+          {
+            "parametro": "Bilirrubina Directa",
+            "valor": 0.23,
+            "unidad": "mg/dL",
+            "rango_referencia": "hasta 0,30"
+          },
+          {
+            "parametro": "Fosfatasa Alcalina Total",
+            "valor": 45,
+            "unidad": "UI/L",
+            "rango_referencia": "40-129"
+          },
+          {
+            "parametro": "TGO - Transaminasa Glutamico Oxalacetica",
+            "valor": 29,
+            "unidad": "UI/L",
+            "rango_referencia": "hasta 40"
+          },
+          {
+            "parametro": "TGP - Transaminasa Glutamico Piruvica",
+            "valor": 25,
+            "unidad": "UI/L",
+            "rango_referencia": "hasta 41"
+          }
+        ],
+        "perfil_lipidico": [
+          {
+            "parametro": "Colesterol HDL",
+            "valor": 50,
+            "unidad": "mg/dL",
+            "rango_referencia": "No riesgo > 55"
+          },
+          {
+            "parametro": "Colesterol LDL",
+            "valor": 72,
+            "unidad": "mg/dL",
+            "rango_referencia": "Optimo: Menor de 100"
+          },
+          {
+            "parametro": "Triglicéridos",
+            "valor": 35,
+            "unidad": "mg/dL",
+            "rango_referencia": "Normal menor a 150"
+          }
+        ],
+        "endocrinologia_y_marcadores": [
+          {
+            "parametro": "Tiroxina (T4)",
+            "valor": 10.4,
+            "unidad": "µg/dL",
+            "rango_referencia": "Adultos: 5.1-14.1"
+          },
+          {
+            "parametro": "Tiroxina Libre (T4L)",
+            "valor": 1.67,
+            "unidad": "ng/dL",
+            "rango_referencia": "0,80-1,80"
+          },
+          {
+            "parametro": "Tirotrofina (TSH)",
+            "valor": 2.67,
+            "unidad": "μUI/mL",
+            "rango_referencia": "Adultos: 0.27 a 4.20"
+          },
+          {
+            "parametro": "PSA (Antigeno Prostatico Específico)",
+            "valor": 1.1,
+            "unidad": "ng/mL",
+            "rango_referencia": "0,03-5,40"
+          }
+        ],
+        "serologia": [
+          {
+            "parametro": "HIV Anticuerpos",
+            "resultado": "No Reactivo"
+          },
+          {
+            "parametro": "VDRL Cualitativa",
+            "resultado": "No Reactivo"
+          }
+        ],
+        "orina_completa": {
+          "fisico_quimico": [
+            {
+              "parametro": "Color",
+              "valor": "Amarillo"
+            },
+            {
+              "parametro": "Aspecto",
+              "valor": "Limpido"
+            },
+            {
+              "parametro": "Densidad",
+              "valor": 1011,
+              "unidad": "mg/ml",
+              "rango_referencia": "1010-1025 mg/ml"
+            },
+            {
+              "parametro": "pH",
+              "valor": 6,
+              "rango_referencia": "5.0-7.0"
+            },
+            {
+              "parametro": "Proteinas",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Glucosa",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Cuerpos cetonicos",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Hemoglobina",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Urobilina",
+              "valor": "Normal"
+            },
+            {
+              "parametro": "Pigmentos biliares",
+              "valor": "No Contiene"
+            }
+          ],
+          "examen_microscopico": [
+            {
+              "parametro": "Células Epiteliales",
+              "valor": "Escasas"
+            },
+            {
+              "parametro": "Células redondas",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Leucocitos",
+              "valor": "Escasos"
+            },
+            {
+              "parametro": "Piocitos",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Hematies",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Cristales",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Cilindros",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Mucus",
+              "valor": "No se observan"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "tipo_informe": "Análisis Clínicos",
+      "fecha_estudio": "2025-10-04",
+      "institucion": "SANATORIO LAS LOMAS",
+      "resultados": {
+        "marcadores_tumorales": [
+          {
+            "parametro": "CA-19.9",
+            "valor": "Menor de 0.6",
+            "unidad": "U/ml",
+            "rango_referencia": "0-34"
+          }
+        ],
+        "oligoelementos": [
+          {
+            "parametro": "SELENIO PLASMATICO",
+            "valor": 126,
+            "unidad": "ng/ml",
+            "rango_referencia": "> 1 año: 70-150 ng/mL"
+          },
+          {
+            "parametro": "ZINC PLASMATICO",
+            "valor": 90,
+            "unidad": "ugdl/",
+            "rango_referencia": "70-120"
+          }
+        ],
+        "metabolismo_fosfocalcico": [
+          {
+            "parametro": "CALCEMIA TOTAL",
+            "valor": 10.1,
+            "unidad": "mg/dl",
+            "rango_referencia": "Adultos: 8.4-10.2"
+          },
+          {
+            "parametro": "FOSFATEMIA",
+            "valor": 3.39,
+            "unidad": "mg/dl",
+            "rango_referencia": "2.8-4.1"
+          },
+          {
+            "parametro": "MAGNESIO EN SANGRE",
+            "valor": 1.9,
+            "unidad": "mg/dl",
+            "rango_referencia": "Adultos: 1.6 a 2.6"
+          },
+          {
+            "parametro": "PARATHORMONA PLASMATICA - INTAC",
+            "valor": 24.2,
+            "unidad": "pg/mL",
+            "rango_referencia": "17.3-74.1"
+          }
+        ],
+        "hormonas": [
+          {
+            "parametro": "TESTOSTERONA PLASMATICA",
+            "valor": 7.77,
+            "unidad": "ng/ml",
+            "rango_referencia": "Mayor de 49 años masculino 1.93 - 7.40"
+          },
+          {
+            "parametro": "TESTOSTERONA BIODISPONIBLE EN SANGRE",
+            "valor": 10.07,
+            "unidad": "nmol/L",
+            "rango_referencia": "Mayor de 49 años masculino 3.07-12.6"
+          },
+          {
+            "parametro": "SHBG PROTEINA TRANSPORTADORA",
+            "valor": 55.4,
+            "unidad": "nmol/L",
+            "rango_referencia": "Hombres: 13.5-71.4"
+          }
+        ],
+        "serologia": [
+          {
+            "parametro": "VDRL CUANTITATIVA",
+            "valor": "No reactivo"
+          },
+          {
+            "parametro": "HIV1/HIV2 ANTICUERPOS TOTALES-AG P24",
+            "valor": "Negativo"
+          }
+        ]
+      }
+    },
+    {
+      "tipo_informe": "Análisis Clínicos",
+      "fecha_estudio": "2025-10-10",
+      "institucion": "Chequeos Medicos",
+      "resultados": {
+        "hemograma": [
+          {
+            "parametro": "Hematies",
+            "valor": 4930000,
+            "unidad": "/mm3",
+            "rango_referencia": "4380000-5820000"
+          },
+          {
+            "parametro": "Hemoglobina",
+            "valor": 15,
+            "unidad": "g/dl.",
+            "rango_referencia": "13.2-16,8"
+          },
+          {
+            "parametro": "Hematocrito",
+            "valor": 45,
+            "unidad": "%",
+            "rango_referencia": "39,0-49.0"
+          },
+          {
+            "parametro": "V.C.M.",
+            "valor": 90.9,
+            "unidad": "IL",
+            "rango_referencia": "81,0-95,0"
+          },
+          {
+            "parametro": "H.C.M",
+            "valor": 30.4,
+            "unidad": "Pg",
+            "rango_referencia": "26.7-32.5"
+          },
+          {
+            "parametro": "C.H.C.M",
+            "valor": 33.5,
+            "unidad": "g/dL",
+            "rango_referencia": "32.0-35.0"
+          },
+          {
+            "parametro": "ADE (RDW):",
+            "valor": 13.4,
+            "unidad": "%",
+            "rango_referencia": "11,8-14,8"
+          },
+          {
+            "parametro": "Recuento de Plaquetas",
+            "valor": 366000,
+            "unidad": "/mm3",
+            "rango_referencia": "135000-370000"
+          },
+          {
+            "parametro": "Leucocitos",
+            "valor": 6260,
+            "unidad": "/mm3",
+            "rango_referencia": "4600-10900"
+          },
+          {
+            "parametro": "Neutrófilos",
+            "valor": "53,8%",
+            "valor_abs": 3368,
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Eosinófilos:",
+            "valor": "5,3%",
+            "valor_abs": 332,
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Basófilos:",
+            "valor": "0,8%",
+            "valor_abs": 50,
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Linfocitos:",
+            "valor": "31,5%",
+            "valor_abs": 1972,
+            "unidad_abs": "/mm3"
+          },
+          {
+            "parametro": "Monocitos:",
+            "valor": "8,6%",
+            "valor_abs": 538,
+            "unidad_abs": "/mm3"
+          }
+        ],
+        "quimica_sanguinea": [
+          {
+            "parametro": "Eritrosedimentación",
+            "valor": 6,
+            "unidad": "mm/hora",
+            "rango_referencia": "hasta 15"
+          },
+          {
+            "parametro": "Proteina C Reactiva",
+            "valor": "Menor de 0.6",
+            "unidad": "mg/L",
+            "rango_referencia": "hasta 5.00"
+          },
+          {
+            "parametro": "Glucemia (Basal)",
+            "valor": 91,
+            "unidad": "mg/dL",
+            "rango_referencia": "74-100"
+          },
+          {
+            "parametro": "Urea en sangre",
+            "valor": 51,
+            "unidad": "mg/dL",
+            "rango_referencia": "hasta 50"
+          },
+          {
+            "parametro": "Creatinina en sangre",
+            "valor": 1.19,
+            "unidad": "mg/dL",
+            "rango_referencia": "0,70-1,20"
+          },
+          {
+            "parametro": "Acido Urico en sangre",
+            "valor": 6.1,
+            "unidad": "mg/dL",
+            "rango_referencia": "3,4-7,0"
+          }
+        ],
+        "ionograma_en_sangre": [
+          {
+            "parametro": "Sodio",
+            "valor": 138,
+            "unidad": "mEq/L",
+            "rango_referencia": "132-148"
+          },
+          {
+            "parametro": "Potasio",
+            "valor": 4.7,
+            "unidad": "mEq/L",
+            "rango_referencia": "3.7-5.4"
+          },
+          {
+            "parametro": "Cloro",
+            "valor": 99,
+            "unidad": "mEq/L",
+            "rango_referencia": "98-106"
+          }
+        ],
+        "hepatograma": [
+          {
+            "parametro": "Proteinas Totales",
+            "valor": 7.18,
+            "unidad": "g/dL",
+            "rango_referencia": "6.40-8,30"
+          },
+          {
+            "parametro": "Colesterol Total",
+            "valor": 139,
+            "unidad": "mg/dL",
+            "rango_referencia": "Deseable: Menor de 200"
+          },
+          {
+            "parametro": "Bilirrubina Total",
+            "valor": 0.61,
+            "unidad": "mgdL/",
+            "rango_referencia": "hasta 1,20"
+          },
+          {
+            "parametro": "Bilirrubina Directa",
+            "valor": 0.23,
+            "unidad": "mg/dL",
+            "rango_referencia": "hasta 0.30"
+          },
+          {
+            "parametro": "Fosfatasa Alcalina Total",
+            "valor": 37,
+            "unidad": "UIVL",
+            "rango_referencia": "40-129"
+          },
+          {
+            "parametro": "TGO-Transaminasa Glutamico Oxalacetica",
+            "valor": 21,
+            "unidad": "UVL",
+            "rango_referencia": "hasta 40"
+          },
+          {
+            "parametro": "TGP-Transaminasa Glutamico Piruvica",
+            "valor": 18,
+            "unidad": "UVL",
+            "rango_referencia": "hasta 41"
+          }
+        ],
+        "perfil_lipidico": [
+          {
+            "parametro": "Colesterol HDL",
+            "valor": 49,
+            "unidad": "mg/dL",
+            "rango_referencia": "ingesta liviana: mayor de 40"
+          },
+          {
+            "parametro": "Colesterol NO HDL",
+            "valor": 90,
+            "unidad": "mg/dl",
+            "rango_referencia": "Optimo menor de 130 mg/cl"
+          },
+          {
+            "parametro": "Colesterol LDL",
+            "valor": 79,
+            "unidad": "mg/dL",
+            "rango_referencia": "Ingesta liviana menor de 115"
+          },
+          {
+            "parametro": "Triglicéridos",
+            "valor": 55,
+            "unidad": "mgdL/",
+            "rango_referencia": "ingesta liviana menor de 175"
+          }
+        ],
+        "endocrinologia_y_marcadores": [
+          {
+            "parametro": "Tiroxina (T4)",
+            "valor": 9.7,
+            "unidad": "µg/dL",
+            "rango_referencia": "Adultos: 5.1-14.1"
+          },
+          {
+            "parametro": "Tiroxina Libre (T4L)",
+            "valor": 1.48,
+            "unidad": "ng/dL",
+            "rango_referencia": "0,80-1,80"
+          },
+          {
+            "parametro": "Tirotrofina (TSH)",
+            "valor": 2.21,
+            "unidad": "µUI/mL",
+            "rango_referencia": "Adultos: 0.27 a 4.20"
+          },
+          {
+            "parametro": "PSA (Antigeno Prostatico Específico)",
+            "valor": 1.12,
+            "unidad": "ng/mL",
+            "rango_referencia": "0.03-5,40"
+          }
+        ],
+        "serologia": [
+          {
+            "parametro": "HIV Anticuerpos",
+            "resultado": "No Reactivo"
+          },
+          {
+            "parametro": "VDRL Cualitativa",
+            "resultado": "No Reactivo"
+          }
+        ],
+        "orina_completa": {
+          "fisico_quimico": [
+            {
+              "parametro": "Color",
+              "valor": "Ambar"
+            },
+            {
+              "parametro": "Aspecto",
+              "valor": "Limpido"
+            },
+            {
+              "parametro": "Densidad",
+              "valor": "1029 mg/ml",
+              "rango_referencia": "1010-1025 mg/ml"
+            },
+            {
+              "parametro": "pH",
+              "valor": 5,
+              "rango_referencia": "5.0-7.0"
+            },
+            {
+              "parametro": "Proteinas",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Glucosa",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Cuerpos cetonicos",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Hemoglobina",
+              "valor": "No Contiene"
+            },
+            {
+              "parametro": "Urobilina",
+              "valor": "Normal"
+            },
+            {
+              "parametro": "Pigmentos biliares",
+              "valor": "No Contiene"
+            }
+          ],
+          "examen_microscopico": [
+            {
+              "parametro": "Células Epiteliales",
+              "valor": "Escasas"
+            },
+            {
+              "parametro": "Células redondas",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Leucocitos",
+              "valor": "Escasos"
+            },
+            {
+              "parametro": "Piocitos",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Hematies",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Cristales",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Cilindros",
+              "valor": "No se observan"
+            },
+            {
+              "parametro": "Mucus",
+              "valor": "No se observan"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "tipo_informe": "Prueba Ergométrica Graduada",
+      "fecha_estudio": "2025-10-10",
+      "datos_paciente": {
+        "edad": 61,
+        "peso": 82,
+        "altura": 177,
+        "imc": 26.17,
+        "capacidad_ejercicio": "Buena"
+      },
+      "factores_riesgo": "HTA, Diabetes Mellitus",
+      "medicacion_habitual": "Valsartan + Hidroclorotiazida- Metformina",
+      "protocolo": "Bruce",
+      "frecuencia_cardiaca": {
+        "maxima_prevista": 159,
+        "85_porciento_maxima": 135,
+        "alcanzada_porc": 97
+      },
+      "conclusiones": [
+        "ECG basal ritmo sinusal, Fc 86 lpm. BCRD",
+        "Prueba máxima, de apremio físico, utilizando el protocolo Bruce.",
+        "Suficiente por alcanzar el 97% de la FC máxima prevista para la edad.",
+        "Adecuado comportamiento de la TA y de la FC.",
+        "Ante el apremio alcanzado (12.1 METS) no se evidenciaron alteraciones significativas del segmento ST-T.",
+        "No se observaron arritmias complejas ni trastornos de la conducción.",
+        "Paciente sin síntomas durante la prueba."
+      ],
+      "etapas": [
+        {
+          "etapa": "Basal",
+          "tiempo": "00:57",
+          "esfuerzo": "Basal",
+          "mets": 1,
+          "fc": 86,
+          "pa": "120/70",
+          "itt": 10320,
+          "vo2": 3.5,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Etapa 1",
+          "tiempo": "02:00",
+          "esfuerzo": "10.0/2.70",
+          "mets": 4.7,
+          "fc": 90,
+          "pa": "130/70",
+          "itt": 12870,
+          "vo2": 16.45,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Etapa 2",
+          "tiempo": "02:06",
+          "esfuerzo": "12.0/4.00",
+          "mets": 6.9,
+          "fc": 116,
+          "pa": "140/70",
+          "itt": 16240,
+          "vo2": 24.03,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Etapa 3",
+          "tiempo": "02:91",
+          "esfuerzo": "14.0/5.50",
+          "mets": 9.5,
+          "fc": 143,
+          "pa": "150/70",
+          "itt": 21450,
+          "vo2": 33.38,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Etapa 4",
+          "tiempo": "00:50",
+          "esfuerzo": "16.0/6.80",
+          "mets": 12.1,
+          "fc": 155,
+          "pa": "160/70",
+          "itt": 24800,
+          "vo2": 42.4,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Recuperación inmediata",
+          "tiempo": "00:40",
+          "esfuerzo": "Recuperación",
+          "mets": 2.7,
+          "fc": 140,
+          "pa": "140/70",
+          "itt": 19600,
+          "vo2": 3.5,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Recuperación mediata",
+          "tiempo": "00:36",
+          "esfuerzo": "Recuperación",
+          "mets": 2.3,
+          "fc": 119,
+          "pa": "130/70",
+          "itt": 15470,
+          "vo2": 3.5,
+          "st": "No",
+          "angina": "No"
+        },
+        {
+          "etapa": "Recuperación tardia",
+          "tiempo": "01:08",
+          "esfuerzo": "Recuperación",
+          "mets": 1,
+          "fc": 110,
+          "pa": "120/70",
+          "itt": 13200,
+          "vo2": 3.5,
+          "st": "No",
+          "Angina": "No"
+        }
+      ]
+    }
+  ]
+}

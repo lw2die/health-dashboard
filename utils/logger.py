@@ -2,28 +2,43 @@
 # -*- coding: utf-8 -*-
 """
 Configuración del sistema de logging
-Solo escribe a consola - el script bash redirige a archivo
 """
 
-import logging
 import sys
+import logging
+from config import LOG_LEVEL, LOG_FORMAT
 
-# Configurar formato
-LOG_FORMAT = '%(asctime)s [%(levelname)s] - %(message)s'
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-# Crear logger
-logger = logging.getLogger('monitor_salud')
-logger.setLevel(logging.INFO)
+def setup_logger(name=__name__):
+    """
+    Configura y retorna un logger con formato estandarizado.
+    
+    Args:
+        name: Nombre del logger (generalmente __name__ del módulo)
+    
+    Returns:
+        Logger configurado
+    """
+    logger = logging.getLogger(name)
+    
+    # Evitar duplicar handlers si ya está configurado
+    if logger.handlers:
+        return logger
+    
+    logger.setLevel(getattr(logging, LOG_LEVEL))
+    
+    # Handler para stdout
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(getattr(logging, LOG_LEVEL))
+    
+    # Formato
+    formatter = logging.Formatter(LOG_FORMAT)
+    handler.setFormatter(formatter)
+    
+    logger.addHandler(handler)
+    
+    return logger
 
-# Evitar duplicados si ya está configurado
-if not logger.handlers:
-    # Solo handler para consola (stdout)
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
-    console_formatter = logging.Formatter(LOG_FORMAT, datefmt=DATE_FORMAT)
-    console_handler.setFormatter(console_formatter)
-    logger.addHandler(console_handler)
 
-# No propagar a loggers superiores
-logger.propagate = False
+# Logger global por defecto
+logger = setup_logger("monitor_salud")

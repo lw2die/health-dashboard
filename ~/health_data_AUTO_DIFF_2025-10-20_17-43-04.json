@@ -1,0 +1,171 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-20T17:43:03.991707",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_changes": {
+    "count": 1,
+    "data": [
+      {
+        "session_id": "b23e4cd6-2729-4f66-80e3-a382756acd51",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-10-20T18:44:10.932Z",
+        "end_time": "2025-10-20T19:33:32.058Z",
+        "duration_minutes": 49,
+        "total_steps": null,
+        "distance_meters": 625.0,
+        "calories_burned": 368610.04638671875,
+        "avg_heart_rate": 109,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "sleep_changes": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_changes": {
+    "count": 0,
+    "data": []
+  },
+  "steps_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-20T03:00:00Z",
+        "end_time": "2025-10-21T02:59:59.999Z",
+        "count": 8559,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "distance_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-20T18:44:10.932Z",
+        "end_time": "2025-10-20T19:33:32.058Z",
+        "distance_meters": 625.0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "total_calories_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-20T18:44:10.932Z",
+        "end_time": "2025-10-20T19:33:32.058Z",
+        "energy_kcal": 368.61004638671875,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_changes": {
+    "count": 5,
+    "data": [
+      {
+        "start_time": "2025-10-20T20:00:00Z",
+        "end_time": "2025-10-20T20:01:27.124Z",
+        "samples_count": 2,
+        "avg_bpm": 95,
+        "min_bpm": 93,
+        "max_bpm": 98,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-20T17:00:00Z",
+        "end_time": "2025-10-20T17:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 80,
+        "min_bpm": 68,
+        "max_bpm": 102,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-20T18:00:00Z",
+        "end_time": "2025-10-20T18:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 94,
+        "min_bpm": 76,
+        "max_bpm": 121,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-20T19:00:00Z",
+        "end_time": "2025-10-20T19:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 105,
+        "min_bpm": 87,
+        "max_bpm": 121,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-20T18:44:10.932Z",
+        "end_time": "2025-10-20T19:33:32.058Z",
+        "samples_count": 2942,
+        "avg_bpm": 109,
+        "min_bpm": 82,
+        "max_bpm": 135,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

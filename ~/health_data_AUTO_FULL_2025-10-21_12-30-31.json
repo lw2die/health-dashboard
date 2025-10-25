@@ -1,0 +1,1627 @@
+{
+  "export_type": "AUTO_FULL_EXPORT",
+  "timestamp": "2025-10-21T12:30:31.017726",
+  "data_source": "Health Connect - All Sources",
+  "weight_records": {
+    "count": 242,
+    "data": [
+      {
+        "timestamp": "2025-09-22T08:22:11-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-22T08:22:11-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:52-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:54:47-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:57:46-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T20:16:23-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T20:25:56-03:00",
+        "weight_kg": 80.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T02:58:05-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T03:00:08.959-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-23T03:00:08.959-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T08:01:01-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T08:01:01-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T19:42:18-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T19:42:18-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T06:35:27-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T06:35:27-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T06:36:52-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T06:36:52-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T07:49:39.344-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T08:57:16.329-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T08:57:16.329-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-24T17:03:35-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T17:03:35-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T07:44:52-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T07:44:52-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T12:45:18.088-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-25T12:45:18.088-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T14:31:01-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T14:31:01-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:20:57-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T21:20:57-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31.974-03:00",
+        "weight_kg": 83.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31.974-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:41-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:41-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:47-03:00",
+        "weight_kg": 82.383,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:47-03:00",
+        "weight_kg": 82.38300323486328,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:07:48.418-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-26T06:07:48.418-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:31-03:00",
+        "weight_kg": 81.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:31-03:00",
+        "weight_kg": 81.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:37-03:00",
+        "weight_kg": 82.046,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:37-03:00",
+        "weight_kg": 82.0459976196289,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:03-03:00",
+        "weight_kg": 82.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:03-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:58.709-03:00",
+        "weight_kg": 82.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:58.709-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T20:43:41-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:38-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:38-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:46-03:00",
+        "weight_kg": 82.325,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:46-03:00",
+        "weight_kg": 82.32499694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T05:19:20-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T08:17:18-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:23:48-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:23:48-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:24:32-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:24:32-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:01-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:01-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:11-03:00",
+        "weight_kg": 83.006,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:11-03:00",
+        "weight_kg": 83.00599670410156,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T21:18:20-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T21:18:20-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:40-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:40-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:50-03:00",
+        "weight_kg": 83.658,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:50-03:00",
+        "weight_kg": 83.65799713134766,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:41:58.544-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-29T06:41:58.544-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:21-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:27-03:00",
+        "weight_kg": 83.617,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:27-03:00",
+        "weight_kg": 83.61699676513672,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26-03:00",
+        "weight_kg": 83.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26.010-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26.010-03:00",
+        "weight_kg": 83.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T15:41:53-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T15:41:53-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T15:42:50-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T15:42:50-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T21:42:42-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T21:42:42-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T21:43:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T21:43:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:30:57-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:31:04-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:31:18-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:50-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:50-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:59-03:00",
+        "weight_kg": 83.151,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:59-03:00",
+        "weight_kg": 83.1510009765625,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:07:08.837-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-30T04:07:08.837-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T16:57:50-03:00",
+        "weight_kg": 83.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-30T16:58:02-03:00",
+        "weight_kg": 83.98200225830078,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T16:58:02-03:00",
+        "weight_kg": 83.982,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T02:53:30-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:54:16-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:06-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:56-03:00",
+        "weight_kg": 82.895,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:56-03:00",
+        "weight_kg": 82.89500427246094,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:11-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:19-03:00",
+        "weight_kg": 82.86900329589844,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:19-03:00",
+        "weight_kg": 82.869,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T06:34:35.715-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-01T16:01:55-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T16:02:06-03:00",
+        "weight_kg": 83.87999725341797,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T16:02:06-03:00",
+        "weight_kg": 83.88,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T16:03:22.818-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-02T06:09:56-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-02T06:10:07-03:00",
+        "weight_kg": 83.03900146484375,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T06:10:07-03:00",
+        "weight_kg": 83.039,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T06:33:12.038-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-02T06:55:14-03:00",
+        "weight_kg": 83.10599517822266,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T06:55:14-03:00",
+        "weight_kg": 83.106,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:10-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:18-03:00",
+        "weight_kg": 83.77799987792969,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:18-03:00",
+        "weight_kg": 83.778,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T16:02:14.053-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-03T06:47:46-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-03T06:47:55-03:00",
+        "weight_kg": 82.887,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-03T06:49:00.738-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-04T00:10:11-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T00:10:27-03:00",
+        "weight_kg": 82.362,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T06:20:47-03:00",
+        "weight_kg": 81.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T06:20:57-03:00",
+        "weight_kg": 81.94,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T10:57:13-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T10:57:28-03:00",
+        "weight_kg": 82.64,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T10:58:33.084-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-04T16:27:16-03:00",
+        "weight_kg": 82.95,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T04:12:59-03:00",
+        "weight_kg": 82.414,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T04:16:33.661-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-05T09:32:37-03:00",
+        "weight_kg": 82.353,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T09:33:26.685-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-05T11:14:32-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-05T11:14:44-03:00",
+        "weight_kg": 82.391,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T11:15:33.965-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T04:49:30-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T04:49:36-03:00",
+        "weight_kg": 82.959,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-06T04:50:44.653-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T08:34:13-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T08:34:19-03:00",
+        "weight_kg": 83.031,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-06T08:35:21.484-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T09:53:24-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T09:53:32-03:00",
+        "weight_kg": 83.26,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-07T07:10:11-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-07T07:11:12-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-07T07:11:21-03:00",
+        "weight_kg": 83.125,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-07T07:12:46.702-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-08T05:36:41-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-08T05:36:51-03:00",
+        "weight_kg": 83.804,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-08T05:37:59.536-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-08T15:34:04-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-08T15:34:13-03:00",
+        "weight_kg": 82.632,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-08T15:35:15.070-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-09T06:09:07-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T06:09:25-03:00",
+        "weight_kg": 82.522,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-09T06:10:53.271-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-09T06:12:52-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T11:48:15-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T11:48:25-03:00",
+        "weight_kg": 81.994,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:45-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:54-03:00",
+        "weight_kg": 83.198,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:54-03:00",
+        "weight_kg": 83.197998046875,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-10T06:49:42.222-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:39-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:49-03:00",
+        "weight_kg": 82.732,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:49-03:00",
+        "weight_kg": 82.73200225830078,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-10T13:31:52-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T13:32:29.247-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-11T04:21:57-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:22:03-03:00",
+        "weight_kg": 82.717,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T04:22:03-03:00",
+        "weight_kg": 82.71700286865234,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T04:23:05.265-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-11T04:25-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:39-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:49-03:00",
+        "weight_kg": 82.634,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:49-03:00",
+        "weight_kg": 82.63400268554688,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T04:59:42-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T05:01:16-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T05:03:43-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:33-03:00",
+        "weight_kg": 83.435,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:33-03:00",
+        "weight_kg": 83.43499755859375,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T10:58:31-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:59:12.517-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:34-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:43-03:00",
+        "weight_kg": 82.991,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:43-03:00",
+        "weight_kg": 82.99099731445312,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13.617-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13.617-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T22:58:48-03:00",
+        "weight_kg": 83.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-12T22:58:48-03:00",
+        "weight_kg": 83.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-13T08:24:05-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-13T08:24:05-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-13T09:26:46.770-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-13T09:26:46.770-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-14T03:08:02-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:08:59-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:10:09-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:14:04.665-03:00",
+        "weight_kg": 83.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-14T08:26:06-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T14:25:38-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T18:54:03-03:00",
+        "weight_kg": 83.4000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T08:09:24-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T08:26:25-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T15:47:54-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:02-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:11-03:00",
+        "weight_kg": 83.02,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:11-03:00",
+        "weight_kg": 83.02000427246094,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:24-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:38-03:00",
+        "weight_kg": 83.384,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:38-03:00",
+        "weight_kg": 83.38400268554688,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-16T07:30:36-03:00",
+        "weight_kg": 83.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:10:54-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:58:07-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:58:57-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-17T06:24:43-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-17T06:24:50-03:00",
+        "weight_kg": 83.41,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-17T06:26:08.966-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T03:09:07-03:00",
+        "weight_kg": 84.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-18T03:09:17-03:00",
+        "weight_kg": 84.27,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-18T03:10:25.895-03:00",
+        "weight_kg": 84.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T07:05:48-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-18T07:05:55-03:00",
+        "weight_kg": 83.858,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-18T07:06:58.081-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T14:09:10-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-18T14:09:18-03:00",
+        "weight_kg": 83.272,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-18T14:10:13.316-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T19:05:35.977-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-19T07:48:20-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-19T07:48:40-03:00",
+        "weight_kg": 83.686,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-19T07:49:35.982-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-19T18:05:09-03:00",
+        "weight_kg": 84.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-20T08:33:34-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-20T08:33:47-03:00",
+        "weight_kg": 83.592,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-20T11:34:03-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-20T11:34:09-03:00",
+        "weight_kg": 83.407,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-21T07:25:13-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-21T07:25:23-03:00",
+        "weight_kg": 82.886,
+        "source": "com.withings.wiscale2"
+      }
+    ]
+  },
+  "exercise_sessions": {
+    "count": 26,
+    "data": [
+      {
+        "session_id": "d5876207-20db-46d7-b07f-8ace13b8fb10",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T16:40:57Z",
+        "end_time": "2025-09-21T17:10:57Z",
+        "duration_minutes": 30,
+        "total_steps": 1830,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.07000625133514,
+        "avg_heart_rate": 110,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "428ca0e3-ba9a-3772-ab34-b18371d724e0",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T16:40:57Z",
+        "end_time": "2025-09-21T17:10:57Z",
+        "duration_minutes": 30,
+        "total_steps": 1830,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.07000625133514,
+        "avg_heart_rate": 110,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "e88441ee-d11c-4096-bb0f-2a4c713be49f",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 3520,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "b869c710-fcd1-4f0b-b43a-cb0c18f62508",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 3520,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9c373f5e-c821-3dbf-8595-9a0282b2ca72",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 3520,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "25e9cf3c-2d9a-4238-bfe3-afc80fd8a3ef",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 848,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "950f51b9-65a4-4960-90a4-a99444675270",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 848,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "18c14bec-948c-3129-9a13-19dcf9f7ef91",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 848,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "103327e7-3cb8-4eaa-a772-c3639f9bb5ef",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 1153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "e8753545-5fd2-401e-bb44-55039e09b4b1",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 1153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "29c6a784-101e-3234-ad67-b8af456b3246",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 1153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d967d01e-d457-4bb0-b281-93b0f97fec2a",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 3880,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9021791e-b49c-4bc5-9651-2534aa20420e",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 3880,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9cc8860f-14ce-324a-8c23-be6923c9b5f2",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 3880,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "129b5795-ba40-42a6-8028-e054af1bff5c",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-23T05:39:20Z",
+        "end_time": "2025-09-23T06:09:20Z",
+        "duration_minutes": 30,
+        "total_steps": 1660,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 105,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "e867fdc6-bb40-36d1-9b3c-9d04f72881d0",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-23T05:39:20Z",
+        "end_time": "2025-09-23T06:09:20Z",
+        "duration_minutes": 30,
+        "total_steps": 1660,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 105,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "90468fa9-6494-46be-8029-43e5637d20aa",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 1317,
+        "distance_meters": 1800.4489746093714,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "1a8c0983-438d-4fbb-a33e-09f7dc57cd6b",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 1317,
+        "distance_meters": 1800.4489746093714,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "46b205cc-55ee-3163-82ec-2c323734e9b1",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 1317,
+        "distance_meters": 1800.4489746093714,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "cde0d660-96b9-488b-8148-eacf97862311",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 182,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "b388a6df-3677-4f8d-9be0-a6c6c2886922",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 182,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "f5ac924f-8f86-3a62-b37e-7fda525fc9d9",
+        "title": "Exercise",
+        "exercise_type": 0,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 182,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "50959fa5-7969-43bb-b463-2ae36fe0695a",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-24T05:35:22Z",
+        "end_time": "2025-09-24T06:05:22Z",
+        "duration_minutes": 30,
+        "total_steps": 999,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 118,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "3a883b0c-dbf0-3f9e-99bc-5f3703a764d8",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-24T05:35:22Z",
+        "end_time": "2025-09-24T06:05:22Z",
+        "duration_minutes": 30,
+        "total_steps": 999,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 118,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "9380418d-5f01-4ee4-8c0f-6101358b5dc5",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-24T14:46:53.920Z",
+        "end_time": "2025-09-24T15:29:07.980Z",
+        "duration_minutes": 42,
+        "total_steps": 8,
+        "distance_meters": 500.0,
+        "calories_burned": 327409.97314453125,
+        "avg_heart_rate": 104,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "f6b09cf0-a212-4aa5-b5b8-b12639931258",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-24T14:46:53.920Z",
+        "end_time": "2025-09-24T15:29:07.980Z",
+        "duration_minutes": 42,
+        "total_steps": 8,
+        "distance_meters": 500.0,
+        "calories_burned": 327409.97314453125,
+        "avg_heart_rate": 104,
+        "source": "nl.appyhapps.healthsync"
+      }
+    ]
+  },
+  "sleep_sessions": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_records": {
+    "count": 0,
+    "data": []
+  },
+  "steps_records": {
+    "count": 0,
+    "data": []
+  },
+  "distance_records": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_records": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_records": {
+    "count": 0,
+    "data": []
+  },
+  "height_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_records": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_pressure_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_records": {
+    "count": 0,
+    "data": []
+  }
+}

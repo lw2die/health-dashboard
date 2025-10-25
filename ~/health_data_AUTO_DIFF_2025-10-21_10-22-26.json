@@ -1,0 +1,159 @@
+{
+  "export_type": "AUTO_DIFFERENTIAL",
+  "timestamp": "2025-10-21T10:22:26.437992",
+  "data_source": "Health Connect - Changes Only",
+  "weight_changes": {
+    "count": 0,
+    "data": []
+  },
+  "exercise_changes": {
+    "count": 1,
+    "data": [
+      {
+        "session_id": "6416b35a-b8a7-4686-b8c4-c0ccf249b254",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-21T11:54:33.779Z",
+        "end_time": "2025-10-21T12:46:56.212Z",
+        "duration_minutes": 52,
+        "total_steps": null,
+        "distance_meters": 6498.1708984375,
+        "calories_burned": 307529.9987792969,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "sleep_changes": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_changes": {
+    "count": 1,
+    "data": [
+      {
+        "timestamp": "2025-10-21T11:54:33.779Z",
+        "vo2_max": 38.75,
+        "measurement_method": 0,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "steps_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-21T03:00:00Z",
+        "end_time": "2025-10-22T02:59:59.999Z",
+        "count": 7201,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "distance_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-21T11:54:33.779Z",
+        "end_time": "2025-10-21T12:46:56.212Z",
+        "distance_meters": 6498.1708984375,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "total_calories_changes": {
+    "count": 1,
+    "data": [
+      {
+        "start_time": "2025-10-21T11:54:33.779Z",
+        "end_time": "2025-10-21T12:46:56.212Z",
+        "energy_kcal": 307.5299987792969,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "resting_heart_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_changes": {
+    "count": 0,
+    "data": []
+  },
+  "height_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_changes": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_changes": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_changes": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_changes": {
+    "count": 3,
+    "data": [
+      {
+        "start_time": "2025-10-21T11:54:33.779Z",
+        "end_time": "2025-10-21T12:46:56.212Z",
+        "samples_count": 2701,
+        "avg_bpm": 91,
+        "min_bpm": 75,
+        "max_bpm": 113,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T12:00:00Z",
+        "end_time": "2025-10-21T12:59:59.999Z",
+        "samples_count": 60,
+        "avg_bpm": 92,
+        "min_bpm": 77,
+        "max_bpm": 110,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      },
+      {
+        "start_time": "2025-10-21T13:00:00Z",
+        "end_time": "2025-10-21T13:02:31.895Z",
+        "samples_count": 3,
+        "avg_bpm": 85,
+        "min_bpm": 82,
+        "max_bpm": 89,
+        "source": "com.sec.android.app.shealth",
+        "change_type": "UPSERT"
+      }
+    ]
+  },
+  "blood_pressure_changes": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_changes": {
+    "count": 0,
+    "data": []
+  },
+  "deletions": {
+    "count": 0,
+    "record_ids": []
+  }
+}

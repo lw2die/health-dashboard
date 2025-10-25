@@ -1,0 +1,291 @@
+# Guía Completa: Git - Commit Local, Subir a la Nube y Restaurar
+
+## 1. COMMIT LOCAL (Guardar cambios en tu computadora)
+
+### Paso 1: Verificar qué archivos cambiaron
+```bash
+git status
+```
+Esto te muestra qué archivos modificaste, agregaste o eliminaste.
+
+### Paso 2: Agregar archivos al staging
+```bash
+# Agregar todos los archivos modificados
+git add .
+
+# O agregar archivos específicos
+git add archivo1.kt archivo2.kt
+```
+
+### Paso 3: Hacer el commit (guardar)
+```bash
+git commit -m "Descripción clara de lo que cambiaste"
+```
+**Ejemplo:** `git commit -m "v1.5 - Agregado soporte para sincronización en tiempo real"`
+
+### Paso 4: Crear un tag (etiqueta) para versiones importantes
+```bash
+git tag v1.5.0-nombre-descriptivo
+```
+**Ejemplo:** `git tag v1.5.0-realtime-sync`
+
+### Paso 5: Verificar que se guardó correctamente
+```bash
+# Ver el último commit
+git log -1 --oneline
+
+# Ver todos los tags
+git tag -l
+
+# Ver el historial completo
+git log --oneline --all --graph
+```
+
+---
+
+## 2. SUBIR A LA NUBE (GitHub)
+
+### Paso 1: Verificar que tienes un repositorio remoto configurado
+```bash
+git remote -v
+```
+**Debería mostrar algo como:**
+```
+origin  https://github.com/tu-usuario/tu-repositorio.git (fetch)
+origin  https://github.com/tu-usuario/tu-repositorio.git (push)
+```
+
+### Paso 2: Si NO tienes remoto configurado, agregarlo
+```bash
+git remote add origin https://github.com/tu-usuario/tu-repositorio.git
+```
+
+### Paso 3: Subir commits y tags a GitHub
+```bash
+# Subir todo (commits + tags)
+git push -u origin master --tags
+
+# O por separado:
+git push origin master        # Subir commits
+git push origin --tags        # Subir tags
+```
+
+### Paso 4: Verificar que se subió correctamente
+1. Ve a tu navegador
+2. Abre `https://github.com/tu-usuario/tu-repositorio`
+3. Deberías ver:
+   - Tus archivos actualizados
+   - El último commit visible
+   - Los tags en la sección "Releases" o "Tags"
+
+---
+
+## 3. RESTAURAR DESDE LA NUBE
+
+### Opción A: Restaurar en el mismo proyecto
+
+#### Ver versiones disponibles
+```bash
+git tag -l
+```
+
+#### Restaurar una versión específica
+```bash
+git checkout nombre-del-tag
+```
+**Ejemplo:** `git checkout v1.4.0-differential-complete`
+
+#### Volver a la versión más reciente
+```bash
+git checkout master
+```
+
+### Opción B: Clonar en un proyecto nuevo (recomendado para pruebas)
+
+#### Paso 1: Ir a una carpeta diferente
+```bash
+cd G:\
+mkdir proyecto-restaurado
+cd proyecto-restaurado
+```
+
+#### Paso 2: Clonar el repositorio desde GitHub
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
+```
+
+#### Paso 3: Entrar a la carpeta clonada
+```bash
+cd tu-repositorio
+```
+
+#### Paso 4: Ver versiones disponibles
+```bash
+git tag -l
+```
+
+#### Paso 5: Restaurar la versión que necesites
+```bash
+git checkout nombre-del-tag
+```
+
+#### Paso 6: Verificar que es la versión correcta
+```bash
+git log -1 --oneline
+```
+
+---
+
+## 4. VERIFICACIONES IMPORTANTES
+
+### Antes de hacer commit
+```bash
+# ¿Qué archivos voy a guardar?
+git status
+
+# ¿Qué cambios específicos hice?
+git diff
+```
+
+### Después de hacer commit
+```bash
+# ¿Se guardó correctamente?
+git log -1 --oneline
+
+# ¿Está limpio mi directorio?
+git status
+```
+
+### Después de subir a GitHub
+```bash
+# ¿Está sincronizado con GitHub?
+git log --oneline
+# Busca "(HEAD -> master, origin/master)" en el último commit
+```
+
+### Al restaurar
+```bash
+# ¿En qué versión estoy?
+git log -1 --oneline
+
+# ¿Qué archivos tengo?
+ls -la  # o "dir" en Windows
+```
+
+---
+
+## 5. COMANDOS DE EMERGENCIA
+
+### Si algo sale mal y quieres deshacer cambios NO commiteados
+```bash
+# Descartar TODOS los cambios (CUIDADO: esto borra tu trabajo)
+git reset --hard HEAD
+
+# Descartar cambios en un archivo específico
+git checkout -- archivo.kt
+```
+
+### Si hiciste commit pero quieres deshacerlo (SIN perder los cambios)
+```bash
+git reset --soft HEAD~1
+```
+
+### Si necesitas ver el historial completo
+```bash
+git log --oneline --all --graph --decorate
+```
+
+### Si perdiste algo y necesitas recuperar
+```bash
+# Ver TODOS los commits (incluso los "perdidos")
+git reflog
+```
+
+---
+
+## 6. FLUJO DE TRABAJO RECOMENDADO
+
+### Cada vez que termines una característica importante:
+
+1. **Guardar localmente:**
+   ```bash
+   git add .
+   git commit -m "Descripción clara"
+   git tag v1.X.Y-nombre-descriptivo
+   ```
+
+2. **Verificar que se guardó:**
+   ```bash
+   git log -1 --oneline
+   git status
+   ```
+
+3. **Subir a GitHub:**
+   ```bash
+   git push origin master --tags
+   ```
+
+4. **Verificar en GitHub:**
+   - Abre el navegador
+   - Ve a tu repositorio
+   - Confirma que ves el último commit y los tags
+
+---
+
+## 7. EJEMPLO COMPLETO REAL
+
+```bash
+# 1. Hiciste cambios en tu código
+# 2. Verificar qué cambió
+git status
+
+# 3. Agregar todo
+git add .
+
+# 4. Commit con mensaje descriptivo
+git commit -m "v1.6 - Optimización de exportación JSON"
+
+# 5. Crear tag
+git tag v1.6.0-json-optimization
+
+# 6. Verificar
+git log -1 --oneline
+git tag -l
+
+# 7. Subir a GitHub
+git push origin master --tags
+
+# 8. Verificar en navegador
+# Ir a: https://github.com/tu-usuario/tu-repositorio
+```
+
+---
+
+## 8. GLOSARIO
+
+- **Commit**: Guardar cambios en tu repositorio local
+- **Push**: Subir commits locales a GitHub
+- **Tag**: Etiqueta que marca una versión específica importante
+- **Checkout**: Cambiar a una versión específica
+- **Clone**: Descargar una copia completa del repositorio
+- **Remote**: Repositorio en la nube (GitHub)
+- **Origin**: Nombre por defecto del repositorio remoto
+- **Master**: Rama principal del proyecto
+- **HEAD**: Versión actual en la que estás trabajando
+
+---
+
+## 9. RECORDATORIOS FINALES
+
+- Siempre haz `git status` antes de commit
+- Usa mensajes descriptivos en los commits
+- Crea tags para versiones importantes
+- Verifica que se subió correctamente a GitHub
+- Para probar restauraciones, usa una carpeta nueva
+- GitHub es tu respaldo: sube frecuentemente
+
+**Tu mejor versión actual está en:**
+- Repositorio local: `G:\DOWNLOADS\health-samples-main\HealthConnectSample_con json_working`
+- Tag: `v1.4.0-differential-complete`
+- Commit: `a66f5ba`
+- GitHub: `https://github.com/lw2die/-health-connect-export`

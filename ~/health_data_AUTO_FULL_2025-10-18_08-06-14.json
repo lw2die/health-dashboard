@@ -1,0 +1,2917 @@
+{
+  "export_type": "AUTO_FULL_EXPORT",
+  "timestamp": "2025-10-18T08:06:14.273151",
+  "data_source": "Health Connect - All Sources",
+  "weight_records": {
+    "count": 254,
+    "data": [
+      {
+        "timestamp": "2025-09-18T13:20:04-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-18T13:20:04-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-19T05:44:51-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-19T05:44:51-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-19T08:31:55-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-19T08:32:01-03:00",
+        "weight_kg": 83.042,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-19T08:33:52.134-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-19T08:33:52.134-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-20T07:06:56-03:00",
+        "weight_kg": 84.856,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-20T07:07:44-03:00",
+        "weight_kg": 84.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-20T07:07:44-03:00",
+        "weight_kg": 84.69999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-20T09:00:16-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-20T09:00:16-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-20T09:01:02-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-20T09:01:02-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-20T09:01:35-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-20T09:01:35-03:00",
+        "weight_kg": 84.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-21T01:56:24-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-21T01:56:24-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-21T01:57:29-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-21T01:57:29-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-21T07:27:14.794-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-21T07:27:14.794-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-21T08:20:43-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-21T09:25:19.194-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-21T09:25:19.194-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T08:22:11-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-22T08:22:11-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:52-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:54:47-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T19:57:46-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T20:16:23-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-22T20:25:56-03:00",
+        "weight_kg": 80.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T02:58:05-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T03:00:08.959-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-23T03:00:08.959-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T08:01:01-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T08:01:01-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-23T19:42:18-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-23T19:42:18-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T06:35:27-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T06:35:27-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T06:36:52-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T06:36:52-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T07:49:39.344-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T08:57:16.329-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-24T08:57:16.329-03:00",
+        "weight_kg": 82.4000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-24T17:03:35-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-24T17:03:35-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T07:44:52-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T07:44:52-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T12:45:18.088-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-25T12:45:18.088-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T14:31:01-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T14:31:01-03:00",
+        "weight_kg": 82.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:20:57-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-25T21:20:57-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31.974-03:00",
+        "weight_kg": 83.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-25T21:21:31.974-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:41-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:41-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:47-03:00",
+        "weight_kg": 82.383,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-26T06:06:47-03:00",
+        "weight_kg": 82.38300323486328,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T06:07:48.418-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-26T06:07:48.418-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:31-03:00",
+        "weight_kg": 81.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:31-03:00",
+        "weight_kg": 81.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:37-03:00",
+        "weight_kg": 82.046,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-26T07:35:37-03:00",
+        "weight_kg": 82.0459976196289,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:03-03:00",
+        "weight_kg": 82.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:03-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:58.709-03:00",
+        "weight_kg": 82.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-26T16:28:58.709-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-26T20:43:41-03:00",
+        "weight_kg": 82.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:38-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:38-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:46-03:00",
+        "weight_kg": 82.325,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-27T03:11:46-03:00",
+        "weight_kg": 82.32499694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T05:19:20-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-27T08:17:18-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:23:48-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:23:48-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:24:32-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:24:32-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:01-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:01-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:11-03:00",
+        "weight_kg": 83.006,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-28T06:25:11-03:00",
+        "weight_kg": 83.00599670410156,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-28T21:18:20-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-28T21:18:20-03:00",
+        "weight_kg": 84.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:40-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:40-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:50-03:00",
+        "weight_kg": 83.658,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-29T06:40:50-03:00",
+        "weight_kg": 83.65799713134766,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T06:41:58.544-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-29T06:41:58.544-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:21-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:27-03:00",
+        "weight_kg": 83.617,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-29T07:16:27-03:00",
+        "weight_kg": 83.61699676513672,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26-03:00",
+        "weight_kg": 83.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26.010-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-29T07:17:26.010-03:00",
+        "weight_kg": 83.5,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T15:41:53-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T15:41:53-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T15:42:50-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T15:42:50-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T21:42:42-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T21:42:42-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T21:43:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-29T21:43:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:30:57-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:31:04-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-29T23:31:18-03:00",
+        "weight_kg": 83.0,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:50-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:50-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:59-03:00",
+        "weight_kg": 83.151,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-09-30T04:05:59-03:00",
+        "weight_kg": 83.1510009765625,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T04:07:08.837-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-09-30T04:07:08.837-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T16:57:50-03:00",
+        "weight_kg": 83.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-09-30T16:58:02-03:00",
+        "weight_kg": 83.98200225830078,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-09-30T16:58:02-03:00",
+        "weight_kg": 83.982,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T02:53:30-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:54:16-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:06-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:56-03:00",
+        "weight_kg": 82.895,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T02:55:56-03:00",
+        "weight_kg": 82.89500427246094,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:11-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:19-03:00",
+        "weight_kg": 82.86900329589844,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T06:33:19-03:00",
+        "weight_kg": 82.869,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T06:34:35.715-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-01T16:01:55-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-01T16:02:06-03:00",
+        "weight_kg": 83.87999725341797,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-01T16:02:06-03:00",
+        "weight_kg": 83.88,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-01T16:03:22.818-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-02T06:09:56-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-02T06:10:07-03:00",
+        "weight_kg": 83.03900146484375,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T06:10:07-03:00",
+        "weight_kg": 83.039,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T06:33:12.038-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-02T06:55:14-03:00",
+        "weight_kg": 83.10599517822266,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T06:55:14-03:00",
+        "weight_kg": 83.106,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:10-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:18-03:00",
+        "weight_kg": 83.77799987792969,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-02T16:01:18-03:00",
+        "weight_kg": 83.778,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-02T16:02:14.053-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-03T06:47:46-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-03T06:47:55-03:00",
+        "weight_kg": 82.887,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-03T06:49:00.738-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-04T00:10:11-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T00:10:27-03:00",
+        "weight_kg": 82.362,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T06:20:47-03:00",
+        "weight_kg": 81.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T06:20:57-03:00",
+        "weight_kg": 81.94,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T10:57:13-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-04T10:57:28-03:00",
+        "weight_kg": 82.64,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-04T10:58:33.084-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-04T16:27:16-03:00",
+        "weight_kg": 82.95,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T04:12:59-03:00",
+        "weight_kg": 82.414,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T04:16:33.661-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-05T09:32:37-03:00",
+        "weight_kg": 82.353,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T09:33:26.685-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-05T11:14:32-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-05T11:14:44-03:00",
+        "weight_kg": 82.391,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-05T11:15:33.965-03:00",
+        "weight_kg": 82.30000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T04:49:30-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T04:49:36-03:00",
+        "weight_kg": 82.959,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-06T04:50:44.653-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T08:34:13-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T08:34:19-03:00",
+        "weight_kg": 83.031,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-06T08:35:21.484-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-06T09:53:24-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-06T09:53:32-03:00",
+        "weight_kg": 83.26,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-07T07:10:11-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-07T07:11:12-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-07T07:11:21-03:00",
+        "weight_kg": 83.125,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-07T07:12:46.702-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-08T05:36:41-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-08T05:36:51-03:00",
+        "weight_kg": 83.804,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-08T05:37:59.536-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-08T15:34:04-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-08T15:34:13-03:00",
+        "weight_kg": 82.632,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-08T15:35:15.070-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-09T06:09:07-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T06:09:25-03:00",
+        "weight_kg": 82.522,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-09T06:10:53.271-03:00",
+        "weight_kg": 82.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-09T06:12:52-03:00",
+        "weight_kg": 82.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T11:48:15-03:00",
+        "weight_kg": 82.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-09T11:48:25-03:00",
+        "weight_kg": 81.994,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:45-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:54-03:00",
+        "weight_kg": 83.198,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T06:47:54-03:00",
+        "weight_kg": 83.197998046875,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-10T06:49:42.222-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:39-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:49-03:00",
+        "weight_kg": 82.732,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-10T13:30:49-03:00",
+        "weight_kg": 82.73200225830078,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-10T13:31:52-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-10T13:32:29.247-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-11T04:21:57-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:22:03-03:00",
+        "weight_kg": 82.717,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T04:22:03-03:00",
+        "weight_kg": 82.71700286865234,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T04:23:05.265-03:00",
+        "weight_kg": 82.5999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-11T04:25-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:39-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:49-03:00",
+        "weight_kg": 82.634,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T04:58:49-03:00",
+        "weight_kg": 82.63400268554688,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T04:59:42-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T05:01:16-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T05:03:43-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:25-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:33-03:00",
+        "weight_kg": 83.435,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-11T10:57:33-03:00",
+        "weight_kg": 83.43499755859375,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-11T10:58:31-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-11T10:59:12.517-03:00",
+        "weight_kg": 83.19999694824219,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:34-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:43-03:00",
+        "weight_kg": 82.991,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-12T06:58:43-03:00",
+        "weight_kg": 82.99099731445312,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13.617-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-12T07:00:13.617-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-12T22:58:48-03:00",
+        "weight_kg": 83.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-12T22:58:48-03:00",
+        "weight_kg": 83.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-13T08:24:05-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-13T08:24:05-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-13T09:26:46.770-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-13T09:26:46.770-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-14T03:08:02-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:08:59-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:10:09-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T03:14:04.665-03:00",
+        "weight_kg": 83.0,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-14T08:26:06-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T14:25:38-03:00",
+        "weight_kg": 82.80000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-14T18:54:03-03:00",
+        "weight_kg": 83.4000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T08:09:24-03:00",
+        "weight_kg": 82.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T08:26:25-03:00",
+        "weight_kg": 83.0,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T15:47:54-03:00",
+        "weight_kg": 83.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:02-03:00",
+        "weight_kg": 82.9000015258789,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:11-03:00",
+        "weight_kg": 83.02,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-15T16:43:11-03:00",
+        "weight_kg": 83.02000427246094,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:24-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:38-03:00",
+        "weight_kg": 83.384,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-16T06:08:38-03:00",
+        "weight_kg": 83.38400268554688,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "timestamp": "2025-10-16T07:30:36-03:00",
+        "weight_kg": 83.5999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:10:54-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:58:07-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-16T08:58:57-03:00",
+        "weight_kg": 83.30000305175781,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-17T06:24:43-03:00",
+        "weight_kg": 83.5,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-17T06:24:50-03:00",
+        "weight_kg": 83.41,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-17T06:26:08.966-03:00",
+        "weight_kg": 83.5,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T03:09:07-03:00",
+        "weight_kg": 84.0999984741211,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-18T03:09:17-03:00",
+        "weight_kg": 84.27,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-18T03:10:25.895-03:00",
+        "weight_kg": 84.0999984741211,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "timestamp": "2025-10-18T07:05:48-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.icomon.starfit.starfit"
+      },
+      {
+        "timestamp": "2025-10-18T07:05:55-03:00",
+        "weight_kg": 83.858,
+        "source": "com.withings.wiscale2"
+      },
+      {
+        "timestamp": "2025-10-18T07:06:58.081-03:00",
+        "weight_kg": 83.69999694824219,
+        "source": "com.sec.android.app.shealth"
+      }
+    ]
+  },
+  "exercise_sessions": {
+    "count": 120,
+    "data": [
+      {
+        "session_id": "629247c0-2b90-40ce-be3b-c6d9afc48b37",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:12:53.609Z",
+        "end_time": "2025-09-18T12:43:52.670Z",
+        "duration_minutes": 30,
+        "total_steps": 432,
+        "distance_meters": 2580.7780761718755,
+        "calories_burned": 189490.99731445312,
+        "avg_heart_rate": 90,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "db3ac680-3e28-422f-96b1-66c045523fbb",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:12:53.609Z",
+        "end_time": "2025-09-18T12:43:52.670Z",
+        "duration_minutes": 30,
+        "total_steps": 432,
+        "distance_meters": 2580.7780761718755,
+        "calories_burned": 189490.99731445312,
+        "avg_heart_rate": 90,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "349b1656-c3da-33e8-af7a-4f5dd017d73a",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:12:53.609Z",
+        "end_time": "2025-09-18T12:43:52.670Z",
+        "duration_minutes": 30,
+        "total_steps": 432,
+        "distance_meters": 2580.7780761718755,
+        "calories_burned": 189490.99731445312,
+        "avg_heart_rate": 90,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "63e816b7-fd14-436c-a218-39e49e69a6fe",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:48:05.592Z",
+        "end_time": "2025-09-18T13:14:51.611Z",
+        "duration_minutes": 26,
+        "total_steps": 373,
+        "distance_meters": 2177.824951171874,
+        "calories_burned": 162180.99975585938,
+        "avg_heart_rate": 102,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "3a3aca28-9c26-4fad-b35e-9188fd256376",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:48:05.592Z",
+        "end_time": "2025-09-18T13:14:51.611Z",
+        "duration_minutes": 26,
+        "total_steps": 373,
+        "distance_meters": 2177.824951171874,
+        "calories_burned": 162180.99975585938,
+        "avg_heart_rate": 102,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "ee876664-c85d-3f77-abd6-e1b2972e8909",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T12:48:05.592Z",
+        "end_time": "2025-09-18T13:14:51.611Z",
+        "duration_minutes": 26,
+        "total_steps": 373,
+        "distance_meters": 2177.824951171874,
+        "calories_burned": 162180.99975585938,
+        "avg_heart_rate": 102,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "a34e2564-8f54-44a9-9374-3b2295e202a8",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T13:29:23.079Z",
+        "end_time": "2025-09-18T13:57:38.036Z",
+        "duration_minutes": 28,
+        "total_steps": 394,
+        "distance_meters": 2163.8640136718723,
+        "calories_burned": 172533.99658203125,
+        "avg_heart_rate": 99,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "f8749408-154f-4819-b3eb-15679580bc7b",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T13:29:23.079Z",
+        "end_time": "2025-09-18T13:57:38.036Z",
+        "duration_minutes": 28,
+        "total_steps": 394,
+        "distance_meters": 2163.8640136718723,
+        "calories_burned": 172533.99658203125,
+        "avg_heart_rate": 99,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "d56e6ccf-ebe7-3466-bf7d-d35f3c2316cf",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T13:29:23.079Z",
+        "end_time": "2025-09-18T13:57:38.036Z",
+        "duration_minutes": 28,
+        "total_steps": 394,
+        "distance_meters": 2163.8640136718723,
+        "calories_burned": 172533.99658203125,
+        "avg_heart_rate": 99,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d96f968e-89ac-49f8-97bc-db2903e63243",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-18T14:06:25.781Z",
+        "end_time": "2025-09-18T14:49:04.218Z",
+        "duration_minutes": 42,
+        "total_steps": 594,
+        "distance_meters": 500.0,
+        "calories_burned": 302069.9768066406,
+        "avg_heart_rate": 126,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "4be49c39-481c-43c0-9ee2-0f182a637d92",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-18T14:06:25.781Z",
+        "end_time": "2025-09-18T14:49:04.218Z",
+        "duration_minutes": 42,
+        "total_steps": 594,
+        "distance_meters": 500.0,
+        "calories_burned": 302069.9768066406,
+        "avg_heart_rate": 126,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "17159a1c-9116-35fd-a977-d40ab8a2e443",
+        "title": "Exercise",
+        "exercise_type": 0,
+        "start_time": "2025-09-18T14:06:25.781Z",
+        "end_time": "2025-09-18T14:49:04.218Z",
+        "duration_minutes": 42,
+        "total_steps": 594,
+        "distance_meters": 500.0,
+        "calories_burned": 302069.9768066406,
+        "avg_heart_rate": 126,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "ca05170c-d143-42df-a032-b82939df2a88",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:17:34.047Z",
+        "end_time": "2025-09-18T15:36:05.109Z",
+        "duration_minutes": 18,
+        "total_steps": 258,
+        "distance_meters": 1492.395019531249,
+        "calories_burned": 111246.00219726562,
+        "avg_heart_rate": 101,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "dacebfc7-9172-43d2-8010-c10c64b4fddd",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:17:34.047Z",
+        "end_time": "2025-09-18T15:36:05.109Z",
+        "duration_minutes": 18,
+        "total_steps": 258,
+        "distance_meters": 1492.395019531249,
+        "calories_burned": 111246.00219726562,
+        "avg_heart_rate": 101,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "27a61330-fd70-3f6f-ae97-13190278a870",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:17:34.047Z",
+        "end_time": "2025-09-18T15:36:05.109Z",
+        "duration_minutes": 18,
+        "total_steps": 258,
+        "distance_meters": 1492.395019531249,
+        "calories_burned": 111246.00219726562,
+        "avg_heart_rate": 101,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "21a7ff92-01ba-4241-aa57-eb926f8ff215",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:37:34.449Z",
+        "end_time": "2025-09-18T15:53:06.252Z",
+        "duration_minutes": 15,
+        "total_steps": 216,
+        "distance_meters": 1224.92199707031,
+        "calories_burned": 92086.99798583984,
+        "avg_heart_rate": 99,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "8d7994e5-bbf0-4f4e-ac65-c3aa889cc5cc",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:37:34.449Z",
+        "end_time": "2025-09-18T15:53:06.252Z",
+        "duration_minutes": 15,
+        "total_steps": 216,
+        "distance_meters": 1224.92199707031,
+        "calories_burned": 92086.99798583984,
+        "avg_heart_rate": 99,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "6aa6d260-838d-35f0-bda5-6c059706a989",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-18T15:37:34.449Z",
+        "end_time": "2025-09-18T15:53:06.252Z",
+        "duration_minutes": 15,
+        "total_steps": 216,
+        "distance_meters": 1224.92199707031,
+        "calories_burned": 92086.99798583984,
+        "avg_heart_rate": 99,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d389b03e-77df-4265-8c8f-83c23d9a6f55",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T17:55:28.511Z",
+        "end_time": "2025-09-19T18:14:29.738Z",
+        "duration_minutes": 19,
+        "total_steps": 181,
+        "distance_meters": 1460.1710205078166,
+        "calories_burned": 112974.9984741211,
+        "avg_heart_rate": 89,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "538491cf-58ec-41e9-9fe3-b26632ca37be",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T17:55:28.511Z",
+        "end_time": "2025-09-19T18:14:29.738Z",
+        "duration_minutes": 19,
+        "total_steps": 181,
+        "distance_meters": 1460.1710205078166,
+        "calories_burned": 112974.9984741211,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "2c406c8a-f54e-3a72-945f-6fcb8b069f28",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T17:55:28.511Z",
+        "end_time": "2025-09-19T18:14:29.738Z",
+        "duration_minutes": 19,
+        "total_steps": 181,
+        "distance_meters": 1460.1710205078166,
+        "calories_burned": 112974.9984741211,
+        "avg_heart_rate": 89,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "f0fdafb2-0978-49cf-9b69-5bab4ad2627c",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T18:54:28.609Z",
+        "end_time": "2025-09-19T19:12:57.592Z",
+        "duration_minutes": 18,
+        "total_steps": 176,
+        "distance_meters": 1027.1770019531257,
+        "calories_burned": 99164.00146484375,
+        "avg_heart_rate": 83,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "07122705-5b36-42e7-8d75-76eaa6391ecb",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T18:54:28.609Z",
+        "end_time": "2025-09-19T19:12:57.592Z",
+        "duration_minutes": 18,
+        "total_steps": 176,
+        "distance_meters": 1027.1770019531257,
+        "calories_burned": 99164.00146484375,
+        "avg_heart_rate": 83,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "8dcbad97-d82f-3c8c-99b8-519e93334f65",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T18:54:28.609Z",
+        "end_time": "2025-09-19T19:12:57.592Z",
+        "duration_minutes": 18,
+        "total_steps": 176,
+        "distance_meters": 1027.1770019531257,
+        "calories_burned": 99164.00146484375,
+        "avg_heart_rate": 83,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "ec7a5b82-b4a3-4973-9730-7d3ec768c8e3",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T19:45:04.676Z",
+        "end_time": "2025-09-19T20:01:08.764Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 1089.7630615234345,
+        "calories_burned": 95424.00360107422,
+        "avg_heart_rate": 85,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9b505788-e4d8-41cc-807c-4878d427d8ce",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T19:45:04.676Z",
+        "end_time": "2025-09-19T20:01:08.764Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 1089.7630615234345,
+        "calories_burned": 95424.00360107422,
+        "avg_heart_rate": 85,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "244d97e2-339d-3137-b0ee-2dcc0a9551a5",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T19:45:04.676Z",
+        "end_time": "2025-09-19T20:01:08.764Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 1089.7630615234345,
+        "calories_burned": 95424.00360107422,
+        "avg_heart_rate": 85,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "4f81cc3d-cb0d-4747-9d48-53931d31dd76",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T20:42:36.985Z",
+        "end_time": "2025-09-19T20:55:25.485Z",
+        "duration_minutes": 12,
+        "total_steps": 122,
+        "distance_meters": 809.5023763705461,
+        "calories_burned": 73269.9966430664,
+        "avg_heart_rate": 83,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "fb2ba9b7-9892-3eb2-b721-d157e835b44a",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-19T20:42:36.985Z",
+        "end_time": "2025-09-19T20:55:25.485Z",
+        "duration_minutes": 12,
+        "total_steps": 122,
+        "distance_meters": 809.5023763705461,
+        "calories_burned": 73269.9966430664,
+        "avg_heart_rate": 83,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "5e986018-447b-4f3d-b939-f57db934e5b9",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T12:36:32.805Z",
+        "end_time": "2025-09-20T12:50:45.483Z",
+        "duration_minutes": 14,
+        "total_steps": 97,
+        "distance_meters": 1105.7220458984373,
+        "calories_burned": 87184.99755859375,
+        "avg_heart_rate": 85,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "028c773f-48d8-4a52-90c5-1c8a81647799",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T12:36:32.805Z",
+        "end_time": "2025-09-20T12:50:45.483Z",
+        "duration_minutes": 14,
+        "total_steps": 97,
+        "distance_meters": 1105.7220458984373,
+        "calories_burned": 87184.99755859375,
+        "avg_heart_rate": 85,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "f7a132ba-22b0-3f83-aa41-f01ec7d0bcee",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T12:36:32.805Z",
+        "end_time": "2025-09-20T12:50:45.483Z",
+        "duration_minutes": 14,
+        "total_steps": 97,
+        "distance_meters": 1105.7220458984373,
+        "calories_burned": 87184.99755859375,
+        "avg_heart_rate": 85,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "303a402a-f275-4a37-aa73-c15570b552f5",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T13:22:37.506Z",
+        "end_time": "2025-09-20T13:33:57.051Z",
+        "duration_minutes": 11,
+        "total_steps": 77,
+        "distance_meters": 683.0,
+        "calories_burned": 62000.0,
+        "avg_heart_rate": 89,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "ce322441-dfd8-42a4-8a55-1177e5e7dbca",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T13:22:37.506Z",
+        "end_time": "2025-09-20T13:33:57.051Z",
+        "duration_minutes": 11,
+        "total_steps": 77,
+        "distance_meters": 683.0,
+        "calories_burned": 62000.0,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "b02687de-02b1-3618-991f-87031318118e",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T13:22:37.506Z",
+        "end_time": "2025-09-20T13:33:57.051Z",
+        "duration_minutes": 11,
+        "total_steps": 77,
+        "distance_meters": 683.0,
+        "calories_burned": 62000.0,
+        "avg_heart_rate": 89,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "b9634891-b6fb-4f39-8880-e2b814bec0f4",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T14:00:28.729Z",
+        "end_time": "2025-09-20T14:11:30.832Z",
+        "duration_minutes": 11,
+        "total_steps": 75,
+        "distance_meters": 805.9999999999999,
+        "calories_burned": 66000.0,
+        "avg_heart_rate": 86,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "139c968a-1e69-4795-8b5e-874638220e48",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T14:00:28.729Z",
+        "end_time": "2025-09-20T14:11:30.832Z",
+        "duration_minutes": 11,
+        "total_steps": 75,
+        "distance_meters": 805.9999999999999,
+        "calories_burned": 66000.0,
+        "avg_heart_rate": 86,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "c1c032d8-6c1e-3d30-a542-039b095ad8be",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T14:00:28.729Z",
+        "end_time": "2025-09-20T14:11:30.832Z",
+        "duration_minutes": 11,
+        "total_steps": 75,
+        "distance_meters": 805.9999999999999,
+        "calories_burned": 66000.0,
+        "avg_heart_rate": 86,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "95307d02-6a4d-4cab-96b5-ff13652e4644",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T15:29:57.426Z",
+        "end_time": "2025-09-20T15:40:47.429Z",
+        "duration_minutes": 10,
+        "total_steps": 74,
+        "distance_meters": 870.385009765625,
+        "calories_burned": 65643.99719238281,
+        "avg_heart_rate": 99,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "581d7cc0-0e7f-4e31-abab-83b33a5c03cf",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T15:29:57.426Z",
+        "end_time": "2025-09-20T15:40:47.429Z",
+        "duration_minutes": 10,
+        "total_steps": 74,
+        "distance_meters": 870.385009765625,
+        "calories_burned": 65643.99719238281,
+        "avg_heart_rate": 99,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9f127193-4999-3f31-be21-2cb3ade3cf47",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-20T15:29:57.426Z",
+        "end_time": "2025-09-20T15:40:47.429Z",
+        "duration_minutes": 10,
+        "total_steps": 74,
+        "distance_meters": 870.385009765625,
+        "calories_burned": 65643.99719238281,
+        "avg_heart_rate": 99,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d150e0e8-9b3b-42b5-8a0d-d96e00c7d941",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T04:25:20Z",
+        "end_time": "2025-09-21T04:55:20Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2500.0,
+        "calories_burned": 140.0499939918518,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "acdb7643-5cbc-34bf-afee-476951be4d1b",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T04:25:20Z",
+        "end_time": "2025-09-21T04:55:20Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2500.0,
+        "calories_burned": 140.0499939918518,
+        "avg_heart_rate": 89,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "778d726d-786b-402f-bb1e-c23c732ecab2",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T06:33:54Z",
+        "end_time": "2025-09-21T07:03:54Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1300.0,
+        "calories_burned": 140.10000228881836,
+        "avg_heart_rate": 88,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "44ea9a3a-ab17-361b-ac3f-4c65a2d3411b",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T06:33:54Z",
+        "end_time": "2025-09-21T07:03:54Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1300.0,
+        "calories_burned": 140.10000228881836,
+        "avg_heart_rate": 88,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "fc837ce9-1e6f-43d4-a89a-6e9ce22c068b",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T08:19:19Z",
+        "end_time": "2025-09-21T08:49:19Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1500.0,
+        "calories_burned": 140.11000096797943,
+        "avg_heart_rate": 86,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "64fe1578-e91a-3a46-a3c1-67de26c1f578",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T08:19:19Z",
+        "end_time": "2025-09-21T08:49:19Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1500.0,
+        "calories_burned": 140.11000096797943,
+        "avg_heart_rate": 86,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d3085733-d2b5-4b46-b601-c7dcd2bb7ffe",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T10:20:41Z",
+        "end_time": "2025-09-21T10:50:41Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.0199979543686,
+        "avg_heart_rate": 91,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "441b3f16-559b-3219-8bec-9ab49ae47fa9",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T10:20:41Z",
+        "end_time": "2025-09-21T10:50:41Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.0199979543686,
+        "avg_heart_rate": 91,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "44c6f33f-e7a2-4643-9494-31c7aaa574c0",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T10:56:41Z",
+        "end_time": "2025-09-21T11:26:41Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2800.0,
+        "calories_burned": 140.10000228881836,
+        "avg_heart_rate": 101,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "a5d80c4c-7c96-3c47-9523-52d4ab9c25c1",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T10:56:41Z",
+        "end_time": "2025-09-21T11:26:41Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2800.0,
+        "calories_burned": 140.10000228881836,
+        "avg_heart_rate": 101,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "2ddaf11f-a194-42ff-81f0-c6f3fdbfb7e5",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T13:15:14Z",
+        "end_time": "2025-09-21T13:45:14Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2700.0,
+        "calories_burned": 140.08000493049622,
+        "avg_heart_rate": 93,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "fb59d633-0e8b-361a-b60e-d7d412636052",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T13:15:14Z",
+        "end_time": "2025-09-21T13:45:14Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 2700.0,
+        "calories_burned": 140.08000493049622,
+        "avg_heart_rate": 93,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "49bc49bb-c382-406c-ad9d-d61d75ca68cd",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T14:25:39Z",
+        "end_time": "2025-09-21T14:55:39Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1900.0,
+        "calories_burned": 140.00999927520752,
+        "avg_heart_rate": 108,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "cb464050-1612-3336-9762-a9c5da4e31bc",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T14:25:39Z",
+        "end_time": "2025-09-21T14:55:39Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1900.0,
+        "calories_burned": 140.00999927520752,
+        "avg_heart_rate": 108,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d5876207-20db-46d7-b07f-8ace13b8fb10",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T16:40:57Z",
+        "end_time": "2025-09-21T17:10:57Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.07000625133514,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "428ca0e3-ba9a-3772-ab34-b18371d724e0",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-21T16:40:57Z",
+        "end_time": "2025-09-21T17:10:57Z",
+        "duration_minutes": 30,
+        "total_steps": 88,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.07000625133514,
+        "avg_heart_rate": 89,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "e88441ee-d11c-4096-bb0f-2a4c713be49f",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 302,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "b869c710-fcd1-4f0b-b43a-cb0c18f62508",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 302,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9c373f5e-c821-3dbf-8595-9a0282b2ca72",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T14:25:05.962Z",
+        "end_time": "2025-09-22T14:57:08.787Z",
+        "duration_minutes": 32,
+        "total_steps": 302,
+        "distance_meters": 2932.2089843749964,
+        "calories_burned": 203087.99743652344,
+        "avg_heart_rate": 91,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "25e9cf3c-2d9a-4238-bfe3-afc80fd8a3ef",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 112,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "950f51b9-65a4-4960-90a4-a99444675270",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 112,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "18c14bec-948c-3129-9a13-19dcf9f7ef91",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T15:14:48.982Z",
+        "end_time": "2025-09-22T15:26:40.554Z",
+        "duration_minutes": 11,
+        "total_steps": 112,
+        "distance_meters": 675.5670166015624,
+        "calories_burned": 65101.99737548828,
+        "avg_heart_rate": 95,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "103327e7-3cb8-4eaa-a772-c3639f9bb5ef",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "e8753545-5fd2-401e-bb44-55039e09b4b1",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "29c6a784-101e-3234-ad67-b8af456b3246",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T16:41:42.232Z",
+        "end_time": "2025-09-22T16:57:58.919Z",
+        "duration_minutes": 16,
+        "total_steps": 153,
+        "distance_meters": 894.2900390625005,
+        "calories_burned": 89040.00091552734,
+        "avg_heart_rate": 86,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "d967d01e-d457-4bb0-b281-93b0f97fec2a",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 345,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9021791e-b49c-4bc5-9651-2534aa20420e",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 345,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9cc8860f-14ce-324a-8c23-be6923c9b5f2",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-22T17:21:25.753Z",
+        "end_time": "2025-09-22T17:58:00.410Z",
+        "duration_minutes": 36,
+        "total_steps": 345,
+        "distance_meters": 3136.687011718751,
+        "calories_burned": 237701.99584960938,
+        "avg_heart_rate": 109,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "129b5795-ba40-42a6-8028-e054af1bff5c",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-23T05:39:20Z",
+        "end_time": "2025-09-23T06:09:20Z",
+        "duration_minutes": 30,
+        "total_steps": 354,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 92,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "e867fdc6-bb40-36d1-9b3c-9d04f72881d0",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-23T05:39:20Z",
+        "end_time": "2025-09-23T06:09:20Z",
+        "duration_minutes": 30,
+        "total_steps": 354,
+        "distance_meters": 1400.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 92,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "90468fa9-6494-46be-8029-43e5637d20aa",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 164,
+        "distance_meters": 1800.4489746093711,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "1a8c0983-438d-4fbb-a33e-09f7dc57cd6b",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 164,
+        "distance_meters": 1800.4489746093711,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "46b205cc-55ee-3163-82ec-2c323734e9b1",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-23T11:53:14.098Z",
+        "end_time": "2025-09-23T12:07:06.701Z",
+        "duration_minutes": 13,
+        "total_steps": 164,
+        "distance_meters": 1800.4489746093711,
+        "calories_burned": 86402.0004272461,
+        "avg_heart_rate": 95,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "cde0d660-96b9-488b-8148-eacf97862311",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 469,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "b388a6df-3677-4f8d-9be0-a6c6c2886922",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 469,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "f5ac924f-8f86-3a62-b37e-7fda525fc9d9",
+        "title": "Exercise",
+        "exercise_type": 0,
+        "start_time": "2025-09-23T16:46:08.500Z",
+        "end_time": "2025-09-23T17:25:50.523Z",
+        "duration_minutes": 39,
+        "total_steps": 469,
+        "distance_meters": 250.0,
+        "calories_burned": 150890.0146484375,
+        "avg_heart_rate": 119,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "50959fa5-7969-43bb-b463-2ae36fe0695a",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-24T05:35:22Z",
+        "end_time": "2025-09-24T06:05:22Z",
+        "duration_minutes": 30,
+        "total_steps": 278,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 98,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "3a883b0c-dbf0-3f9e-99bc-5f3703a764d8",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-24T05:35:22Z",
+        "end_time": "2025-09-24T06:05:22Z",
+        "duration_minutes": 30,
+        "total_steps": 278,
+        "distance_meters": 1200.0,
+        "calories_burned": 140.03999531269073,
+        "avg_heart_rate": 98,
+        "source": "com.google.android.apps.fitness"
+      },
+      {
+        "session_id": "9380418d-5f01-4ee4-8c0f-6101358b5dc5",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-24T14:46:53.920Z",
+        "end_time": "2025-09-24T15:29:07.980Z",
+        "duration_minutes": 42,
+        "total_steps": 391,
+        "distance_meters": 500.0,
+        "calories_burned": 327409.97314453125,
+        "avg_heart_rate": 104,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "f6b09cf0-a212-4aa5-b5b8-b12639931258",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-24T14:46:53.920Z",
+        "end_time": "2025-09-24T15:29:07.980Z",
+        "duration_minutes": 42,
+        "total_steps": 391,
+        "distance_meters": 500.0,
+        "calories_burned": 327409.97314453125,
+        "avg_heart_rate": 104,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "cbee5757-b73e-4fb4-ab6a-1f6b082fc1ac",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-25T05:05:52Z",
+        "end_time": "2025-09-25T05:35:52Z",
+        "duration_minutes": 30,
+        "total_steps": 246,
+        "distance_meters": 2200.0,
+        "calories_burned": 140.08000493049622,
+        "avg_heart_rate": 111,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "c6cf1000-c85f-451c-b5c2-2b53a4f1b9ef",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-25T08:29:09.565Z",
+        "end_time": "2025-09-25T08:42:01.889Z",
+        "duration_minutes": 12,
+        "total_steps": 105,
+        "distance_meters": 335.5350036621097,
+        "calories_burned": 66165.00091552734,
+        "avg_heart_rate": 88,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "aebe521c-84a6-4eea-a26c-972f6b470c26",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-25T08:29:09.565Z",
+        "end_time": "2025-09-25T08:42:01.889Z",
+        "duration_minutes": 12,
+        "total_steps": 105,
+        "distance_meters": 335.5350036621097,
+        "calories_burned": 66165.00091552734,
+        "avg_heart_rate": 88,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "679b7f09-01f9-44fa-842e-1eb819b88186",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-25T13:31:26.815Z",
+        "end_time": "2025-09-25T14:17:15.801Z",
+        "duration_minutes": 45,
+        "total_steps": 375,
+        "distance_meters": 500.0,
+        "calories_burned": 362520.01953125,
+        "avg_heart_rate": 114,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "48a0cbb6-7f68-4ca2-87da-bdf20ed11d50",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-25T13:31:26.815Z",
+        "end_time": "2025-09-25T14:17:15.801Z",
+        "duration_minutes": 45,
+        "total_steps": 375,
+        "distance_meters": 500.0,
+        "calories_burned": 362520.01953125,
+        "avg_heart_rate": 114,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "6a328b8a-93f7-4c21-9a03-511e82d77457",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-26T14:17:34.152Z",
+        "end_time": "2025-09-26T14:52:15.472Z",
+        "duration_minutes": 34,
+        "total_steps": 680,
+        "distance_meters": 3140.364990234375,
+        "calories_burned": 218016.00646972656,
+        "avg_heart_rate": 100,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "f42e919a-0913-43aa-8470-1a441847b676",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-26T14:57:35.090Z",
+        "end_time": "2025-09-26T15:48:14.516Z",
+        "duration_minutes": 50,
+        "total_steps": 994,
+        "distance_meters": 550.0,
+        "calories_burned": 411059.99755859375,
+        "avg_heart_rate": 102,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9daed1da-43b3-48f4-a804-86f9157f45c2",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-26T16:26:48.078Z",
+        "end_time": "2025-09-26T19:03:23.042Z",
+        "duration_minutes": 156,
+        "total_steps": 3073,
+        "distance_meters": 10630.578125,
+        "calories_burned": 877736.0229492188,
+        "avg_heart_rate": 107,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "796d8b7b-c648-4018-acbd-0b9b9a3926cf",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-27T12:59:46.827Z",
+        "end_time": "2025-09-27T13:19:17.636Z",
+        "duration_minutes": 19,
+        "total_steps": 184,
+        "distance_meters": 985.6129760742188,
+        "calories_burned": 102802.001953125,
+        "avg_heart_rate": 80,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "5b541d2c-3031-4139-a6a5-e86df69c9c10",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-27T14:32:05.258Z",
+        "end_time": "2025-09-27T14:43:00.069Z",
+        "duration_minutes": 10,
+        "total_steps": 103,
+        "distance_meters": 621.0,
+        "calories_burned": 62000.0,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "f7959095-861d-4104-a582-1df447359313",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-28T07:43:57Z",
+        "end_time": "2025-09-28T08:13:57Z",
+        "duration_minutes": 30,
+        "total_steps": 180,
+        "distance_meters": 1200.0,
+        "calories_burned": 35435.276192927995,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "c7531d76-5e47-4777-a3ed-9472cb5533a4",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-29T14:19:02.815Z",
+        "end_time": "2025-09-29T14:32:38.616Z",
+        "duration_minutes": 13,
+        "total_steps": 86,
+        "distance_meters": 775.7689819335944,
+        "calories_burned": 72739.99786376953,
+        "avg_heart_rate": 72,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "7f0676c7-a6d5-43aa-afc3-286237f4ab3f",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-29T14:19:02.815Z",
+        "end_time": "2025-09-29T14:32:38.616Z",
+        "duration_minutes": 13,
+        "total_steps": 86,
+        "distance_meters": 775.7689819335944,
+        "calories_burned": 72739.99786376953,
+        "avg_heart_rate": 72,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "ee92d684-ab06-4e37-8317-148024a398ed",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-29T16:56:04.531Z",
+        "end_time": "2025-09-29T17:43:30.579Z",
+        "duration_minutes": 47,
+        "total_steps": 303,
+        "distance_meters": 600.0,
+        "calories_burned": 374029.9987792969,
+        "avg_heart_rate": 108,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "5cc878d6-9b5b-4665-b8c3-7e2e0d89b1b9",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-29T16:56:04.531Z",
+        "end_time": "2025-09-29T17:43:30.579Z",
+        "duration_minutes": 47,
+        "total_steps": 303,
+        "distance_meters": 600.0,
+        "calories_burned": 374029.9987792969,
+        "avg_heart_rate": 108,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "0ee55f08-76f3-46ff-a7ef-642b69367eb7",
+        "title": "Exercise",
+        "exercise_type": 56,
+        "start_time": "2025-09-30T07:41:47Z",
+        "end_time": "2025-09-30T08:11:47Z",
+        "duration_minutes": 30,
+        "total_steps": 271,
+        "distance_meters": 2400.0,
+        "calories_burned": 311624.8268750962,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "543ef7fb-c741-4edd-89c4-e16ec86f98e2",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T17:21:31.983Z",
+        "end_time": "2025-09-30T17:52:24.972Z",
+        "duration_minutes": 30,
+        "total_steps": 279,
+        "distance_meters": 3073.886962890628,
+        "calories_burned": 213904.0069580078,
+        "avg_heart_rate": 103,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "d2a6dbc7-d4a5-4934-bb9d-e639a5cf0ad3",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T17:21:31.983Z",
+        "end_time": "2025-09-30T17:52:24.972Z",
+        "duration_minutes": 30,
+        "total_steps": 279,
+        "distance_meters": 3073.886962890628,
+        "calories_burned": 213904.0069580078,
+        "avg_heart_rate": 103,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "01bb553a-0b9c-4f5e-98c9-6a513c6b244d",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-30T18:00:25.473Z",
+        "end_time": "2025-09-30T18:11:39.973Z",
+        "duration_minutes": 11,
+        "total_steps": 101,
+        "distance_meters": null,
+        "calories_burned": 132179.99267578125,
+        "avg_heart_rate": 116,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "1149dbdf-e422-4b44-b3e8-e3c7a3c968b9",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-30T18:00:25.473Z",
+        "end_time": "2025-09-30T18:11:39.973Z",
+        "duration_minutes": 11,
+        "total_steps": 101,
+        "distance_meters": null,
+        "calories_burned": 132179.99267578125,
+        "avg_heart_rate": 116,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "5fed8511-7091-45d3-8c63-7baf26dd6f81",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-09-30T18:14:34.434Z",
+        "end_time": "2025-09-30T19:17:34.963Z",
+        "duration_minutes": 63,
+        "total_steps": 569,
+        "distance_meters": 525.0,
+        "calories_burned": 344940.0329589844,
+        "avg_heart_rate": 104,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "0cec2a96-ac39-4528-8ee2-5b4f9d36ae40",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-09-30T18:14:34.434Z",
+        "end_time": "2025-09-30T19:17:34.963Z",
+        "duration_minutes": 63,
+        "total_steps": 569,
+        "distance_meters": 525.0,
+        "calories_burned": 344940.0329589844,
+        "avg_heart_rate": 104,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "69b5d200-ee1d-443a-be6a-4239d64a793e",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T19:17:57.722Z",
+        "end_time": "2025-09-30T19:40:29.479Z",
+        "duration_minutes": 22,
+        "total_steps": 203,
+        "distance_meters": 1843.47802734375,
+        "calories_burned": 139281.005859375,
+        "avg_heart_rate": 95,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9bf0b72c-208d-4cef-9b67-e7cc1ced39d5",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T19:17:57.722Z",
+        "end_time": "2025-09-30T19:40:29.479Z",
+        "duration_minutes": 22,
+        "total_steps": 203,
+        "distance_meters": 1843.47802734375,
+        "calories_burned": 139281.005859375,
+        "avg_heart_rate": 95,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "9cf07852-cb73-47a3-b73e-ff9240a38184",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T19:40:40.694Z",
+        "end_time": "2025-09-30T19:47:17.406Z",
+        "duration_minutes": 6,
+        "total_steps": 59,
+        "distance_meters": 637.4609985351597,
+        "calories_burned": 43167.999267578125,
+        "avg_heart_rate": 104,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "4a4240b4-2a00-46b7-a8e1-e23e21d9071b",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-09-30T19:40:40.694Z",
+        "end_time": "2025-09-30T19:47:17.406Z",
+        "duration_minutes": 6,
+        "total_steps": 59,
+        "distance_meters": 637.4609985351597,
+        "calories_burned": 43167.999267578125,
+        "avg_heart_rate": 104,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "5bcee76e-8fe8-40d5-844b-8db292b75273",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-01T16:38:24.519Z",
+        "end_time": "2025-10-01T16:50:36.663Z",
+        "duration_minutes": 12,
+        "total_steps": 98,
+        "distance_meters": 813.9999999999999,
+        "calories_burned": 70000.0,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "4bb9972b-8880-4d8d-be14-a47b7822b16f",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-01T16:38:24.519Z",
+        "end_time": "2025-10-01T16:50:36.663Z",
+        "duration_minutes": 12,
+        "total_steps": 98,
+        "distance_meters": 813.9999999999999,
+        "calories_burned": 70000.0,
+        "avg_heart_rate": 91,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "117d2655-3338-4c6a-a1c5-4e5aa624e0f4",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-10-01T17:05:20.407Z",
+        "end_time": "2025-10-01T18:05:26.261Z",
+        "duration_minutes": 60,
+        "total_steps": 483,
+        "distance_meters": 750.0,
+        "calories_burned": 413740.0207519531,
+        "avg_heart_rate": 124,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "4a2bbd25-8691-41e7-8bfc-92bdcdb9fe5c",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-10-01T17:05:20.407Z",
+        "end_time": "2025-10-01T18:05:26.261Z",
+        "duration_minutes": 60,
+        "total_steps": 483,
+        "distance_meters": 750.0,
+        "calories_burned": 413740.0207519531,
+        "avg_heart_rate": 124,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "22d7eb3e-ba41-423d-8916-22ae2f6ddc10",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-01T18:05:59.802Z",
+        "end_time": "2025-10-01T18:16:39.504Z",
+        "duration_minutes": 10,
+        "total_steps": 85,
+        "distance_meters": 547.0,
+        "calories_burned": 57000.0,
+        "avg_heart_rate": 94,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "699f882b-9c17-47be-b970-84e45dc396fa",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-01T18:05:59.802Z",
+        "end_time": "2025-10-01T18:16:39.504Z",
+        "duration_minutes": 10,
+        "total_steps": 85,
+        "distance_meters": 547.0,
+        "calories_burned": 57000.0,
+        "avg_heart_rate": 94,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "a94656e5-40a3-435b-9b1c-7831c0599a62",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-02T15:19:44.979Z",
+        "end_time": "2025-10-02T15:33:16.791Z",
+        "duration_minutes": 13,
+        "total_steps": 156,
+        "distance_meters": 956.0850219726567,
+        "calories_burned": 76487.99896240234,
+        "avg_heart_rate": 89,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "9eded3af-609a-4379-a490-7a78949ce0fa",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-02T15:19:44.979Z",
+        "end_time": "2025-10-02T15:33:16.791Z",
+        "duration_minutes": 13,
+        "total_steps": 156,
+        "distance_meters": 956.0850219726567,
+        "calories_burned": 76487.99896240234,
+        "avg_heart_rate": 89,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "5b2a88c8-f0ad-43f7-8c9a-e2375ba7d002",
+        "title": "Exercise",
+        "exercise_type": 74,
+        "start_time": "2025-10-02T15:46:13.054Z",
+        "end_time": "2025-10-02T16:41:29.399Z",
+        "duration_minutes": 55,
+        "total_steps": 639,
+        "distance_meters": 625.0,
+        "calories_burned": 390540.0085449219,
+        "avg_heart_rate": 104,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "babbcafd-f73c-4f75-a15c-2b6ffae6ca83",
+        "title": "Exercise",
+        "exercise_type": 73,
+        "start_time": "2025-10-02T15:46:13.054Z",
+        "end_time": "2025-10-02T16:41:29.399Z",
+        "duration_minutes": 55,
+        "total_steps": 639,
+        "distance_meters": 625.0,
+        "calories_burned": 390540.0085449219,
+        "avg_heart_rate": 104,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "844ea648-7079-4d14-af87-7e08c330200c",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-02T16:41:56.293Z",
+        "end_time": "2025-10-02T16:53:01.246Z",
+        "duration_minutes": 11,
+        "total_steps": 128,
+        "distance_meters": 643.0,
+        "calories_burned": 65000.0,
+        "avg_heart_rate": 91,
+        "source": "com.sec.android.app.shealth"
+      },
+      {
+        "session_id": "bf4bc75a-19d0-4cc0-a697-91f89104e165",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-02T16:41:56.293Z",
+        "end_time": "2025-10-02T16:53:01.246Z",
+        "duration_minutes": 11,
+        "total_steps": 128,
+        "distance_meters": 643.0,
+        "calories_burned": 65000.0,
+        "avg_heart_rate": 91,
+        "source": "nl.appyhapps.healthsync"
+      },
+      {
+        "session_id": "2a3ab229-2ef2-4dbf-873b-2fe69cb6b9a1",
+        "title": "Exercise",
+        "exercise_type": 79,
+        "start_time": "2025-10-02T17:08:41.238Z",
+        "end_time": "2025-10-02T17:25:11.789Z",
+        "duration_minutes": null,
+        "total_steps": null,
+        "distance_meters": null,
+        "calories_burned": null,
+        "avg_heart_rate": null,
+        "source": "com.sec.android.app.shealth"
+      }
+    ]
+  },
+  "sleep_sessions": {
+    "count": 0,
+    "data": []
+  },
+  "vo2max_records": {
+    "count": 0,
+    "data": []
+  },
+  "steps_records": {
+    "count": 0,
+    "data": []
+  },
+  "distance_records": {
+    "count": 0,
+    "data": []
+  },
+  "total_calories_records": {
+    "count": 0,
+    "data": []
+  },
+  "resting_heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "oxygen_saturation_records": {
+    "count": 0,
+    "data": []
+  },
+  "height_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_fat_records": {
+    "count": 0,
+    "data": []
+  },
+  "lean_body_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "bone_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "basal_metabolic_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "body_water_mass_records": {
+    "count": 0,
+    "data": []
+  },
+  "heart_rate_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_pressure_records": {
+    "count": 0,
+    "data": []
+  },
+  "blood_glucose_records": {
+    "count": 0,
+    "data": []
+  },
+  "nutrition_records": {
+    "count": 0,
+    "data": []
+  },
+  "active_calories_burned_records": {
+    "count": 0,
+    "data": []
+  }
+}

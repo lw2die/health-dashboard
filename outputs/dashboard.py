@@ -8,6 +8,7 @@ Importa y coordina todos los módulos de generación
 from datetime import datetime, timedelta
 from config import OUTPUT_HTML, EDAD, ALTURA_CM
 from utils.logger import logger
+from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
 
 # Importar módulos de métricas
 from metricas.pai import calcular_pai_semanal
@@ -173,6 +174,11 @@ def generar_dashboard(cache):
     # Recomendaciones
     recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
     
+    # Generar sección de logs
+    logs_lineas = leer_ultimos_logs(500)
+    logs_html_content = formatear_logs_html(logs_lineas)
+    resumen_ejecucion = generar_resumen_ejecucion(cache)
+    
     # ═══════════════════════════════════════════════
     # 6. CONSTRUIR HTML COMPLETO
     # ═══════════════════════════════════════════════
@@ -181,7 +187,9 @@ def generar_dashboard(cache):
         cards_html,
         entrenamientos_html,
         recomendaciones_html,
-        datos_graficos
+        datos_graficos,
+        logs_html_content,
+        resumen_ejecucion
     )
     
     # ═══════════════════════════════════════════════
