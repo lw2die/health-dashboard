@@ -794,6 +794,14 @@ def _generar_seccion_logs(logs_content, resumen):
     if not resumen:
         return ""
     
+    # Info de debug del archivo de log
+    log_info = ""
+    if 'log_existe' in resumen:
+        if resumen.get('log_existe'):
+            log_info = f"<p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: {resumen.get('log_size', 0)} bytes</p>"
+        else:
+            log_info = "<p style='color: #f85149; font-size: 0.9em;'>⚠️ Archivo de log no encontrado</p>"
+    
     return f"""
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
@@ -803,6 +811,7 @@ def _generar_seccion_logs(logs_content, resumen):
             <p>✅ <strong>Total ejercicios:</strong> {resumen.get('total_ejercicios', 0)}</p>
             <p>✅ <strong>Total registros peso:</strong> {resumen.get('total_peso', 0)}</p>
             <p>✅ <strong>Total registros pasos:</strong> {resumen.get('total_pasos', 0)}</p>
+            {log_info}
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 100 líneas)</button>
         </div>
         <pre id="logs-content" style="display:none">{logs_content}</pre>
