@@ -5,13 +5,8 @@ Constructor HTML - CSS, JavaScript y estructura del dashboard
 VERSIÓN CORREGIDA - Maneja gráficos vacíos
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from config import PAI_OBJETIVO_SEMANAL, PESO_OBJETIVO
-
-
-def _obtener_hora_argentina():
-    """Retorna la hora actual en Argentina (UTC-3)"""
-    return datetime.utcnow() - timedelta(hours=3)
 
 
 def generar_css():
@@ -226,71 +221,6 @@ def generar_css():
                 font-size: 1.8em;
             }
         }
-        
-        /* ESTILOS PARA SECCIÓN DE LOGS */
-        .logs-section {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-        
-        .logs-summary {
-            background: #0d1117;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .logs-summary p {
-            margin: 8px 0;
-            font-size: 1.05em;
-        }
-        
-        .logs-toggle-btn {
-            background: #238636;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 15px;
-            transition: background 0.2s;
-        }
-        
-        .logs-toggle-btn:hover {
-            background: #2ea043;
-        }
-        
-        .logs-toggle-btn.expanded {
-            background: #da3633;
-        }
-        
-        #logs-content {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 15px;
-            max-height: 500px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            line-height: 1.4;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: #c9d1d9;
-        }
-        
-        .logs-hidden {
-            display: none;
-        }
-        
-        .log-info { color: #58a6ff; }
-        .log-warning { color: #d29922; }
-        .log-error { color: #f85149; }
-        .log-success { color: #3fb950; }
     </style>
     """
 
@@ -755,80 +685,10 @@ def generar_javascript(datos_graficos):
         document.getElementById('calorias-chart').innerHTML = '<div class="chart-empty">Sin datos de calorías</div>';
         """
     
-    # JavaScript para logs
-    js += """
-    
-    // FUNCIONES PARA LOGS
-    function toggleLogs() {
-        const logsContent = document.getElementById('logs-content');
-        const toggleBtn = document.getElementById('logs-toggle-btn');
-        
-        if (logsContent.classList.contains('logs-hidden')) {
-            logsContent.classList.remove('logs-hidden');
-            toggleBtn.textContent = '▲ Ocultar logs';
-            toggleBtn.classList.add('expanded');
-        } else {
-            logsContent.classList.add('logs-hidden');
-            toggleBtn.textContent = '▼ Ver logs completos (últimas 500 líneas)';
-            toggleBtn.classList.remove('expanded');
-        }
-    }
-    
-    function formatearLogs() {
-        const logsContent = document.getElementById('logs-content');
-        if (!logsContent) return;
-        
-        let html = logsContent.innerHTML;
-        
-        // Colorear según nivel de log
-        html = html.replace(/\\[INFO\\]/g, '<span class="log-info">[INFO]</span>');
-        html = html.replace(/\\[WARNING\\]/g, '<span class="log-warning">[WARNING]</span>');
-        html = html.replace(/\\[ERROR\\]/g, '<span class="log-error">[ERROR]</span>');
-        html = html.replace(/✅/g, '<span class="log-success">✅</span>');
-        html = html.replace(/❌/g, '<span class="log-error">❌</span>');
-        html = html.replace(⚠️/g, '<span class="log-warning">⚠️</span>');
-        
-        logsContent.innerHTML = html;
-    }
-    
-    // Ejecutar al cargar la página
-    document.addEventListener('DOMContentLoaded', formatearLogs);
-    """
-    
     return js
 
 
-def _generar_seccion_logs(logs_content, resumen):
-    """Genera la sección HTML de logs"""
-    if not resumen:
-        return ""
-    
-    # Info de debug del archivo de log
-    log_info = ""
-    if 'log_existe' in resumen:
-        if resumen.get('log_existe'):
-            log_info = f"<p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: {resumen.get('log_size', 0)} bytes</p>"
-        else:
-            log_info = "<p style='color: #f85149; font-size: 0.9em;'>⚠️ Archivo de log no encontrado</p>"
-    
-    return f"""
-    <div class="logs-section">
-        <h2>📋 Última Ejecución</h2>
-        <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> {resumen.get('fecha', 'N/A')}</p>
-            <p>✅ <strong>Archivos procesados:</strong> {resumen.get('archivos_procesados', 0)}</p>
-            <p>✅ <strong>Total ejercicios:</strong> {resumen.get('total_ejercicios', 0)}</p>
-            <p>✅ <strong>Total registros peso:</strong> {resumen.get('total_peso', 0)}</p>
-            <p>✅ <strong>Total registros pasos:</strong> {resumen.get('total_pasos', 0)}</p>
-            {log_info}
-            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
-        </div>
-        <pre id="logs-content" class="logs-hidden">{logs_content}</pre>
-    </div>
-    """
-
-
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None):
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos):
     """Construye el HTML completo del dashboard"""
     return f"""
     <!DOCTYPE html>
@@ -844,7 +704,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: {_obtener_hora_argentina().strftime("%d/%m/%Y %H:%M")} (Argentina)</p>
+                <p class="subtitle">Última actualización: {datetime.now().strftime("%d/%m/%Y %H:%M")}</p>
             </header>
             
             {html_laboratorio}
@@ -932,8 +792,6 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
                 <h2>💡 Recomendaciones</h2>
                 {recomendaciones_html}
             </div>
-            
-            {_generar_seccion_logs(logs_html_content, resumen_ejecucion)}
         </div>
         
         <script>
