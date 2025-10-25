@@ -5,7 +5,8 @@
 from datetime import datetime
 import os
 
-LOG_PATH = "/home/ubuntu/gdrive_mount/log_monitoreo.log"
+# Ruta del archivo de log (en /tmp para evitar problemas de permisos)
+LOG_PATH = "/tmp/monitor_salud.log"
 
 def leer_ultimos_logs(num_lineas=100):
     """Lee las últimas N líneas del log"""
