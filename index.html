@@ -284,7 +284,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 25/10/2025 01:31</p>
+                <p class="subtitle">Última actualización: 25/10/2025 02:01</p>
             </header>
             
             
@@ -384,12 +384,11 @@
         <div class="metric-value" style="color: #d29922;">59.2 kg</div>
     </div>
     
-    <div class="metric-card">
-        <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">56 bpm</div>
-        <div class="metric-detail">Excelente</div>
-    </div>
-    
+        <div class="metric-card">
+            <div class="metric-label">FC Reposo (7d)</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+        </div>
+        
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
         <div class="metric-value" style="color: #3fb950;">17,262</div>
@@ -604,51 +603,38 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-25 01:31:03 UTC</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-25 02:01:00 UTC</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 7143</p>
             <p>✅ <strong>Total registros peso:</strong> 10282</p>
             <p>✅ <strong>Total registros pasos:</strong> 587</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3373 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1835 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" style="display:none">2025-10-25 01:31:01 [INFO] - 
-2025-10-25 01:31:01 [INFO] - ================================================================================
-2025-10-25 01:31:01 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-25 01:31:01 [INFO] - ================================================================================
-2025-10-25 01:31:01 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-25 01:31:01 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-25 01:31:01 [INFO] - ================================================================================
-2025-10-25 01:31:01 [INFO] - 
-2025-10-25 01:31:01 [INFO] - ================================================================================
-2025-10-25 01:31:01 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-25 01:31:01 [INFO] - ================================================================================
-2025-10-25 01:31:01 [INFO] - Cache cargado: cache_datos.json
-2025-10-25 01:31:01 [INFO] - Total archivos JSON encontrados: 2
-2025-10-25 01:31:01 [INFO] - Archivos ya procesados: 386
-2025-10-25 01:31:01 [INFO] - Archivos nuevos a procesar: 1
-2025-10-25 01:31:01 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-24_22-20-00.json&#x27;]
-2025-10-25 01:31:01 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-24_22-20-00.json
-2025-10-25 01:31:01 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-24_22-20-00.json
-2025-10-25 01:31:01 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-10-25 01:31:01 [INFO] -   → FC en reposo agregada: 1 (desde heart_rate horario nocturno)
-2025-10-25 01:31:01 [INFO] -     📊 FC Reposo por fuente:
-2025-10-25 01:31:01 [INFO] -        • HealthSync: 1 registros (total: 56)
-2025-10-25 01:31:01 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-10-25 01:31:01 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-10-25 01:31:01 [INFO] -        • HealthSync: 1 registros
-2025-10-25 01:31:01 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca
-2025-10-25 01:31:01 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-25 01:31:01 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-24_22-20-00.json
-2025-10-25 01:31:03 [INFO] - Cache guardado: cache_datos.json
-2025-10-25 01:31:03 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-25 01:31:03 [INFO] - ==================================================
-2025-10-25 01:31:03 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
-2025-10-25 01:31:03 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
-2025-10-25 01:31:03 [INFO] - PAI TOTAL SEMANAL: 166.9
-2025-10-25 01:31:03 [INFO] - Entrenamientos en ventana: 23
-2025-10-25 01:31:03 [INFO] - ==================================================
-2025-10-25 01:31:03 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" style="display:none">2025-10-25 02:00:59 [INFO] - 
+2025-10-25 02:00:59 [INFO] - ================================================================================
+2025-10-25 02:00:59 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-25 02:00:59 [INFO] - ================================================================================
+2025-10-25 02:00:59 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-25 02:00:59 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-25 02:00:59 [INFO] - ================================================================================
+2025-10-25 02:00:59 [INFO] - 
+2025-10-25 02:00:59 [INFO] - ================================================================================
+2025-10-25 02:00:59 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 02:00:59 [INFO] - ================================================================================
+2025-10-25 02:01:00 [INFO] - Cache cargado: cache_datos.json
+2025-10-25 02:01:00 [INFO] - Total archivos JSON encontrados: 1
+2025-10-25 02:01:00 [INFO] - Archivos ya procesados: 386
+2025-10-25 02:01:00 [INFO] - Archivos nuevos a procesar: 0
+2025-10-25 02:01:00 [INFO] - No hay archivos nuevos para procesar.
+2025-10-25 02:01:00 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 02:01:00 [INFO] - ==================================================
+2025-10-25 02:01:00 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 02:01:00 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 02:01:00 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 02:01:00 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 02:01:00 [INFO] - ==================================================
+2025-10-25 02:01:00 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -800,52 +786,9 @@
             xaxis: { gridcolor: '#30363d' }
         });
         
-        // FC Reposo
-        Plotly.newPlot('fc-reposo-chart', [{
-            x: ['2025-10-25'],
-            y: [56.0],
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: { color: '#f85149', width: 2 }
-        }], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
         
-        // Frecuencia Cardíaca Diurna
-        Plotly.newPlot('fc-diurna-chart', [
-            {
-                x: ['2025-10-25'],
-                y: [56],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Mínima',
-                line: { color: '#58a6ff', width: 1 },
-                fill: 'tonexty'
-            },
-            {
-                x: ['2025-10-25'],
-                y: [64.0],
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'Promedio',
-                line: { color: '#ffa657', width: 2 }
-            },
-            {
-                x: ['2025-10-25'],
-                y: [82],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Máxima',
-                line: { color: '#f85149', width: 1 },
-                fill: 'tonexty'
-            }
-        ], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
