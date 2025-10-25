@@ -216,71 +216,6 @@
                 font-size: 1.8em;
             }
         }
-        
-        /* ESTILOS PARA SECCIÓN DE LOGS */
-        .logs-section {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-        
-        .logs-summary {
-            background: #0d1117;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .logs-summary p {
-            margin: 8px 0;
-            font-size: 1.05em;
-        }
-        
-        .logs-toggle-btn {
-            background: #238636;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 15px;
-            transition: background 0.2s;
-        }
-        
-        .logs-toggle-btn:hover {
-            background: #2ea043;
-        }
-        
-        .logs-toggle-btn.expanded {
-            background: #da3633;
-        }
-        
-        #logs-content {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 15px;
-            max-height: 500px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            line-height: 1.4;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: #c9d1d9;
-        }
-        
-        .logs-hidden {
-            display: none;
-        }
-        
-        .log-info { color: #58a6ff; }
-        .log-warning { color: #d29922; }
-        .log-error { color: #f85149; }
-        .log-success { color: #3fb950; }
     </style>
     
     </head>
@@ -288,7 +223,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 24/10/2025 23:46 (Argentina)</p>
+                <p class="subtitle">Última actualización: 25/10/2025 02:53</p>
             </header>
             
             
@@ -388,21 +323,20 @@
         <div class="metric-value" style="color: #d29922;">59.2 kg</div>
     </div>
     
+        <div class="metric-card">
+            <div class="metric-label">FC Reposo (7d)</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+        </div>
+        
     <div class="metric-card">
-        <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">50 bpm</div>
+        <div class="metric-label">Pasos (7d)</div>
+        <div class="metric-value" style="color: #3fb950;">17,262</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
     <div class="metric-card">
-        <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #d29922;">8,312</div>
-        <div class="metric-detail">Bueno</div>
-    </div>
-    
-    <div class="metric-card">
         <div class="metric-label">Presión (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">118/77</div>
+        <div class="metric-value" style="color: #3fb950;">118/79</div>
         <div class="metric-detail">Normal</div>
     </div>
     
@@ -603,70 +537,6 @@
     </ul>
     
             </div>
-            
-            
-    <div class="logs-section">
-        <h2>📋 Última Ejecución</h2>
-        <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-24 23:46:40 (ARG)</p>
-            <p>✅ <strong>Archivos procesados:</strong> 0</p>
-            <p>✅ <strong>Total ejercicios:</strong> 7143</p>
-            <p>✅ <strong>Total registros peso:</strong> 10282</p>
-            <p>✅ <strong>Total registros pasos:</strong> 590</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4163 bytes</p>
-            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
-        </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-25 02:46:37 [INFO] - 
-2025-10-25 02:46:37 [INFO] - ================================================================================
-2025-10-25 02:46:37 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-25 02:46:37 [INFO] - ================================================================================
-2025-10-25 02:46:37 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-25 02:46:37 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-25 02:46:37 [INFO] - ================================================================================
-2025-10-25 02:46:37 [INFO] - 
-2025-10-25 02:46:37 [INFO] - ================================================================================
-2025-10-25 02:46:37 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-25 02:46:37 [INFO] - ================================================================================
-2025-10-25 02:46:37 [INFO] - Cache cargado: cache_datos.json
-2025-10-25 02:46:37 [INFO] - Total archivos JSON encontrados: 2
-2025-10-25 02:46:37 [INFO] - Archivos ya procesados: 386
-2025-10-25 02:46:37 [INFO] - Archivos nuevos a procesar: 1
-2025-10-25 02:46:37 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-24_23-44-08.json&#x27;]
-2025-10-25 02:46:37 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-24_23-44-08.json
-2025-10-25 02:46:37 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-24_23-44-08.json
-2025-10-25 02:46:37 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-10-25 02:46:37 [INFO] -   → FC en reposo agregada: 3 (desde heart_rate horario nocturno)
-2025-10-25 02:46:37 [INFO] -     📊 FC Reposo por fuente:
-2025-10-25 02:46:37 [INFO] -        • HealthSync: 1 registros (total: 49)
-2025-10-25 02:46:37 [INFO] -        • Samsung Health: 2 registros (total: 102)
-2025-10-25 02:46:37 [INFO] -   → Presión arterial agregada: 1
-2025-10-25 02:46:37 [INFO] -     📊 Presión Arterial por fuente:
-2025-10-25 02:46:37 [INFO] -        • Samsung Health: 1 registros
-2025-10-25 02:46:37 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-10-25 02:46:37 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-10-25 02:46:37 [INFO] -        • Samsung Health: 1 registros
-2025-10-25 02:46:37 [INFO] -   → Pasos agregados: 3
-2025-10-25 02:46:37 [INFO] -     📊 Pasos por fuente:
-2025-10-25 02:46:37 [INFO] -        • HealthSync: 2 registros (total: 3405)
-2025-10-25 02:46:37 [INFO] -        • Samsung Health: 1 registros (total: 3805)
-2025-10-25 02:46:37 [INFO] -   → Distancia agregada: 1 días
-2025-10-25 02:46:37 [INFO] -     📊 Distancia por fuente:
-2025-10-25 02:46:37 [INFO] -        • HealthSync: 1 registros (total: 0)
-2025-10-25 02:46:37 [INFO] -   Campos detectados: fc_reposo, presion_arterial, frecuencia_cardiaca, pasos, distancia
-2025-10-25 02:46:37 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-25 02:46:37 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-24_23-44-08.json
-2025-10-25 02:46:39 [INFO] - Cache guardado: cache_datos.json
-2025-10-25 02:46:39 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-25 02:46:39 [INFO] - ==================================================
-2025-10-25 02:46:39 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
-2025-10-25 02:46:39 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
-2025-10-25 02:46:39 [INFO] - PAI TOTAL SEMANAL: 166.9
-2025-10-25 02:46:39 [INFO] - Entrenamientos en ventana: 23
-2025-10-25 02:46:39 [INFO] - ==================================================
-2025-10-25 02:46:39 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
-</pre>
-    </div>
-    
         </div>
         
         <script>
@@ -815,57 +685,14 @@
             xaxis: { gridcolor: '#30363d' }
         });
         
-        // FC Reposo
-        Plotly.newPlot('fc-reposo-chart', [{
-            x: ['2025-10-25'],
-            y: [50.333333333333336],
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: { color: '#f85149', width: 2 }
-        }], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-reposo-chart').innerHTML = '<div class="chart-empty">Sin datos de FC reposo</div>';
         
-        // Frecuencia Cardíaca Diurna
-        Plotly.newPlot('fc-diurna-chart', [
-            {
-                x: ['2025-10-25'],
-                y: [49],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Mínima',
-                line: { color: '#58a6ff', width: 1 },
-                fill: 'tonexty'
-            },
-            {
-                x: ['2025-10-25'],
-                y: [55.0],
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'Promedio',
-                line: { color: '#ffa657', width: 2 }
-            },
-            {
-                x: ['2025-10-25'],
-                y: [82],
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Máxima',
-                line: { color: '#f85149', width: 1 },
-                fill: 'tonexty'
-            }
-        ], {
-            ...layout_config,
-            yaxis: { title: 'FC (bpm)', gridcolor: '#30363d' },
-            xaxis: { gridcolor: '#30363d' }
-        });
+        document.getElementById('fc-diurna-chart').innerHTML = '<div class="chart-empty">Sin datos de FC diurna</div>';
         
         // Pasos
         Plotly.newPlot('pasos-chart', [{
-            x: ['2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-24', '2025-10-25'],
-            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 9549, 264],
+            x: ['2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-24'],
+            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 2603],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -877,16 +704,16 @@
         // Presión Arterial
         Plotly.newPlot('presion-chart', [
             {
-                x: ['2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-25'],
-                y: [119.0, 118.0, 124.0, 121.57788944723617, 123.33333333333333, 125.66666666666667, 123.0, 120.5, 124.28571428571429, 121.33333333333333, 118.0, 121.0, 118.5, 126.0, 124.6, 118.75, 117.5, 118.0, 131.0, 123.0, 114.0, 123.0, 116.33333333333333, 111.0, 116.5, 112.5, 120.25, 112.48, 113.61538461538461, 118.46153846153847, 123.33333333333333, 116.0, 120.4, 115.0, 111.0],
+                x: ['2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22'],
+                y: [119.0, 118.0, 124.0, 121.57788944723617, 123.33333333333333, 125.66666666666667, 123.0, 120.5, 124.28571428571429, 121.33333333333333, 118.0, 121.0, 118.5, 126.0, 124.6, 118.75, 117.5, 118.0, 131.0, 123.0, 114.0, 123.0, 116.33333333333333, 111.0, 116.5, 112.5, 120.25, 112.48, 113.61538461538461, 118.46153846153847, 123.33333333333333, 116.0, 120.4, 115.0],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Sistólica',
                 line: { color: '#f85149', width: 2 }
             },
             {
-                x: ['2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-25'],
-                y: [76.5, 77.0, 84.0, 75.58793969849246, 79.33333333333333, 77.66666666666667, 79.0, 76.5, 84.42857142857143, 82.33333333333333, 80.0, 78.75, 77.5, 78.0, 80.0, 80.0, 79.25, 77.0, 80.0, 76.0, 75.0, 82.0, 76.66666666666667, 72.0, 77.0, 75.0, 81.125, 76.28, 75.61538461538461, 80.12820512820512, 83.0, 79.0, 79.4, 76.0, 67.0],
+                x: ['2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-20', '2025-09-21', '2025-09-22', '2025-09-24', '2025-09-25', '2025-09-26', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22'],
+                y: [76.5, 77.0, 84.0, 75.58793969849246, 79.33333333333333, 77.66666666666667, 79.0, 76.5, 84.42857142857143, 82.33333333333333, 80.0, 78.75, 77.5, 78.0, 80.0, 80.0, 79.25, 77.0, 80.0, 76.0, 75.0, 82.0, 76.66666666666667, 72.0, 77.0, 75.0, 81.125, 76.28, 75.61538461538461, 80.12820512820512, 83.0, 79.0, 79.4, 76.0],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Diastólica',
@@ -966,8 +793,8 @@
         
         // Distancia Recorrida
         Plotly.newPlot('distancia-chart', [{
-            x: ['2025-09-08', '2025-09-09', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-21', '2025-09-22', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-25'],
-            y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.19],
+            x: ['2025-09-08', '2025-09-09', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-21', '2025-09-22', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22'],
+            y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             type: 'bar',
             marker: { 
                 color: '#58a6ff',
@@ -994,43 +821,6 @@
             xaxis: { gridcolor: '#30363d' }
         });
         
-    
-    // FUNCIONES PARA LOGS
-    function toggleLogs() {
-        const logsContent = document.getElementById('logs-content');
-        const toggleBtn = document.getElementById('logs-toggle-btn');
-        
-        if (logsContent.classList.contains('logs-hidden')) {
-            logsContent.classList.remove('logs-hidden');
-            toggleBtn.textContent = '▲ Ocultar logs';
-            toggleBtn.classList.add('expanded');
-        } else {
-            logsContent.classList.add('logs-hidden');
-            toggleBtn.textContent = '▼ Ver logs completos (últimas 500 líneas)';
-            toggleBtn.classList.remove('expanded');
-        }
-    }
-    
-    function formatearLogs() {
-        const logsContent = document.getElementById('logs-content');
-        if (!logsContent) return;
-        
-        let html = logsContent.innerHTML;
-        
-        // Colorear según nivel de log
-        html = html.replace(/\[INFO\]/g, '<span class="log-info">[INFO]</span>');
-        html = html.replace(/\[WARNING\]/g, '<span class="log-warning">[WARNING]</span>');
-        html = html.replace(/\[ERROR\]/g, '<span class="log-error">[ERROR]</span>');
-        html = html.replace(/✅/g, '<span class="log-success">✅</span>');
-        html = html.replace(/❌/g, '<span class="log-error">❌</span>');
-        html = html.replace(⚠️/g, '<span class="log-warning">⚠️</span>');
-        
-        logsContent.innerHTML = html;
-    }
-    
-    // Ejecutar al cargar la página
-    document.addEventListener('DOMContentLoaded', formatearLogs);
-    
         </script>
     </body>
     </html>
