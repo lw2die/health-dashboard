@@ -1,0 +1,281 @@
+--- Sat Oct 25 11:00:01 UTC 2025 - INICIO ---
+Sincronizando código Python...
+rsync: --no-delete: unknown option
+rsync error: syntax or usage error (code 1) at main.c(1795) [client=3.2.7]
+Sincronizando cache...
+Sincronizando datos de laboratorio...
+Sincronizando JSONs...
+Ejecutando: Sat Oct 25 11:00:07 UTC 2025
+2025-10-25 11:00:07,323 [INFO] - 
+2025-10-25 11:00:07,324 [INFO] - ================================================================================
+2025-10-25 11:00:07,324 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-25 11:00:07,324 [INFO] - ================================================================================
+2025-10-25 11:00:07,324 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-25 11:00:07,324 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-25 11:00:07,324 [INFO] - ================================================================================
+2025-10-25 11:00:07,324 [INFO] - 
+2025-10-25 11:00:07,324 [INFO] - ================================================================================
+2025-10-25 11:00:07,324 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 11:00:07,324 [INFO] - ================================================================================
+2025-10-25 11:00:07,616 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 11:00:07,616 [INFO] - Total archivos JSON encontrados: 4
+2025-10-25 11:00:07,616 [INFO] - Archivos ya procesados: 389
+2025-10-25 11:00:07,616 [INFO] - Archivos nuevos a procesar: 0
+2025-10-25 11:00:07,616 [INFO] - No hay archivos nuevos para procesar.
+2025-10-25 11:00:07,617 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 11:00:07,617 [INFO] - ==================================================
+2025-10-25 11:00:07,617 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 11:00:07,617 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 11:00:07,622 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 11:00:07,622 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 11:00:07,622 [INFO] - ==================================================
+2025-10-25 11:00:07,630 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+2025-10-25 11:00:08,491 [INFO] - Dashboard generado: /home/ubuntu/proyecto/index.html
+2025-10-25 11:00:08,494 [INFO] - Repositorio local encontrado. Intentando actualizar...
+2025-10-25 11:00:09,937 [INFO] - ----------------------------------------------------------------------
+2025-10-25 11:00:09,938 [INFO] - ✓ Dashboard actualizado: https://lw2die.github.io/health-dashboard/
+2025-10-25 11:00:09,938 [INFO] - ----------------------------------------------------------------------
+2025-10-25 11:00:09,961 [INFO] - 
+2025-10-25 11:00:09,961 [INFO] - ================================================================================
+2025-10-25 11:00:09,961 [INFO] - RESUMEN DE MÉTRICAS
+2025-10-25 11:00:09,961 [INFO] - ================================================================================
+2025-10-25 11:00:09,961 [INFO] - Score Longevidad: 60/100
+2025-10-25 11:00:09,961 [INFO] - PAI Semanal: 166.9 (objetivo ≥100)
+2025-10-25 11:00:09,962 [INFO] - VO2max: 27.7 ml/kg/min
+2025-10-25 11:00:09,962 [INFO] - Peso: 83.1 kg (objetivo 79.0)
+2025-10-25 11:00:09,962 [INFO] - Total entrenamientos únicos: 7143
+2025-10-25 11:00:09,962 [INFO] - ================================================================================
+Publicando...
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   config.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	monitor.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+--- Sat Oct 25 11:00:15 UTC 2025 - FIN ---
+--- Sat Oct 25 11:30:01 UTC 2025 - INICIO ---
+Sincronizando código Python...
+rsync: --no-delete: unknown option
+rsync error: syntax or usage error (code 1) at main.c(1795) [client=3.2.7]
+Sincronizando cache...
+Sincronizando datos de laboratorio...
+Sincronizando JSONs...
+Ejecutando: Sat Oct 25 11:30:07 UTC 2025
+2025-10-25 11:30:07,320 [INFO] - 
+2025-10-25 11:30:07,320 [INFO] - ================================================================================
+2025-10-25 11:30:07,321 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-25 11:30:07,321 [INFO] - ================================================================================
+2025-10-25 11:30:07,321 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-25 11:30:07,321 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-25 11:30:07,321 [INFO] - ================================================================================
+2025-10-25 11:30:07,321 [INFO] - 
+2025-10-25 11:30:07,321 [INFO] - ================================================================================
+2025-10-25 11:30:07,321 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 11:30:07,321 [INFO] - ================================================================================
+2025-10-25 11:30:07,626 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 11:30:07,626 [INFO] - Total archivos JSON encontrados: 4
+2025-10-25 11:30:07,626 [INFO] - Archivos ya procesados: 389
+2025-10-25 11:30:07,627 [INFO] - Archivos nuevos a procesar: 0
+2025-10-25 11:30:07,627 [INFO] - No hay archivos nuevos para procesar.
+2025-10-25 11:30:07,627 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 11:30:07,627 [INFO] - ==================================================
+2025-10-25 11:30:07,627 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 11:30:07,627 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 11:30:07,686 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 11:30:07,686 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 11:30:07,686 [INFO] - ==================================================
+2025-10-25 11:30:07,696 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+2025-10-25 11:30:08,500 [INFO] - Dashboard generado: /home/ubuntu/proyecto/index.html
+2025-10-25 11:30:08,503 [INFO] - Repositorio local encontrado. Intentando actualizar...
+2025-10-25 11:30:10,039 [INFO] - ----------------------------------------------------------------------
+2025-10-25 11:30:10,039 [INFO] - ✓ Dashboard actualizado: https://lw2die.github.io/health-dashboard/
+2025-10-25 11:30:10,039 [INFO] - ----------------------------------------------------------------------
+2025-10-25 11:30:10,063 [INFO] - 
+2025-10-25 11:30:10,063 [INFO] - ================================================================================
+2025-10-25 11:30:10,063 [INFO] - RESUMEN DE MÉTRICAS
+2025-10-25 11:30:10,063 [INFO] - ================================================================================
+2025-10-25 11:30:10,063 [INFO] - Score Longevidad: 60/100
+2025-10-25 11:30:10,063 [INFO] - PAI Semanal: 166.9 (objetivo ≥100)
+2025-10-25 11:30:10,063 [INFO] - VO2max: 27.7 ml/kg/min
+2025-10-25 11:30:10,063 [INFO] - Peso: 83.1 kg (objetivo 79.0)
+2025-10-25 11:30:10,063 [INFO] - Total entrenamientos únicos: 7143
+2025-10-25 11:30:10,063 [INFO] - ================================================================================
+Publicando...
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   config.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	monitor.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+--- Sat Oct 25 11:30:15 UTC 2025 - FIN ---
+--- Sat Oct 25 12:00:01 UTC 2025 - INICIO ---
+Sincronizando código Python...
+rsync: --no-delete: unknown option
+rsync error: syntax or usage error (code 1) at main.c(1795) [client=3.2.7]
+Sincronizando cache...
+Sincronizando datos de laboratorio...
+Sincronizando JSONs...
+Ejecutando: Sat Oct 25 12:00:10 UTC 2025
+2025-10-25 12:00:11,105 [INFO] - 
+2025-10-25 12:00:11,105 [INFO] - ================================================================================
+2025-10-25 12:00:11,105 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-25 12:00:11,105 [INFO] - ================================================================================
+2025-10-25 12:00:11,105 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-25 12:00:11,105 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-25 12:00:11,105 [INFO] - ================================================================================
+2025-10-25 12:00:11,105 [INFO] - 
+2025-10-25 12:00:11,105 [INFO] - ================================================================================
+2025-10-25 12:00:11,105 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 12:00:11,105 [INFO] - ================================================================================
+2025-10-25 12:00:11,394 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 12:00:11,394 [INFO] - Total archivos JSON encontrados: 6
+2025-10-25 12:00:11,394 [INFO] - Archivos ya procesados: 389
+2025-10-25 12:00:11,394 [INFO] - Archivos nuevos a procesar: 2
+2025-10-25 12:00:11,394 [INFO] - Archivos nuevos encontrados: ['health_data_AUTO_DIFF_2025-10-25_08-30-50.json', 'health_data_AUTO_DIFF_2025-10-25_08-49-22.json']
+2025-10-25 12:00:11,394 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-25_08-30-50.json
+2025-10-25 12:00:11,395 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-25_08-30-50.json
+2025-10-25 12:00:11,395 [INFO] - Claves raíz del JSON: ['export_type', 'timestamp', 'data_source', 'weight_changes', 'exercise_changes', 'sleep_changes', 'vo2max_changes', 'steps_changes', 'distance_changes', 'total_calories_changes', 'resting_heart_rate_changes', 'oxygen_saturation_changes', 'height_changes', 'body_fat_changes', 'lean_body_mass_changes', 'bone_mass_changes', 'basal_metabolic_rate_changes', 'body_water_mass_changes', 'heart_rate_changes', 'blood_pressure_changes', 'blood_glucose_changes', 'deletions']
+2025-10-25 12:00:11,395 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-10-25 12:00:11,395 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-10-25 12:00:11,395 [INFO] -        • HealthSync: 1 registros
+2025-10-25 12:00:11,395 [INFO] -   → Pasos agregados: 2
+2025-10-25 12:00:11,395 [INFO] -     📊 Pasos por fuente:
+2025-10-25 12:00:11,395 [INFO] -        • HealthSync: 1 registros (total: 108)
+2025-10-25 12:00:11,395 [INFO] -        • Samsung Health: 1 registros (total: 598)
+2025-10-25 12:00:11,395 [INFO] -   → Distancia agregada: 1 días
+2025-10-25 12:00:11,395 [INFO] -     📊 Distancia por fuente:
+2025-10-25 12:00:11,395 [INFO] -        • HealthSync: 1 registros (total: 0)
+2025-10-25 12:00:11,396 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos, distancia
+2025-10-25 12:00:11,396 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-25 12:00:11,396 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-25_08-30-50.json
+2025-10-25 12:00:11,396 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-25_08-49-22.json
+2025-10-25 12:00:11,396 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-25_08-49-22.json
+2025-10-25 12:00:11,396 [INFO] - Claves raíz del JSON: ['export_type', 'timestamp', 'data_source', 'weight_changes', 'exercise_changes', 'sleep_changes', 'vo2max_changes', 'steps_changes', 'distance_changes', 'total_calories_changes', 'resting_heart_rate_changes', 'oxygen_saturation_changes', 'height_changes', 'body_fat_changes', 'lean_body_mass_changes', 'bone_mass_changes', 'basal_metabolic_rate_changes', 'body_water_mass_changes', 'heart_rate_changes', 'blood_pressure_changes', 'blood_glucose_changes', 'deletions']
+2025-10-25 12:00:11,396 [INFO] -   → Presión arterial agregada: 2
+2025-10-25 12:00:11,396 [INFO] -     📊 Presión Arterial por fuente:
+2025-10-25 12:00:11,396 [INFO] -        • Samsung Health: 2 registros
+2025-10-25 12:00:11,396 [INFO] -   → Pasos agregados: 1
+2025-10-25 12:00:11,396 [INFO] -     📊 Pasos por fuente:
+2025-10-25 12:00:11,396 [INFO] -        • Samsung Health: 1 registros (total: 684)
+2025-10-25 12:00:11,396 [INFO] -   Campos detectados: presion_arterial, pasos
+2025-10-25 12:00:11,396 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-25 12:00:11,397 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-25_08-49-22.json
+2025-10-25 12:00:13,030 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 12:00:13,030 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 12:00:13,030 [INFO] - ==================================================
+2025-10-25 12:00:13,030 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 12:00:13,030 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 12:00:13,036 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 12:00:13,036 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 12:00:13,036 [INFO] - ==================================================
+2025-10-25 12:00:13,044 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+2025-10-25 12:00:13,829 [INFO] - Dashboard generado: /home/ubuntu/proyecto/index.html
+2025-10-25 12:00:13,831 [INFO] - Repositorio local encontrado. Intentando actualizar...
+2025-10-25 12:00:15,396 [INFO] - ----------------------------------------------------------------------
+2025-10-25 12:00:15,396 [INFO] - ✓ Dashboard actualizado: https://lw2die.github.io/health-dashboard/
+2025-10-25 12:00:15,396 [INFO] - ----------------------------------------------------------------------
+2025-10-25 12:00:15,432 [INFO] - 
+2025-10-25 12:00:15,432 [INFO] - ================================================================================
+2025-10-25 12:00:15,432 [INFO] - RESUMEN DE MÉTRICAS
+2025-10-25 12:00:15,432 [INFO] - ================================================================================
+2025-10-25 12:00:15,432 [INFO] - Score Longevidad: 60/100
+2025-10-25 12:00:15,432 [INFO] - PAI Semanal: 166.9 (objetivo ≥100)
+2025-10-25 12:00:15,432 [INFO] - VO2max: 27.7 ml/kg/min
+2025-10-25 12:00:15,432 [INFO] - Peso: 83.1 kg (objetivo 79.0)
+2025-10-25 12:00:15,432 [INFO] - Total entrenamientos únicos: 7143
+2025-10-25 12:00:15,432 [INFO] - ================================================================================
+Publicando...
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   config.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	monitor.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+--- Sat Oct 25 12:00:20 UTC 2025 - FIN ---
+--- Sat Oct 25 12:30:01 UTC 2025 - INICIO ---
+Sincronizando código Python...
+rsync: --no-delete: unknown option
+rsync error: syntax or usage error (code 1) at main.c(1795) [client=3.2.7]
+Sincronizando cache...
+Sincronizando datos de laboratorio...
+Sincronizando JSONs...
+Ejecutando: Sat Oct 25 12:30:11 UTC 2025
+2025-10-25 12:30:11,405 [INFO] - 
+2025-10-25 12:30:11,405 [INFO] - ================================================================================
+2025-10-25 12:30:11,405 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-25 12:30:11,405 [INFO] - ================================================================================
+2025-10-25 12:30:11,405 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-25 12:30:11,405 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-25 12:30:11,405 [INFO] - ================================================================================
+2025-10-25 12:30:11,405 [INFO] - 
+2025-10-25 12:30:11,405 [INFO] - ================================================================================
+2025-10-25 12:30:11,405 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 12:30:11,405 [INFO] - ================================================================================
+2025-10-25 12:30:11,694 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 12:30:11,695 [INFO] - Total archivos JSON encontrados: 6
+2025-10-25 12:30:11,695 [INFO] - Archivos ya procesados: 391
+2025-10-25 12:30:11,695 [INFO] - Archivos nuevos a procesar: 0
+2025-10-25 12:30:11,695 [INFO] - No hay archivos nuevos para procesar.
+2025-10-25 12:30:11,695 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 12:30:11,695 [INFO] - ==================================================
+2025-10-25 12:30:11,695 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 12:30:11,695 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 12:30:11,700 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 12:30:11,700 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 12:30:11,700 [INFO] - ==================================================
+2025-10-25 12:30:11,708 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+2025-10-25 12:30:12,516 [INFO] - Dashboard generado: /home/ubuntu/proyecto/index.html
+2025-10-25 12:30:12,520 [INFO] - Repositorio local encontrado. Intentando actualizar...
+2025-10-25 12:30:14,034 [INFO] - ----------------------------------------------------------------------
+2025-10-25 12:30:14,034 [INFO] - ✓ Dashboard actualizado: https://lw2die.github.io/health-dashboard/
+2025-10-25 12:30:14,034 [INFO] - ----------------------------------------------------------------------
+2025-10-25 12:30:14,060 [INFO] - 
+2025-10-25 12:30:14,060 [INFO] - ================================================================================
+2025-10-25 12:30:14,060 [INFO] - RESUMEN DE MÉTRICAS
+2025-10-25 12:30:14,060 [INFO] - ================================================================================
+2025-10-25 12:30:14,060 [INFO] - Score Longevidad: 60/100
+2025-10-25 12:30:14,060 [INFO] - PAI Semanal: 166.9 (objetivo ≥100)
+2025-10-25 12:30:14,060 [INFO] - VO2max: 27.7 ml/kg/min
+2025-10-25 12:30:14,060 [INFO] - Peso: 83.1 kg (objetivo 79.0)
+2025-10-25 12:30:14,060 [INFO] - Total entrenamientos únicos: 7143
+2025-10-25 12:30:14,060 [INFO] - ================================================================================
+Publicando...
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   config.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	monitor.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+--- Sat Oct 25 12:30:19 UTC 2025 - FIN ---
