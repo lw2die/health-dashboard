@@ -1,3 +1,13 @@
-client_secret_*.json 
-__pycache__/ 
-cache_datos.json 
+__pycache__/
+*.pyc
+*.pyo
+cache_datos.json
+health_data_*.json
+procesados/
+CHATS/
+LAB/
+desktop.ini
+~
+．．
+cache_datos - copia*
+config_vm.py
