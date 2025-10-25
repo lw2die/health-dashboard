@@ -288,7 +288,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 25/10/2025 16:00 (Argentina)</p>
+                <p class="subtitle">Última actualización: 25/10/2025 16:30 (Argentina)</p>
             </header>
             
             
@@ -396,7 +396,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #f85149;">3,694</div>
+        <div class="metric-value" style="color: #f85149;">4,498</div>
         <div class="metric-detail">Bajo</div>
     </div>
     
@@ -608,31 +608,48 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-25 16:00:10 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-25 16:30:12 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 7143</p>
             <p>✅ <strong>Total registros peso:</strong> 10281</p>
-            <p>✅ <strong>Total registros pasos:</strong> 608</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1345 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 610</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3220 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-25 19:00:09,596 [INFO] - Iniciando procesamiento...
-2025-10-25 19:00:09,596 [INFO] - ================================================================================
-2025-10-25 19:00:09,596 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-25 19:00:09,596 [INFO] - ================================================================================
-2025-10-25 19:00:09,912 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-25 19:00:09,912 [INFO] - Total archivos JSON encontrados: 17
-2025-10-25 19:00:09,912 [INFO] - Archivos ya procesados: 402
-2025-10-25 19:00:09,912 [INFO] - Archivos nuevos a procesar: 0
-2025-10-25 19:00:09,912 [INFO] - No hay archivos nuevos para procesar.
-2025-10-25 19:00:09,913 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-25 19:00:09,913 [INFO] - ==================================================
-2025-10-25 19:00:09,913 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
-2025-10-25 19:00:09,913 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
-2025-10-25 19:00:09,918 [INFO] - PAI TOTAL SEMANAL: 166.9
-2025-10-25 19:00:09,918 [INFO] - Entrenamientos en ventana: 23
-2025-10-25 19:00:09,918 [INFO] - ==================================================
-2025-10-25 19:00:09,928 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-25 19:30:10,014 [INFO] - Iniciando procesamiento...
+2025-10-25 19:30:10,014 [INFO] - ================================================================================
+2025-10-25 19:30:10,014 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 19:30:10,014 [INFO] - ================================================================================
+2025-10-25 19:30:10,310 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 19:30:10,311 [INFO] - Total archivos JSON encontrados: 18
+2025-10-25 19:30:10,311 [INFO] - Archivos ya procesados: 402
+2025-10-25 19:30:10,311 [INFO] - Archivos nuevos a procesar: 1
+2025-10-25 19:30:10,311 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-25_16-01-42.json&#x27;]
+2025-10-25 19:30:10,311 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-25_16-01-42.json
+2025-10-25 19:30:10,312 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-25_16-01-42.json
+2025-10-25 19:30:10,312 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
+2025-10-25 19:30:10,312 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-10-25 19:30:10,312 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-10-25 19:30:10,312 [INFO] -        • Samsung Health: 1 registros
+2025-10-25 19:30:10,313 [INFO] -   → Pasos agregados: 2
+2025-10-25 19:30:10,313 [INFO] -     📊 Pasos por fuente:
+2025-10-25 19:30:10,313 [INFO] -        • HealthSync: 1 registros (total: 4605)
+2025-10-25 19:30:10,313 [INFO] -        • Samsung Health: 1 registros (total: 5316)
+2025-10-25 19:30:10,314 [INFO] -   → Distancia agregada: 1 días
+2025-10-25 19:30:10,314 [INFO] -     📊 Distancia por fuente:
+2025-10-25 19:30:10,314 [INFO] -        • HealthSync: 1 registros (total: 0)
+2025-10-25 19:30:10,314 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos, distancia
+2025-10-25 19:30:10,314 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-25 19:30:10,314 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-25_16-01-42.json
+2025-10-25 19:30:11,990 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 19:30:11,990 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 19:30:11,990 [INFO] - ==================================================
+2025-10-25 19:30:11,990 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 19:30:11,990 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 19:30:11,995 [INFO] - PAI TOTAL SEMANAL: 166.9
+2025-10-25 19:30:11,995 [INFO] - Entrenamientos en ventana: 23
+2025-10-25 19:30:11,995 [INFO] - ==================================================
+2025-10-25 19:30:12,004 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -810,7 +827,7 @@
             },
             {
                 x: ['2025-10-25'],
-                y: [68.45416666666667],
+                y: [68.55185185185185],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -834,7 +851,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-24', '2025-10-25'],
-            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 13517, 32685],
+            y: [124359, 558029, 712790, 190633, 141923, 243330, 106585, 284858, 53988, 143171, 179604, 116544, 206806, 222018, 13517, 42606],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -936,7 +953,7 @@
         // Distancia Recorrida
         Plotly.newPlot('distancia-chart', [{
             x: ['2025-09-08', '2025-09-09', '2025-09-13', '2025-09-14', '2025-09-15', '2025-09-16', '2025-09-17', '2025-09-18', '2025-09-19', '2025-09-21', '2025-09-22', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-25'],
-            y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.02],
+            y: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.05],
             type: 'bar',
             marker: { 
                 color: '#58a6ff',
