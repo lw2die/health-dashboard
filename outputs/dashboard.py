@@ -175,7 +175,7 @@ def generar_dashboard(cache):
     recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
     
     # Generar sección de logs
-    logs_lineas = leer_ultimos_logs(100)
+    logs_lineas = leer_ultimos_logs(500)
     logs_html_content = formatear_logs_html(logs_lineas)
     resumen_ejecucion = generar_resumen_ejecucion(cache)
     

@@ -812,7 +812,7 @@ def _generar_seccion_logs(logs_content, resumen):
             <p>✅ <strong>Total registros peso:</strong> {resumen.get('total_peso', 0)}</p>
             <p>✅ <strong>Total registros pasos:</strong> {resumen.get('total_pasos', 0)}</p>
             {log_info}
-            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 100 líneas)</button>
+            <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
         <pre id="logs-content" style="display:none">{logs_content}</pre>
     </div>
