@@ -5,8 +5,13 @@ Constructor HTML - CSS, JavaScript y estructura del dashboard
 VERSIÓN CORREGIDA - Maneja gráficos vacíos
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from config import PAI_OBJETIVO_SEMANAL, PESO_OBJETIVO
+
+
+def _obtener_hora_argentina():
+    """Retorna la hora actual en Argentina (UTC-3)"""
+    return datetime.utcnow() - timedelta(hours=3)
 
 
 def generar_css():
@@ -276,6 +281,10 @@ def generar_css():
             white-space: pre-wrap;
             word-wrap: break-word;
             color: #c9d1d9;
+        }
+        
+        .logs-hidden {
+            display: none;
         }
         
         .log-info { color: #58a6ff; }
@@ -754,13 +763,13 @@ def generar_javascript(datos_graficos):
         const logsContent = document.getElementById('logs-content');
         const toggleBtn = document.getElementById('logs-toggle-btn');
         
-        if (logsContent.style.display === 'none') {
-            logsContent.style.display = 'block';
+        if (logsContent.classList.contains('logs-hidden')) {
+            logsContent.classList.remove('logs-hidden');
             toggleBtn.textContent = '▲ Ocultar logs';
             toggleBtn.classList.add('expanded');
         } else {
-            logsContent.style.display = 'none';
-            toggleBtn.textContent = '▼ Ver logs completos';
+            logsContent.classList.add('logs-hidden');
+            toggleBtn.textContent = '▼ Ver logs completos (últimas 500 líneas)';
             toggleBtn.classList.remove('expanded');
         }
     }
@@ -777,7 +786,7 @@ def generar_javascript(datos_graficos):
         html = html.replace(/\\[ERROR\\]/g, '<span class="log-error">[ERROR]</span>');
         html = html.replace(/✅/g, '<span class="log-success">✅</span>');
         html = html.replace(/❌/g, '<span class="log-error">❌</span>');
-        html = html.replace(/⚠️/g, '<span class="log-warning">⚠️</span>');
+        html = html.replace(⚠️/g, '<span class="log-warning">⚠️</span>');
         
         logsContent.innerHTML = html;
     }
@@ -814,7 +823,7 @@ def _generar_seccion_logs(logs_content, resumen):
             {log_info}
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" style="display:none">{logs_content}</pre>
+        <pre id="logs-content" class="logs-hidden">{logs_content}</pre>
     </div>
     """
 
@@ -835,7 +844,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: {datetime.now().strftime("%d/%m/%Y %H:%M")}</p>
+                <p class="subtitle">Última actualización: {_obtener_hora_argentina().strftime("%d/%m/%Y %H:%M")} (Argentina)</p>
             </header>
             
             {html_laboratorio}

@@ -2,11 +2,15 @@
 # -*- coding: utf-8 -*-
 """Helper para leer y formatear logs del sistema"""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 
 # Ruta del archivo de log (en /tmp para evitar problemas de permisos)
 LOG_PATH = "/tmp/monitor_salud.log"
+
+def _obtener_hora_argentina():
+    """Retorna la hora actual en Argentina (UTC-3)"""
+    return datetime.utcnow() - timedelta(hours=3)
 
 def leer_ultimos_logs(num_lineas=100):
     """Lee las últimas N líneas del log"""
@@ -48,7 +52,7 @@ def generar_resumen_ejecucion(cache):
         log_size = os.path.getsize(LOG_PATH) if log_existe else 0
         
         return {
-            "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC"),
+            "fecha": _obtener_hora_argentina().strftime("%Y-%m-%d %H:%M:%S (ARG)"),
             "archivos_procesados": len(archivos_procesados),
             "total_ejercicios": len(cache.get("ejercicio", [])),
             "total_peso": len(cache.get("peso", [])),
@@ -58,7 +62,7 @@ def generar_resumen_ejecucion(cache):
         }
     except Exception as e:
         return {
-            "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC"),
+            "fecha": _obtener_hora_argentina().strftime("%Y-%m-%d %H:%M:%S (ARG)"),
             "archivos_procesados": 0,
             "error": str(e)
         }
