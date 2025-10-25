@@ -288,7 +288,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 25/10/2025 20:00 (Argentina)</p>
+                <p class="subtitle">Última actualización: 25/10/2025 20:30 (Argentina)</p>
             </header>
             
             
@@ -608,51 +608,41 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-25 20:00:17 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-25 20:30:13 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 7147</p>
             <p>✅ <strong>Total registros peso:</strong> 10281</p>
             <p>✅ <strong>Total registros pasos:</strong> 618</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3481 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2702 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-25 23:00:14,214 [INFO] - Iniciando procesamiento...
-2025-10-25 23:00:14,214 [INFO] - ================================================================================
-2025-10-25 23:00:14,214 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-25 23:00:14,215 [INFO] - ================================================================================
-2025-10-25 23:00:14,502 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-25 23:00:14,503 [INFO] - Total archivos JSON encontrados: 24
-2025-10-25 23:00:14,503 [INFO] - Archivos ya procesados: 408
-2025-10-25 23:00:14,503 [INFO] - Archivos nuevos a procesar: 1
-2025-10-25 23:00:14,503 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-25_19-35-46.json&#x27;]
-2025-10-25 23:00:14,503 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-25_19-35-46.json
-2025-10-25 23:00:14,504 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-25_19-35-46.json
-2025-10-25 23:00:14,504 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-10-25 23:00:14,505 [INFO] -   → FC en reposo agregada: 1 (desde heart_rate horario nocturno)
-2025-10-25 23:00:14,505 [INFO] -     📊 FC Reposo por fuente:
-2025-10-25 23:00:14,505 [INFO] -        • Samsung Health: 1 registros (total: 67)
-2025-10-25 23:00:14,505 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-10-25 23:00:14,505 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-10-25 23:00:14,505 [INFO] -        • Samsung Health: 1 registros
-2025-10-25 23:00:14,506 [INFO] -   → Pasos agregados: 2
-2025-10-25 23:00:14,506 [INFO] -     📊 Pasos por fuente:
-2025-10-25 23:00:14,506 [INFO] -        • HealthSync: 1 registros (total: 11220)
-2025-10-25 23:00:14,506 [INFO] -        • Samsung Health: 1 registros (total: 11903)
-2025-10-25 23:00:14,506 [INFO] -   → Distancia agregada: 1 días
-2025-10-25 23:00:14,506 [INFO] -     📊 Distancia por fuente:
-2025-10-25 23:00:14,506 [INFO] -        • HealthSync: 1 registros (total: 0)
-2025-10-25 23:00:14,507 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca, pasos, distancia
-2025-10-25 23:00:14,507 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-25 23:00:14,507 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-25_19-35-46.json
-2025-10-25 23:00:16,173 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-25 23:00:16,173 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-25 23:00:16,173 [INFO] - ==================================================
-2025-10-25 23:00:16,173 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
-2025-10-25 23:00:16,173 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
-2025-10-25 23:00:16,178 [INFO] - PAI TOTAL SEMANAL: 191.3
-2025-10-25 23:00:16,178 [INFO] - Entrenamientos en ventana: 27
-2025-10-25 23:00:16,178 [INFO] - ==================================================
-2025-10-25 23:00:16,186 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-25 23:30:10,510 [INFO] - Iniciando procesamiento...
+2025-10-25 23:30:10,510 [INFO] - ================================================================================
+2025-10-25 23:30:10,510 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-25 23:30:10,510 [INFO] - ================================================================================
+2025-10-25 23:30:10,803 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 23:30:10,803 [INFO] - Total archivos JSON encontrados: 25
+2025-10-25 23:30:10,804 [INFO] - Archivos ya procesados: 409
+2025-10-25 23:30:10,804 [INFO] - Archivos nuevos a procesar: 1
+2025-10-25 23:30:10,804 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-25_20-05-47.json&#x27;]
+2025-10-25 23:30:10,804 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-25_20-05-47.json
+2025-10-25 23:30:10,804 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-25_20-05-47.json
+2025-10-25 23:30:10,804 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
+2025-10-25 23:30:10,804 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-10-25 23:30:10,804 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-10-25 23:30:10,805 [INFO] -        • HealthSync: 1 registros
+2025-10-25 23:30:10,805 [INFO] -   Campos detectados: frecuencia_cardiaca
+2025-10-25 23:30:10,805 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-25 23:30:10,805 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-25_20-05-47.json
+2025-10-25 23:30:12,452 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-25 23:30:12,452 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-25 23:30:12,453 [INFO] - ==================================================
+2025-10-25 23:30:12,453 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-25
+2025-10-25 23:30:12,453 [INFO] - Ventana de 7 días: 2025-10-19 a 2025-10-25
+2025-10-25 23:30:12,458 [INFO] - PAI TOTAL SEMANAL: 191.3
+2025-10-25 23:30:12,458 [INFO] - Entrenamientos en ventana: 27
+2025-10-25 23:30:12,458 [INFO] - ==================================================
+2025-10-25 23:30:12,466 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -830,7 +820,7 @@
             },
             {
                 x: ['2025-10-25'],
-                y: [75.86190476190475],
+                y: [75.51462585034014],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
