@@ -86,13 +86,21 @@ def calcular_tsb(ejercicios):
     - ATL_hoy = ATL_ayer * (1 - 1/7) + PAI_hoy * (1/7)
     - TSB = CTL - ATL
     
+    ⚠️ FILTRADO: Solo usa ejercicios de Samsung Health
+    
     Returns:
         dict: {"tsb": float, "ctl": float, "atl": float}
     """
     if not ejercicios:
         return {"tsb": 0, "ctl": 0, "atl": 0}
     
-    pai_por_dia = _agrupar_pai_por_dia(ejercicios)
+    # ✅ FILTRAR: Solo Samsung Health para evitar duplicados
+    ejercicios_limpios = [
+        e for e in ejercicios 
+        if e.get("fuente") == "com.sec.android.app.shealth"
+    ]
+    
+    pai_por_dia = _agrupar_pai_por_dia(ejercicios_limpios)
     
     # Ordenar fechas
     todas_fechas = sorted(pai_por_dia.keys())
@@ -132,6 +140,7 @@ def preparar_datos_tsb_historico(ejercicios):
     Prepara datos históricos de TSB para gráficos usando EWMA.
     
     ✅ FÓRMULA CORRECTA aplicada día por día
+    ⚠️ FILTRADO: Solo usa ejercicios de Samsung Health
     """
     if not ejercicios:
         return {
@@ -141,7 +150,13 @@ def preparar_datos_tsb_historico(ejercicios):
             "atl": []
         }
     
-    pai_por_dia = _agrupar_pai_por_dia(ejercicios)
+    # ✅ FILTRAR: Solo Samsung Health para evitar duplicados
+    ejercicios_limpios = [
+        e for e in ejercicios 
+        if e.get("fuente") == "com.sec.android.app.shealth"
+    ]
+    
+    pai_por_dia = _agrupar_pai_por_dia(ejercicios_limpios)
     
     todas_fechas = sorted(pai_por_dia.keys())
     if not todas_fechas:
@@ -196,3 +211,8 @@ def preparar_datos_tsb_historico(ejercicios):
         "ctl": valores_ctl,
         "atl": valores_atl
     }
+```
+
+**Copiá todo esto y pegalo en:**
+```
+H:\Mi unidad\HealthConnect Exports\SCRIPT\metricas\fitness.py
