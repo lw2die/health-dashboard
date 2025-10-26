@@ -288,7 +288,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 25/10/2025 23:00 (Argentina)</p>
+                <p class="subtitle">Última actualización: 25/10/2025 23:30 (Argentina)</p>
             </header>
             
             
@@ -608,7 +608,7 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-25 23:00:02 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-25 23:30:03 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 7147</p>
             <p>✅ <strong>Total registros peso:</strong> 10281</p>
@@ -616,23 +616,23 @@
             <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1345 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-26 02:00:01,605 [INFO] - Iniciando procesamiento...
-2025-10-26 02:00:01,605 [INFO] - ================================================================================
-2025-10-26 02:00:01,605 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-26 02:00:01,606 [INFO] - ================================================================================
-2025-10-26 02:00:01,895 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-26 02:00:01,896 [INFO] - Total archivos JSON encontrados: 27
-2025-10-26 02:00:01,896 [INFO] - Archivos ya procesados: 413
-2025-10-26 02:00:01,896 [INFO] - Archivos nuevos a procesar: 0
-2025-10-26 02:00:01,896 [INFO] - No hay archivos nuevos para procesar.
-2025-10-26 02:00:01,896 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-26 02:00:01,896 [INFO] - ==================================================
-2025-10-26 02:00:01,896 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-26
-2025-10-26 02:00:01,896 [INFO] - Ventana de 7 días: 2025-10-20 a 2025-10-26
-2025-10-26 02:00:01,901 [INFO] - PAI TOTAL SEMANAL: 187.3
-2025-10-26 02:00:01,901 [INFO] - Entrenamientos en ventana: 25
-2025-10-26 02:00:01,901 [INFO] - ==================================================
-2025-10-26 02:00:01,909 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-26 02:30:02,215 [INFO] - Iniciando procesamiento...
+2025-10-26 02:30:02,215 [INFO] - ================================================================================
+2025-10-26 02:30:02,215 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-26 02:30:02,215 [INFO] - ================================================================================
+2025-10-26 02:30:02,492 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-26 02:30:02,492 [INFO] - Total archivos JSON encontrados: 27
+2025-10-26 02:30:02,492 [INFO] - Archivos ya procesados: 413
+2025-10-26 02:30:02,492 [INFO] - Archivos nuevos a procesar: 0
+2025-10-26 02:30:02,492 [INFO] - No hay archivos nuevos para procesar.
+2025-10-26 02:30:02,492 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-26 02:30:02,492 [INFO] - ==================================================
+2025-10-26 02:30:02,492 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-26
+2025-10-26 02:30:02,492 [INFO] - Ventana de 7 días: 2025-10-20 a 2025-10-26
+2025-10-26 02:30:02,497 [INFO] - PAI TOTAL SEMANAL: 187.3
+2025-10-26 02:30:02,497 [INFO] - Entrenamientos en ventana: 25
+2025-10-26 02:30:02,498 [INFO] - ==================================================
+2025-10-26 02:30:02,506 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -748,7 +748,7 @@
         // SpO2
         Plotly.newPlot('spo2-chart', [{
             x: ['2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-09-30', '2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-25'],
-            y: [97.56115107913669, 95.4040404040404, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.46052631578948, 98.0, 97.06060606060606, 95.0, 97.58823529411765, 98.14285714285714, 97.5, 97.0, 99.0, 95.36363636363636, 97.0, 98.0, 97.0, 97.66666666666667, 98.0],
+            y: [98.1919191919192, 95.4040404040404, 95.0, 95.0, 98.0, 99.0, 98.0, 98.0, 95.66666666666667, 96.0, 97.5, 97.0, 97.46052631578948, 98.0, 97.06060606060606, 95.0, 97.58823529411765, 98.14285714285714, 97.5, 97.0, 99.0, 95.36363636363636, 97.0, 98.0, 97.0, 97.66666666666667, 98.0],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#79c0ff', width: 2 }
