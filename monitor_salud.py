@@ -17,7 +17,7 @@ from datetime import datetime
 from config import INTERVALO_MINUTOS
 from utils.logger import logger
 from core.cache import cargar_cache, guardar_cache, obtener_archivos_procesados, marcar_archivo_procesado
-from core.procesador import obtener_archivos_pendientes, procesar_archivo, mover_archivo_procesado
+from core.procesador import obtener_archivos_pendientes, procesar_archivo, mover_archivo_procesado, detectar_deletions
 # from core.limpieza import validar_y_limpiar_ejercicios  # DESACTIVADO - sin duplicados en origen
 from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_vo2max
@@ -33,48 +33,59 @@ def procesar_datos_nuevos():
     """
     # Cargar cache existente
     cache = cargar_cache()
-    
+
     # LIMPIEZA DESACTIVADA - datos ya vienen limpios desde Health Connect
     # (permisos configurados para evitar duplicados en origen)
-    
+
     # Obtener archivos pendientes
     archivos_procesados = obtener_archivos_procesados(cache)
     archivos_nuevos = obtener_archivos_pendientes(archivos_procesados)
-    
+
     if not archivos_nuevos:
         logger.info("No hay archivos nuevos para procesar.")
         return cache
-    
+
     logger.info(f"Archivos nuevos encontrados: {archivos_nuevos}")
-    
+
     # Procesar cada archivo
     for archivo in archivos_nuevos:
         es_full = "FULL" in archivo.upper()
         es_diff = "DIFF" in archivo.upper()
-        
+
         tipo_archivo = "FULL" if es_full else ("DIFF" if es_diff else "UNKNOWN")
         logger.info(f"→ Procesando [{tipo_archivo}]: {archivo}")
-        
-        # Procesar archivo
+
+        # Detectar deletions ANTES de procesar
         from config import INPUT_DIR
         import os
-        campos = procesar_archivo(os.path.join(INPUT_DIR, archivo), cache)
+        import json
         
+        ruta_completa = os.path.join(INPUT_DIR, archivo)
+        try:
+            with open(ruta_completa, 'r', encoding='utf-8') as f:
+                datos_json = json.load(f)
+            detectar_deletions(datos_json, archivo)
+        except Exception as e:
+            logger.error(f"Error leyendo {archivo} para detectar deletions: {e}")
+
+        # Procesar archivo
+        campos = procesar_archivo(ruta_completa, cache)
+
         if campos:
             logger.info(f"  Campos detectados: {', '.join(campos)}")
         else:
             logger.warning(f"  ⚠ No se detectaron campos en {archivo}")
-        
+
         # LIMPIEZA DESACTIVADA - datos limpios desde origen
         logger.info(f"  ✓ Archivo procesado sin limpieza (datos confiables)")
-        
+
         # Marcar como procesado y mover archivo
         marcar_archivo_procesado(cache, archivo)
         mover_archivo_procesado(archivo)
-    
+
     # Guardar cache actualizado
     guardar_cache(cache)
-    
+
     return cache
 
 
@@ -85,20 +96,20 @@ def mostrar_resumen(cache):
     """
     ejercicios = cache.get("ejercicio", [])
     peso = cache.get("peso", [])
-    
+
     # Corrección de seguridad: Usar .get() o [0] con validación en la lógica de su proyecto
     # Asumo que su lógica interna ya extrae el peso actual correctamente.
     peso_actual = peso[-1]["peso"] if peso and peso[-1].get("peso") is not None else None
-    
+
     # 🤫 LLAMADA SILENCIOSA - No imprime logs
     pai_semanal = calcular_pai_semanal(ejercicios, silencioso=True)
     vo2max = calcular_vo2max(ejercicios)
-    
+
     # Aseguramos que la función reciba el peso actual (o None)
     score = calcular_score_longevidad(peso_actual, pai_semanal, vo2max, 0)
-    
+
     from config import PESO_OBJETIVO, PAI_OBJETIVO_SEMANAL
-    
+
     logger.info("")
     logger.info("=" * 80)
     logger.info("RESUMEN DE MÉTRICAS")
@@ -122,20 +133,20 @@ def ciclo_principal():
     logger.info("=" * 80)
     logger.info("PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]")
     logger.info("=" * 80)
-    
+
     try:
         # Procesar datos
         cache = procesar_datos_nuevos()
-        
+
         # Generar dashboard
         generar_dashboard(cache)
-        
+
         # Publicar a GitHub
         publicar_github()
-        
+
         # Mostrar resumen
         mostrar_resumen(cache)
-        
+
     except Exception as e:
         logger.error(f"Error en ciclo principal: {str(e)}")
         raise
@@ -145,18 +156,11 @@ def main():
     """
     Punto de entrada principal - Ejecuta un ciclo de monitoreo y termina.
     """
-    logger.info("")
-    logger.info("=" * 80)
-    logger.info("MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON")
-    logger.info("=" * 80)
-    logger.info("Configuración: SIN LIMPIEZA - datos limpios desde origen")
-    logger.info("Ejecución: Un ciclo, controlado por Crontab de Ubuntu.")
-    logger.info("=" * 80)
-    logger.info("")
-    
+    logger.info("Iniciando procesamiento...")
+
     try:
         ciclo_principal()
-            
+
     except Exception as e:
         logger.error(f"Fallo en la ejecución principal: {str(e)}")
         sys.exit(1)
