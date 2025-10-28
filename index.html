@@ -288,7 +288,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 28/10/2025 09:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 28/10/2025 09:35 (Argentina)</p>
             </header>
             
             
@@ -608,69 +608,38 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-28 09:05:10 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-28 09:35:08 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 7151</p>
             <p>✅ <strong>Total registros peso:</strong> 10284</p>
             <p>✅ <strong>Total registros pasos:</strong> 666</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4869 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1953 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-28 09:05:07,830 [INFO] - 
-2025-10-28 09:05:07,831 [INFO] - ================================================================================
-2025-10-28 09:05:07,831 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-28 09:05:07,831 [INFO] - ================================================================================
-2025-10-28 09:05:07,831 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-28 09:05:07,831 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-28 09:05:07,831 [INFO] - ================================================================================
-2025-10-28 09:05:07,831 [INFO] - 
-2025-10-28 09:05:07,831 [INFO] - ================================================================================
-2025-10-28 09:05:07,831 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-28 09:05:07,831 [INFO] - ================================================================================
-2025-10-28 09:05:08,126 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-28 09:05:08,127 [INFO] - Total archivos JSON encontrados: 80
-2025-10-28 09:05:08,127 [INFO] - Archivos ya procesados: 464
-2025-10-28 09:05:08,127 [INFO] - Archivos nuevos a procesar: 1
-2025-10-28 09:05:08,127 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-28_08-45-53.json&#x27;]
-2025-10-28 09:05:08,127 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-28_08-45-53.json
-2025-10-28 09:05:08,127 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-28_08-45-53.json
-2025-10-28 09:05:08,128 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-10-28 09:05:08,222 [INFO] -   → Peso agregado: 1 días (rechazados: 0)
-2025-10-28 09:05:08,222 [INFO] -      📊 Peso por fuente:
-2025-10-28 09:05:08,222 [INFO] -         • com.icomon.starfit.starfit: 1 registros
-2025-10-28 09:05:08,223 [INFO] -   → Grasa corporal agregada: 1
-2025-10-28 09:05:08,223 [INFO] -     📊 Grasa Corporal por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • starfit: 1 registros (total: 25)
-2025-10-28 09:05:08,223 [INFO] -   → Masa muscular agregada: 1
-2025-10-28 09:05:08,223 [INFO] -     📊 Masa Muscular por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • Withings: 1 registros (total: 57)
-2025-10-28 09:05:08,223 [INFO] -   → Masa de agua agregada: 1
-2025-10-28 09:05:08,223 [INFO] -     📊 Masa de Agua por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • Withings: 1 registros (total: 41)
-2025-10-28 09:05:08,223 [INFO] -   → Masa ósea agregada: 1
-2025-10-28 09:05:08,223 [INFO] -     📊 Masa Ósea por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • starfit: 1 registros (total: 4)
-2025-10-28 09:05:08,223 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-10-28 09:05:08,223 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • Samsung Health: 1 registros
-2025-10-28 09:05:08,223 [INFO] -   → Tasa metabólica basal agregada: 1
-2025-10-28 09:05:08,223 [INFO] -     📊 BMR por fuente:
-2025-10-28 09:05:08,223 [INFO] -        • starfit: 1 registros (total: 1709)
-2025-10-28 09:05:08,224 [INFO] -   → Pasos agregados: 1
-2025-10-28 09:05:08,224 [INFO] -     📊 Pasos por fuente:
-2025-10-28 09:05:08,224 [INFO] -        • Samsung Health: 1 registros (total: 683)
-2025-10-28 09:05:08,224 [INFO] -   Campos detectados: peso, grasa_corporal, masa_muscular, masa_agua, masa_osea, frecuencia_cardiaca, tasa_metabolica, pasos
-2025-10-28 09:05:08,224 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-28 09:05:08,224 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-28_08-45-53.json
-2025-10-28 09:05:09,889 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-28 09:05:09,889 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-28 09:05:09,889 [INFO] - ==================================================
-2025-10-28 09:05:09,889 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-28
-2025-10-28 09:05:09,889 [INFO] - Ventana de 7 días: 2025-10-22 a 2025-10-28
-2025-10-28 09:05:09,894 [INFO] - PAI TOTAL SEMANAL: 99.3
-2025-10-28 09:05:09,894 [INFO] - Entrenamientos en ventana: 13
-2025-10-28 09:05:09,894 [INFO] - ==================================================
-2025-10-28 09:05:09,898 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-28 09:35:07,008 [INFO] - 
+2025-10-28 09:35:07,008 [INFO] - ================================================================================
+2025-10-28 09:35:07,008 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-28 09:35:07,008 [INFO] - ================================================================================
+2025-10-28 09:35:07,008 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-28 09:35:07,008 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-28 09:35:07,008 [INFO] - ================================================================================
+2025-10-28 09:35:07,008 [INFO] - 
+2025-10-28 09:35:07,008 [INFO] - ================================================================================
+2025-10-28 09:35:07,008 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-28 09:35:07,008 [INFO] - ================================================================================
+2025-10-28 09:35:07,294 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-28 09:35:07,295 [INFO] - Total archivos JSON encontrados: 80
+2025-10-28 09:35:07,295 [INFO] - Archivos ya procesados: 465
+2025-10-28 09:35:07,295 [INFO] - Archivos nuevos a procesar: 0
+2025-10-28 09:35:07,295 [INFO] - No hay archivos nuevos para procesar.
+2025-10-28 09:35:07,295 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-28 09:35:07,295 [INFO] - ==================================================
+2025-10-28 09:35:07,295 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-28
+2025-10-28 09:35:07,295 [INFO] - Ventana de 7 días: 2025-10-22 a 2025-10-28
+2025-10-28 09:35:07,303 [INFO] - PAI TOTAL SEMANAL: 99.3
+2025-10-28 09:35:07,303 [INFO] - Entrenamientos en ventana: 13
+2025-10-28 09:35:07,303 [INFO] - ==================================================
+2025-10-28 09:35:07,308 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
