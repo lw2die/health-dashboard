@@ -288,7 +288,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 30/10/2025 20:42 (Argentina)</p>
+                <p class="subtitle">Última actualización: 30/10/2025 20:45 (Argentina)</p>
             </header>
             
             
@@ -396,7 +396,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">11,879</div>
+        <div class="metric-value" style="color: #3fb950;">11,972</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -608,129 +608,48 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-30 20:42:57 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-30 20:45:44 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 371</p>
             <p>✅ <strong>Total registros peso:</strong> 39</p>
-            <p>✅ <strong>Total registros pasos:</strong> 130</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 9689 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 131</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3282 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-30 20:42:56,797 [INFO] - 
-2025-10-30 20:42:56,797 [INFO] - ================================================================================
-2025-10-30 20:42:56,797 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-30 20:42:56,797 [INFO] - ================================================================================
-2025-10-30 20:42:56,797 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-30 20:42:56,797 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-30 20:42:56,797 [INFO] - ================================================================================
-2025-10-30 20:42:56,797 [INFO] - 
-2025-10-30 20:42:56,797 [INFO] - ================================================================================
-2025-10-30 20:42:56,798 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-30 20:42:56,798 [INFO] - ================================================================================
-2025-10-30 20:42:56,804 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-30 20:42:56,805 [INFO] - Total archivos JSON encontrados: 105
-2025-10-30 20:42:56,805 [INFO] - Archivos ya procesados: 106
-2025-10-30 20:42:56,805 [INFO] - Archivos nuevos a procesar: 1
-2025-10-30 20:42:56,805 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_FULL_2025-10-18_08-17-34.json&#x27;]
-2025-10-30 20:42:56,805 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-10-18_08-17-34.json
-2025-10-30 20:42:56,909 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-10-18_08-17-34.json
-2025-10-30 20:42:56,909 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-10-30 20:42:56,911 [INFO] -   → Ejercicios agregados: 199
-2025-10-30 20:42:56,912 [INFO] -     📊 Ejercicios por tipo:
-2025-10-30 20:42:56,912 [INFO] -        • Walking: 127 sesiones (2990 min)
-2025-10-30 20:42:56,912 [INFO] -        • Baseball: 24 sesiones (720 min)
-2025-10-30 20:42:56,912 [INFO] -        • Swimming: 21 sesiones (1136 min)
-2025-10-30 20:42:56,912 [INFO] -        • Otro (73): 14 sesiones (718 min)
-2025-10-30 20:42:56,912 [INFO] -        • Press Banca: 8 sesiones (46 min)
-2025-10-30 20:42:56,912 [INFO] -        • Aparatos de Musculación: 4 sesiones (98 min)
-2025-10-30 20:42:56,912 [INFO] -        • Otro (16): 1 sesiones (3 min)
-2025-10-30 20:42:56,914 [INFO] -   → Peso agregado: 4 días (rechazados: 228)
-2025-10-30 20:42:56,914 [INFO] -      📊 Peso por fuente:
-2025-10-30 20:42:56,914 [INFO] -         • com.icomon.starfit.starfit: 90 registros
-2025-10-30 20:42:56,914 [INFO] -         • com.sec.android.app.shealth: 37 registros
-2025-10-30 20:42:56,914 [INFO] -         • com.withings.wiscale2: 43 registros
-2025-10-30 20:42:56,914 [INFO] -         • nl.appyhapps.healthsync: 84 registros
-2025-10-30 20:42:56,915 [INFO] -   → Grasa corporal agregada: 206
-2025-10-30 20:42:56,915 [INFO] -     📊 Grasa Corporal por fuente:
-2025-10-30 20:42:56,915 [INFO] -        • HealthSync: 46 registros (total: 1177)
-2025-10-30 20:42:56,915 [INFO] -        • Samsung Health: 37 registros (total: 902)
-2025-10-30 20:42:56,915 [INFO] -        • Withings: 43 registros (total: 1170)
-2025-10-30 20:42:56,915 [INFO] -        • fitness: 3 registros (total: 82)
-2025-10-30 20:42:56,915 [INFO] -        • starfit: 77 registros (total: 1853)
-2025-10-30 20:42:56,915 [INFO] -   → Masa muscular agregada: 89
-2025-10-30 20:42:56,916 [INFO] -     📊 Masa Muscular por fuente:
-2025-10-30 20:42:56,916 [INFO] -        • HealthSync: 46 registros (total: 2844)
-2025-10-30 20:42:56,916 [INFO] -        • Withings: 43 registros (total: 2468)
-2025-10-30 20:42:56,916 [INFO] -   → Masa de agua agregada: 79
-2025-10-30 20:42:56,916 [INFO] -     📊 Masa de Agua por fuente:
-2025-10-30 20:42:56,916 [INFO] -        • HealthSync: 36 registros (total: 1561)
-2025-10-30 20:42:56,916 [INFO] -        • Withings: 43 registros (total: 1786)
-2025-10-30 20:42:56,916 [INFO] -   → Masa ósea agregada: 135
-2025-10-30 20:42:56,917 [INFO] -     📊 Masa Ósea por fuente:
-2025-10-30 20:42:56,917 [INFO] -        • HealthSync: 15 registros (total: 46)
-2025-10-30 20:42:56,917 [INFO] -        • Withings: 43 registros (total: 130)
-2025-10-30 20:42:56,917 [INFO] -        • starfit: 77 registros (total: 325)
-2025-10-30 20:42:56,918 [INFO] -   → FC en reposo agregada: 447 (desde heart_rate horario nocturno)
-2025-10-30 20:42:56,919 [INFO] -     📊 FC Reposo por fuente:
-2025-10-30 20:42:56,919 [INFO] -        • HealthSync: 20 registros (total: 1239)
-2025-10-30 20:42:56,919 [INFO] -        • Samsung Health: 36 registros (total: 1934)
-2025-10-30 20:42:56,919 [INFO] -        • fitness: 391 registros (total: 21876)
-2025-10-30 20:42:56,919 [INFO] -   → Presión arterial agregada: 143
-2025-10-30 20:42:56,919 [INFO] -     📊 Presión Arterial por fuente:
-2025-10-30 20:42:56,919 [INFO] -        • HealthSync: 55 registros
-2025-10-30 20:42:56,920 [INFO] -        • Samsung Health: 40 registros
-2025-10-30 20:42:56,920 [INFO] -        • Withings: 38 registros
-2025-10-30 20:42:56,920 [INFO] -        • fitness: 10 registros
-2025-10-30 20:42:56,926 [INFO] -   → Frecuencia cardíaca agregada: 6 días
-2025-10-30 20:42:56,926 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-10-30 20:42:56,926 [INFO] -        • Samsung Health: 6 registros
-2025-10-30 20:42:56,926 [INFO] -   → Glucosa agregada: 33
-2025-10-30 20:42:56,926 [INFO] -     📊 Glucosa por fuente:
-2025-10-30 20:42:56,927 [INFO] -        • HealthSync: 10 registros (total: 983)
-2025-10-30 20:42:56,927 [INFO] -        • Samsung Health: 23 registros (total: 2283)
-2025-10-30 20:42:56,927 [INFO] -   → Tasa metabólica basal agregada: 188
-2025-10-30 20:42:56,927 [INFO] -     📊 BMR por fuente:
-2025-10-30 20:42:56,927 [INFO] -        • HealthSync: 14 registros (total: 24161)
-2025-10-30 20:42:56,927 [INFO] -        • Samsung Health: 37 registros (total: 63805)
-2025-10-30 20:42:56,928 [INFO] -        • fitness: 60 registros (total: 101081)
-2025-10-30 20:42:56,928 [INFO] -        • starfit: 77 registros (total: 133270)
-2025-10-30 20:42:56,985 [INFO] -   → Calorías totales agregadas: 29 días
-2025-10-30 20:42:56,985 [INFO] -     📊 Calorías Totales por fuente:
-2025-10-30 20:42:56,985 [INFO] -        • HealthSync: 1 registros (total: 4036)
-2025-10-30 20:42:56,986 [INFO] -        • Samsung Health: 7 registros (total: 6035)
-2025-10-30 20:42:56,986 [INFO] -        • fitness: 21 registros (total: 68941)
-2025-10-30 20:42:56,992 [INFO] -   → Pasos agregados: 10
-2025-10-30 20:42:56,993 [INFO] -     📊 Pasos por fuente:
-2025-10-30 20:42:56,993 [INFO] -        • HealthSync: 4 registros (total: 46950)
-2025-10-30 20:42:56,993 [INFO] -        • Samsung Health: 3 registros (total: 27883)
-2025-10-30 20:42:56,993 [INFO] -        • fitness: 3 registros (total: 55293)
-2025-10-30 20:42:56,999 [INFO] -   → Distancia agregada: 1 días
-2025-10-30 20:42:56,999 [INFO] -     📊 Distancia por fuente:
-2025-10-30 20:42:56,999 [INFO] -        • fitness: 1 registros (total: 29)
-2025-10-30 20:42:56,999 [INFO] -   → SpO2 agregado: 103
-2025-10-30 20:42:57,000 [INFO] -     📊 SpO2 por fuente:
-2025-10-30 20:42:57,000 [INFO] -        • HealthSync: 43 registros (total: 4161)
-2025-10-30 20:42:57,000 [INFO] -        • Samsung Health: 54 registros (total: 5234)
-2025-10-30 20:42:57,000 [INFO] -        • fitness: 6 registros (total: 582)
-2025-10-30 20:42:57,025 [INFO] -   → Sueño agregado: 187 sesiones
-2025-10-30 20:42:57,025 [INFO] -      📊 Sueño por fuente:
-2025-10-30 20:42:57,025 [INFO] -         • com.example.healthconnectsample: 8 sesiones
-2025-10-30 20:42:57,025 [INFO] -         • com.google.android.apps.fitness: 13 sesiones
-2025-10-30 20:42:57,025 [INFO] -         • com.sec.android.app.shealth: 43 sesiones
-2025-10-30 20:42:57,026 [INFO] -         • com.withings.wiscale2: 31 sesiones
-2025-10-30 20:42:57,026 [INFO] -         • nl.appyhapps.healthsync: 92 sesiones
-2025-10-30 20:42:57,028 [INFO] -   Campos detectados: ejercicio, peso, grasa_corporal, masa_muscular, masa_agua, masa_osea, fc_reposo, presion_arterial, frecuencia_cardiaca, glucosa, tasa_metabolica, calorias_totales, pasos, distancia, spo2, sueno
-2025-10-30 20:42:57,028 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-30 20:42:57,029 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-10-18_08-17-34.json
-2025-10-30 20:42:57,130 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-30 20:42:57,131 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-30 20:42:57,131 [INFO] - ==================================================
-2025-10-30 20:42:57,131 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-30
-2025-10-30 20:42:57,131 [INFO] - Ventana de 7 días: 2025-10-24 a 2025-10-30
-2025-10-30 20:42:57,131 [INFO] - PAI TOTAL SEMANAL: 114.7
-2025-10-30 20:42:57,131 [INFO] - Entrenamientos en ventana: 15
-2025-10-30 20:42:57,131 [INFO] - ==================================================
-2025-10-30 20:42:57,133 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-30 20:45:43,817 [INFO] - 
+2025-10-30 20:45:43,817 [INFO] - ================================================================================
+2025-10-30 20:45:43,817 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-30 20:45:43,817 [INFO] - ================================================================================
+2025-10-30 20:45:43,817 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-30 20:45:43,817 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-30 20:45:43,817 [INFO] - ================================================================================
+2025-10-30 20:45:43,817 [INFO] - 
+2025-10-30 20:45:43,817 [INFO] - ================================================================================
+2025-10-30 20:45:43,817 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-30 20:45:43,817 [INFO] - ================================================================================
+2025-10-30 20:45:43,827 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-30 20:45:43,827 [INFO] - Total archivos JSON encontrados: 106
+2025-10-30 20:45:43,827 [INFO] - Archivos ya procesados: 107
+2025-10-30 20:45:43,827 [INFO] - Archivos nuevos a procesar: 1
+2025-10-30 20:45:43,827 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-30_19-51-47.json&#x27;]
+2025-10-30 20:45:43,827 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-30_19-51-47.json
+2025-10-30 20:45:43,828 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-30_19-51-47.json
+2025-10-30 20:45:43,828 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
+2025-10-30 20:45:43,828 [INFO] -   → Pasos agregados: 1
+2025-10-30 20:45:43,828 [INFO] -     📊 Pasos por fuente:
+2025-10-30 20:45:43,828 [INFO] -        • Samsung Health: 1 registros (total: 14405)
+2025-10-30 20:45:43,828 [INFO] -   Campos detectados: pasos
+2025-10-30 20:45:43,828 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-30 20:45:43,828 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-30_19-51-47.json
+2025-10-30 20:45:43,935 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-30 20:45:43,935 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-30 20:45:43,935 [INFO] - ==================================================
+2025-10-30 20:45:43,935 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-30
+2025-10-30 20:45:43,936 [INFO] - Ventana de 7 días: 2025-10-24 a 2025-10-30
+2025-10-30 20:45:43,936 [INFO] - PAI TOTAL SEMANAL: 114.7
+2025-10-30 20:45:43,936 [INFO] - Entrenamientos en ventana: 15
+2025-10-30 20:45:43,936 [INFO] - ==================================================
+2025-10-30 20:45:43,937 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -932,7 +851,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-            y: [11147, 208014, 157218, 72470, 20008, 38684, 74122],
+            y: [11147, 208014, 157218, 72470, 20008, 38684, 88527],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
