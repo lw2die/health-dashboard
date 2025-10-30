@@ -7,8 +7,8 @@ Procesa exercise_sessions y exercise_changes
 
 from utils.logger import logger
 from core.utils_procesador import (
-    calcular_pai, clasificar_zona_fc, reportar_ejercicios_por_tipo,
-    traducir_tipo_ejercicio
+    calcular_pai, calcular_hrtss, clasificar_zona_fc, 
+    reportar_ejercicios_por_tipo, traducir_tipo_ejercicio
 )
 
 
@@ -51,8 +51,13 @@ def procesar_ejercicios(datos, cache, nombre_archivo):
                 f"Tipo: {entrada['tipo']}, Duración: {entrada['duracion']} min"
             )
         
-        # Calcular PAI y zona FC
+        # Calcular PAI (para métrica de salud cardiovascular)
         entrada["pai"] = calcular_pai(entrada["fc_promedio"], entrada["duracion"])
+        
+        # Calcular hrTSS (para métrica de carga de entrenamiento / TSB)
+        entrada["hrtss"] = calcular_hrtss(entrada["fc_promedio"], entrada["duracion"])
+        
+        # Clasificar zona FC
         entrada["zona"] = clasificar_zona_fc(entrada["fc_promedio"])
         
         cache["ejercicio"].append(entrada)

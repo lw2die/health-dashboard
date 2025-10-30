@@ -30,6 +30,39 @@ def calcular_pai(fc_promedio, duracion_min):
     return round(pai, 1)
 
 
+def calcular_hrtss(fc_promedio, duracion_min):
+    """
+    Calcula hrTSS (Heart Rate Training Stress Score).
+    
+    hrTSS = (duración_horas) × (HR_reserve%)² × 100
+    
+    Donde:
+        HR_reserve% = (FC_promedio - FC_reposo) / (FC_max - FC_reposo)
+    
+    Esta métrica se usa para calcular TSB/CTL/ATL (Training Stress Balance).
+    """
+    if fc_promedio is None or fc_promedio <= 0:
+        return 0.0
+    
+    if fc_promedio <= FC_REPOSO:
+        return 0.0
+    
+    # Calcular HR Reserve %
+    rango_fc = FC_MAX - FC_REPOSO
+    hr_reserve_pct = (fc_promedio - FC_REPOSO) / rango_fc
+    
+    # Limitar entre 0 y 1
+    hr_reserve_pct = max(0.0, min(1.0, hr_reserve_pct))
+    
+    # Duración en horas
+    duracion_horas = duracion_min / 60.0
+    
+    # hrTSS = duración × (HR_reserve%)² × 100
+    hrtss = duracion_horas * (hr_reserve_pct ** 2) * 100
+    
+    return round(hrtss, 1)
+
+
 def clasificar_zona_fc(fc_promedio):
     """Clasifica zona de entrenamiento según FC"""
     if fc_promedio is None or fc_promedio <= 0:
