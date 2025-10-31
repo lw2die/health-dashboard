@@ -55,6 +55,82 @@
             font-size: 1.1em;
         }
         
+        /* ═══════════════════════════════════════ */
+        /* HEALTHSPAN INDEX - HERO CARD */
+        /* ═══════════════════════════════════════ */
+        
+        .healthspan-hero {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            border: 2px solid #58a6ff;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(88, 166, 255, 0.4);
+        }
+        
+        .healthspan-title {
+            text-align: center;
+            font-size: 1.5em;
+            color: #79c0ff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .healthspan-main-score {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .healthspan-value {
+            font-size: 5em;
+            font-weight: bold;
+        }
+        
+        .healthspan-status {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .healthspan-subscores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .subscore-card {
+            background: rgba(22, 27, 34, 0.6);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .subscore-label {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .subscore-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .subscore-bar {
+            height: 6px;
+            background: #161b22;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .subscore-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -209,6 +285,12 @@
         }
         
         @media (max-width: 768px) {
+            .healthspan-value {
+                font-size: 3.5em;
+            }
+            .healthspan-subscores {
+                grid-template-columns: 1fr 1fr;
+            }
             .charts-grid {
                 grid-template-columns: 1fr;
             }
@@ -288,8 +370,61 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 30/10/2025 22:27 (Argentina)</p>
+                <p class="subtitle">Última actualización: 30/10/2025 22:42 (Argentina)</p>
             </header>
+            
+            
+    <div class="healthspan-hero">
+        <div class="healthspan-title">🏆 HEALTHSPAN INDEX</div>
+        <div class="healthspan-main-score">
+            <div class="healthspan-value" style="color: #3fb950;">85</div>
+            <div class="healthspan-status" style="color: #3fb950;">EXCELENTE</div>
+            <div class="metric-detail">Proyección de años saludables basado en métricas actuales</div>
+        </div>
+        
+        <div class="healthspan-subscores">
+            <div class="subscore-card">
+                <div class="subscore-label">💪 FITNESS</div>
+                <div class="subscore-value" style="color: #3fb950;">95</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: 95%; background: #3fb950;"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">🏋️ BODY</div>
+                <div class="subscore-value" style="color: #f85149;">60</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: 60%; background: #f85149;"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">😴 RECOVERY</div>
+                <div class="subscore-value" style="color: #3fb950;">95</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: 95%; background: #3fb950;"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">🔥 METABOLIC</div>
+                <div class="subscore-value" style="color: #3fb950;">85</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: 85%; background: #3fb950;"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">⚡ FUNCTIONAL</div>
+                <div class="subscore-value" style="color: #3fb950;">90</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: 90%; background: #3fb950;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
             
             
     <div class="laboratorio-section">
@@ -367,8 +502,8 @@
     
     <div class="metric-card">
         <div class="metric-label">Sueño (7 días)</div>
-        <div class="metric-value" style="color: #f85149;">3.8h</div>
-        <div class="metric-detail">Insuficiente</div>
+        <div class="metric-value" style="color: #3fb950;">7.9h</div>
+        <div class="metric-detail">Óptimo</div>
     </div>
     
     <div class="metric-card">
@@ -390,13 +525,13 @@
     
     <div class="metric-card">
         <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">56 bpm</div>
+        <div class="metric-value" style="color: #3fb950;">57 bpm</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">12,687</div>
+        <div class="metric-value" style="color: #3fb950;">13,396</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -408,8 +543,8 @@
     
     <div class="metric-card">
         <div class="metric-label">Score Longevidad</div>
-        <div class="metric-value" style="color: #d29922;">70/100</div>
-        <div class="metric-detail">Bueno</div>
+        <div class="metric-value" style="color: #3fb950;">85/100</div>
+        <div class="metric-detail">Excelente</div>
     </div>
     
             </div>
@@ -480,6 +615,10 @@
                     <div class="chart-container">
                         <h3>Calorías Totales</h3>
                         <div id="calorias-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Sueño por Fases (últimos 14 días)</h3>
+                        <div id="sueno-chart"></div>
                     </div>
                 </div>
             </div>
@@ -599,7 +738,7 @@
                 <h2>💡 Recomendaciones</h2>
                 
     <ul class="recommendations-list">
-        <li>🎯 Reducir 5.1 kg para peso objetivo</li><li>😴 Dormir 3.2h más por noche</li>
+        <li>🎯 Reducir 5.1 kg para peso objetivo</li>
     </ul>
     
             </div>
@@ -608,38 +747,48 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-30 22:27:57 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-30 22:42:28 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 371</p>
             <p>✅ <strong>Total registros peso:</strong> 39</p>
-            <p>✅ <strong>Total registros pasos:</strong> 132</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1955 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 133</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3282 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-30 22:27:56,914 [INFO] - 
-2025-10-30 22:27:56,914 [INFO] - ================================================================================
-2025-10-30 22:27:56,914 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-30 22:27:56,915 [INFO] - ================================================================================
-2025-10-30 22:27:56,915 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-30 22:27:56,915 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-30 22:27:56,915 [INFO] - ================================================================================
-2025-10-30 22:27:56,915 [INFO] - 
-2025-10-30 22:27:56,915 [INFO] - ================================================================================
-2025-10-30 22:27:56,915 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-30 22:27:56,915 [INFO] - ================================================================================
-2025-10-30 22:27:56,934 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-30 22:27:56,935 [INFO] - Total archivos JSON encontrados: 108
-2025-10-30 22:27:56,935 [INFO] - Archivos ya procesados: 109
-2025-10-30 22:27:56,935 [INFO] - Archivos nuevos a procesar: 0
-2025-10-30 22:27:56,935 [INFO] - No hay archivos nuevos para procesar.
-2025-10-30 22:27:56,935 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-30 22:27:56,935 [INFO] - ==================================================
-2025-10-30 22:27:56,935 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-30
-2025-10-30 22:27:56,935 [INFO] - Ventana de 7 días: 2025-10-24 a 2025-10-30
-2025-10-30 22:27:56,935 [INFO] - PAI TOTAL SEMANAL: 114.7
-2025-10-30 22:27:56,935 [INFO] - Entrenamientos en ventana: 15
-2025-10-30 22:27:56,935 [INFO] - ==================================================
-2025-10-30 22:27:56,937 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-30 22:42:28,516 [INFO] - 
+2025-10-30 22:42:28,516 [INFO] - ================================================================================
+2025-10-30 22:42:28,516 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-30 22:42:28,516 [INFO] - ================================================================================
+2025-10-30 22:42:28,516 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-30 22:42:28,516 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-30 22:42:28,516 [INFO] - ================================================================================
+2025-10-30 22:42:28,516 [INFO] - 
+2025-10-30 22:42:28,516 [INFO] - ================================================================================
+2025-10-30 22:42:28,516 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-30 22:42:28,516 [INFO] - ================================================================================
+2025-10-30 22:42:28,527 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-30 22:42:28,528 [INFO] - Total archivos JSON encontrados: 108
+2025-10-30 22:42:28,528 [INFO] - Archivos ya procesados: 109
+2025-10-30 22:42:28,528 [INFO] - Archivos nuevos a procesar: 1
+2025-10-30 22:42:28,528 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-30_22-24-28.json&#x27;]
+2025-10-30 22:42:28,528 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-30_22-24-28.json
+2025-10-30 22:42:28,528 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-30_22-24-28.json
+2025-10-30 22:42:28,529 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
+2025-10-30 22:42:28,529 [INFO] -   → Pasos agregados: 1
+2025-10-30 22:42:28,529 [INFO] -     📊 Pasos por fuente:
+2025-10-30 22:42:28,529 [INFO] -        • Samsung Health: 1 registros (total: 14888)
+2025-10-30 22:42:28,529 [INFO] -   Campos detectados: pasos
+2025-10-30 22:42:28,529 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-10-30 22:42:28,529 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-30_22-24-28.json
+2025-10-30 22:42:28,633 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-30 22:42:28,633 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-30 22:42:28,633 [INFO] - ==================================================
+2025-10-30 22:42:28,633 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-30
+2025-10-30 22:42:28,633 [INFO] - Ventana de 7 días: 2025-10-24 a 2025-10-30
+2025-10-30 22:42:28,634 [INFO] - PAI TOTAL SEMANAL: 114.7
+2025-10-30 22:42:28,634 [INFO] - Entrenamientos en ventana: 15
+2025-10-30 22:42:28,634 [INFO] - ==================================================
+2025-10-30 22:42:28,684 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -667,7 +816,7 @@
         
         const pai_ventana = {
             x: ['2025-10-01', '2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-29', '2025-10-30'],
-            y: [135.59999999999997, 229.59999999999997, 261.99999999999994, 304.99999999999994, 308.19999999999993, 340.79999999999995, 497.19999999999993, 521.2, 602.0, 770.1, 958.3000000000001, 965.1000000000001, 978.7, 880.3000000000001, 743.5, 652.0999999999999, 264.2, 256.2, 228.1, 211.39999999999998, 85.8, 89.39999999999999, 95.09999999999998, 76.4, 114.7],
+            y: [135.59999999999997, 229.59999999999997, 261.99999999999994, 304.99999999999994, 308.19999999999993, 340.79999999999995, 497.19999999999993, 521.2, 602.0, 770.1, 958.3000000000001, 965.1000000000001, 978.7, 880.3000000000001, 743.5, 652.0999999999999, 495.40000000000003, 266.2, 274.3, 269.4, 235.79999999999998, 218.59999999999997, 159.0, 137.79999999999998, 174.09999999999997],
             type: 'scatter',
             mode: 'lines+markers',
             name: 'Ventana 7d',
@@ -793,8 +942,8 @@
         
         // FC Reposo
         Plotly.newPlot('fc-reposo-chart', [{
-            x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-            y: [55.916666666666664, 61.666666666666664, 54.25, 52.72727272727273, 48.833333333333336, 64.25],
+            x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
+            y: [55.916666666666664, 61.666666666666664, 54.25, 52.72727272727273, 48.833333333333336, 64.0, 58.0],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#f85149', width: 2 }
@@ -807,8 +956,8 @@
         // Frecuencia Cardíaca Diurna
         Plotly.newPlot('fc-diurna-chart', [
             {
-                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-                y: [47, 52, 50, 48, 47, 55],
+                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
+                y: [47, 52, 50, 48, 47, 55, 58],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Mínima',
@@ -816,16 +965,16 @@
                 fill: 'tonexty'
             },
             {
-                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-                y: [74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 80.65277777777777, 74.13988095238096],
+                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
+                y: [74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 80.65277777777777, 73.71693121693123, 66.0],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
                 line: { color: '#ffa657', width: 2 }
             },
             {
-                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-                y: [156, 101, 117, 100, 156, 130],
+                x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
+                y: [156, 101, 117, 100, 156, 130, 81],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Máxima',
@@ -841,7 +990,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
-            y: [11147, 208014, 157218, 72470, 20008, 38684, 103415],
+            y: [11147, 208014, 157218, 72470, 20008, 38684, 118268],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -968,6 +1117,52 @@
             ...layout_config,
             yaxis: { title: 'Calorías (kcal)', gridcolor: '#30363d' },
             xaxis: { gridcolor: '#30363d' }
+        });
+        
+        // Gráfico de Sueño - Barras Apiladas
+        Plotly.newPlot('sueno-chart', [
+            {
+                x: ['2025-10-17', '2025-10-18', '2025-10-19', '2025-10-21', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
+                y: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                name: 'Profundo',
+                type: 'bar',
+                marker: { color: '#1f6feb' }
+            },
+            {
+                x: ['2025-10-17', '2025-10-18', '2025-10-19', '2025-10-21', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
+                y: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                name: 'Ligero',
+                type: 'bar',
+                marker: { color: '#d29922' }
+            },
+            {
+                x: ['2025-10-17', '2025-10-18', '2025-10-19', '2025-10-21', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
+                y: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                name: 'REM',
+                type: 'bar',
+                marker: { color: '#8957e5' }
+            },
+            {
+                x: ['2025-10-17', '2025-10-18', '2025-10-19', '2025-10-21', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30'],
+                y: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                name: 'Despierto',
+                type: 'bar',
+                marker: { color: '#f85149' }
+            }
+        ], {
+            ...layout_config,
+            barmode: 'stack',
+            yaxis: { title: 'Horas', gridcolor: '#30363d' },
+            xaxis: { gridcolor: '#30363d' },
+            showlegend: true,
+            legend: { 
+                orientation: 'h',
+                yanchor: 'bottom',
+                y: 1.02,
+                xanchor: 'right',
+                x: 1,
+                bgcolor: 'rgba(22, 27, 34, 0.8)'
+            }
         });
         
     
