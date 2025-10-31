@@ -14,14 +14,14 @@ from config import (
 
 def calcular_healthspan_index(metricas):
     """
-    Calcula Healthspan Index (0-100).
+    Calcula Healthspan Index (0-100). TODAS LAS MÉTRICAS USAN VENTANAS DE 7 DÍAS
     
     Componentes:
-    - Fitness Score (30%): PAI, TSB, VO2max
-    - Body Score (20%): Peso, grasa, músculo
-    - Recovery Score (20%): Sueño, FC reposo, SpO2
+    - Fitness Score (30%): PAI semanal, TSB promedio 7d, VO2max
+    - Body Score (20%): Peso promedio 7d, grasa promedio 7d, músculo promedio 7d
+    - Recovery Score (20%): Sueño promedio 7d, FC reposo promedio 7d, SpO2 promedio 7d
     - Metabolic Score (20%): Datos de laboratorio
-    - Functional Score (10%): Pasos, actividad diaria
+    - Functional Score (10%): Pasos promedio 7d
     
     Args:
         metricas: Dict con todas las métricas calculadas
@@ -100,14 +100,14 @@ def _calcular_fitness_score(metricas):
         score += 5
     
     # TSB (30 puntos)
-    tsb_actual = metricas.get("tsb_actual", 0)
-    if TSB_OPTIMO_MIN <= tsb_actual <= TSB_OPTIMO_MAX:
-        score += 30  # Óptimo
-    elif -20 <= tsb_actual < TSB_OPTIMO_MIN:
+    tsb_promedio = metricas.get("tsb_promedio_7d", 0)
+    if TSB_OPTIMO_MIN <= tsb_promedio <= TSB_OPTIMO_MAX:
+        score += 30  # Óptimo (promedio 7d)
+    elif -20 <= tsb_promedio < TSB_OPTIMO_MIN:
         score += 25  # Entrenando duro
-    elif TSB_OPTIMO_MAX < tsb_actual <= 25:
+    elif TSB_OPTIMO_MAX < tsb_promedio <= 25:
         score += 20  # Fresco
-    elif -30 <= tsb_actual < -20:
+    elif -30 <= tsb_promedio < -20:
         score += 15  # Fatigado
     else:
         score += 10  # Muy fatigado o muy descansado

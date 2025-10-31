@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Módulo de procesamiento de laboratorio clínico
-Integración con dashboard de HealthConnect - CORREGIDO
+MÃ³dulo de procesamiento de laboratorio clÃ­nico
+IntegraciÃ³n con dashboard de HealthConnect - CORREGIDO
 """
 
 import json
@@ -11,7 +11,7 @@ from datetime import datetime
 
 def obtener_datos_laboratorio_y_alertas(edad=61, altura_cm=177, peso_kg=83, vo2max_medido=None):
     """
-    Procesa laboratorio y genera scores científicos.
+    Procesa laboratorio y genera scores cientÃ­ficos.
     
     Args:
         edad: Edad del usuario
@@ -20,7 +20,7 @@ def obtener_datos_laboratorio_y_alertas(edad=61, altura_cm=177, peso_kg=83, vo2m
         vo2max_medido: VO2max medido por dispositivo (puede ser None)
         
     Returns:
-        dict con scores, alertas y parámetros
+        dict con scores, alertas y parÃ¡metros
     """
     
     # Buscar archivo de laboratorio
@@ -41,7 +41,7 @@ def obtener_datos_laboratorio_y_alertas(edad=61, altura_cm=177, peso_kg=83, vo2m
             except:
                 continue
     
-    # Si no encuentra laboratorio, retornar estructura vacía
+    # Si no encuentra laboratorio, retornar estructura vacÃ­a
     if not laboratorio_data:
         return {
             "longevity_score": 0,
@@ -50,15 +50,15 @@ def obtener_datos_laboratorio_y_alertas(edad=61, altura_cm=177, peso_kg=83, vo2m
             "parametros": {}
         }
     
-    # Extraer parámetros del laboratorio
+    # Extraer parÃ¡metros del laboratorio
     parametros = laboratorio_data.get("parametros", {})
     if not parametros:
         # Valores por defecto
         parametros = {
             "Colesterol Total": {"valor": 75, "rango": "120-200", "estado": "bajo"},
-            "LDL": {"valor": 27, "rango": "<100", "estado": "óptimo"},
+            "LDL": {"valor": 27, "rango": "<100", "estado": "Ã³ptimo"},
             "HDL": {"valor": 43, "rango": ">55", "estado": "bajo"},
-            "Triglicéridos": {"valor": 31, "rango": "<150", "estado": "óptimo"},
+            "TriglicÃ©ridos": {"valor": 31, "rango": "<150", "estado": "Ã³ptimo"},
             "Glucemia": {"valor": 91, "rango": "70-100", "estado": "normal"},
             "HbA1c": {"valor": 5.7, "rango": "<5.7", "estado": "prediabetes"},
             "PCR": {"valor": 0.8, "rango": "<1.0", "estado": "normal"},
@@ -87,7 +87,7 @@ def obtener_datos_laboratorio_y_alertas(edad=61, altura_cm=177, peso_kg=83, vo2m
 
 def calcular_scores_cientificos(parametros, vo2max, peso, altura, edad):
     """
-    Calcula 4 scores científicos basados en laboratorio.
+    Calcula 4 scores cientÃ­ficos basados en laboratorio.
     MANEJA vo2max None correctamente.
     """
     scores = {}
@@ -95,7 +95,7 @@ def calcular_scores_cientificos(parametros, vo2max, peso, altura, edad):
     # CardioScore (0-100) - Riesgo cardiovascular
     ldl = parametros.get("LDL", {}).get("valor", 100)
     hdl = parametros.get("HDL", {}).get("valor", 50)
-    trig = parametros.get("Triglicéridos", {}).get("valor", 150)
+    trig = parametros.get("TriglicÃ©ridos", {}).get("valor", 150)
     pcr = parametros.get("PCR", {}).get("valor", 1.0)
     
     cardio_score = 100
@@ -107,13 +107,13 @@ def calcular_scores_cientificos(parametros, vo2max, peso, altura, edad):
     if pcr > 3: cardio_score -= 20
     elif pcr > 1: cardio_score -= 10
     
-    # ✅ Bonus por VO2max alto (validar que no sea None)
+    # âœ… Bonus por VO2max alto (validar que no sea None)
     if vo2max is not None and vo2max > 40:
         cardio_score += 10
     
     scores["CardioScore"] = max(0, min(100, cardio_score))
     
-    # MetabolicScore (0-100) - Salud metabólica
+    # MetabolicScore (0-100) - Salud metabÃ³lica
     glucemia = parametros.get("Glucemia", {}).get("valor", 100)
     hba1c = parametros.get("HbA1c", {}).get("valor", 5.7)
     
@@ -164,7 +164,7 @@ def calcular_scores_cientificos(parametros, vo2max, peso, altura, edad):
 
 
 def calcular_longevity_score(scores):
-    """Calcula score integrado de longevidad con ponderación."""
+    """Calcula score integrado de longevidad con ponderaciÃ³n."""
     if not scores:
         return 0
         
@@ -186,15 +186,15 @@ def generar_alertas_laboratorio(parametros, scores):
     """Genera alertas basadas en valores de laboratorio."""
     alertas = []
     
-    # Alertas críticas
+    # Alertas crÃ­ticas
     hba1c = parametros.get("HbA1c", {}).get("valor")
     if hba1c is not None and hba1c >= 5.7:
         alertas.append({
             "severidad": "CRITICA",
             "titulo": "Prediabetes Detectada",
             "descripcion": f"HbA1c en {hba1c}% indica prediabetes",
-            "accion": "Consultar endocrinólogo",
-            "impacto_longevidad": "-5 a -10 años si progresa"
+            "accion": "Consultar endocrinÃ³logo",
+            "impacto_longevidad": "-5 a -10 aÃ±os si progresa"
         })
     
     # Alertas de riesgo alto
@@ -204,18 +204,18 @@ def generar_alertas_laboratorio(parametros, scores):
             "severidad": "ALTA",
             "titulo": "HDL Muy Bajo",
             "descripcion": f"HDL en {hdl} mg/dL aumenta riesgo CV",
-            "accion": "Aumentar ejercicio aeróbico y omega-3",
-            "impacto_longevidad": "-3 años por riesgo CV"
+            "accion": "Aumentar ejercicio aerÃ³bico y omega-3",
+            "impacto_longevidad": "-3 aÃ±os por riesgo CV"
         })
     
     tsh = parametros.get("TSH", {}).get("valor")
     if tsh is not None and tsh > 4.0:
         alertas.append({
             "severidad": "ALTA",
-            "titulo": "Hipotiroidismo Subclínico",
+            "titulo": "Hipotiroidismo SubclÃ­nico",
             "descripcion": f"TSH en {tsh} mUI/L indica tiroides lenta",
             "accion": "Evaluar T3/T4",
-            "impacto_longevidad": "Fatiga crónica, metabolismo lento"
+            "impacto_longevidad": "Fatiga crÃ³nica, metabolismo lento"
         })
     
     # Alertas moderadas
@@ -223,8 +223,8 @@ def generar_alertas_laboratorio(parametros, scores):
     if pcr is not None and pcr > 1.0:
         alertas.append({
             "severidad": "MODERADA",
-            "titulo": "Inflamación Sistémica Leve",
-            "descripcion": f"PCR en {pcr} mg/L indica inflamación",
+            "titulo": "InflamaciÃ³n SistÃ©mica Leve",
+            "descripcion": f"PCR en {pcr} mg/L indica inflamaciÃ³n",
             "accion": "Dieta antiinflamatoria",
             "impacto_longevidad": "Envejecimiento acelerado"
         })
@@ -235,9 +235,9 @@ def generar_alertas_laboratorio(parametros, scores):
         alertas.append({
             "severidad": "BUENA",
             "titulo": "LDL Excelente",
-            "descripcion": f"LDL en {ldl} mg/dL es óptimo",
-            "accion": "Mantener régimen actual",
-            "impacto_longevidad": "+3 años de protección CV"
+            "descripcion": f"LDL en {ldl} mg/dL es Ã³ptimo",
+            "accion": "Mantener rÃ©gimen actual",
+            "impacto_longevidad": "+3 aÃ±os de protecciÃ³n CV"
         })
     
     return alertas

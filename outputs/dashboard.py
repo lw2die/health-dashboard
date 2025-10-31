@@ -279,6 +279,28 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
         presion_sistolica = sum(p.get("sistolica", 0) for p in presion_recientes) / len(presion_recientes)
         presion_diastolica = sum(p.get("diastolica", 0) for p in presion_recientes) / len(presion_recientes)
     
+    # ✅ PROMEDIOS DE 7 DÍAS para Healthspan Index (largo plazo)
+    # Peso promedio 7d
+    peso_promedio_7d = None
+    if peso:
+        peso_recientes = peso[-7:] if len(peso) >= 7 else peso
+        peso_promedio_7d = sum(p.get("peso", 0) for p in peso_recientes) / len(peso_recientes)
+    
+    # Grasa corporal promedio 7d
+    grasa_promedio_7d = None
+    if grasa_corporal:
+        grasa_recientes = grasa_corporal[-7:] if len(grasa_corporal) >= 7 else grasa_corporal
+        grasa_promedio_7d = sum(g.get("porcentaje", 0) for g in grasa_recientes) / len(grasa_recientes)
+    
+    # Masa muscular promedio 7d
+    masa_muscular_promedio_7d = None
+    if masa_muscular:
+        masa_recientes = masa_muscular[-7:] if len(masa_muscular) >= 7 else masa_muscular
+        masa_muscular_promedio_7d = sum(m.get("masa_kg", 0) for m in masa_recientes) / len(masa_recientes)
+    
+    # TSB promedio 7d
+    tsb_promedio_7d = tsb_actual  # Por ahora usar TSB actual (TODO: calcular promedio real de últimos 7 días)
+    
     # Score de longevidad
     score_longevidad = calcular_score_longevidad(
         peso_actual, pai_semanal, vo2max, promedio_sueno_horas
@@ -289,16 +311,16 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
         peso_actual, pai_semanal, promedio_sueno_horas
     )
     
-    # ✅ HEALTHSPAN INDEX (NUEVO)
+    # ✅ HEALTHSPAN INDEX (NUEVO) - Usa promedios de 7 días (largo plazo)
     metricas_base = {
         "pai_semanal": pai_semanal,
-        "peso_actual": peso_actual,
+        "peso_promedio_7d": peso_promedio_7d,
         "vo2max": vo2max,
-        "tsb_actual": tsb_actual,
+        "tsb_promedio_7d": tsb_promedio_7d,
         "promedio_sueno": promedio_sueno_horas,
         "spo2_promedio": spo2_promedio,
-        "grasa_actual": grasa_actual,
-        "masa_muscular_actual": masa_muscular_actual,
+        "grasa_promedio_7d": grasa_promedio_7d,
+        "masa_muscular_promedio_7d": masa_muscular_promedio_7d,
         "fc_reposo_promedio": fc_reposo_promedio,
         "pasos_promedio": pasos_promedio,
         "presion_sistolica": presion_sistolica,
@@ -309,6 +331,12 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
     
     return {
         **metricas_base,
+        # Valores actuales para cards individuales
+        "peso_actual": peso_actual,
+        "grasa_actual": grasa_actual,
+        "masa_muscular_actual": masa_muscular_actual,
+        "tsb_actual": tsb_actual,
+        # Otros datos
         "tsb_dict": tsb_dict,
         "score_longevidad": score_longevidad,
         "recomendaciones": recomendaciones,

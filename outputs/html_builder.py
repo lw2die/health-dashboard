@@ -141,6 +141,22 @@ def generar_css():
             transition: width 0.3s ease;
         }
         
+        .subscore-description {
+            color: #6e7681;
+            font-size: 0.75em;
+            margin-top: 10px;
+            line-height: 1.3;
+            font-style: italic;
+        }
+        
+        .healthspan-description {
+            color: #8b949e;
+            font-size: 0.85em;
+            margin-top: 5px;
+            text-align: center;
+            font-style: italic;
+        }
+        
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -977,7 +993,7 @@ def _generar_healthspan_hero(healthspan_data):
         <div class="healthspan-main-score">
             <div class="healthspan-value" style="color: {main_color};">{index}</div>
             <div class="healthspan-status" style="color: {status_color};">{status}</div>
-            <div class="metric-detail">Proyección de años saludables basado en métricas actuales</div>
+            <div class="healthspan-description">Indicador de años de vida saludable basado en fitness, composición corporal y recuperación (ventana 7 días)</div>
         </div>
         
         <div class="healthspan-subscores">
@@ -987,6 +1003,7 @@ def _generar_healthspan_hero(healthspan_data):
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: {fitness}%; background: {get_subscore_color(fitness)};"></div>
                 </div>
+                <div class="subscore-description">PAI semanal + balance entrenamiento (TSB) + capacidad aeróbica (VO2max)</div>
             </div>
             
             <div class="subscore-card">
@@ -995,6 +1012,7 @@ def _generar_healthspan_hero(healthspan_data):
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: {body}%; background: {get_subscore_color(body)};"></div>
                 </div>
+                <div class="subscore-description">Peso, grasa corporal y masa muscular vs objetivos (promedio 7d)</div>
             </div>
             
             <div class="subscore-card">
@@ -1003,6 +1021,7 @@ def _generar_healthspan_hero(healthspan_data):
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: {recovery}%; background: {get_subscore_color(recovery)};"></div>
                 </div>
+                <div class="subscore-description">Calidad de sueño + frecuencia cardíaca en reposo + saturación de oxígeno</div>
             </div>
             
             <div class="subscore-card">
@@ -1011,6 +1030,7 @@ def _generar_healthspan_hero(healthspan_data):
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: {metabolic}%; background: {get_subscore_color(metabolic)};"></div>
                 </div>
+                <div class="subscore-description">Presión arterial + biomarcadores de salud metabólica</div>
             </div>
             
             <div class="subscore-card">
@@ -1019,6 +1039,7 @@ def _generar_healthspan_hero(healthspan_data):
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: {functional}%; background: {get_subscore_color(functional)};"></div>
                 </div>
+                <div class="subscore-description">Pasos diarios y movilidad funcional (promedio 7d)</div>
             </div>
         </div>
     </div>

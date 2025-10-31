@@ -27,22 +27,27 @@ def generar_html_laboratorio(datos_laboratorio):
             <div class="score-card score-main">
                 <div class="score-label">Longevity Score</div>
                 <div class="score-value" style="color: {_get_color_score(longevity)};">{longevity:.1f}/100</div>
+                <div class="subscore-description">Puntuación general de salud basada en análisis de laboratorio (biomarcadores sanguíneos)</div>
             </div>
             <div class="score-card">
                 <div class="score-label">CardioScore</div>
                 <div class="score-value" style="color: {_get_color_score(cardio)};">{cardio:.1f}</div>
+                <div class="subscore-description">Colesterol total, HDL, LDL, triglicéridos y homocisteína</div>
             </div>
             <div class="score-card">
                 <div class="score-label">MetabolicScore</div>
                 <div class="score-value" style="color: {_get_color_score(metabolic)};">{metabolic:.1f}</div>
+                <div class="subscore-description">Glucosa, HbA1c, insulina y marcadores de resistencia insulínica</div>
             </div>
             <div class="score-card">
                 <div class="score-label">InflammationScore</div>
                 <div class="score-value" style="color: {_get_color_score(inflammation)};">{inflammation:.1f}</div>
+                <div class="subscore-description">Proteína C reactiva, ferritina y otros marcadores inflamatorios</div>
             </div>
             <div class="score-card">
                 <div class="score-label">HormoneScore</div>
                 <div class="score-value" style="color: {_get_color_score(hormone)};">{hormone:.1f}</div>
+                <div class="subscore-description">Testosterona, vitamina D, hormonas tiroideas y cortisol</div>
             </div>
         </div>
         <div class="alertas-section">
