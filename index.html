@@ -131,6 +131,22 @@
             transition: width 0.3s ease;
         }
         
+        .subscore-description {
+            color: #6e7681;
+            font-size: 0.75em;
+            margin-top: 10px;
+            line-height: 1.3;
+            font-style: italic;
+        }
+        
+        .healthspan-description {
+            color: #8b949e;
+            font-size: 0.85em;
+            margin-top: 5px;
+            text-align: center;
+            font-style: italic;
+        }
+        
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -370,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 31/10/2025 20:11 (Argentina)</p>
+                <p class="subtitle">Última actualización: 31/10/2025 20:29 (Argentina)</p>
             </header>
             
             
@@ -379,7 +395,7 @@
         <div class="healthspan-main-score">
             <div class="healthspan-value" style="color: #3fb950;">85</div>
             <div class="healthspan-status" style="color: #3fb950;">EXCELENTE</div>
-            <div class="metric-detail">Proyección de años saludables basado en métricas actuales</div>
+            <div class="healthspan-description">Indicador de años de vida saludable basado en fitness, composición corporal y recuperación (ventana 7 días)</div>
         </div>
         
         <div class="healthspan-subscores">
@@ -389,6 +405,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 100%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">PAI semanal + balance entrenamiento (TSB) + capacidad aeróbica (VO2max)</div>
             </div>
             
             <div class="subscore-card">
@@ -397,6 +414,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 45%; background: #f85149;"></div>
                 </div>
+                <div class="subscore-description">Peso, grasa corporal y masa muscular vs objetivos (promedio 7d)</div>
             </div>
             
             <div class="subscore-card">
@@ -405,6 +423,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 95%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Calidad de sueño + frecuencia cardíaca en reposo + saturación de oxígeno</div>
             </div>
             
             <div class="subscore-card">
@@ -413,6 +432,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 85%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Presión arterial + biomarcadores de salud metabólica</div>
             </div>
             
             <div class="subscore-card">
@@ -421,6 +441,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 100%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Pasos diarios y movilidad funcional (promedio 7d)</div>
             </div>
         </div>
     </div>
@@ -531,7 +552,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">20,307</div>
+        <div class="metric-value" style="color: #3fb950;">21,048</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -747,11 +768,11 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-31 20:11:42 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-31 20:29:07 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 376</p>
             <p>✅ <strong>Total registros peso:</strong> 40</p>
-            <p>✅ <strong>Total registros pasos:</strong> 158</p>
+            <p>✅ <strong>Total registros pasos:</strong> 159</p>
             <p style='color: #f85149; font-size: 0.9em;'>⚠️ Archivo de log no encontrado</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
@@ -957,7 +978,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
-            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 237790],
+            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 259392],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
