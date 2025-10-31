@@ -65,6 +65,82 @@ def generar_css():
             font-size: 1.1em;
         }
         
+        /* ═══════════════════════════════════════ */
+        /* HEALTHSPAN INDEX - HERO CARD */
+        /* ═══════════════════════════════════════ */
+        
+        .healthspan-hero {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            border: 2px solid #58a6ff;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(88, 166, 255, 0.4);
+        }
+        
+        .healthspan-title {
+            text-align: center;
+            font-size: 1.5em;
+            color: #79c0ff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .healthspan-main-score {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .healthspan-value {
+            font-size: 5em;
+            font-weight: bold;
+        }
+        
+        .healthspan-status {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .healthspan-subscores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .subscore-card {
+            background: rgba(22, 27, 34, 0.6);
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .subscore-label {
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .subscore-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .subscore-bar {
+            height: 6px;
+            background: #161b22;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .subscore-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -219,6 +295,12 @@ def generar_css():
         }
         
         @media (max-width: 768px) {
+            .healthspan-value {
+                font-size: 3.5em;
+            }
+            .healthspan-subscores {
+                grid-template-columns: 1fr 1fr;
+            }
             .charts-grid {
                 grid-template-columns: 1fr;
             }
@@ -327,7 +409,7 @@ def generar_javascript(datos_graficos):
         
         const pai_ventana = {{
             x: {datos_graficos['pai']['fechas']},
-            y: {datos_graficos['pai']['pai_ventana_7d']},
+            y: {datos_graficos['pai']['pai_ventana_movil']},
             type: 'scatter',
             mode: 'lines+markers',
             name: 'Ventana 7d',
@@ -755,6 +837,61 @@ def generar_javascript(datos_graficos):
         document.getElementById('calorias-chart').innerHTML = '<div class="chart-empty">Sin datos de calorías</div>';
         """
     
+    # Gráfico de Sueño (barras apiladas por fase)
+    if tiene_datos(datos_graficos.get('sueno', {})):
+        sueno_data = datos_graficos['sueno']
+        js += f"""
+        // Gráfico de Sueño - Barras Apiladas
+        Plotly.newPlot('sueno-chart', [
+            {{
+                x: {sueno_data['fechas']},
+                y: {sueno_data['deep']},
+                name: 'Profundo',
+                type: 'bar',
+                marker: {{ color: '#1f6feb' }}
+            }},
+            {{
+                x: {sueno_data['fechas']},
+                y: {sueno_data['light']},
+                name: 'Ligero',
+                type: 'bar',
+                marker: {{ color: '#d29922' }}
+            }},
+            {{
+                x: {sueno_data['fechas']},
+                y: {sueno_data['rem']},
+                name: 'REM',
+                type: 'bar',
+                marker: {{ color: '#8957e5' }}
+            }},
+            {{
+                x: {sueno_data['fechas']},
+                y: {sueno_data['awake']},
+                name: 'Despierto',
+                type: 'bar',
+                marker: {{ color: '#f85149' }}
+            }}
+        ], {{
+            ...layout_config,
+            barmode: 'stack',
+            yaxis: {{ title: 'Horas', gridcolor: '#30363d' }},
+            xaxis: {{ gridcolor: '#30363d' }},
+            showlegend: true,
+            legend: {{ 
+                orientation: 'h',
+                yanchor: 'bottom',
+                y: 1.02,
+                xanchor: 'right',
+                x: 1,
+                bgcolor: 'rgba(22, 27, 34, 0.8)'
+            }}
+        }});
+        """
+    else:
+        js += """
+        document.getElementById('sueno-chart').innerHTML = '<div class="chart-empty">Sin datos de sueño</div>';
+        """
+    
     # JavaScript para logs
     js += """
     
@@ -798,6 +935,96 @@ def generar_javascript(datos_graficos):
     return js
 
 
+def _generar_healthspan_hero(healthspan_data):
+    """Genera el hero card de Healthspan Index"""
+    if not healthspan_data:
+        return ""
+    
+    index = healthspan_data.get("healthspan_index", 0)
+    status = healthspan_data.get("status", "")
+    fitness = healthspan_data.get("fitness_score", 0)
+    body = healthspan_data.get("body_score", 0)
+    recovery = healthspan_data.get("recovery_score", 0)
+    metabolic = healthspan_data.get("metabolic_score", 0)
+    functional = healthspan_data.get("functional_score", 0)
+    
+    # Determinar color principal
+    if index >= 85:
+        main_color = "#3fb950"
+        status_color = "#3fb950"
+    elif index >= 70:
+        main_color = "#58a6ff"
+        status_color = "#58a6ff"
+    elif index >= 55:
+        main_color = "#d29922"
+        status_color = "#d29922"
+    else:
+        main_color = "#f85149"
+        status_color = "#f85149"
+    
+    # Función para determinar color de subscore
+    def get_subscore_color(score):
+        if score >= 85:
+            return "#3fb950"
+        elif score >= 70:
+            return "#d29922"
+        else:
+            return "#f85149"
+    
+    return f"""
+    <div class="healthspan-hero">
+        <div class="healthspan-title">🏆 HEALTHSPAN INDEX</div>
+        <div class="healthspan-main-score">
+            <div class="healthspan-value" style="color: {main_color};">{index}</div>
+            <div class="healthspan-status" style="color: {status_color};">{status}</div>
+            <div class="metric-detail">Proyección de años saludables basado en métricas actuales</div>
+        </div>
+        
+        <div class="healthspan-subscores">
+            <div class="subscore-card">
+                <div class="subscore-label">💪 FITNESS</div>
+                <div class="subscore-value" style="color: {get_subscore_color(fitness)};">{fitness}</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: {fitness}%; background: {get_subscore_color(fitness)};"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">🏋️ BODY</div>
+                <div class="subscore-value" style="color: {get_subscore_color(body)};">{body}</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: {body}%; background: {get_subscore_color(body)};"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">😴 RECOVERY</div>
+                <div class="subscore-value" style="color: {get_subscore_color(recovery)};">{recovery}</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: {recovery}%; background: {get_subscore_color(recovery)};"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">🔥 METABOLIC</div>
+                <div class="subscore-value" style="color: {get_subscore_color(metabolic)};">{metabolic}</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: {metabolic}%; background: {get_subscore_color(metabolic)};"></div>
+                </div>
+            </div>
+            
+            <div class="subscore-card">
+                <div class="subscore-label">⚡ FUNCTIONAL</div>
+                <div class="subscore-value" style="color: {get_subscore_color(functional)};">{functional}</div>
+                <div class="subscore-bar">
+                    <div class="subscore-fill" style="width: {functional}%; background: {get_subscore_color(functional)};"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    """
+
+
 def _generar_seccion_logs(logs_content, resumen):
     """Genera la sección HTML de logs"""
     if not resumen:
@@ -828,8 +1055,10 @@ def _generar_seccion_logs(logs_content, resumen):
     """
 
 
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None):
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None, healthspan_data=None):
     """Construye el HTML completo del dashboard"""
+    healthspan_hero = _generar_healthspan_hero(healthspan_data) if healthspan_data else ""
+    
     return f"""
     <!DOCTYPE html>
     <html lang="es">
@@ -846,6 +1075,8 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
                 <h1>📊 Dashboard de Salud</h1>
                 <p class="subtitle">Última actualización: {_obtener_hora_argentina().strftime("%d/%m/%Y %H:%M")} (Argentina)</p>
             </header>
+            
+            {healthspan_hero}
             
             {html_laboratorio}
             
@@ -919,6 +1150,10 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
                     <div class="chart-container">
                         <h3>Calorías Totales</h3>
                         <div id="calorias-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Sueño por Fases (últimos 14 días)</h3>
+                        <div id="sueno-chart"></div>
                     </div>
                 </div>
             </div>

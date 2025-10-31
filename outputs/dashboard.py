@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 Dashboard Generator - Orquestador Principal (MODULAR)
+✅ VERSIÓN CON HEALTHSPAN INDEX
 Importa y coordina todos los módulos de generación
 """
 
 from datetime import datetime, timedelta
+from collections import defaultdict
 from config import OUTPUT_HTML, EDAD, ALTURA_CM
 from utils.logger import logger
 from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
@@ -14,7 +16,7 @@ from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, form
 from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
 from metricas.score import calcular_score_longevidad, generar_recomendaciones
-# from outputs.graficos import preparar_datos_peso  # ❌ Comentado - usaremos versión local
+from metricas.healthspan import calcular_healthspan_index, generar_recomendaciones_healthspan  # ✅ NUEVO
 
 
 def _preparar_datos_peso_deduplicado(peso_data, dias=90):
@@ -128,6 +130,7 @@ def generar_dashboard(cache):
         "pai": _preparar_datos_pai_completo(ejercicios),
         "peso": _preparar_datos_peso_deduplicado(peso),  # ✅ Deduplicado
         "tsb": preparar_datos_tsb_historico(ejercicios),
+        "sueno": _preparar_datos_sueno(sueno),  # ✅ NUEVO - Gráfico de sueño
         "spo2": _preparar_datos_spo2(spo2),
         "grasa": _preparar_datos_metrica_corporal(grasa_corporal, "porcentaje"),
         "masa_muscular": _preparar_datos_metrica_corporal(masa_muscular, "masa_kg"),
@@ -151,6 +154,9 @@ def generar_dashboard(cache):
     # Laboratorio
     html_laboratorio = generar_html_laboratorio(datos_laboratorio) if datos_laboratorio else ""
     
+    # Healthspan Index (✅ NUEVO)
+    healthspan_data = metricas.get("healthspan_data", {})
+    
     # Cards
     cards_html = "".join([
         generar_card_pai(metricas),
@@ -171,7 +177,8 @@ def generar_dashboard(cache):
     entrenamientos = _obtener_entrenamientos_recientes(ejercicios)
     entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
     
-    # Recomendaciones
+    # Recomendaciones (✅ AHORA USA HEALTHSPAN)
+    recomendaciones_healthspan = generar_recomendaciones_healthspan(healthspan_data, metricas)
     recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
     
     # Generar sección de logs
@@ -189,7 +196,8 @@ def generar_dashboard(cache):
         recomendaciones_html,
         datos_graficos,
         logs_html_content,
-        resumen_ejecucion
+        resumen_ejecucion,
+        healthspan_data  # Parámetro opcional al final
     )
     
     # ═══════════════════════════════════════════════
@@ -221,12 +229,23 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
     tsb_dict = calcular_tsb(ejercicios) if ejercicios else {"tsb": 0, "ctl": 0, "atl": 0}
     tsb_actual = tsb_dict.get("tsb", 0) if isinstance(tsb_dict, dict) else tsb_dict
     
-    # Sueño (últimos 7 días)
+    # ✅ SUEÑO CORREGIDO - Agrupar por DÍA primero
     promedio_sueno_horas = None
     if sueno:
-        suenos_recientes = sueno[-7:] if len(sueno) >= 7 else sueno
-        total_minutos = sum(s.get("duracion", 0) for s in suenos_recientes)
-        promedio_sueno_horas = (total_minutos / len(suenos_recientes) / 60) if suenos_recientes else None
+        # Agrupar por día
+        sueno_por_dia = defaultdict(float)
+        for s in sueno:
+            try:
+                fecha = datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+                sueno_por_dia[fecha] += s.get("duracion", 0)
+            except:
+                continue
+        
+        # Tomar últimos 7 días
+        fechas_ordenadas = sorted(sueno_por_dia.keys())[-7:]
+        if fechas_ordenadas:
+            total_minutos = sum(sueno_por_dia[f] for f in fechas_ordenadas)
+            promedio_sueno_horas = (total_minutos / len(fechas_ordenadas)) / 60
     
     # SpO2 promedio
     spo2_promedio = None
@@ -270,12 +289,12 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
         peso_actual, pai_semanal, promedio_sueno_horas
     )
     
-    return {
+    # ✅ HEALTHSPAN INDEX (NUEVO)
+    metricas_base = {
         "pai_semanal": pai_semanal,
         "peso_actual": peso_actual,
         "vo2max": vo2max,
         "tsb_actual": tsb_actual,
-        "tsb_dict": tsb_dict,
         "promedio_sueno": promedio_sueno_horas,
         "spo2_promedio": spo2_promedio,
         "grasa_actual": grasa_actual,
@@ -284,8 +303,16 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
         "pasos_promedio": pasos_promedio,
         "presion_sistolica": presion_sistolica,
         "presion_diastolica": presion_diastolica,
+    }
+    
+    healthspan_data = calcular_healthspan_index(metricas_base)
+    
+    return {
+        **metricas_base,
+        "tsb_dict": tsb_dict,
         "score_longevidad": score_longevidad,
-        "recomendaciones": recomendaciones
+        "recomendaciones": recomendaciones,
+        "healthspan_data": healthspan_data  # ✅ NUEVO
     }
 
 
@@ -294,7 +321,7 @@ def _obtener_entrenamientos_recientes(ejercicios, dias=7):
     if not ejercicios:
         return []
     
-    fecha_limite = datetime.now().replace(tzinfo=None) - timedelta(days=dias)
+    fecha_limite = datetime.now() - timedelta(days=dias)
     recientes = [
         e for e in ejercicios
         if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
@@ -303,48 +330,93 @@ def _obtener_entrenamientos_recientes(ejercicios, dias=7):
     return recientes[:10]
 
 
-# ═══════════════════════════════════════════════════════════════
-# PREPARADORES DE DATOS PARA GRÁFICOS
-# ═══════════════════════════════════════════════════════════════
-
-def _preparar_datos_pai_completo(ejercicios, dias=30):
-    """Prepara PAI diario + ventana móvil 7 días"""
-    if not ejercicios:
-        return {"fechas": [], "pai_diario": [], "pai_ventana_7d": []}
+def _preparar_datos_pai_completo(ejercicios_data, dias=30):
+    """Prepara datos de PAI diario + ventana móvil"""
+    if not ejercicios_data:
+        return {
+            "fechas": [],
+            "pai_diario": [],
+            "pai_ventana_movil": []
+        }
     
     fecha_limite = datetime.now() - timedelta(days=dias)
     recientes = [
-        e for e in ejercicios
+        e for e in ejercicios_data
         if datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
     ]
     
-    # Agrupar PAI por día
-    por_dia = {}
+    pai_por_dia = defaultdict(float)
     for e in recientes:
         fecha = datetime.fromisoformat(e["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        if fecha not in por_dia:
-            por_dia[fecha] = 0
-        por_dia[fecha] += e.get("pai", 0)
+        pai_por_dia[fecha] += e.get("pai", 0)
     
-    fechas = sorted(por_dia.keys())
-    pai_diario = [por_dia[f] for f in fechas]
+    fechas = sorted(pai_por_dia.keys())
+    pai_diario = [pai_por_dia[f] for f in fechas]
     
-    # Calcular ventana móvil de 7 días
-    pai_ventana_7d = []
+    # Ventana móvil de 7 días
+    pai_ventana_movil = []
     for i, fecha in enumerate(fechas):
-        fecha_obj = datetime.strptime(fecha, "%Y-%m-%d")
-        inicio_ventana = fecha_obj - timedelta(days=6)
-        
-        suma_ventana = sum(
-            por_dia[f] for f in fechas
-            if inicio_ventana <= datetime.strptime(f, "%Y-%m-%d") <= fecha_obj
-        )
-        pai_ventana_7d.append(suma_ventana)
+        inicio = max(0, i - 6)
+        suma_ventana = sum(pai_diario[inicio:i + 1])
+        pai_ventana_movil.append(suma_ventana)
     
     return {
         "fechas": fechas,
         "pai_diario": pai_diario,
-        "pai_ventana_7d": pai_ventana_7d
+        "pai_ventana_movil": pai_ventana_movil
+    }
+
+
+def _preparar_datos_sueno(sueno_data, dias=14):
+    """
+    ✅ NUEVO - Prepara datos de sueño para gráfico de barras apiladas.
+    Últimos 14 días con todas las fases.
+    
+    Returns:
+        dict: {
+            "fechas": [...],
+            "awake": [...],
+            "light": [...],
+            "deep": [...],
+            "rem": [...]
+        }
+    """
+    if not sueno_data:
+        return {
+            "fechas": [],
+            "awake": [],
+            "light": [],
+            "deep": [],
+            "rem": []
+        }
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        s for s in sueno_data
+        if datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    # Agrupar por día (sumar si hay múltiples sesiones)
+    por_dia = defaultdict(lambda: {"awake": 0, "light": 0, "deep": 0, "rem": 0})
+    for s in recientes:
+        fecha = datetime.fromisoformat(s["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        por_dia[fecha]["awake"] += s.get("awake", 0) / 60  # Convertir a horas
+        por_dia[fecha]["light"] += s.get("light", 0) / 60
+        por_dia[fecha]["deep"] += s.get("deep", 0) / 60
+        por_dia[fecha]["rem"] += s.get("rem", 0) / 60
+    
+    fechas = sorted(por_dia.keys())
+    awake = [por_dia[f]["awake"] for f in fechas]
+    light = [por_dia[f]["light"] for f in fechas]
+    deep = [por_dia[f]["deep"] for f in fechas]
+    rem = [por_dia[f]["rem"] for f in fechas]
+    
+    return {
+        "fechas": fechas,
+        "awake": awake,
+        "light": light,
+        "deep": deep,
+        "rem": rem
     }
 
 
@@ -373,7 +445,7 @@ def _preparar_datos_spo2(spo2_data, dias=30):
 
 
 def _preparar_datos_metrica_corporal(datos, campo, dias=90):
-    """Prepara datos de métricas corporales"""
+    """Prepara datos genéricos de métricas corporales"""
     if not datos:
         return {"fechas": [], "valores": []}
     
@@ -388,7 +460,7 @@ def _preparar_datos_metrica_corporal(datos, campo, dias=90):
         fecha = datetime.fromisoformat(d["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
         if fecha not in por_dia:
             por_dia[fecha] = []
-        por_dia[fecha].append(d[campo])
+        por_dia[fecha].append(d.get(campo, 0))
     
     fechas = sorted(por_dia.keys())
     valores = [sum(por_dia[f]) / len(por_dia[f]) for f in fechas]

@@ -3,6 +3,7 @@
 """
 Extractor de datos de sueño
 Procesa sleep_sessions y sleep_changes
+✅ VERSIÓN MEJORADA: Extrae todas las fases de sueño
 """
 
 from datetime import datetime
@@ -11,7 +12,17 @@ from collections import defaultdict
 
 
 def procesar_sueno(datos, cache):
-    """Extrae datos de sueño del JSON"""
+    """
+    Extrae datos de sueño del JSON.
+    
+    ✅ Extrae todas las fases:
+    - stage_type 1 = Awake (despierto)
+    - stage_type 2 = Sleep (genérico)
+    - stage_type 3 = Out of bed
+    - stage_type 4 = Light sleep (ligero)
+    - stage_type 5 = Deep sleep (profundo)
+    - stage_type 6 = REM
+    """
     sueno_data = None
     
     if "sleep_sessions" in datos and "data" in datos["sleep_sessions"]:
@@ -29,9 +40,12 @@ def procesar_sueno(datos, cache):
         fases = s.get("stages", [])
         fuente = s.get("source", "Desconocido")
         
-        # Calcular duración total y profundo
+        # Calcular duración por fase
         duracion_total = 0
-        duracion_profundo = 0
+        duracion_awake = 0
+        duracion_light = 0
+        duracion_deep = 0
+        duracion_rem = 0
         
         for f in fases:
             start = datetime.fromisoformat(f["start_time"].replace("Z", "+00:00"))
@@ -40,16 +54,27 @@ def procesar_sueno(datos, cache):
             
             duracion_total += duracion_minutos
             
-            # stage_type 5 = Deep sleep
-            if f.get("stage_type") == 5:
-                duracion_profundo += duracion_minutos
+            stage_type = f.get("stage_type")
+            
+            # Clasificar por tipo de fase
+            if stage_type == 1:  # Awake
+                duracion_awake += duracion_minutos
+            elif stage_type == 4:  # Light sleep
+                duracion_light += duracion_minutos
+            elif stage_type == 5:  # Deep sleep
+                duracion_deep += duracion_minutos
+            elif stage_type == 6:  # REM
+                duracion_rem += duracion_minutos
         
         cache["sueno"].append({
             "fecha": s.get("start_time"),
             "duracion": duracion_total,
-            "profundo": duracion_profundo,
+            "awake": duracion_awake,
+            "light": duracion_light,
+            "deep": duracion_deep,
+            "rem": duracion_rem,
             "porcentaje_profundo": round(
-                (duracion_profundo / duracion_total * 100) if duracion_total > 0 else 0,
+                (duracion_deep / duracion_total * 100) if duracion_total > 0 else 0,
                 1
             ),
             "fuente": fuente
