@@ -131,6 +131,22 @@
             transition: width 0.3s ease;
         }
         
+        .subscore-description {
+            color: #6e7681;
+            font-size: 0.75em;
+            margin-top: 10px;
+            line-height: 1.3;
+            font-style: italic;
+        }
+        
+        .healthspan-description {
+            color: #8b949e;
+            font-size: 0.85em;
+            margin-top: 5px;
+            text-align: center;
+            font-style: italic;
+        }
+        
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -370,16 +386,16 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 31/10/2025 19:35 (Argentina)</p>
+                <p class="subtitle">Última actualización: 31/10/2025 20:51 (Argentina)</p>
             </header>
             
             
     <div class="healthspan-hero">
         <div class="healthspan-title">🏆 HEALTHSPAN INDEX</div>
         <div class="healthspan-main-score">
-            <div class="healthspan-value" style="color: #3fb950;">92</div>
+            <div class="healthspan-value" style="color: #3fb950;">85</div>
             <div class="healthspan-status" style="color: #3fb950;">EXCELENTE</div>
-            <div class="metric-detail">Proyección de años saludables basado en métricas actuales</div>
+            <div class="healthspan-description">Indicador de años de vida saludable basado en fitness, composición corporal y recuperación (ventana 7 días)</div>
         </div>
         
         <div class="healthspan-subscores">
@@ -389,22 +405,25 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 100%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">PAI semanal + balance entrenamiento (TSB) + capacidad aeróbica (VO2max)</div>
             </div>
             
             <div class="subscore-card">
                 <div class="subscore-label">🏋️ BODY</div>
-                <div class="subscore-value" style="color: #d29922;">78</div>
+                <div class="subscore-value" style="color: #f85149;">45</div>
                 <div class="subscore-bar">
-                    <div class="subscore-fill" style="width: 78%; background: #d29922;"></div>
+                    <div class="subscore-fill" style="width: 45%; background: #f85149;"></div>
                 </div>
+                <div class="subscore-description">Peso, grasa corporal y masa muscular vs objetivos (promedio 7d)</div>
             </div>
             
             <div class="subscore-card">
                 <div class="subscore-label">😴 RECOVERY</div>
-                <div class="subscore-value" style="color: #3fb950;">100</div>
+                <div class="subscore-value" style="color: #3fb950;">95</div>
                 <div class="subscore-bar">
-                    <div class="subscore-fill" style="width: 100%; background: #3fb950;"></div>
+                    <div class="subscore-fill" style="width: 95%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Calidad de sueño + frecuencia cardíaca en reposo + saturación de oxígeno</div>
             </div>
             
             <div class="subscore-card">
@@ -413,6 +432,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 85%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Presión arterial + biomarcadores de salud metabólica</div>
             </div>
             
             <div class="subscore-card">
@@ -421,6 +441,7 @@
                 <div class="subscore-bar">
                     <div class="subscore-fill" style="width: 100%; background: #3fb950;"></div>
                 </div>
+                <div class="subscore-description">Pasos diarios y movilidad funcional (promedio 7d)</div>
             </div>
         </div>
     </div>
@@ -433,22 +454,27 @@
             <div class="score-card score-main">
                 <div class="score-label">Longevity Score</div>
                 <div class="score-value" style="color: #3fb950;">83.5/100</div>
+                <div class="subscore-description">Puntuación general de salud basada en análisis de laboratorio (biomarcadores sanguíneos)</div>
             </div>
             <div class="score-card">
                 <div class="score-label">CardioScore</div>
                 <div class="score-value" style="color: #3fb950;">90.0</div>
+                <div class="subscore-description">Colesterol total, HDL, LDL, triglicéridos y homocisteína</div>
             </div>
             <div class="score-card">
                 <div class="score-label">MetabolicScore</div>
                 <div class="score-value" style="color: #d29922;">65.0</div>
+                <div class="subscore-description">Glucosa, HbA1c, insulina y marcadores de resistencia insulínica</div>
             </div>
             <div class="score-card">
                 <div class="score-label">InflammationScore</div>
                 <div class="score-value" style="color: #3fb950;">100.0</div>
+                <div class="subscore-description">Proteína C reactiva, ferritina y otros marcadores inflamatorios</div>
             </div>
             <div class="score-card">
                 <div class="score-label">HormoneScore</div>
                 <div class="score-value" style="color: #3fb950;">80.0</div>
+                <div class="subscore-description">Testosterona, vitamina D, hormonas tiroideas y cortisol</div>
             </div>
         </div>
         <div class="alertas-section">
@@ -460,13 +486,13 @@
         </div>
         
         <div class="alerta-item" style="border-left: 4px solid #f0883e;">
-            <div style="font-weight: bold; color: #f0883e;">Hipotiroidismo Subclínico</div>
+            <div style="font-weight: bold; color: #f0883e;">Hipotiroidismo SubclÃ­nico</div>
             <div style="color: #c9d1d9; margin-top: 5px;">TSH en 5.2 mUI/L indica tiroides lenta</div>
         </div>
         
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
             <div style="font-weight: bold; color: #d29922;">LDL Excelente</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">LDL en 27 mg/dL es óptimo</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">LDL en 27 mg/dL es Ã³ptimo</div>
         </div>
         
         </div>
@@ -525,13 +551,13 @@
     
     <div class="metric-card">
         <div class="metric-label">FC Reposo (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">54 bpm</div>
+        <div class="metric-value" style="color: #3fb950;">56 bpm</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">19,383</div>
+        <div class="metric-value" style="color: #3fb950;">21,364</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -747,48 +773,38 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-10-31 19:35:08 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-10-31 20:51:35 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 376</p>
             <p>✅ <strong>Total registros peso:</strong> 40</p>
-            <p>✅ <strong>Total registros pasos:</strong> 157</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3282 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 160</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 1955 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-10-31 19:35:08,206 [INFO] - 
-2025-10-31 19:35:08,206 [INFO] - ================================================================================
-2025-10-31 19:35:08,206 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-10-31 19:35:08,206 [INFO] - ================================================================================
-2025-10-31 19:35:08,206 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-10-31 19:35:08,206 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-10-31 19:35:08,206 [INFO] - ================================================================================
-2025-10-31 19:35:08,206 [INFO] - 
-2025-10-31 19:35:08,206 [INFO] - ================================================================================
-2025-10-31 19:35:08,206 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-10-31 19:35:08,206 [INFO] - ================================================================================
-2025-10-31 19:35:08,216 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-31 19:35:08,217 [INFO] - Total archivos JSON encontrados: 133
-2025-10-31 19:35:08,217 [INFO] - Archivos ya procesados: 135
-2025-10-31 19:35:08,217 [INFO] - Archivos nuevos a procesar: 1
-2025-10-31 19:35:08,217 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-10-31_19-14-18.json&#x27;]
-2025-10-31 19:35:08,217 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-10-31_19-14-18.json
-2025-10-31 19:35:08,217 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-10-31_19-14-18.json
-2025-10-31 19:35:08,217 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-10-31 19:35:08,217 [INFO] -   → Pasos agregados: 1
-2025-10-31 19:35:08,217 [INFO] -     📊 Pasos por fuente:
-2025-10-31 19:35:08,218 [INFO] -        • Samsung Health: 1 registros (total: 21295)
-2025-10-31 19:35:08,218 [INFO] -   Campos detectados: pasos
-2025-10-31 19:35:08,218 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-10-31 19:35:08,218 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-10-31_19-14-18.json
-2025-10-31 19:35:08,322 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-10-31 19:35:08,322 [INFO] - Generando dashboard HTML con gráficos...
-2025-10-31 19:35:08,323 [INFO] - ==================================================
-2025-10-31 19:35:08,323 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-31
-2025-10-31 19:35:08,323 [INFO] - Ventana de 7 días: 2025-10-25 a 2025-10-31
-2025-10-31 19:35:08,323 [INFO] - PAI TOTAL SEMANAL: 179.0
-2025-10-31 19:35:08,323 [INFO] - Entrenamientos en ventana: 20
-2025-10-31 19:35:08,323 [INFO] - ==================================================
-2025-10-31 19:35:08,327 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
+        <pre id="logs-content" class="logs-hidden">2025-10-31 20:51:35,693 [INFO] - 
+2025-10-31 20:51:35,693 [INFO] - ================================================================================
+2025-10-31 20:51:35,693 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-10-31 20:51:35,693 [INFO] - ================================================================================
+2025-10-31 20:51:35,693 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-10-31 20:51:35,693 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-10-31 20:51:35,693 [INFO] - ================================================================================
+2025-10-31 20:51:35,693 [INFO] - 
+2025-10-31 20:51:35,694 [INFO] - ================================================================================
+2025-10-31 20:51:35,694 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-10-31 20:51:35,694 [INFO] - ================================================================================
+2025-10-31 20:51:35,707 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-10-31 20:51:35,707 [INFO] - Total archivos JSON encontrados: 133
+2025-10-31 20:51:35,708 [INFO] - Archivos ya procesados: 139
+2025-10-31 20:51:35,708 [INFO] - Archivos nuevos a procesar: 0
+2025-10-31 20:51:35,708 [INFO] - No hay archivos nuevos para procesar.
+2025-10-31 20:51:35,708 [INFO] - Generando dashboard HTML con gráficos...
+2025-10-31 20:51:35,708 [INFO] - ==================================================
+2025-10-31 20:51:35,708 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-10-31
+2025-10-31 20:51:35,708 [INFO] - Ventana de 7 días: 2025-10-25 a 2025-10-31
+2025-10-31 20:51:35,708 [INFO] - PAI TOTAL SEMANAL: 179.0
+2025-10-31 20:51:35,708 [INFO] - Entrenamientos en ventana: 20
+2025-10-31 20:51:35,708 [INFO] - ==================================================
+2025-10-31 20:51:35,712 [INFO] - ✅ Laboratorio procesado: Longevity Score = 83.5/100
 </pre>
     </div>
     
@@ -943,7 +959,7 @@
         // FC Reposo
         Plotly.newPlot('fc-reposo-chart', [{
             x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
-            y: [55.916666666666664, 61.666666666666664, 54.25, 52.72727272727273, 48.833333333333336, 64.0, 54.142857142857146],
+            y: [55.916666666666664, 61.666666666666664, 54.25, 52.72727272727273, 48.833333333333336, 64.0, 55.875],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#f85149', width: 2 }
@@ -966,7 +982,7 @@
             },
             {
                 x: ['2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
-                y: [74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 80.65277777777777, 73.71693121693123, 86.03030303030303],
+                y: [74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 80.65277777777777, 73.71693121693123, 86.0],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -990,7 +1006,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31'],
-            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 216201],
+            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 281210],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
