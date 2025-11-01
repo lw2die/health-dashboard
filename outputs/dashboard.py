@@ -266,11 +266,37 @@ def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscu
         fc_recientes = fc_reposo[-7:] if len(fc_reposo) >= 7 else fc_reposo
         fc_reposo_promedio = sum(fc.get("bpm", 0) for fc in fc_recientes) / len(fc_recientes)
     
-    # Pasos promedio
+    # ✅ PASOS CORREGIDO - Tomar MÁXIMO por día (Samsung guarda valores acumulados)
     pasos_promedio = None
     if pasos:
-        pasos_recientes = pasos[-7:] if len(pasos) >= 7 else pasos
-        pasos_promedio = sum(p.get("pasos", 0) for p in pasos_recientes) / len(pasos_recientes)
+        logger.info(f"🚶 DEBUG Pasos: Total registros en cache: {len(pasos)}")
+        
+        # Agrupar por día y tomar MÁXIMO (Samsung guarda acumulados del día)
+        pasos_por_dia = defaultdict(list)
+        for p in pasos:
+            try:
+                fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+                pasos_por_dia[fecha].append(p.get("pasos", 0))
+            except:
+                continue
+        
+        # Tomar últimos 7 días
+        fechas_ordenadas = sorted(pasos_por_dia.keys())[-7:]
+        if fechas_ordenadas:
+            logger.info("📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):")
+            total_pasos = 0
+            for f in fechas_ordenadas:
+                # ✅ Tomar el MÁXIMO (último registro del día = total del día)
+                pasos_dia = max(pasos_por_dia[f])
+                total_pasos += pasos_dia
+                logger.info(f"   - {f}: {pasos_dia:,} pasos (de {len(pasos_por_dia[f])} registros)")
+            
+            pasos_promedio = total_pasos / len(fechas_ordenadas)
+            logger.info(f"📈 Pasos promedio calculado: {pasos_promedio:,.0f} pasos/día (últimos {len(fechas_ordenadas)} días)")
+        else:
+            logger.warning("⚠️ No se pudieron agrupar pasos por día")
+    else:
+        logger.warning("⚠️ NO hay datos de pasos en el cache")
     
     # Presión arterial promedio
     presion_sistolica = None
@@ -559,7 +585,7 @@ def _preparar_datos_fc_diurna(fc_diurna_data, dias=30):
 
 
 def _preparar_datos_pasos(pasos_data, dias=30):
-    """Prepara datos de pasos diarios"""
+    """Prepara datos de pasos diarios (Samsung guarda valores acumulados)"""
     if not pasos_data:
         return {"fechas": [], "valores": []}
     
@@ -569,15 +595,17 @@ def _preparar_datos_pasos(pasos_data, dias=30):
         if datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
     ]
     
+    # ✅ Agrupar por día y tomar MÁXIMO (Samsung guarda acumulados)
     por_dia = {}
     for p in recientes:
         fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
         if fecha not in por_dia:
-            por_dia[fecha] = 0
-        por_dia[fecha] += p["pasos"]
+            por_dia[fecha] = []
+        por_dia[fecha].append(p["pasos"])
     
+    # Tomar el máximo de cada día (último registro = total del día)
     fechas = sorted(por_dia.keys())
-    valores = [por_dia[f] for f in fechas]
+    valores = [max(por_dia[f]) for f in fechas]
     
     return {"fechas": fechas, "valores": valores}
 

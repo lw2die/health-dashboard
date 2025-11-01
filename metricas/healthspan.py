@@ -275,10 +275,16 @@ def _calcular_functional_score(metricas):
     Componentes:
     - Pasos diarios promedio (100%)
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     score = 0
     
     # Pasos (100 puntos)
     pasos = metricas.get("pasos_promedio")
+    
+    logger.info(f"🔍 FUNCTIONAL SCORE - Pasos recibidos: {pasos}")
+    
     if pasos is not None:
         if pasos >= 15000:
             score = 100
@@ -292,8 +298,11 @@ def _calcular_functional_score(metricas):
             score = 50
         else:
             score = 30
+        
+        logger.info(f"✅ Functional Score calculado: {score}/100 (para {pasos:,.0f} pasos/día)")
     else:
         score = 50  # Puntaje base
+        logger.warning("⚠️ No hay datos de pasos - usando score base: 50")
     
     return min(100, score)
 
