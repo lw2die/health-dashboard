@@ -114,7 +114,8 @@ def generar_dashboard(cache):
                 edad=EDAD,
                 altura_cm=ALTURA_CM,
                 peso_kg=metricas.get("peso_actual", 83),
-                vo2max_medido=metricas.get("vo2max", 38)
+                vo2max_medido=metricas.get("vo2max", 38),
+                glucemias_diarias=glucosa  # ✅ Pasar glucemias diarias para evaluar control
             )
             logger.info(f"✅ Laboratorio procesado: Longevity Score = {datos_laboratorio.get('longevity_score', 'N/A')}/100")
         except Exception as e:
