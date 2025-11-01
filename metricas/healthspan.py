@@ -86,43 +86,47 @@ def _calcular_fitness_score(metricas):
     """
     score = 0
     
-    # PAI (40 puntos)
+    # PAI (40 puntos) - Objetivo realista: ≥100 en ventana móvil 7 días
     pai_semanal = metricas.get("pai_semanal", 0)
-    if pai_semanal >= PAI_OBJETIVO_SEMANAL * 1.5:
-        score += 40
-    elif pai_semanal >= PAI_OBJETIVO_SEMANAL:
-        score += 35
-    elif pai_semanal >= PAI_OBJETIVO_SEMANAL * 0.75:
-        score += 25
-    elif pai_semanal >= PAI_OBJETIVO_SEMANAL * 0.5:
-        score += 15
+    if pai_semanal >= 100:
+        score += 40  # Objetivo cumplido
+    elif pai_semanal >= 75:
+        score += 35  # Cerca del objetivo
+    elif pai_semanal >= 50:
+        score += 25  # Aceptable
+    elif pai_semanal >= 25:
+        score += 15  # Bajo pero activo
     else:
-        score += 5
+        score += 5   # Muy sedentario
     
-    # TSB (30 puntos)
+    # TSB (30 puntos) - Óptimo: entre -10 y +10
     tsb_promedio = metricas.get("tsb_promedio_7d", 0)
-    if TSB_OPTIMO_MIN <= tsb_promedio <= TSB_OPTIMO_MAX:
-        score += 30  # Óptimo (promedio 7d)
-    elif -20 <= tsb_promedio < TSB_OPTIMO_MIN:
-        score += 25  # Entrenando duro
-    elif TSB_OPTIMO_MAX < tsb_promedio <= 25:
-        score += 20  # Fresco
-    elif -30 <= tsb_promedio < -20:
-        score += 15  # Fatigado
+    if -10 <= tsb_promedio <= 10:
+        score += 30  # Óptimo - equilibrio perfecto
+    elif tsb_promedio < -10:
+        score += 30  # Entrenando duro = bueno, NO se penaliza
+    elif 10 < tsb_promedio <= 20:
+        score += 25  # Demasiado fresco
+    elif 20 < tsb_promedio <= 30:
+        score += 20  # Muy descansado (poco entrenamiento)
     else:
-        score += 10  # Muy fatigado o muy descansado
+        score += 15  # Inactividad prolongada
     
-    # VO2max (30 puntos)
+    # VO2max (30 puntos) - Según Samsung Health para rango 50-59 años
     vo2max = metricas.get("vo2max")
     if vo2max is not None and vo2max > 0:
-        if vo2max >= VO2MAX_EXCELENTE:
-            score += 30
-        elif vo2max >= VO2MAX_BUENO:
-            score += 25
-        elif vo2max >= VO2MAX_BUENO * 0.9:
-            score += 20
+        if vo2max >= 47.6:
+            score += 30  # Superior
+        elif vo2max >= 38.3:
+            score += 30  # Excelente (38.3-47.5)
+        elif vo2max >= 31.8:
+            score += 25  # Bueno (31.8-38.2)
+        elif vo2max >= 26.9:
+            score += 20  # Regular (26.9-31.7)
+        elif vo2max >= 22.2:
+            score += 15  # Malo (22.2-26.8)
         else:
-            score += 15
+            score += 10  # Muy malo (<22.2)
     else:
         score += 15  # Puntaje base si no hay datos
     
@@ -280,24 +284,22 @@ def _calcular_functional_score(metricas):
     
     score = 0
     
-    # Pasos (100 puntos)
+    # Pasos (100 puntos) - Objetivo realista: ≥10,000 pasos/día promedio
     pasos = metricas.get("pasos_promedio")
     
     logger.info(f"🔍 FUNCTIONAL SCORE - Pasos recibidos: {pasos}")
     
     if pasos is not None:
-        if pasos >= 15000:
-            score = 100
-        elif pasos >= 12000:
-            score = 90
-        elif pasos >= 10000:
-            score = 80
-        elif pasos >= 7000:
-            score = 65
-        elif pasos >= 5000:
-            score = 50
+        if pasos >= 10000:
+            score = 100  # Objetivo cumplido (60k/semana con 1 día descanso)
+        elif pasos >= 8000:
+            score = 85   # Muy cerca
+        elif pasos >= 6000:
+            score = 70   # Aceptable
+        elif pasos >= 4000:
+            score = 50   # Bajo
         else:
-            score = 30
+            score = 30   # Sedentario
         
         logger.info(f"✅ Functional Score calculado: {score}/100 (para {pasos:,.0f} pasos/día)")
     else:

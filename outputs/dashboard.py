@@ -17,6 +17,7 @@ from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
 from metricas.score import calcular_score_longevidad, generar_recomendaciones
 from metricas.healthspan import calcular_healthspan_index, generar_recomendaciones_healthspan  # ✅ NUEVO
+from metricas.plan_accion import generar_plan_accion, renderizar_plan_accion_html  # ✅ PLAN DE ACCIÓN
 
 
 def _preparar_datos_peso_deduplicado(peso_data, dias=90):
@@ -178,6 +179,10 @@ def generar_dashboard(cache):
     entrenamientos = _obtener_entrenamientos_recientes(ejercicios)
     entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
     
+    # ✅ PLAN DE ACCIÓN PERSONALIZADO
+    plan_accion = generar_plan_accion(healthspan_data, metricas)
+    plan_accion_html = renderizar_plan_accion_html(plan_accion)
+    
     # Recomendaciones (✅ AHORA USA HEALTHSPAN)
     recomendaciones_healthspan = generar_recomendaciones_healthspan(healthspan_data, metricas)
     recomendaciones_html = generar_recomendaciones_html(metricas["recomendaciones"])
@@ -198,7 +203,8 @@ def generar_dashboard(cache):
         datos_graficos,
         logs_html_content,
         resumen_ejecucion,
-        healthspan_data  # Parámetro opcional al final
+        healthspan_data,  # Parámetro opcional
+        plan_accion_html  # ✅ PLAN DE ACCIÓN
     )
     
     # ═══════════════════════════════════════════════

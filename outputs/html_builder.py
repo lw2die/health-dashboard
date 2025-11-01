@@ -1076,7 +1076,7 @@ def _generar_seccion_logs(logs_content, resumen):
     """
 
 
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None, healthspan_data=None):
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None, healthspan_data=None, plan_accion_html=""):
     """Construye el HTML completo del dashboard"""
     healthspan_hero = _generar_healthspan_hero(healthspan_data) if healthspan_data else ""
     
@@ -1100,6 +1100,8 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
             {healthspan_hero}
             
             {html_laboratorio}
+            
+            {plan_accion_html}
             
             <div class="metrics-grid">
                 {cards_html}
