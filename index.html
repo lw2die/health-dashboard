@@ -386,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 01/11/2025 02:07 (Argentina)</p>
+                <p class="subtitle">Última actualización: 01/11/2025 02:21 (Argentina)</p>
             </header>
             
             
@@ -480,9 +480,9 @@
         <div class="alertas-section">
             <h3>⚠️ Alertas</h3>
             
-        <div class="alerta-item" style="border-left: 4px solid #f85149;">
-            <div style="font-weight: bold; color: #f85149;">Prediabetes Detectada</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">HbA1c en 5.7% indica prediabetes</div>
+        <div class="alerta-item" style="border-left: 4px solid #d29922;">
+            <div style="font-weight: bold; color: #d29922;">✅ Control Glucémico Actual: EXCELENTE</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">Glucemias recientes bien controladas (promedio: 98.7 mg/dL). Tu tratamiento funciona correctamente.</div>
         </div>
         
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
@@ -567,7 +567,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">18,738</div>
+        <div class="metric-value" style="color: #3fb950;">15,683</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -783,11 +783,11 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-01 02:07:54 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-01 02:21:13 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 376</p>
             <p>✅ <strong>Total registros peso:</strong> 40</p>
-            <p>✅ <strong>Total registros pasos:</strong> 164</p>
+            <p>✅ <strong>Total registros pasos:</strong> 165</p>
             <p style='color: #f85149; font-size: 0.9em;'>⚠️ Archivo de log no encontrado</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
@@ -993,7 +993,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01'],
-            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 347217, 152],
+            y: [11147, 208014, 157218, 72470, 20008, 38684, 148369, 347217, 351],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
