@@ -386,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 02/11/2025 17:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 02/11/2025 17:35 (Argentina)</p>
             </header>
             
             
@@ -702,9 +702,9 @@
     
     <div class="metric-card">
         <div class="metric-label">TSB Actual</div>
-        <div class="metric-value" style="color: #f85149;">-23.7</div>
-        <div class="metric-detail">Fatiga</div>
-        <div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 59.3 | ATL: 83.0</div>
+        <div class="metric-value" style="color: #d29922;">-19.0</div>
+        <div class="metric-detail">Neutral</div>
+        <div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 65.5 | ATL: 84.5</div>
     </div>
     
     <div class="metric-card">
@@ -954,174 +954,82 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-02 17:05:16 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-02 17:35:15 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
-            <p>✅ <strong>Total ejercicios:</strong> 674</p>
+            <p>✅ <strong>Total ejercicios:</strong> 735</p>
             <p>✅ <strong>Total registros peso:</strong> 45</p>
             <p>✅ <strong>Total registros pasos:</strong> 229</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 15274 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 7346 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-02 17:05:15,942 [INFO] - 
-2025-11-02 17:05:15,942 [INFO] - ================================================================================
-2025-11-02 17:05:15,942 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-02 17:05:15,942 [INFO] - ================================================================================
-2025-11-02 17:05:15,942 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-02 17:05:15,942 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-02 17:05:15,942 [INFO] - ================================================================================
-2025-11-02 17:05:15,942 [INFO] - 
-2025-11-02 17:05:15,942 [INFO] - ================================================================================
-2025-11-02 17:05:15,942 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-02 17:05:15,942 [INFO] - ================================================================================
-2025-11-02 17:05:15,994 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-02 17:05:15,995 [INFO] - Total archivos JSON encontrados: 182
-2025-11-02 17:05:15,995 [INFO] - Archivos ya procesados: 194
-2025-11-02 17:05:15,995 [INFO] - Archivos nuevos a procesar: 4
-2025-11-02 17:05:15,995 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_FULL_2025-11-02_16-39-40.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-02_16-43-51.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-02_16-48-18.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-02_16-51-45.json&#x27;]
-2025-11-02 17:05:15,995 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_16-39-40.json
-2025-11-02 17:05:16,084 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_16-39-40.json
-2025-11-02 17:05:16,084 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-02 17:05:16,085 [WARNING] - ⚠️ FC NULA/CERO en [health_data_AUTO_FULL_2025-11-02_16-39-40.json] - Tipo: Aparatos de Musculación, Duración: 1 min
-2025-11-02 17:05:16,085 [WARNING] - ⚠️ FC NULA/CERO en [health_data_AUTO_FULL_2025-11-02_16-39-40.json] - Tipo: Aparatos de Musculación, Duración: 2 min
-2025-11-02 17:05:16,085 [INFO] -   → Ejercicios agregados: 124
-2025-11-02 17:05:16,086 [INFO] -     📊 Ejercicios por tipo:
-2025-11-02 17:05:16,086 [INFO] -        • Walking: 81 sesiones (2673 min)
-2025-11-02 17:05:16,086 [INFO] -        • Swimming: 19 sesiones (1165 min)
-2025-11-02 17:05:16,086 [INFO] -        • Press Banca: 9 sesiones (55 min)
-2025-11-02 17:05:16,086 [INFO] -        • Aparatos de Musculación: 6 sesiones (30 min)
-2025-11-02 17:05:16,086 [INFO] -        • Otro (73): 5 sesiones (314 min)
-2025-11-02 17:05:16,086 [INFO] -        • Baseball: 2 sesiones (32 min)
-2025-11-02 17:05:16,086 [INFO] -        • Otro (16): 1 sesiones (3 min)
-2025-11-02 17:05:16,086 [INFO] -        • Otro (8): 1 sesiones (3 min)
-2025-11-02 17:05:16,088 [INFO] -   → Peso agregado: 2 días (rechazados: 142)
-2025-11-02 17:05:16,088 [INFO] -      📊 Peso por fuente:
-2025-11-02 17:05:16,088 [INFO] -         • com.example.healthconnectsample: 6 registros
-2025-11-02 17:05:16,088 [INFO] -         • com.icomon.starfit.starfit: 66 registros
-2025-11-02 17:05:16,088 [INFO] -         • com.sec.android.app.shealth: 24 registros
-2025-11-02 17:05:16,088 [INFO] -         • com.withings.wiscale2: 39 registros
-2025-11-02 17:05:16,088 [INFO] -         • nl.appyhapps.healthsync: 13 registros
-2025-11-02 17:05:16,088 [INFO] -   → Grasa corporal agregada: 129
-2025-11-02 17:05:16,088 [INFO] -     📊 Grasa Corporal por fuente:
-2025-11-02 17:05:16,088 [INFO] -        • HealthSync: 13 registros (total: 345)
-2025-11-02 17:05:16,088 [INFO] -        • Samsung Health: 24 registros (total: 588)
-2025-11-02 17:05:16,088 [INFO] -        • Withings: 30 registros (total: 820)
-2025-11-02 17:05:16,088 [INFO] -        • starfit: 62 registros (total: 1490)
-2025-11-02 17:05:16,089 [INFO] -   → Masa muscular agregada: 59
-2025-11-02 17:05:16,089 [INFO] -     📊 Masa Muscular por fuente:
-2025-11-02 17:05:16,089 [INFO] -        • HealthSync: 13 registros (total: 793)
-2025-11-02 17:05:16,089 [INFO] -        • Withings: 46 registros (total: 2638)
-2025-11-02 17:05:16,089 [INFO] -   → Masa de agua agregada: 56
-2025-11-02 17:05:16,089 [INFO] -     📊 Masa de Agua por fuente:
-2025-11-02 17:05:16,089 [INFO] -        • HealthSync: 10 registros (total: 422)
-2025-11-02 17:05:16,089 [INFO] -        • Withings: 46 registros (total: 1910)
-2025-11-02 17:05:16,089 [INFO] -   → Masa ósea agregada: 100
-2025-11-02 17:05:16,089 [INFO] -     📊 Masa Ósea por fuente:
-2025-11-02 17:05:16,089 [INFO] -        • HealthSync: 8 registros (total: 24)
-2025-11-02 17:05:16,089 [INFO] -        • Withings: 30 registros (total: 91)
-2025-11-02 17:05:16,089 [INFO] -        • starfit: 62 registros (total: 261)
-2025-11-02 17:05:16,090 [INFO] -   → FC en reposo agregada: 284 (desde heart_rate horario nocturno)
-2025-11-02 17:05:16,091 [INFO] -     📊 FC Reposo por fuente:
-2025-11-02 17:05:16,091 [INFO] -        • HealthSync: 37 registros (total: 1996)
-2025-11-02 17:05:16,091 [INFO] -        • Samsung Health: 245 registros (total: 13336)
-2025-11-02 17:05:16,091 [INFO] -        • Withings: 1 registros (total: 61)
-2025-11-02 17:05:16,091 [INFO] -        • fitness: 1 registros (total: 55)
-2025-11-02 17:05:16,091 [INFO] -   → Presión arterial agregada: 98
-2025-11-02 17:05:16,091 [INFO] -     📊 Presión Arterial por fuente:
-2025-11-02 17:05:16,091 [INFO] -        • HealthSync: 17 registros
-2025-11-02 17:05:16,091 [INFO] -        • Samsung Health: 50 registros
-2025-11-02 17:05:16,091 [INFO] -        • Withings: 29 registros
-2025-11-02 17:05:16,091 [INFO] -        • fitness: 2 registros
-2025-11-02 17:05:16,098 [INFO] -   → Frecuencia cardíaca agregada: 31 días
-2025-11-02 17:05:16,098 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-02 17:05:16,098 [INFO] -        • HealthSync: 1 registros
-2025-11-02 17:05:16,098 [INFO] -        • Samsung Health: 30 registros
-2025-11-02 17:05:16,098 [INFO] -   → Glucosa agregada: 28
-2025-11-02 17:05:16,098 [INFO] -     📊 Glucosa por fuente:
-2025-11-02 17:05:16,098 [INFO] -        • HealthSync: 2 registros (total: 195)
-2025-11-02 17:05:16,098 [INFO] -        • Samsung Health: 26 registros (total: 2587)
-2025-11-02 17:05:16,098 [INFO] -   → Tasa metabólica basal agregada: 104
-2025-11-02 17:05:16,098 [INFO] -     📊 BMR por fuente:
-2025-11-02 17:05:16,099 [INFO] -        • HealthSync: 2 registros (total: 3371)
-2025-11-02 17:05:16,099 [INFO] -        • Samsung Health: 24 registros (total: 41343)
-2025-11-02 17:05:16,099 [INFO] -        • fitness: 16 registros (total: 27169)
-2025-11-02 17:05:16,099 [INFO] -        • starfit: 62 registros (total: 107234)
-2025-11-02 17:05:16,104 [INFO] -   → Calorías totales agregadas: 10 días
-2025-11-02 17:05:16,104 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-02 17:05:16,104 [INFO] -        • FitbitMobile: 4 registros (total: 6941)
-2025-11-02 17:05:16,104 [INFO] -        • fitness: 6 registros (total: 28513)
-2025-11-02 17:05:16,109 [INFO] -   → Pasos agregados: 14
-2025-11-02 17:05:16,109 [INFO] -     📊 Pasos por fuente:
-2025-11-02 17:05:16,110 [INFO] -        • HealthSync: 2 registros (total: 37532)
-2025-11-02 17:05:16,110 [INFO] -        • Samsung Health: 6 registros (total: 74879)
-2025-11-02 17:05:16,110 [INFO] -        • fitness: 6 registros (total: 65238)
-2025-11-02 17:05:16,115 [INFO] -   → Distancia agregada: 4 días
-2025-11-02 17:05:16,115 [INFO] -     📊 Distancia por fuente:
-2025-11-02 17:05:16,115 [INFO] -        • Samsung Health: 4 registros (total: 26)
-2025-11-02 17:05:16,115 [INFO] -   → SpO2 agregado: 91
-2025-11-02 17:05:16,115 [INFO] -     📊 SpO2 por fuente:
-2025-11-02 17:05:16,115 [INFO] -        • HealthSync: 20 registros (total: 1937)
-2025-11-02 17:05:16,115 [INFO] -        • Samsung Health: 67 registros (total: 6499)
-2025-11-02 17:05:16,115 [INFO] -        • fitness: 4 registros (total: 388)
-2025-11-02 17:05:16,183 [INFO] -   → Sueño agregado: 145 sesiones
-2025-11-02 17:05:16,183 [INFO] -      📊 Sueño por fuente:
-2025-11-02 17:05:16,183 [INFO] -         • com.example.healthconnectsample: 8 sesiones
-2025-11-02 17:05:16,183 [INFO] -         • com.sec.android.app.shealth: 55 sesiones
-2025-11-02 17:05:16,183 [INFO] -         • com.withings.wiscale2: 44 sesiones
-2025-11-02 17:05:16,183 [INFO] -         • nl.appyhapps.healthsync: 38 sesiones
-2025-11-02 17:05:16,186 [INFO] -   Campos detectados: ejercicio, peso, grasa_corporal, masa_muscular, masa_agua, masa_osea, fc_reposo, presion_arterial, frecuencia_cardiaca, glucosa, tasa_metabolica, calorias_totales, pasos, distancia, spo2, sueno
-2025-11-02 17:05:16,186 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-02 17:05:16,186 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_16-39-40.json
-2025-11-02 17:05:16,186 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_16-43-51.json
-2025-11-02 17:05:16,186 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_16-43-51.json
-2025-11-02 17:05:16,187 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-02 17:05:16,187 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-02_16-43-51.json
-2025-11-02 17:05:16,187 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-02_16-43-51.json
-2025-11-02 17:05:16,187 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-02 17:05:16,187 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_16-43-51.json
-2025-11-02 17:05:16,187 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_16-48-18.json
-2025-11-02 17:05:16,187 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_16-48-18.json
-2025-11-02 17:05:16,187 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-02 17:05:16,188 [INFO] -   → Ejercicios agregados: 27
-2025-11-02 17:05:16,188 [INFO] -     📊 Ejercicios por tipo:
-2025-11-02 17:05:16,188 [INFO] -        • Walking: 19 sesiones (494 min)
-2025-11-02 17:05:16,188 [INFO] -        • Swimming: 3 sesiones (231 min)
-2025-11-02 17:05:16,188 [INFO] -        • Press Banca: 3 sesiones (14 min)
-2025-11-02 17:05:16,188 [INFO] -        • Otro (73): 2 sesiones (154 min)
-2025-11-02 17:05:16,189 [INFO] -   Campos detectados: ejercicio
-2025-11-02 17:05:16,189 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-02 17:05:16,189 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_16-48-18.json
-2025-11-02 17:05:16,189 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_16-51-45.json
-2025-11-02 17:05:16,190 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_16-51-45.json
-2025-11-02 17:05:16,190 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-02 17:05:16,190 [INFO] -   → Ejercicios agregados: 44
-2025-11-02 17:05:16,191 [INFO] -     📊 Ejercicios por tipo:
-2025-11-02 17:05:16,191 [INFO] -        • Walking: 31 sesiones (942 min)
-2025-11-02 17:05:16,191 [INFO] -        • Swimming: 5 sesiones (335 min)
-2025-11-02 17:05:16,191 [INFO] -        • Otro (73): 4 sesiones (258 min)
-2025-11-02 17:05:16,191 [INFO] -        • Press Banca: 3 sesiones (14 min)
-2025-11-02 17:05:16,191 [INFO] -        • Baseball: 1 sesiones (30 min)
-2025-11-02 17:05:16,192 [INFO] -   Campos detectados: ejercicio
-2025-11-02 17:05:16,192 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-02 17:05:16,192 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_16-51-45.json
-2025-11-02 17:05:16,385 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-02 17:05:16,386 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-02 17:05:16,386 [INFO] - ==================================================
-2025-11-02 17:05:16,386 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-02
-2025-11-02 17:05:16,386 [INFO] - Ventana de 7 días: 2025-10-27 a 2025-11-02
-2025-11-02 17:05:16,387 [INFO] - PAI TOTAL SEMANAL: 625.8
-2025-11-02 17:05:16,387 [INFO] - Entrenamientos en ventana: 59
-2025-11-02 17:05:16,387 [INFO] - ==================================================
-2025-11-02 17:05:16,390 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 229
-2025-11-02 17:05:16,392 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-02 17:05:16,392 [INFO] -    - 2025-10-27: 8,840 pasos (de 18 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-10-28: 3,229 pasos (de 13 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-10-29: 12,828 pasos (de 7 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-10-30: 15,056 pasos (de 15 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-10-31: 22,086 pasos (de 28 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-11-01: 21,083 pasos (de 32 registros)
-2025-11-02 17:05:16,392 [INFO] -    - 2025-11-02: 10,622 pasos (de 14 registros)
-2025-11-02 17:05:16,392 [INFO] - 📈 Pasos promedio calculado: 13,392 pasos/día (últimos 7 días)
-2025-11-02 17:05:16,399 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+        <pre id="logs-content" class="logs-hidden">2025-11-02 17:35:14,694 [INFO] - 
+2025-11-02 17:35:14,694 [INFO] - ================================================================================
+2025-11-02 17:35:14,694 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-02 17:35:14,694 [INFO] - ================================================================================
+2025-11-02 17:35:14,694 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-02 17:35:14,694 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-02 17:35:14,694 [INFO] - ================================================================================
+2025-11-02 17:35:14,694 [INFO] - 
+2025-11-02 17:35:14,694 [INFO] - ================================================================================
+2025-11-02 17:35:14,694 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-02 17:35:14,694 [INFO] - ================================================================================
+2025-11-02 17:35:14,712 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-02 17:35:14,713 [INFO] - Total archivos JSON encontrados: 185
+2025-11-02 17:35:14,713 [INFO] - Archivos ya procesados: 198
+2025-11-02 17:35:14,713 [INFO] - Archivos nuevos a procesar: 3
+2025-11-02 17:35:14,713 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_FULL_2025-11-02_17-04-06.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-02_17-13-51.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-02_17-15-31.json&#x27;]
+2025-11-02 17:35:14,713 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_17-04-06.json
+2025-11-02 17:35:14,714 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_17-04-06.json
+2025-11-02 17:35:14,714 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
+2025-11-02 17:35:14,714 [INFO] -   → Ejercicios agregados: 12
+2025-11-02 17:35:14,714 [INFO] -     📊 Ejercicios por tipo:
+2025-11-02 17:35:14,714 [INFO] -        • Walking: 6 sesiones (154 min)
+2025-11-02 17:35:14,714 [INFO] -        • Press Banca: 3 sesiones (14 min)
+2025-11-02 17:35:14,714 [INFO] -        • Swimming: 2 sesiones (184 min)
+2025-11-02 17:35:14,714 [INFO] -        • Otro (73): 1 sesiones (107 min)
+2025-11-02 17:35:14,716 [INFO] -   Campos detectados: ejercicio
+2025-11-02 17:35:14,716 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-02 17:35:14,716 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_17-04-06.json
+2025-11-02 17:35:14,716 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_17-13-51.json
+2025-11-02 17:35:14,717 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_17-13-51.json
+2025-11-02 17:35:14,717 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
+2025-11-02 17:35:14,717 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-02_17-13-51.json
+2025-11-02 17:35:14,717 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-02_17-13-51.json
+2025-11-02 17:35:14,717 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-02 17:35:14,717 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_17-13-51.json
+2025-11-02 17:35:14,717 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-02_17-15-31.json
+2025-11-02 17:35:14,718 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-02_17-15-31.json
+2025-11-02 17:35:14,718 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
+2025-11-02 17:35:14,719 [INFO] -   → Ejercicios agregados: 49
+2025-11-02 17:35:14,719 [INFO] -     📊 Ejercicios por tipo:
+2025-11-02 17:35:14,719 [INFO] -        • Walking: 33 sesiones (1020 min)
+2025-11-02 17:35:14,719 [INFO] -        • Swimming: 6 sesiones (391 min)
+2025-11-02 17:35:14,719 [INFO] -        • Otro (73): 5 sesiones (314 min)
+2025-11-02 17:35:14,719 [INFO] -        • Press Banca: 3 sesiones (14 min)
+2025-11-02 17:35:14,720 [INFO] -        • Baseball: 1 sesiones (30 min)
+2025-11-02 17:35:14,720 [INFO] -        • Aparatos de Musculación: 1 sesiones (16 min)
+2025-11-02 17:35:14,721 [INFO] -   Campos detectados: ejercicio
+2025-11-02 17:35:14,721 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-02 17:35:14,722 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-02_17-15-31.json
+2025-11-02 17:35:14,916 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-02 17:35:14,917 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-02 17:35:14,917 [INFO] - ==================================================
+2025-11-02 17:35:14,917 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-02
+2025-11-02 17:35:14,917 [INFO] - Ventana de 7 días: 2025-10-27 a 2025-11-02
+2025-11-02 17:35:14,918 [INFO] - PAI TOTAL SEMANAL: 625.8
+2025-11-02 17:35:14,918 [INFO] - Entrenamientos en ventana: 59
+2025-11-02 17:35:14,918 [INFO] - ==================================================
+2025-11-02 17:35:14,922 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 229
+2025-11-02 17:35:14,923 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-02 17:35:14,923 [INFO] -    - 2025-10-27: 8,840 pasos (de 18 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-10-28: 3,229 pasos (de 13 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-10-29: 12,828 pasos (de 7 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-10-30: 15,056 pasos (de 15 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-10-31: 22,086 pasos (de 28 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-11-01: 21,083 pasos (de 32 registros)
+2025-11-02 17:35:14,923 [INFO] -    - 2025-11-02: 10,622 pasos (de 14 registros)
+2025-11-02 17:35:14,923 [INFO] - 📈 Pasos promedio calculado: 13,392 pasos/día (últimos 7 días)
+2025-11-02 17:35:14,929 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
 </pre>
     </div>
     
@@ -1141,7 +1049,7 @@
         // PAI: Diario + Ventana Móvil 7 días
         const pai_diario = {
             x: ['2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02'],
-            y: [30.6, 129.0, 9.6, 97.60000000000004, 430.09999999999985, 438.3999999999998, 392.5000000000001, 435.90000000000003, 402.99999999999994, 20.0, 92.2, 115.89999999999998, 45.599999999999994, 166.2, 131.39999999999998, 6.0, 54.3, 143.29999999999998, 90.99999999999997, 92.4, 72.8, 16.8, 71.4, 67.8, 114.89999999999999, 192.90000000000003, 133.2, 45.6],
+            y: [30.6, 172.0, 12.799999999999999, 130.20000000000005, 568.5999999999998, 518.1999999999998, 479.90000000000015, 530.8000000000001, 500.09999999999985, 20.0, 92.2, 115.89999999999998, 45.599999999999994, 166.2, 131.39999999999998, 6.0, 54.3, 143.29999999999998, 90.99999999999997, 92.4, 72.8, 16.8, 71.4, 67.8, 114.89999999999999, 192.90000000000003, 133.2, 45.6],
             type: 'bar',
             name: 'PAI Diario',
             marker: { color: '#58a6ff' }
@@ -1149,7 +1057,7 @@
         
         const pai_ventana = {
             x: ['2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02'],
-            y: [30.6, 159.6, 169.2, 266.8, 696.8999999999999, 1135.2999999999997, 1527.7999999999997, 1933.1, 2207.1, 2217.5, 2212.0999999999995, 1897.9, 1505.1, 1278.8, 974.2999999999998, 577.3, 611.5999999999999, 662.6999999999998, 637.8, 684.5999999999999, 591.1999999999999, 476.5999999999999, 541.9999999999999, 555.4999999999999, 527.1, 629.0, 669.8, 642.6],
+            y: [30.6, 202.6, 215.4, 345.6, 914.1999999999998, 1432.3999999999996, 1912.2999999999997, 2412.5, 2740.6, 2747.7999999999997, 2709.7999999999997, 2257.1, 1784.5, 1470.8, 1071.4, 577.3, 611.5999999999999, 662.6999999999998, 637.8, 684.5999999999999, 591.1999999999999, 476.5999999999999, 541.9999999999999, 555.4999999999999, 527.1, 629.0, 669.8, 642.6],
             type: 'scatter',
             mode: 'lines+markers',
             name: 'Ventana 7d',
@@ -1202,7 +1110,7 @@
         // TSB + CTL + ATL
         const tsb_data = {
             x: ['2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02'],
-            y: [-37.2, -48.3, -40.4, -46.3, -70.5, -90.8, -102.0, -113.9, -121.1, -100.5, -92.2, -88.0, -75.2, -79.6, -61.7, -61.5, -46.9, -39.9, -43.6, -38.5, -34.2, -22.7, -21.2, -13.5, -13.2, -4.8, -5.5, -11.4, -25.2, -29.9, -23.7],
+            y: [-37.2, -55.7, -47.0, -57.4, -93.1, -116.3, -130.0, -144.9, -154.6, -127.9, -114.5, -105.9, -89.4, -90.7, -70.1, -67.6, -51.0, -42.5, -44.8, -38.5, -33.3, -20.9, -18.8, -10.6, -9.8, -1.1, -1.5, -7.1, -20.8, -25.3, -19.0],
             type: 'scatter',
             mode: 'lines',
             name: 'TSB',
@@ -1212,7 +1120,7 @@
         
         const ctl_data = {
             x: ['2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02'],
-            y: [16.9, 20.1, 19.9, 22.3, 28.4, 34.5, 39.3, 44.6, 49.3, 48.7, 49.9, 51.7, 51.6, 54.7, 53.4, 55.1, 53.9, 53.9, 55.7, 56.0, 56.2, 54.9, 55.2, 54.3, 54.6, 53.3, 53.6, 54.9, 58.0, 59.7, 59.3],
+            y: [16.9, 21.6, 21.5, 24.9, 33.7, 41.0, 47.0, 53.7, 59.8, 58.9, 59.9, 61.4, 61.1, 63.9, 62.4, 63.9, 62.5, 62.3, 64.0, 64.0, 64.1, 62.5, 62.7, 61.6, 61.7, 60.3, 60.4, 61.6, 64.5, 66.0, 65.5],
             type: 'scatter',
             mode: 'lines',
             name: 'CTL (Fitness)',
@@ -1221,7 +1129,7 @@
         
         const atl_data = {
             x: ['2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02'],
-            y: [54.1, 68.4, 60.3, 68.5, 98.9, 125.3, 141.3, 158.6, 170.5, 149.2, 142.1, 139.7, 126.8, 134.3, 115.1, 116.6, 100.8, 93.8, 99.3, 94.4, 90.5, 77.5, 76.4, 67.8, 67.8, 58.2, 59.1, 66.3, 83.3, 89.6, 83.0],
+            y: [54.1, 77.3, 68.5, 82.3, 126.8, 157.3, 177.1, 198.6, 214.4, 186.8, 174.4, 167.3, 150.5, 154.6, 132.5, 131.6, 113.6, 104.8, 108.7, 102.5, 97.4, 83.5, 81.5, 72.1, 71.6, 61.4, 61.8, 68.7, 85.3, 91.3, 84.5],
             type: 'scatter',
             mode: 'lines',
             name: 'ATL (Fatiga)',
