@@ -386,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 03/11/2025 06:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 03/11/2025 06:35 (Argentina)</p>
             </header>
             
             
@@ -954,167 +954,48 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-03 06:05:32 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-03 06:35:27 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 1414</p>
             <p>✅ <strong>Total registros peso:</strong> 46</p>
             <p>✅ <strong>Total registros pasos:</strong> 294</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 23584 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2792 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-03 06:05:31,497 [INFO] - 
-2025-11-03 06:05:31,497 [INFO] - ================================================================================
-2025-11-03 06:05:31,497 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-03 06:05:31,497 [INFO] - ================================================================================
-2025-11-03 06:05:31,497 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-03 06:05:31,497 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-03 06:05:31,497 [INFO] - ================================================================================
-2025-11-03 06:05:31,497 [INFO] - 
-2025-11-03 06:05:31,497 [INFO] - ================================================================================
-2025-11-03 06:05:31,498 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-03 06:05:31,498 [INFO] - ================================================================================
-2025-11-03 06:05:31,531 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-03 06:05:31,533 [INFO] - Total archivos JSON encontrados: 225
-2025-11-03 06:05:31,533 [INFO] - Archivos ya procesados: 231
-2025-11-03 06:05:31,533 [INFO] - Archivos nuevos a procesar: 16
-2025-11-03 06:05:31,533 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-03_01-27-59.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-29-02.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-29-12.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-30-02.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-35-42.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-37-06.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-39-43.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-39-46.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-39-58.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-40-58.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-42-58.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-45-09.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_01-54-56.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_02-09-54.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_02-12-15.json&#x27;, &#x27;health_data_AUTO_FULL_2025-11-03_02-48-31.json&#x27;]
-2025-11-03 06:05:31,533 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-03_01-27-59.json
-2025-11-03 06:05:31,533 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-03_01-27-59.json
-2025-11-03 06:05:31,533 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;active_calories_burned_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-03 06:05:31,533 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_DIFF_2025-11-03_01-27-59.json
-2025-11-03 06:05:31,533 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_DIFF_2025-11-03_01-27-59.json
-2025-11-03 06:05:31,533 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,534 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-03_01-27-59.json
-2025-11-03 06:05:31,534 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-29-02.json
-2025-11-03 06:05:31,534 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-29-02.json
-2025-11-03 06:05:31,534 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,534 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-29-02.json
-2025-11-03 06:05:31,534 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-29-02.json
-2025-11-03 06:05:31,534 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,534 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-29-02.json
-2025-11-03 06:05:31,534 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-29-12.json
-2025-11-03 06:05:31,534 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-29-12.json
-2025-11-03 06:05:31,534 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,534 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-29-12.json
-2025-11-03 06:05:31,534 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-29-12.json
-2025-11-03 06:05:31,534 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,535 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-29-12.json
-2025-11-03 06:05:31,535 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-30-02.json
-2025-11-03 06:05:31,535 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-30-02.json
-2025-11-03 06:05:31,535 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,535 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-30-02.json
-2025-11-03 06:05:31,535 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-30-02.json
-2025-11-03 06:05:31,535 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,535 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-30-02.json
-2025-11-03 06:05:31,535 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-35-42.json
-2025-11-03 06:05:31,535 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-35-42.json
-2025-11-03 06:05:31,535 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,535 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-35-42.json
-2025-11-03 06:05:31,536 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-35-42.json
-2025-11-03 06:05:31,536 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,536 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-35-42.json
-2025-11-03 06:05:31,536 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-37-06.json
-2025-11-03 06:05:31,536 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-37-06.json
-2025-11-03 06:05:31,536 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,536 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-37-06.json
-2025-11-03 06:05:31,536 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-37-06.json
-2025-11-03 06:05:31,536 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,536 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-37-06.json
-2025-11-03 06:05:31,536 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-39-43.json
-2025-11-03 06:05:31,537 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-39-43.json
-2025-11-03 06:05:31,537 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,537 [WARNING] - ⚠️ FC NULA/CERO en [health_data_AUTO_FULL_2025-11-03_01-39-43.json] - Tipo: Walking, Duración: None min
-2025-11-03 06:05:31,537 [INFO] -   → Ejercicios agregados: 27
-2025-11-03 06:05:31,537 [INFO] -     📊 Ejercicios por tipo:
-2025-11-03 06:05:31,537 [INFO] -        • Walking: 19 sesiones (478 min)
-2025-11-03 06:05:31,537 [INFO] -        • Swimming: 3 sesiones (231 min)
-2025-11-03 06:05:31,537 [INFO] -        • Press Banca: 3 sesiones (14 min)
-2025-11-03 06:05:31,537 [INFO] -        • Otro (73): 2 sesiones (154 min)
-2025-11-03 06:05:31,539 [INFO] -   Campos detectados: ejercicio
-2025-11-03 06:05:31,539 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,539 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-39-43.json
-2025-11-03 06:05:31,539 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-39-46.json
-2025-11-03 06:05:31,539 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-39-46.json
-2025-11-03 06:05:31,539 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,539 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-39-46.json
-2025-11-03 06:05:31,539 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-39-46.json
-2025-11-03 06:05:31,539 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,539 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-39-46.json
-2025-11-03 06:05:31,540 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-39-58.json
-2025-11-03 06:05:31,540 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-39-58.json
-2025-11-03 06:05:31,540 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,540 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-39-58.json
-2025-11-03 06:05:31,540 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-39-58.json
-2025-11-03 06:05:31,540 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,540 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-39-58.json
-2025-11-03 06:05:31,540 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-40-58.json
-2025-11-03 06:05:31,540 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-40-58.json
-2025-11-03 06:05:31,540 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,540 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-40-58.json
-2025-11-03 06:05:31,540 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-40-58.json
-2025-11-03 06:05:31,540 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,541 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-40-58.json
-2025-11-03 06:05:31,541 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-42-58.json
-2025-11-03 06:05:31,541 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-42-58.json
-2025-11-03 06:05:31,541 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,541 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-42-58.json
-2025-11-03 06:05:31,541 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-42-58.json
-2025-11-03 06:05:31,541 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,541 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-42-58.json
-2025-11-03 06:05:31,541 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-45-09.json
-2025-11-03 06:05:31,582 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-45-09.json
-2025-11-03 06:05:31,583 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,583 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-45-09.json
-2025-11-03 06:05:31,583 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-45-09.json
-2025-11-03 06:05:31,583 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,583 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-45-09.json
-2025-11-03 06:05:31,583 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_01-54-56.json
-2025-11-03 06:05:31,583 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_01-54-56.json
-2025-11-03 06:05:31,583 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,583 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_01-54-56.json
-2025-11-03 06:05:31,583 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_01-54-56.json
-2025-11-03 06:05:31,583 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,584 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_01-54-56.json
-2025-11-03 06:05:31,584 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_02-09-54.json
-2025-11-03 06:05:31,584 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_02-09-54.json
-2025-11-03 06:05:31,584 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,584 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_02-09-54.json
-2025-11-03 06:05:31,584 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_02-09-54.json
-2025-11-03 06:05:31,584 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,584 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_02-09-54.json
-2025-11-03 06:05:31,584 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_02-12-15.json
-2025-11-03 06:05:31,584 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_02-12-15.json
-2025-11-03 06:05:31,584 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,584 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_02-12-15.json
-2025-11-03 06:05:31,584 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_02-12-15.json
-2025-11-03 06:05:31,584 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,585 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_02-12-15.json
-2025-11-03 06:05:31,585 [INFO] - → Procesando [FULL]: health_data_AUTO_FULL_2025-11-03_02-48-31.json
-2025-11-03 06:05:31,585 [INFO] - Procesando archivo: health_data_AUTO_FULL_2025-11-03_02-48-31.json
-2025-11-03 06:05:31,585 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_records&#x27;, &#x27;exercise_sessions&#x27;, &#x27;sleep_sessions&#x27;, &#x27;vo2max_records&#x27;, &#x27;steps_records&#x27;, &#x27;distance_records&#x27;, &#x27;total_calories_records&#x27;, &#x27;resting_heart_rate_records&#x27;, &#x27;oxygen_saturation_records&#x27;, &#x27;height_records&#x27;, &#x27;body_fat_records&#x27;, &#x27;lean_body_mass_records&#x27;, &#x27;bone_mass_records&#x27;, &#x27;basal_metabolic_rate_records&#x27;, &#x27;body_water_mass_records&#x27;, &#x27;heart_rate_records&#x27;, &#x27;blood_pressure_records&#x27;, &#x27;blood_glucose_records&#x27;, &#x27;nutrition_records&#x27;, &#x27;active_calories_burned_records&#x27;]
-2025-11-03 06:05:31,585 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_FULL_2025-11-03_02-48-31.json
-2025-11-03 06:05:31,585 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_FULL_2025-11-03_02-48-31.json
-2025-11-03 06:05:31,585 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-03 06:05:31,585 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_FULL_2025-11-03_02-48-31.json
-2025-11-03 06:05:31,901 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-03 06:05:31,901 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-03 06:05:31,901 [INFO] - ==================================================
-2025-11-03 06:05:31,901 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-03
-2025-11-03 06:05:31,901 [INFO] - Ventana de 7 días: 2025-10-28 a 2025-11-03
-2025-11-03 06:05:31,902 [INFO] - PAI TOTAL SEMANAL: 1307.7
-2025-11-03 06:05:31,902 [INFO] - Entrenamientos en ventana: 126
-2025-11-03 06:05:31,902 [INFO] - ==================================================
-2025-11-03 06:05:31,910 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 294
-2025-11-03 06:05:31,911 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-03 06:05:31,911 [INFO] -    - 2025-10-28: 3,229 pasos (de 13 registros)
-2025-11-03 06:05:31,911 [INFO] -    - 2025-10-29: 12,828 pasos (de 7 registros)
-2025-11-03 06:05:31,911 [INFO] -    - 2025-10-30: 15,056 pasos (de 15 registros)
-2025-11-03 06:05:31,911 [INFO] -    - 2025-10-31: 22,086 pasos (de 28 registros)
-2025-11-03 06:05:31,911 [INFO] -    - 2025-11-01: 21,126 pasos (de 37 registros)
-2025-11-03 06:05:31,911 [INFO] -    - 2025-11-02: 12,285 pasos (de 18 registros)
-2025-11-03 06:05:31,912 [INFO] -    - 2025-11-03: 300 pasos (de 1 registros)
-2025-11-03 06:05:31,912 [INFO] - 📈 Pasos promedio calculado: 12,416 pasos/día (últimos 7 días)
-2025-11-03 06:05:31,918 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+        <pre id="logs-content" class="logs-hidden">2025-11-03 06:35:26,830 [INFO] - 
+2025-11-03 06:35:26,830 [INFO] - ================================================================================
+2025-11-03 06:35:26,830 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-03 06:35:26,830 [INFO] - ================================================================================
+2025-11-03 06:35:26,830 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-03 06:35:26,830 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-03 06:35:26,830 [INFO] - ================================================================================
+2025-11-03 06:35:26,830 [INFO] - 
+2025-11-03 06:35:26,830 [INFO] - ================================================================================
+2025-11-03 06:35:26,830 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-03 06:35:26,830 [INFO] - ================================================================================
+2025-11-03 06:35:26,910 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-03 06:35:26,911 [INFO] - Total archivos JSON encontrados: 225
+2025-11-03 06:35:26,911 [INFO] - Archivos ya procesados: 247
+2025-11-03 06:35:26,911 [INFO] - Archivos nuevos a procesar: 0
+2025-11-03 06:35:26,911 [INFO] - No hay archivos nuevos para procesar.
+2025-11-03 06:35:26,911 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-03 06:35:26,911 [INFO] - ==================================================
+2025-11-03 06:35:26,911 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-03
+2025-11-03 06:35:26,911 [INFO] - Ventana de 7 días: 2025-10-28 a 2025-11-03
+2025-11-03 06:35:26,912 [INFO] - PAI TOTAL SEMANAL: 1307.7
+2025-11-03 06:35:26,912 [INFO] - Entrenamientos en ventana: 126
+2025-11-03 06:35:26,913 [INFO] - ==================================================
+2025-11-03 06:35:26,919 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 294
+2025-11-03 06:35:26,921 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-03 06:35:26,921 [INFO] -    - 2025-10-28: 3,229 pasos (de 13 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-10-29: 12,828 pasos (de 7 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-10-30: 15,056 pasos (de 15 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-10-31: 22,086 pasos (de 28 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-11-01: 21,126 pasos (de 37 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-11-02: 12,285 pasos (de 18 registros)
+2025-11-03 06:35:26,921 [INFO] -    - 2025-11-03: 300 pasos (de 1 registros)
+2025-11-03 06:35:26,922 [INFO] - 📈 Pasos promedio calculado: 12,416 pasos/día (últimos 7 días)
+2025-11-03 06:35:26,928 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
 </pre>
     </div>
     
@@ -1449,28 +1330,28 @@
         Plotly.newPlot('sueno-chart', [
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03'],
-                y: [0.08333333333333333, 4.958333333333334, 2.8583333333333334, 4.25, 8.866666666666667, 4.291666666666666, 3.9166666666666665, 3.416666666666667, 5.958333333333333, 21.55833333333333, 6.483333333333334, 3.15, 2.216666666666667, 0.9833333333333333],
+                y: [0.0, 4.958333333333334, 2.8583333333333334, 4.25, 8.866666666666667, 4.291666666666666, 3.9166666666666665, 3.416666666666667, 5.958333333333333, 21.55833333333333, 6.483333333333334, 3.15, 2.216666666666667, 0.9833333333333333],
                 name: 'Profundo',
                 type: 'bar',
                 marker: { color: '#1f6feb' }
             },
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03'],
-                y: [18.916666666666668, 13.374999999999998, 16.166666666666664, 16.416666666666664, 20.6, 19.666666666666664, 22.208333333333336, 18.583333333333336, 22.333333333333336, 19.875000000000004, 19.8, 16.25, 10.850000000000001, 2.466666666666667],
+                y: [9.041666666666668, 13.374999999999998, 16.166666666666664, 16.416666666666664, 20.6, 19.666666666666664, 22.208333333333336, 18.583333333333336, 22.333333333333336, 19.875000000000004, 19.8, 16.25, 10.850000000000001, 2.466666666666667],
                 name: 'Ligero',
                 type: 'bar',
                 marker: { color: '#d29922' }
             },
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03'],
-                y: [1.2083333333333333, 8.325000000000001, 4.124999999999999, 10.733333333333333, 9.375, 11.283333333333335, 7.708333333333334, 3.083333333333333, 13.099999999999996, 4.7749999999999995, 9.8, 4.3, 2.5083333333333333, 0.016666666666666666],
+                y: [0.9166666666666666, 8.325000000000001, 4.124999999999999, 10.733333333333333, 9.375, 11.283333333333335, 7.708333333333334, 3.083333333333333, 13.099999999999996, 4.7749999999999995, 9.8, 4.3, 2.5083333333333333, 0.016666666666666666],
                 name: 'REM',
                 type: 'bar',
                 marker: { color: '#8957e5' }
             },
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03'],
-                y: [1.2916666666666665, 3.5416666666666665, 5.983333333333333, 6.316666666666666, 11.508333333333336, 6.291666666666665, 5.416666666666666, 1.7500000000000002, 5.141666666666666, 3.5583333333333336, 4.916666666666666, 2.5, 3.091666666666666, 0.7333333333333333],
+                y: [0.5416666666666666, 3.5416666666666665, 5.983333333333333, 6.316666666666666, 11.508333333333336, 6.291666666666665, 5.416666666666666, 1.7500000000000002, 5.141666666666666, 3.5583333333333336, 4.916666666666666, 2.5, 3.091666666666666, 0.7333333333333333],
                 name: 'Despierto',
                 type: 'bar',
                 marker: { color: '#f85149' }
