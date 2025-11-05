@@ -180,17 +180,8 @@ def generar_dashboard(cache):
     entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
     
     # ✅ PLAN DE ACCIÓN PERSONALIZADO
-    try:
-        logger.info("🎯 Intentando generar plan de acción...")
-        plan_accion = generar_plan_accion(healthspan_data, metricas)
-        logger.info("✓ Plan de acción generado correctamente")
-        plan_accion_html = renderizar_plan_accion_html(plan_accion)
-        logger.info("✓ HTML del plan renderizado correctamente")
-    except Exception as e:
-        logger.error(f"❌ ERROR generando plan de acción: {e}")
-        import traceback
-        logger.error(f"Traceback: {traceback.format_exc()}")
-        plan_accion_html = ""  # Plan vacío si falla
+    plan_accion = generar_plan_accion(healthspan_data, metricas)
+    plan_accion_html = renderizar_plan_accion_html(plan_accion)
     
     # Recomendaciones (✅ AHORA USA HEALTHSPAN)
     recomendaciones_healthspan = generar_recomendaciones_healthspan(healthspan_data, metricas)

@@ -22,18 +22,6 @@ def generar_plan_accion(healthspan_data, metricas):
         }
     """
     
-    # DEBUG: Logging ANTES de todo
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.info("=" * 60)
-    logger.info("🎯 GENERANDO PLAN DE ACCIÓN")
-    logger.info("=" * 60)
-    logger.info(f"Keys en metricas recibidas: {list(metricas.keys())}")
-    logger.info(f"masa_muscular_actual en metricas: {'masa_muscular_actual' in metricas}")
-    if 'masa_muscular_actual' in metricas:
-        logger.info(f"Valor de masa_muscular_actual: {metricas['masa_muscular_actual']}")
-    logger.info("=" * 60)
-    
     # Scores actuales
     fitness = healthspan_data["fitness_score"]
     body = healthspan_data["body_score"]
@@ -42,13 +30,13 @@ def generar_plan_accion(healthspan_data, metricas):
     functional = healthspan_data["functional_score"]
     index_actual = healthspan_data["healthspan_index"]
     
-    # Métricas actuales - Usar 'or' para convertir None a 0
-    grasa = metricas.get("grasa_actual") or 0
-    peso = metricas.get("peso_actual") or 0
-    masa_muscular = metricas.get("masa_muscular_actual") or 0  # ✅ Maneja None correctamente
-    pasos = metricas.get("pasos_promedio") or 0
-    pai = metricas.get("pai_semanal") or 0
-    vo2max = metricas.get("vo2max") or 0
+    # Métricas actuales
+    grasa = metricas.get("grasa_actual", 0)
+    peso = metricas.get("peso_actual", 0)
+    masa_muscular = metricas.get("masa_muscular_actual", 0)  # ✅ Corregido
+    pasos = metricas.get("pasos_promedio", 0)
+    pai = metricas.get("pai_semanal", 0)
+    vo2max = metricas.get("vo2max", 0)
     
     # DEBUG: Logging temporal
     import logging
