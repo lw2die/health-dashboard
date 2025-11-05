@@ -386,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 05/11/2025 06:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 05/11/2025 06:35 (Argentina)</p>
             </header>
             
             
@@ -954,206 +954,48 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-05 06:05:41 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-05 06:35:28 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 1805</p>
             <p>✅ <strong>Total registros peso:</strong> 49</p>
             <p>✅ <strong>Total registros pasos:</strong> 389</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 23435 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2791 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-05 06:05:39,707 [INFO] - 
-2025-11-05 06:05:39,707 [INFO] - ================================================================================
-2025-11-05 06:05:39,707 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-05 06:05:39,707 [INFO] - ================================================================================
-2025-11-05 06:05:39,707 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-05 06:05:39,707 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-05 06:05:39,707 [INFO] - ================================================================================
-2025-11-05 06:05:39,707 [INFO] - 
-2025-11-05 06:05:39,707 [INFO] - ================================================================================
-2025-11-05 06:05:39,707 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-05 06:05:39,707 [INFO] - ================================================================================
-2025-11-05 06:05:39,812 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-05 06:05:39,883 [INFO] - Total archivos JSON encontrados: 300
-2025-11-05 06:05:39,883 [INFO] - Archivos ya procesados: 312
-2025-11-05 06:05:39,884 [INFO] - Archivos nuevos a procesar: 14
-2025-11-05 06:05:39,884 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-04_22-02-47.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-04_22-32-48.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-04_23-02-49.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-04_23-33-23.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_00-57-23.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_00-58-21.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_01-03-24.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_02-04-02.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_02-34-02.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_03-04-03.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_03-34-04.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_04-04-13.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_04-34-13.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-05_06-04-14.json&#x27;]
-2025-11-05 06:05:39,884 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-04_22-02-47.json
-2025-11-05 06:05:39,885 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-04_22-02-47.json
-2025-11-05 06:05:39,885 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,885 [INFO] -   → FC en reposo agregada: 3 (desde heart_rate horario nocturno)
-2025-11-05 06:05:39,885 [INFO] -     📊 FC Reposo por fuente:
-2025-11-05 06:05:39,885 [INFO] -        • Samsung Health: 3 registros (total: 158)
-2025-11-05 06:05:39,886 [INFO] -   → Frecuencia cardíaca agregada: 2 días
-2025-11-05 06:05:39,886 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-05 06:05:39,886 [INFO] -        • Samsung Health: 2 registros
-2025-11-05 06:05:39,886 [INFO] -   → Pasos agregados: 2
-2025-11-05 06:05:39,886 [INFO] -     📊 Pasos por fuente:
-2025-11-05 06:05:39,886 [INFO] -        • Samsung Health: 2 registros (total: 8701)
-2025-11-05 06:05:39,886 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca, pasos
-2025-11-05 06:05:39,886 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,886 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-04_22-02-47.json
-2025-11-05 06:05:39,886 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-04_22-32-48.json
-2025-11-05 06:05:39,886 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-04_22-32-48.json
-2025-11-05 06:05:39,886 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,887 [INFO] -   → FC en reposo agregada: 2 (desde heart_rate horario nocturno)
-2025-11-05 06:05:39,887 [INFO] -     📊 FC Reposo por fuente:
-2025-11-05 06:05:39,887 [INFO] -        • Samsung Health: 2 registros (total: 99)
-2025-11-05 06:05:39,887 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-11-05 06:05:39,887 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-05 06:05:39,887 [INFO] -        • Samsung Health: 1 registros
-2025-11-05 06:05:39,887 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca
-2025-11-05 06:05:39,887 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,887 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-04_22-32-48.json
-2025-11-05 06:05:39,888 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-04_23-02-49.json
-2025-11-05 06:05:39,888 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-04_23-02-49.json
-2025-11-05 06:05:39,888 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,888 [INFO] -   → FC en reposo agregada: 1 (desde heart_rate horario nocturno)
-2025-11-05 06:05:39,888 [INFO] -     📊 FC Reposo por fuente:
-2025-11-05 06:05:39,888 [INFO] -        • Samsung Health: 1 registros (total: 47)
-2025-11-05 06:05:39,888 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-11-05 06:05:39,888 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-05 06:05:39,888 [INFO] -        • Samsung Health: 1 registros
-2025-11-05 06:05:39,888 [INFO] -   → Pasos agregados: 1
-2025-11-05 06:05:39,888 [INFO] -     📊 Pasos por fuente:
-2025-11-05 06:05:39,888 [INFO] -        • Samsung Health: 1 registros (total: 3245)
-2025-11-05 06:05:39,888 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca, pasos
-2025-11-05 06:05:39,888 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,889 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-04_23-02-49.json
-2025-11-05 06:05:39,889 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-04_23-33-23.json
-2025-11-05 06:05:39,889 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-04_23-33-23.json
-2025-11-05 06:05:39,889 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,889 [INFO] -   → FC en reposo agregada: 2 (desde heart_rate horario nocturno)
-2025-11-05 06:05:39,889 [INFO] -     📊 FC Reposo por fuente:
-2025-11-05 06:05:39,889 [INFO] -        • Samsung Health: 2 registros (total: 97)
-2025-11-05 06:05:39,889 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-11-05 06:05:39,889 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-05 06:05:39,889 [INFO] -        • Samsung Health: 1 registros
-2025-11-05 06:05:39,889 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca
-2025-11-05 06:05:39,889 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,890 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-04_23-33-23.json
-2025-11-05 06:05:39,890 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_00-57-23.json
-2025-11-05 06:05:39,890 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_00-57-23.json
-2025-11-05 06:05:39,890 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,890 [INFO] -   → Peso agregado: 1 días (rechazados: 0)
-2025-11-05 06:05:39,890 [INFO] -      📊 Peso por fuente:
-2025-11-05 06:05:39,890 [INFO] -         • com.example.healthconnectsample: 1 registros
-2025-11-05 06:05:39,890 [INFO] -   Campos detectados: peso
-2025-11-05 06:05:39,890 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,891 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_00-57-23.json
-2025-11-05 06:05:39,891 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_00-58-21.json
-2025-11-05 06:05:39,891 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_00-58-21.json
-2025-11-05 06:05:39,891 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,891 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_DIFF_2025-11-05_00-58-21.json
-2025-11-05 06:05:39,891 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_DIFF_2025-11-05_00-58-21.json
-2025-11-05 06:05:39,891 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,892 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_00-58-21.json
-2025-11-05 06:05:39,892 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_01-03-24.json
-2025-11-05 06:05:39,892 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_01-03-24.json
-2025-11-05 06:05:39,892 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,892 [INFO] -   → Presión arterial agregada: 1
-2025-11-05 06:05:39,892 [INFO] -     📊 Presión Arterial por fuente:
-2025-11-05 06:05:39,892 [INFO] -        • Samsung Health: 1 registros
-2025-11-05 06:05:39,892 [INFO] -   Campos detectados: presion_arterial
-2025-11-05 06:05:39,892 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,892 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_01-03-24.json
-2025-11-05 06:05:39,892 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_02-04-02.json
-2025-11-05 06:05:39,895 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_02-04-02.json
-2025-11-05 06:05:39,895 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,901 [INFO] -   → Pasos agregados: 6
-2025-11-05 06:05:39,901 [INFO] -     📊 Pasos por fuente:
-2025-11-05 06:05:39,901 [INFO] -        • FitbitMobile: 6 registros (total: 88353)
-2025-11-05 06:05:39,901 [INFO] -   Campos detectados: pasos
-2025-11-05 06:05:39,901 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,901 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_02-04-02.json
-2025-11-05 06:05:39,901 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_02-34-02.json
-2025-11-05 06:05:39,902 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_02-34-02.json
-2025-11-05 06:05:39,902 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,902 [WARNING] -   ⚠  No se detectaron campos conocidos en health_data_AUTO_DIFF_2025-11-05_02-34-02.json
-2025-11-05 06:05:39,902 [WARNING] -   ⚠ No se detectaron campos en health_data_AUTO_DIFF_2025-11-05_02-34-02.json
-2025-11-05 06:05:39,902 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,902 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_02-34-02.json
-2025-11-05 06:05:39,902 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_03-04-03.json
-2025-11-05 06:05:39,905 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_03-04-03.json
-2025-11-05 06:05:39,905 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,911 [INFO] -   → Calorías totales agregadas: 11 días
-2025-11-05 06:05:39,911 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-05 06:05:39,911 [INFO] -        • FitbitMobile: 11 registros (total: 16985)
-2025-11-05 06:05:39,911 [INFO] -   Campos detectados: calorias_totales
-2025-11-05 06:05:39,911 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,912 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_03-04-03.json
-2025-11-05 06:05:39,912 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_03-34-04.json
-2025-11-05 06:05:39,914 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_03-34-04.json
-2025-11-05 06:05:39,914 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,985 [INFO] -   → Calorías totales agregadas: 12 días
-2025-11-05 06:05:39,985 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-05 06:05:39,985 [INFO] -        • FitbitMobile: 12 registros (total: 17009)
-2025-11-05 06:05:39,985 [INFO] -   Campos detectados: calorias_totales
-2025-11-05 06:05:39,985 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:39,986 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_03-34-04.json
-2025-11-05 06:05:39,986 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_04-04-13.json
-2025-11-05 06:05:39,989 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_04-04-13.json
-2025-11-05 06:05:39,990 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:39,990 [INFO] -   → Ejercicios agregados: 20
-2025-11-05 06:05:39,990 [INFO] -     📊 Ejercicios por tipo:
-2025-11-05 06:05:39,990 [INFO] -        • Walking: 15 sesiones (749 min)
-2025-11-05 06:05:39,990 [INFO] -        • Swimming: 3 sesiones (135 min)
-2025-11-05 06:05:39,990 [INFO] -        • Aparatos de Musculación: 2 sesiones (10 min)
-2025-11-05 06:05:39,991 [INFO] -   → FC en reposo agregada: 4 (desde heart_rate horario nocturno)
-2025-11-05 06:05:39,991 [INFO] -     📊 FC Reposo por fuente:
-2025-11-05 06:05:39,991 [INFO] -        • Samsung Health: 4 registros (total: 183)
-2025-11-05 06:05:39,991 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-11-05 06:05:39,991 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-05 06:05:39,991 [INFO] -        • Samsung Health: 1 registros
-2025-11-05 06:05:39,996 [INFO] -   → Calorías totales agregadas: 10 días
-2025-11-05 06:05:39,996 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-05 06:05:39,996 [INFO] -        • FitbitMobile: 10 registros (total: 17887)
-2025-11-05 06:05:39,996 [INFO] -   → Pasos agregados: 2
-2025-11-05 06:05:39,996 [INFO] -     📊 Pasos por fuente:
-2025-11-05 06:05:39,996 [INFO] -        • Samsung Health: 2 registros (total: 3344)
-2025-11-05 06:05:40,000 [INFO] -   → Distancia agregada: 6 días
-2025-11-05 06:05:40,000 [INFO] -     📊 Distancia por fuente:
-2025-11-05 06:05:40,001 [INFO] -        • FitbitMobile: 6 registros (total: 65)
-2025-11-05 06:05:40,001 [INFO] -   Campos detectados: ejercicio, fc_reposo, frecuencia_cardiaca, calorias_totales, pasos, distancia
-2025-11-05 06:05:40,001 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:40,001 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_04-04-13.json
-2025-11-05 06:05:40,001 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_04-34-13.json
-2025-11-05 06:05:40,001 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_04-34-13.json
-2025-11-05 06:05:40,002 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:40,002 [INFO] -   → Calorías totales agregadas: 1 días
-2025-11-05 06:05:40,002 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-05 06:05:40,002 [INFO] -        • FitbitMobile: 1 registros (total: 169)
-2025-11-05 06:05:40,002 [INFO] -   Campos detectados: calorias_totales
-2025-11-05 06:05:40,002 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:40,002 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_04-34-13.json
-2025-11-05 06:05:40,002 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-05_06-04-14.json
-2025-11-05 06:05:40,002 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-05_06-04-14.json
-2025-11-05 06:05:40,002 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-05 06:05:40,002 [INFO] -   → Calorías totales agregadas: 1 días
-2025-11-05 06:05:40,002 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-05 06:05:40,003 [INFO] -        • FitbitMobile: 1 registros (total: 96)
-2025-11-05 06:05:40,003 [INFO] -   Campos detectados: calorias_totales
-2025-11-05 06:05:40,003 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-05 06:05:40,003 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-05_06-04-14.json
-2025-11-05 06:05:40,803 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-05 06:05:40,803 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-05 06:05:40,803 [INFO] - ==================================================
-2025-11-05 06:05:40,804 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-05
-2025-11-05 06:05:40,804 [INFO] - Ventana de 7 días: 2025-10-30 a 2025-11-05
-2025-11-05 06:05:40,805 [INFO] - PAI TOTAL SEMANAL: 1803.5
-2025-11-05 06:05:40,806 [INFO] - Entrenamientos en ventana: 163
-2025-11-05 06:05:40,806 [INFO] - ==================================================
-2025-11-05 06:05:40,816 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 389
-2025-11-05 06:05:40,818 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-05 06:05:40,818 [INFO] -    - 2025-10-30: 15,056 pasos (de 16 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-10-31: 22,086 pasos (de 29 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-11-01: 21,126 pasos (de 41 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-11-02: 12,428 pasos (de 21 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-11-03: 5,480 pasos (de 27 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-11-04: 3,287 pasos (de 19 registros)
-2025-11-05 06:05:40,818 [INFO] -    - 2025-11-05: 57 pasos (de 1 registros)
-2025-11-05 06:05:40,818 [INFO] - 📈 Pasos promedio calculado: 11,360 pasos/día (últimos 7 días)
-2025-11-05 06:05:40,889 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+        <pre id="logs-content" class="logs-hidden">2025-11-05 06:35:28,338 [INFO] - 
+2025-11-05 06:35:28,338 [INFO] - ================================================================================
+2025-11-05 06:35:28,338 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-05 06:35:28,339 [INFO] - ================================================================================
+2025-11-05 06:35:28,339 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-05 06:35:28,339 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-05 06:35:28,339 [INFO] - ================================================================================
+2025-11-05 06:35:28,339 [INFO] - 
+2025-11-05 06:35:28,339 [INFO] - ================================================================================
+2025-11-05 06:35:28,339 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-05 06:35:28,339 [INFO] - ================================================================================
+2025-11-05 06:35:28,413 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-05 06:35:28,415 [INFO] - Total archivos JSON encontrados: 300
+2025-11-05 06:35:28,415 [INFO] - Archivos ya procesados: 326
+2025-11-05 06:35:28,415 [INFO] - Archivos nuevos a procesar: 0
+2025-11-05 06:35:28,415 [INFO] - No hay archivos nuevos para procesar.
+2025-11-05 06:35:28,415 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-05 06:35:28,415 [INFO] - ==================================================
+2025-11-05 06:35:28,415 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-05
+2025-11-05 06:35:28,415 [INFO] - Ventana de 7 días: 2025-10-30 a 2025-11-05
+2025-11-05 06:35:28,417 [INFO] - PAI TOTAL SEMANAL: 1803.5
+2025-11-05 06:35:28,417 [INFO] - Entrenamientos en ventana: 163
+2025-11-05 06:35:28,417 [INFO] - ==================================================
+2025-11-05 06:35:28,426 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 389
+2025-11-05 06:35:28,428 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-05 06:35:28,428 [INFO] -    - 2025-10-30: 15,056 pasos (de 16 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-10-31: 22,086 pasos (de 29 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-11-01: 21,126 pasos (de 41 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-11-02: 12,428 pasos (de 21 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-11-03: 5,480 pasos (de 27 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-11-04: 3,287 pasos (de 19 registros)
+2025-11-05 06:35:28,428 [INFO] -    - 2025-11-05: 57 pasos (de 1 registros)
+2025-11-05 06:35:28,428 [INFO] - 📈 Pasos promedio calculado: 11,360 pasos/día (últimos 7 días)
+2025-11-05 06:35:28,435 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
 </pre>
     </div>
     
