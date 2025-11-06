@@ -386,7 +386,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 06/11/2025 09:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 06/11/2025 09:35 (Argentina)</p>
             </header>
             
             
@@ -709,13 +709,13 @@
     
     <div class="metric-card">
         <div class="metric-label">Sueño (7 días)</div>
-        <div class="metric-value" style="color: #3fb950;">28.7h</div>
+        <div class="metric-value" style="color: #3fb950;">28.8h</div>
         <div class="metric-detail">Óptimo</div>
     </div>
     
     <div class="metric-card">
         <div class="metric-label">SpO2 (7 días)</div>
-        <div class="metric-value" style="color: #3fb950;">98.6%</div>
+        <div class="metric-value" style="color: #3fb950;">98.7%</div>
         <div class="metric-detail">Normal</div>
     </div>
     
@@ -954,63 +954,72 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-06 09:05:05 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-06 09:35:07 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 1805</p>
             <p>✅ <strong>Total registros peso:</strong> 50</p>
-            <p>✅ <strong>Total registros pasos:</strong> 417</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4612 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 418</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 5245 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-06 09:05:04,325 [INFO] - 
-2025-11-06 09:05:04,326 [INFO] - ================================================================================
-2025-11-06 09:05:04,326 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-06 09:05:04,326 [INFO] - ================================================================================
-2025-11-06 09:05:04,326 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-06 09:05:04,326 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-06 09:05:04,326 [INFO] - ================================================================================
-2025-11-06 09:05:04,326 [INFO] - 
-2025-11-06 09:05:04,326 [INFO] - ================================================================================
-2025-11-06 09:05:04,326 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-06 09:05:04,326 [INFO] - ================================================================================
-2025-11-06 09:05:04,429 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-06 09:05:04,431 [INFO] - Total archivos JSON encontrados: 333
-2025-11-06 09:05:04,431 [INFO] - Archivos ya procesados: 360
-2025-11-06 09:05:04,431 [INFO] - Archivos nuevos a procesar: 1
-2025-11-06 09:05:04,431 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-06_08-39-24.json&#x27;]
-2025-11-06 09:05:04,431 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-06_08-39-24.json
-2025-11-06 09:05:04,432 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-06_08-39-24.json
-2025-11-06 09:05:04,432 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-06 09:05:04,432 [INFO] -   → Calorías totales agregadas: 1 días
-2025-11-06 09:05:04,432 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-06 09:05:04,432 [INFO] -        • FitbitMobile: 1 registros (total: 172)
-2025-11-06 09:05:04,432 [INFO] -   Campos detectados: calorias_totales
-2025-11-06 09:05:04,432 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-06 09:05:04,433 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-06_08-39-24.json
-2025-11-06 09:05:04,887 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-06 09:05:04,887 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-06 09:05:04,887 [INFO] - ==================================================
-2025-11-06 09:05:04,887 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-06
-2025-11-06 09:05:04,887 [INFO] - Ventana de 7 días: 2025-10-31 a 2025-11-06
-2025-11-06 09:05:04,888 [INFO] - PAI TOTAL SEMANAL: 1378.5
-2025-11-06 09:05:04,888 [INFO] - Entrenamientos en ventana: 129
-2025-11-06 09:05:04,888 [INFO] - ==================================================
-2025-11-06 09:05:04,900 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.49
-2025-11-06 09:05:04,900 [INFO] -    Último registro: {&#x27;fecha&#x27;: &#x27;2025-11-06T09:24:13Z&#x27;, &#x27;masa_kg&#x27;: 56.49, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-06 09:05:04,900 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 417
-2025-11-06 09:05:04,902 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-06 09:05:04,902 [INFO] -    - 2025-10-31: 22,086 pasos (de 29 registros)
-2025-11-06 09:05:04,902 [INFO] -    - 2025-11-01: 21,126 pasos (de 41 registros)
-2025-11-06 09:05:04,902 [INFO] -    - 2025-11-02: 12,428 pasos (de 21 registros)
-2025-11-06 09:05:04,902 [INFO] -    - 2025-11-03: 5,480 pasos (de 27 registros)
-2025-11-06 09:05:04,903 [INFO] -    - 2025-11-04: 3,287 pasos (de 19 registros)
-2025-11-06 09:05:04,903 [INFO] -    - 2025-11-05: 3,633 pasos (de 28 registros)
-2025-11-06 09:05:04,903 [INFO] -    - 2025-11-06: 220 pasos (de 1 registros)
-2025-11-06 09:05:04,903 [INFO] - 📈 Pasos promedio calculado: 9,751 pasos/día (últimos 7 días)
-2025-11-06 09:05:04,910 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-06 09:05:05,131 [INFO] - 🎯 Intentando generar plan de acción...
-2025-11-06 09:05:05,131 [INFO] - ✓ Plan de acción generado correctamente
-2025-11-06 09:05:05,131 [INFO] - ✓ HTML del plan renderizado correctamente
+        <pre id="logs-content" class="logs-hidden">2025-11-06 09:35:06,717 [INFO] - 
+2025-11-06 09:35:06,718 [INFO] - ================================================================================
+2025-11-06 09:35:06,718 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-06 09:35:06,718 [INFO] - ================================================================================
+2025-11-06 09:35:06,718 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-06 09:35:06,718 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-06 09:35:06,718 [INFO] - ================================================================================
+2025-11-06 09:35:06,718 [INFO] - 
+2025-11-06 09:35:06,718 [INFO] - ================================================================================
+2025-11-06 09:35:06,718 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-06 09:35:06,718 [INFO] - ================================================================================
+2025-11-06 09:35:06,809 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-06 09:35:06,811 [INFO] - Total archivos JSON encontrados: 334
+2025-11-06 09:35:06,811 [INFO] - Archivos ya procesados: 361
+2025-11-06 09:35:06,811 [INFO] - Archivos nuevos a procesar: 1
+2025-11-06 09:35:06,811 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-06_09-09-25.json&#x27;]
+2025-11-06 09:35:06,811 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-06_09-09-25.json
+2025-11-06 09:35:06,811 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-06_09-09-25.json
+2025-11-06 09:35:06,811 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;weight_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;resting_heart_rate_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;height_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_water_mass_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-06 09:35:06,811 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-11-06 09:35:06,812 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-11-06 09:35:06,812 [INFO] -        • Samsung Health: 1 registros
+2025-11-06 09:35:06,812 [INFO] -   → Pasos agregados: 1
+2025-11-06 09:35:06,812 [INFO] -     📊 Pasos por fuente:
+2025-11-06 09:35:06,812 [INFO] -        • Samsung Health: 1 registros (total: 216)
+2025-11-06 09:35:06,812 [INFO] -   → SpO2 agregado: 1
+2025-11-06 09:35:06,812 [INFO] -     📊 SpO2 por fuente:
+2025-11-06 09:35:06,812 [INFO] -        • Samsung Health: 1 registros (total: 98)
+2025-11-06 09:35:06,812 [INFO] -   → Sueño agregado: 1 sesiones
+2025-11-06 09:35:06,812 [INFO] -      📊 Sueño por fuente:
+2025-11-06 09:35:06,812 [INFO] -         • com.sec.android.app.shealth: 1 sesiones
+2025-11-06 09:35:06,812 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos, spo2, sueno
+2025-11-06 09:35:06,812 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-06 09:35:06,812 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-06_09-09-25.json
+2025-11-06 09:35:07,291 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-06 09:35:07,291 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-06 09:35:07,292 [INFO] - ==================================================
+2025-11-06 09:35:07,292 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-06
+2025-11-06 09:35:07,292 [INFO] - Ventana de 7 días: 2025-10-31 a 2025-11-06
+2025-11-06 09:35:07,294 [INFO] - PAI TOTAL SEMANAL: 1378.5
+2025-11-06 09:35:07,294 [INFO] - Entrenamientos en ventana: 129
+2025-11-06 09:35:07,294 [INFO] - ==================================================
+2025-11-06 09:35:07,304 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.49
+2025-11-06 09:35:07,304 [INFO] -    Último registro: {&#x27;fecha&#x27;: &#x27;2025-11-06T09:24:13Z&#x27;, &#x27;masa_kg&#x27;: 56.49, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-06 09:35:07,304 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 418
+2025-11-06 09:35:07,307 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-06 09:35:07,307 [INFO] -    - 2025-10-31: 22,086 pasos (de 29 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-01: 21,126 pasos (de 41 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-02: 12,428 pasos (de 21 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-03: 5,480 pasos (de 27 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-04: 3,287 pasos (de 19 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-05: 3,633 pasos (de 28 registros)
+2025-11-06 09:35:07,307 [INFO] -    - 2025-11-06: 220 pasos (de 2 registros)
+2025-11-06 09:35:07,307 [INFO] - 📈 Pasos promedio calculado: 9,751 pasos/día (últimos 7 días)
+2025-11-06 09:35:07,315 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-06 09:35:07,529 [INFO] - 🎯 Intentando generar plan de acción...
+2025-11-06 09:35:07,529 [INFO] - ✓ Plan de acción generado correctamente
+2025-11-06 09:35:07,529 [INFO] - ✓ HTML del plan renderizado correctamente
 </pre>
     </div>
     
@@ -1179,7 +1188,7 @@
         Plotly.newPlot('fc-diurna-chart', [
             {
                 x: ['2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06'],
-                y: [53, 51, 52, 54, 51, 54, 50, 48, 47, 48, 52, 49, 55, 53, 53, 52, 49, 47, 52, 48, 48, 47, 50, 50, 49, 48, 48, 50, 45, 50],
+                y: [53, 51, 52, 54, 51, 54, 50, 48, 47, 48, 52, 49, 55, 53, 53, 52, 49, 47, 52, 48, 48, 47, 50, 50, 49, 48, 48, 50, 45, 48],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Mínima',
@@ -1188,7 +1197,7 @@
             },
             {
                 x: ['2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06'],
-                y: [78.7753205128205, 78.94212962962962, 84.8616037735849, 78.89372783687942, 67.20645363408521, 70.66453125, 73.95801404853128, 68.51261174968072, 76.55327380952383, 62.92045454545453, 74.9995828698554, 70.85496794871793, 72.9720625798212, 77.06490384615384, 76.04185267857143, 75.82444444444445, 59.67319794050343, 74.91042768959437, 67.44258585858583, 63.31518916655033, 58.84962406015036, 76.18055555555556, 74.11157796451916, 83.42857142857147, 73.36870845204182, 71.34622834388917, 65.38272604588394, 63.032671957671965, 60.714999999999996, 58.73333333333333],
+                y: [78.7753205128205, 78.94212962962962, 84.8616037735849, 78.89372783687942, 67.20645363408521, 70.66453125, 73.95801404853128, 68.51261174968072, 76.55327380952383, 62.92045454545453, 74.9995828698554, 70.85496794871793, 72.9720625798212, 77.06490384615384, 76.04185267857143, 75.82444444444445, 59.67319794050343, 74.91042768959437, 67.44258585858583, 63.31518916655033, 58.84962406015036, 76.18055555555556, 74.11157796451916, 83.42857142857147, 73.36870845204182, 71.34622834388917, 65.38272604588394, 63.032671957671965, 60.714999999999996, 57.3],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -1352,21 +1361,21 @@
             },
             {
                 x: ['2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06'],
-                y: [0.0, 33.1, 31.466666666666665, 35.533333333333346, 29.73333333333334, 35.73333333333334, 31.800000000000008, 29.700000000000003, 24.374999999999996, 17.050000000000004, 22.200000000000006, 5.95, 2.683333333333333, 2.75],
+                y: [0.0, 33.1, 31.466666666666665, 35.533333333333346, 29.73333333333334, 35.73333333333334, 31.800000000000008, 29.700000000000003, 24.374999999999996, 17.050000000000004, 22.200000000000006, 5.95, 2.683333333333333, 3.7666666666666666],
                 name: 'Ligero',
                 type: 'bar',
                 marker: { color: '#d29922' }
             },
             {
                 x: ['2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06'],
-                y: [5.949999999999999, 15.2, 18.483333333333334, 12.333333333333332, 4.933333333333333, 21.4, 8.1, 14.750000000000002, 6.45, 3.941666666666667, 2.05, 1.1083333333333334, 0.9333333333333333, 1.6916666666666667],
+                y: [5.949999999999999, 15.2, 18.483333333333334, 12.333333333333332, 4.933333333333333, 21.4, 8.1, 14.750000000000002, 6.45, 3.941666666666667, 2.05, 1.1083333333333334, 0.9333333333333333, 1.7],
                 name: 'REM',
                 type: 'bar',
                 marker: { color: '#8957e5' }
             },
             {
                 x: ['2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06'],
-                y: [1.8666666666666665, 18.93333333333334, 10.466666666666667, 8.666666666666664, 2.7999999999999994, 8.566666666666666, 5.983333333333334, 7.516666666666665, 3.7499999999999996, 4.858333333333332, 5.1, 1.8166666666666667, 0.4083333333333333, 0.9166666666666666],
+                y: [1.8666666666666665, 18.93333333333334, 10.466666666666667, 8.666666666666664, 2.7999999999999994, 8.566666666666666, 5.983333333333334, 7.516666666666665, 3.7499999999999996, 4.858333333333332, 5.1, 1.8166666666666667, 0.4083333333333333, 0.9583333333333333],
                 name: 'Despierto',
                 type: 'bar',
                 marker: { color: '#f85149' }
