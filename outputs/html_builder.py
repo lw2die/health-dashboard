@@ -389,6 +389,74 @@ def generar_css():
         .log-warning { color: #d29922; }
         .log-error { color: #f85149; }
         .log-success { color: #3fb950; }
+
+        /* ═══════════════════════════════════════ */
+        /* NUTRITION CARDS */
+        /* ═══════════════════════════════════════ */
+        
+        .nutrition-section {
+            background: linear-gradient(135deg, #2d1b3d 0%, #3d2b4d 100%);
+            border: 2px solid #b392f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .nutrition-section h2 {
+            color: #d2a8ff;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .nutrition-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid #b392f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .nutrition-card h3 {
+            color: #d2a8ff;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .macro-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .macro-label {
+            min-width: 120px;
+            color: #c9d1d9;
+            font-size: 0.95em;
+        }
+        
+        .macro-value {
+            margin-left: auto;
+            color: #d2a8ff;
+            font-weight: bold;
+        }
+        
+        .deficit-positive {
+            color: #3fb950 !important;
+        }
+        
+        .deficit-negative {
+            color: #f85149 !important;
+        }
+        
+        .deficit-neutral {
+            color: #ffa657 !important;
+        }
     </style>
     """
 
@@ -946,9 +1014,143 @@ def generar_javascript(datos_graficos):
     
     // Ejecutar al cargar la página
     document.addEventListener('DOMContentLoaded', formatearLogs);
+        // ═══════════════════════════════════════════════════════════════
+        // NUTRITION - Gráfico de Macronutrientes
+        // ═══════════════════════════════════════════════════════════════
+        if (datos.nutrition && datos.nutrition.fechas.length > 0) {
+            new Chart(document.getElementById('nutrition-chart'), {
+                type: 'bar',
+                data: {
+                    labels: datos.nutrition.fechas,
+                    datasets: [
+                        {
+                            label: 'Proteínas (g)',
+                            data: datos.nutrition.proteinas,
+                            backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Carbohidratos (g)',
+                            data: datos.nutrition.carbohidratos,
+                            backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Grasas (g)',
+                            data: datos.nutrition.grasas,
+                            backgroundColor: 'rgba(255, 206, 86, 0.8)',
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#c9d1d9' } },
+                        title: { display: true, text: 'Macronutrientes Diarios (g)', color: '#79c0ff', font: { size: 14 } }
+                    },
+                    scales: {
+                        x: { stacked: false, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' } },
+                        y: { stacked: false, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' }, title: { display: true, text: 'Gramos', color: '#8b949e' } }
+                    }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // NUTRITION - Calorías por Comida
+        // ═══════════════════════════════════════════════════════════════
+        if (datos.nutrition && datos.nutrition.fechas.length > 0) {
+            new Chart(document.getElementById('nutrition-comidas-chart'), {
+                type: 'bar',
+                data: {
+                    labels: datos.nutrition.fechas,
+                    datasets: [
+                        { label: 'Desayuno', data: datos.nutrition.por_comida.desayuno, backgroundColor: 'rgba(255, 159, 64, 0.8)' },
+                        { label: 'Almuerzo', data: datos.nutrition.por_comida.almuerzo, backgroundColor: 'rgba(75, 192, 192, 0.8)' },
+                        { label: 'Cena', data: datos.nutrition.por_comida.cena, backgroundColor: 'rgba(153, 102, 255, 0.8)' },
+                        { label: 'Snacks', data: datos.nutrition.por_comida.snack, backgroundColor: 'rgba(255, 99, 132, 0.8)' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#c9d1d9' } },
+                        title: { display: true, text: 'Calorías por Tipo de Comida', color: '#79c0ff', font: { size: 14 } }
+                    },
+                    scales: {
+                        x: { stacked: true, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' } },
+                        y: { stacked: true, ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' }, title: { display: true, text: 'Calorías (kcal)', color: '#8b949e' } }
+                    }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DÉFICIT CALÓRICO - Líneas
+        // ═══════════════════════════════════════════════════════════════
+        if (datos.deficit && datos.deficit.fechas.length > 0) {
+            new Chart(document.getElementById('deficit-chart'), {
+                type: 'line',
+                data: {
+                    labels: datos.deficit.fechas,
+                    datasets: [
+                        { label: 'Consumido (kcal)', data: datos.deficit.consumido, borderColor: 'rgba(255, 99, 132, 1)', backgroundColor: 'rgba(255, 99, 132, 0.2)', borderWidth: 2, tension: 0.3, fill: true },
+                        { label: 'Quemado (kcal)', data: datos.deficit.quemado, borderColor: 'rgba(54, 162, 235, 1)', backgroundColor: 'rgba(54, 162, 235, 0.2)', borderWidth: 2, tension: 0.3, fill: true },
+                        { label: 'TMB (kcal)', data: datos.deficit.tmb, borderColor: 'rgba(255, 206, 86, 1)', backgroundColor: 'rgba(255, 206, 86, 0.1)', borderWidth: 1, borderDash: [5, 5], tension: 0.3, fill: false }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: '#c9d1d9' } },
+                        title: { display: true, text: 'Balance Calórico Diario', color: '#79c0ff', font: { size: 14 } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' } },
+                        y: { ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' }, title: { display: true, text: 'Calorías (kcal)', color: '#8b949e' } }
+                    }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DÉFICIT - Barras
+        // ═══════════════════════════════════════════════════════════════
+        if (datos.deficit && datos.deficit.fechas.length > 0) {
+            const deficitColors = datos.deficit.deficit.map(d => d < -200 ? 'rgba(59, 185, 80, 0.8)' : d > 200 ? 'rgba(248, 81, 73, 0.8)' : 'rgba(255, 166, 87, 0.8)');
+            new Chart(document.getElementById('deficit-bar-chart'), {
+                type: 'bar',
+                data: {
+                    labels: datos.deficit.fechas,
+                    datasets: [{ label: 'Déficit/Superávit (kcal)', data: datos.deficit.deficit, backgroundColor: deficitColors, borderWidth: 0 }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Déficit/Superávit Calórico Diario', color: '#79c0ff', font: { size: 14 } }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' } },
+                        y: { ticks: { color: '#8b949e' }, grid: { color: 'rgba(139, 148, 158, 0.1)' }, title: { display: true, text: 'Calorías (kcal)', color: '#8b949e' } }
+                    }
+                }
+            });
+        }
+
     """
     
     return js
+
+
 
 
 def _generar_healthspan_hero(healthspan_data):
@@ -1076,7 +1278,7 @@ def _generar_seccion_logs(logs_content, resumen):
     """
 
 
-def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None, healthspan_data=None, plan_accion_html=""):
+def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, recomendaciones_html, datos_graficos, logs_html_content="", resumen_ejecucion=None, healthspan_data=None, plan_accion_html="", nutrition_data=None):
     """Construye el HTML completo del dashboard"""
     healthspan_hero = _generar_healthspan_hero(healthspan_data) if healthspan_data else ""
     
@@ -1181,6 +1383,11 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
                 </div>
             </div>
             
+            <!-- ═══════════════════════════════════════ -->
+            <!-- NUTRITION SECTION -->
+            <!-- ═══════════════════════════════════════ -->
+            {_generar_seccion_nutrition(nutrition_data, datos_graficos)}
+            
             <div class="training-section">
                 <h2>🏃 Entrenamientos Recientes</h2>
                 {entrenamientos_html}
@@ -1199,4 +1406,105 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html, r
         </script>
     </body>
     </html>
+    """
+
+def _generar_seccion_nutrition(nutrition_data, datos_graficos):
+    """
+    ✅ NUEVA FUNCIÓN: Genera sección HTML de nutrición.
+    Muestra resumen actual y gráficos de macros y déficit.
+    """
+    if not nutrition_data or not nutrition_data.get("fechas"):
+        return ""
+    
+    # Calcular promedios de últimos 7 días
+    calorias_promedio = sum(nutrition_data["calorias"]) / len(nutrition_data["calorias"]) if nutrition_data["calorias"] else 0
+    proteinas_promedio = sum(nutrition_data["proteinas"]) / len(nutrition_data["proteinas"]) if nutrition_data["proteinas"] else 0
+    carbos_promedio = sum(nutrition_data["carbohidratos"]) / len(nutrition_data["carbohidratos"]) if nutrition_data["carbohidratos"] else 0
+    grasas_promedio = sum(nutrition_data["grasas"]) / len(nutrition_data["grasas"]) if nutrition_data["grasas"] else 0
+    
+    # Obtener déficit si existe
+    deficit_data = datos_graficos.get("deficit", {})
+    deficit_promedio = 0
+    deficit_class = "deficit-neutral"
+    deficit_texto = "MANTENIMIENTO"
+    
+    if deficit_data and deficit_data.get("deficit"):
+        deficits = deficit_data["deficit"]
+        deficit_promedio = sum(deficits) / len(deficits) if deficits else 0
+        
+        if deficit_promedio < -200:
+            deficit_class = "deficit-negative"
+            deficit_texto = "DÉFICIT"
+        elif deficit_promedio > 200:
+            deficit_class = "deficit-positive"
+            deficit_texto = "SUPERÁVIT"
+        else:
+            deficit_class = "deficit-neutral"
+            deficit_texto = "MANTENIMIENTO"
+    
+    return f"""
+            <div class="nutrition-section">
+                <h2>🍽️ Nutrición y Balance Calórico</h2>
+                
+                <div class="nutrition-grid">
+                    <!-- Card 1: Resumen Calórico -->
+                    <div class="nutrition-card">
+                        <h3>📊 Promedio Últimos 7 Días</h3>
+                        <div class="macro-bar">
+                            <span class="macro-label">Calorías:</span>
+                            <span class="macro-value">{calorias_promedio:.0f} kcal/día</span>
+                        </div>
+                        <div class="macro-bar">
+                            <span class="macro-label">Proteínas:</span>
+                            <span class="macro-value">{proteinas_promedio:.1f} g/día</span>
+                        </div>
+                        <div class="macro-bar">
+                            <span class="macro-label">Carbohidratos:</span>
+                            <span class="macro-value">{carbos_promedio:.1f} g/día</span>
+                        </div>
+                        <div class="macro-bar">
+                            <span class="macro-label">Grasas:</span>
+                            <span class="macro-value">{grasas_promedio:.1f} g/día</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Balance Calórico -->
+                    <div class="nutrition-card">
+                        <h3>⚖️ Balance Calórico</h3>
+                        <div class="macro-bar">
+                            <span class="macro-label">Estado:</span>
+                            <span class="macro-value {deficit_class}">{deficit_texto}</span>
+                        </div>
+                        <div class="macro-bar">
+                            <span class="macro-label">Balance Promedio:</span>
+                            <span class="macro-value {deficit_class}">{deficit_promedio:+.0f} kcal/día</span>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(179, 146, 240, 0.3);">
+                            <small style="color: #8b949e;">
+                                {'🔻 En déficit: Perdiendo peso' if deficit_promedio < -200 else '🔺 En superávit: Ganando peso' if deficit_promedio > 200 else '➡️ En mantenimiento'}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gráficos de Nutrición -->
+                <div class="charts-grid" style="margin-top: 30px;">
+                    <div class="chart-container">
+                        <h3>Macronutrientes Diarios</h3>
+                        <div id="nutrition-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Calorías por Comida</h3>
+                        <div id="nutrition-comidas-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Balance Calórico</h3>
+                        <div id="deficit-chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Déficit/Superávit Diario</h3>
+                        <div id="deficit-bar-chart"></div>
+                    </div>
+                </div>
+            </div>
     """

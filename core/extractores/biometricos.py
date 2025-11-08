@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Extractor de métricas biométricas - VERSIÓN CORREGIDA
+Extractor de métricas biométricas - VERSIÓN CON RECORD_ID
 Peso, grasa corporal, masa muscular, masa agua, masa ósea
 CON VALIDACIÓN DE PESO (rechaza valores absurdos >200kg o <30kg)
+✅ AGREGA record_id a cada registro
 """
 
 from utils.logger import logger
@@ -11,7 +12,7 @@ from core.utils_procesador import reportar_por_fuente
 
 
 def procesar_peso(datos, cache):
-    """Extrae datos de peso del JSON CON VALIDACIÓN y DEDUPLICACIÓN POR DÍA"""
+    """Extrae datos de peso del JSON CON VALIDACIÓN, DEDUPLICACIÓN POR DÍA y RECORD_ID"""
     from datetime import datetime
     
     peso_data = None
@@ -34,6 +35,7 @@ def procesar_peso(datos, cache):
     for p in peso_data:
         peso_kg = p.get("weight_kg", 0)
         timestamp = p.get("timestamp")
+        record_id = p.get("record_id")  # ✅ NUEVO
         fuente = p.get("source", "Desconocido")
         
         # ✅ VALIDACIÓN: Rechazar pesos absurdos
@@ -46,7 +48,12 @@ def procesar_peso(datos, cache):
         try:
             dia = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).strftime("%Y-%m-%d")
             if dia not in por_dia:
-                por_dia[dia] = {"pesos": [], "timestamp_primero": timestamp, "fuente": fuente}
+                por_dia[dia] = {
+                    "pesos": [], 
+                    "timestamp_primero": timestamp, 
+                    "record_id_primero": record_id,  # ✅ NUEVO
+                    "fuente": fuente
+                }
             por_dia[dia]["pesos"].append(peso_kg)
             
             # Contar por fuente
@@ -60,8 +67,9 @@ def procesar_peso(datos, cache):
     
     # ✅ DEDUPLICAR con días ya existentes en cache
     dias_existentes = {
-        datetime.fromisoformat(p["fecha"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        datetime.fromisoformat(p["timestamp"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
         for p in cache["peso"]
+        if "timestamp" in p
     }
     
     # Agregar solo 1 registro por día (promedio)
@@ -72,7 +80,9 @@ def procesar_peso(datos, cache):
         
         peso_promedio = sum(data["pesos"]) / len(data["pesos"])
         cache["peso"].append({
-            "fecha": data["timestamp_primero"],
+            "record_id": data["record_id_primero"],  # ✅ NUEVO
+            "timestamp": data["timestamp_primero"],  # ✅ timestamp completo
+            "fecha": data["timestamp_primero"],      # mantener por compatibilidad
             "peso": peso_promedio
         })
     
@@ -86,7 +96,7 @@ def procesar_peso(datos, cache):
 
 
 def procesar_grasa_corporal(datos, cache, nombre_archivo):
-    """Extrae datos de grasa corporal % del JSON"""
+    """Extrae datos de grasa corporal % del JSON con RECORD_ID"""
     grasa_data = None
     
     if "body_fat_records" in datos and "data" in datos["body_fat_records"]:
@@ -101,7 +111,9 @@ def procesar_grasa_corporal(datos, cache, nombre_archivo):
     
     for g in grasa_data:
         cache["grasa_corporal"].append({
-            "fecha": g.get("timestamp"),
+            "record_id": g.get("record_id"),         # ✅ NUEVO
+            "timestamp": g.get("timestamp"),         # ✅ NUEVO
+            "fecha": g.get("timestamp"),             # mantener por compatibilidad
             "porcentaje": g.get("percentage", 0),
             "fuente": g.get("source", "Desconocido")
         })
@@ -114,7 +126,7 @@ def procesar_grasa_corporal(datos, cache, nombre_archivo):
 
 
 def procesar_masa_muscular(datos, cache, nombre_archivo):
-    """Extrae datos de masa muscular (lean body mass) del JSON"""
+    """Extrae datos de masa muscular (lean body mass) del JSON con RECORD_ID"""
     masa_data = None
     
     if "lean_body_mass_records" in datos and "data" in datos["lean_body_mass_records"]:
@@ -129,7 +141,9 @@ def procesar_masa_muscular(datos, cache, nombre_archivo):
     
     for m in masa_data:
         cache["masa_muscular"].append({
-            "fecha": m.get("timestamp"),
+            "record_id": m.get("record_id"),         # ✅ NUEVO
+            "timestamp": m.get("timestamp"),         # ✅ NUEVO
+            "fecha": m.get("timestamp"),             # mantener por compatibilidad
             "masa_kg": m.get("mass_kg", 0),
             "fuente": m.get("source", "Desconocido")
         })
@@ -142,7 +156,7 @@ def procesar_masa_muscular(datos, cache, nombre_archivo):
 
 
 def procesar_masa_agua(datos, cache, nombre_archivo):
-    """Extrae datos de masa de agua corporal del JSON"""
+    """Extrae datos de masa de agua corporal del JSON con RECORD_ID"""
     agua_data = None
     
     if "body_water_mass_records" in datos and "data" in datos["body_water_mass_records"]:
@@ -157,7 +171,9 @@ def procesar_masa_agua(datos, cache, nombre_archivo):
     
     for a in agua_data:
         cache["masa_agua"].append({
-            "fecha": a.get("timestamp"),
+            "record_id": a.get("record_id"),         # ✅ NUEVO
+            "timestamp": a.get("timestamp"),         # ✅ NUEVO
+            "fecha": a.get("timestamp"),             # mantener por compatibilidad
             "masa_kg": a.get("mass_kg", 0),
             "fuente": a.get("source", "Desconocido")
         })
@@ -170,7 +186,7 @@ def procesar_masa_agua(datos, cache, nombre_archivo):
 
 
 def procesar_masa_osea(datos, cache, nombre_archivo):
-    """Extrae datos de masa ósea del JSON"""
+    """Extrae datos de masa ósea del JSON con RECORD_ID"""
     hueso_data = None
     
     if "bone_mass_records" in datos and "data" in datos["bone_mass_records"]:
@@ -185,7 +201,9 @@ def procesar_masa_osea(datos, cache, nombre_archivo):
     
     for h in hueso_data:
         cache["masa_osea"].append({
-            "fecha": h.get("timestamp"),
+            "record_id": h.get("record_id"),         # ✅ NUEVO
+            "timestamp": h.get("timestamp"),         # ✅ NUEVO
+            "fecha": h.get("timestamp"),             # mantener por compatibilidad
             "masa_kg": h.get("mass_kg", 0),
             "fuente": h.get("source", "Desconocido")
         })

@@ -3,6 +3,7 @@
 """
 Gestión del cache de datos de salud
 Estructura JSON que almacena todos los datos procesados
+✅ VERSIÓN CON NUTRITION
 """
 
 import json
@@ -38,6 +39,7 @@ def inicializar_cache():
         "tasa_metabolica": [],
         "masa_agua": [],
         "masa_osea": [],
+        "nutrition": [],  # ✅ NUEVO - Nutrición
         
         # Metadata
         "archivos_procesados": [],
@@ -132,6 +134,7 @@ def obtener_estadisticas_cache(cache):
         "tasa_metabolica": len(cache.get("tasa_metabolica", [])),
         "masa_agua": len(cache.get("masa_agua", [])),
         "masa_osea": len(cache.get("masa_osea", [])),
+        "nutrition": len(cache.get("nutrition", [])),  # ✅ NUEVO
         "archivos_procesados": len(cache.get("archivos_procesados", [])),
     }
     

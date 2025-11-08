@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Extractor de métricas de actividad física
+Extractor de métricas de actividad física - VERSIÓN CON RECORD_ID
 Distancia recorrida y calorías totales quemadas
+✅ AGREGA record_id a cada registro
 """
 
 from datetime import datetime
@@ -15,6 +16,7 @@ def procesar_distancia(datos, cache, nombre_archivo):
     Extrae datos de distancia recorrida del JSON.
     Soporta formatos FULL (distance_records) y DIFF (distance_changes).
     Agrupa por día automáticamente.
+    ✅ CON RECORD_ID (usa el primero del día)
     """
     distancia_data = None
     
@@ -38,6 +40,8 @@ def procesar_distancia(datos, cache, nombre_archivo):
             
             if dia not in por_dia:
                 por_dia[dia] = {
+                    "record_id": d.get("record_id"),         # ✅ NUEVO - primer record_id del día
+                    "timestamp": d.get("start_time"),        # ✅ NUEVO
                     "fecha": d.get("start_time"),
                     "distancia_total": 0,
                     "fuente": d.get("source", "Desconocido")
@@ -53,7 +57,9 @@ def procesar_distancia(datos, cache, nombre_archivo):
     # Agregar al cache
     for dia_data in por_dia.values():
         cache["distancia"].append({
-            "fecha": dia_data["fecha"],
+            "record_id": dia_data["record_id"],              # ✅ NUEVO
+            "timestamp": dia_data["timestamp"],              # ✅ NUEVO
+            "fecha": dia_data["fecha"],                      # mantener por compatibilidad
             "distancia_km": round(dia_data["distancia_total"], 2),
             "fuente": dia_data["fuente"]
         })
@@ -72,6 +78,7 @@ def procesar_calorias_totales(datos, cache, nombre_archivo):
     Extrae datos de calorías totales del JSON.
     Soporta formatos FULL (total_calories_records) y DIFF (total_calories_changes).
     Agrupa por día automáticamente.
+    ✅ CON RECORD_ID (usa el primero del día)
     """
     calorias_data = None
     
@@ -95,6 +102,8 @@ def procesar_calorias_totales(datos, cache, nombre_archivo):
             
             if dia not in por_dia:
                 por_dia[dia] = {
+                    "record_id": c.get("record_id"),         # ✅ NUEVO - primer record_id del día
+                    "timestamp": c.get("start_time"),        # ✅ NUEVO
                     "fecha": c.get("start_time"),
                     "energia_total": 0,
                     "fuente": c.get("source", "Desconocido")
@@ -110,7 +119,9 @@ def procesar_calorias_totales(datos, cache, nombre_archivo):
     # Agregar al cache
     for dia_data in por_dia.values():
         cache["calorias_totales"].append({
-            "fecha": dia_data["fecha"],
+            "record_id": dia_data["record_id"],              # ✅ NUEVO
+            "timestamp": dia_data["timestamp"],              # ✅ NUEVO
+            "fecha": dia_data["fecha"],                      # mantener por compatibilidad
             "energia_kcal": round(dia_data["energia_total"], 0),
             "fuente": dia_data["fuente"]
         })

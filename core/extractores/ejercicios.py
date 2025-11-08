@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Extractor de datos de ejercicio
+Extractor de datos de ejercicio - VERSIÓN CON SESSION_ID Y RECORD_ID
 Procesa exercise_sessions y exercise_changes
+✅ AGREGA session_id, record_id, start_time, end_time
 """
 
 from utils.logger import logger
@@ -16,6 +17,7 @@ def procesar_ejercicios(datos, cache, nombre_archivo):
     """
     Extrae datos de ejercicio del JSON.
     Soporta formatos FULL (exercise_sessions) y DIFF (exercise_changes).
+    ✅ CON SESSION_ID, RECORD_ID, START_TIME, END_TIME
     """
     ejercicios_data = None
     
@@ -32,8 +34,15 @@ def procesar_ejercicios(datos, cache, nombre_archivo):
     count_antes = len(cache["ejercicio"])
     
     for e in ejercicios_data:
+        # Obtener session_id (puede venir como session_id o como id en el JSON)
+        session_id = e.get("session_id") or e.get("id")
+        
         entrada = {
-            "fecha": e.get("start_time"),
+            "session_id": session_id,                                                    # ✅ NUEVO
+            "record_id": session_id,                                                     # ✅ NUEVO (mismo que session_id)
+            "start_time": e.get("start_time"),                                           # ✅ NUEVO
+            "end_time": e.get("end_time"),                                               # ✅ NUEVO
+            "fecha": e.get("start_time"),                                                # mantener por compatibilidad
             "tipo": e.get("exercise_type_name") or traducir_tipo_ejercicio(e.get("exercise_type")),
             "duracion": e.get("duration_minutes", 0),
             "calorias": e.get("calories_burned", 0),

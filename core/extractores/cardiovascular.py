@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Extractor de métricas cardiovasculares - VERSIÓN CORREGIDA
+Extractor de métricas cardiovasculares - VERSIÓN CON RECORD_ID
 FC reposo desde heart_rate_changes (horario nocturno), presión, VO2max, FC continua
+✅ AGREGA record_id a cada registro
 """
 
 from datetime import datetime
@@ -14,6 +15,7 @@ def procesar_fc_reposo(datos, cache, nombre_archivo):
     """
     Extrae FC en REPOSO desde heart_rate_changes en horario nocturno (22:00-06:00)
     Ya NO usa resting_heart_rate_records/changes
+    ✅ CON RECORD_ID
     """
     fc_data = None
     
@@ -40,7 +42,9 @@ def procesar_fc_reposo(datos, cache, nombre_archivo):
                 bpm_reposo = fc.get("min_bpm", fc.get("avg_bpm", 0))
                 
                 cache["fc_reposo"].append({
-                    "fecha": fc.get("start_time"),
+                    "record_id": fc.get("record_id"),        # ✅ NUEVO
+                    "timestamp": fc.get("start_time"),       # ✅ NUEVO
+                    "fecha": fc.get("start_time"),           # mantener por compatibilidad
                     "bpm": bpm_reposo,
                     "fuente": fc.get("source", "Desconocido")
                 })
@@ -57,7 +61,7 @@ def procesar_fc_reposo(datos, cache, nombre_archivo):
 
 
 def procesar_presion_arterial(datos, cache, nombre_archivo):
-    """Extrae datos de presión arterial del JSON"""
+    """Extrae datos de presión arterial del JSON con RECORD_ID"""
     presion_data = None
     
     if "blood_pressure_records" in datos and "data" in datos["blood_pressure_records"]:
@@ -72,7 +76,9 @@ def procesar_presion_arterial(datos, cache, nombre_archivo):
     
     for p in presion_data:
         cache["presion_arterial"].append({
-            "fecha": p.get("timestamp"),
+            "record_id": p.get("record_id"),         # ✅ NUEVO
+            "timestamp": p.get("timestamp"),         # ✅ NUEVO
+            "fecha": p.get("timestamp"),             # mantener por compatibilidad
             "sistolica": p.get("systolic_mmhg", 0),
             "diastolica": p.get("diastolic_mmhg", 0),
             "fuente": p.get("source", "Desconocido")
@@ -86,7 +92,7 @@ def procesar_presion_arterial(datos, cache, nombre_archivo):
 
 
 def procesar_vo2max(datos, cache, nombre_archivo):
-    """Extrae datos de VO2max medido del JSON"""
+    """Extrae datos de VO2max medido del JSON con RECORD_ID"""
     vo2_data = None
     
     if "vo2_max_records" in datos and "data" in datos["vo2_max_records"]:
@@ -101,8 +107,10 @@ def procesar_vo2max(datos, cache, nombre_archivo):
     
     for v in vo2_data:
         cache["vo2max"].append({
-            "fecha": v.get("timestamp"),
-            "vo2max": v.get("vo2_max", 0) if v.get("vo2_max") else v.get("vo2max", 0),
+            "record_id": v.get("record_id"),                              # ✅ NUEVO
+            "timestamp": v.get("timestamp"),                              # ✅ NUEVO
+            "fecha": v.get("timestamp"),                                  # mantener por compatibilidad
+            "vo2max": v.get("vo2_max_ml_per_min_per_kg") or v.get("vo2_max") or v.get("vo2max") or 0,
             "metodo": v.get("measurement_method", "Desconocido"),
             "fuente": v.get("source", "Desconocido")
         })
@@ -118,6 +126,7 @@ def procesar_frecuencia_cardiaca(datos, cache, nombre_archivo):
     """
     Extrae datos de frecuencia cardíaca continua del JSON (agregada por día)
     Procesa TODOS los registros y los agrupa por día
+    ✅ CON RECORD_ID (usa el primero del día)
     """
     fc_data = None
     
@@ -141,6 +150,8 @@ def procesar_frecuencia_cardiaca(datos, cache, nombre_archivo):
             
             if dia not in por_dia:
                 por_dia[dia] = {
+                    "record_id": fc.get("record_id"),        # ✅ NUEVO - primer record_id del día
+                    "timestamp": fc.get("start_time"),       # ✅ NUEVO
                     "fecha": fc.get("start_time"),
                     "bpm_min": 999,
                     "bpm_max": 0,
@@ -164,7 +175,9 @@ def procesar_frecuencia_cardiaca(datos, cache, nombre_archivo):
     
     for dia_data in por_dia.values():
         cache["frecuencia_cardiaca"].append({
-            "fecha": dia_data["fecha"],
+            "record_id": dia_data["record_id"],              # ✅ NUEVO
+            "timestamp": dia_data["timestamp"],              # ✅ NUEVO
+            "fecha": dia_data["fecha"],                      # mantener por compatibilidad
             "bpm_min": dia_data["bpm_min"],
             "bpm_max": dia_data["bpm_max"],
             "bpm_promedio": dia_data["bpm_suma"] / dia_data["count"] if dia_data["count"] > 0 else 0,

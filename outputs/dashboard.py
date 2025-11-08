@@ -17,7 +17,7 @@ from metricas.pai import calcular_pai_semanal
 from metricas.fitness import calcular_tsb, preparar_datos_tsb_historico
 from metricas.score import calcular_score_longevidad, generar_recomendaciones
 from metricas.healthspan import calcular_healthspan_index, generar_recomendaciones_healthspan  # ✅ NUEVO
-from metricas.plan_accion import generar_plan_accion, renderizar_plan_accion_html  # ✅ PLAN DE ACCIÓN
+from metricas.plan_accion import generar_plan_accion, renderizar_plan_accion_html  # ✅ PLAN DE ACCIÓN,
 
 
 def _preparar_datos_peso_deduplicado(peso_data, dias=90):
@@ -96,13 +96,15 @@ def generar_dashboard(cache):
     tasa_metabolica = cache.get("tasa_metabolica", [])
     distancia = cache.get("distancia", [])
     calorias_totales = cache.get("calorias_totales", [])
+    nutrition = cache.get("nutrition", [])  # ✅ NUEVO
     
     # ═══════════════════════════════════════════════
     # 2. CALCULAR MÉTRICAS
     # ═══════════════════════════════════════════════
     metricas = _calcular_metricas(
         ejercicios, peso, sueno, spo2, grasa_corporal,
-        masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial
+        masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial,
+        nutrition, tasa_metabolica, calorias_totales  # ✅ NUEVOS
     )
     
     # ═══════════════════════════════════════════════
@@ -146,7 +148,9 @@ def generar_dashboard(cache):
         "masa_agua": _preparar_datos_metrica_corporal(masa_agua, "masa_kg"),
         "tasa_metabolica": _preparar_datos_tasa_metabolica(tasa_metabolica),
         "distancia": _preparar_datos_distancia(distancia),
-        "calorias_totales": _preparar_datos_calorias(calorias_totales)
+        "calorias_totales": _preparar_datos_calorias(calorias_totales),
+        "nutrition": _preparar_datos_nutrition(nutrition),  # ✅ NUEVO
+        "deficit": _calcular_deficit_calorico(nutrition, tasa_metabolica, calorias_totales)  # ✅ NUEVO
     }
     
     # ═══════════════════════════════════════════════
@@ -213,7 +217,8 @@ def generar_dashboard(cache):
         logs_html_content,
         resumen_ejecucion,
         healthspan_data,  # Parámetro opcional
-        plan_accion_html  # ✅ PLAN DE ACCIÓN
+        plan_accion_html,  # ✅ PLAN DE ACCIÓN
+        nutrition_data=_preparar_datos_nutrition(nutrition)  # ✅ NUEVO
     )
     
     # ═══════════════════════════════════════════════
@@ -229,7 +234,7 @@ def generar_dashboard(cache):
 # FUNCIONES AUXILIARES
 # ═══════════════════════════════════════════════════════════════
 
-def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial):
+def _calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial, nutrition, tasa_metabolica, calorias_totales):
     """Calcula todas las métricas del dashboard"""
     
     # PAI semanal
@@ -750,3 +755,148 @@ def _preparar_datos_calorias(calorias_data, dias=90):
     valores = [sum(por_dia[f]) for f in fechas]  # Sumar calorías del día
     
     return {"fechas": fechas, "valores": valores}
+
+def _preparar_datos_nutrition(nutrition_data, dias=7):
+    """
+    ✅ NUEVA FUNCIÓN: Prepara datos de nutrición agrupados por día.
+    Calcula totales diarios de calorías y macronutrientes.
+    """
+    if not nutrition_data:
+        return {
+            "fechas": [],
+            "calorias": [],
+            "proteinas": [],
+            "carbohidratos": [],
+            "grasas": [],
+            "por_comida": {
+                "desayuno": [],
+                "almuerzo": [],
+                "cena": [],
+                "snack": []
+            }
+        }
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    recientes = [
+        n for n in nutrition_data
+        if datetime.fromisoformat(n["timestamp"].replace("Z", "+00:00")).replace(tzinfo=None) >= fecha_limite
+    ]
+    
+    por_dia = defaultdict(lambda: {
+        "calorias": 0,
+        "proteinas": 0,
+        "carbohidratos": 0,
+        "grasas": 0,
+        "desayuno": 0,
+        "almuerzo": 0,
+        "cena": 0,
+        "snack": 0
+    })
+    
+    meal_type_map = {
+        1: "desayuno",
+        2: "almuerzo",
+        3: "cena",
+        4: "snack"
+    }
+    
+    for n in recientes:
+        fecha = datetime.fromisoformat(n["timestamp"].replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        por_dia[fecha]["calorias"] += n.get("energy_kcal", 0)
+        por_dia[fecha]["proteinas"] += n.get("protein_g", 0)
+        por_dia[fecha]["carbohidratos"] += n.get("carbs_g", 0)
+        por_dia[fecha]["grasas"] += n.get("fat_total_g", 0)
+        
+        meal_type = n.get("meal_type", 0)
+        meal_name = meal_type_map.get(meal_type, "snack")
+        por_dia[fecha][meal_name] += n.get("energy_kcal", 0)
+    
+    fechas = sorted(por_dia.keys())
+    
+    return {
+        "fechas": fechas,
+        "calorias": [round(por_dia[f]["calorias"], 0) for f in fechas],
+        "proteinas": [round(por_dia[f]["proteinas"], 1) for f in fechas],
+        "carbohidratos": [round(por_dia[f]["carbohidratos"], 1) for f in fechas],
+        "grasas": [round(por_dia[f]["grasas"], 1) for f in fechas],
+        "por_comida": {
+            "desayuno": [round(por_dia[f]["desayuno"], 0) for f in fechas],
+            "almuerzo": [round(por_dia[f]["almuerzo"], 0) for f in fechas],
+            "cena": [round(por_dia[f]["cena"], 0) for f in fechas],
+            "snack": [round(por_dia[f]["snack"], 0) for f in fechas]
+        }
+    }
+
+
+def _calcular_deficit_calorico(nutrition_data, tmb_data, calorias_data, dias=7):
+    """
+    ✅ NUEVA FUNCIÓN: Calcula déficit/superávit calórico diario.
+    Fórmula: Consumido (nutrition) - Quemado (TMB + actividad)
+    """
+    if not nutrition_data:
+        return {
+            "fechas": [],
+            "consumido": [],
+            "quemado": [],
+            "deficit": [],
+            "tmb": []
+        }
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    
+    consumido_por_dia = defaultdict(float)
+    for n in nutrition_data:
+        try:
+            fecha = datetime.fromisoformat(n["timestamp"].replace("Z", "+00:00"))
+            if fecha.replace(tzinfo=None) >= fecha_limite:
+                dia = fecha.strftime("%Y-%m-%d")
+                consumido_por_dia[dia] += n.get("energy_kcal", 0)
+        except:
+            continue
+    
+    tmb_por_dia = {}
+    if tmb_data:
+        for t in tmb_data:
+            try:
+                fecha = datetime.fromisoformat(t["timestamp"].replace("Z", "+00:00"))
+                if fecha.replace(tzinfo=None) >= fecha_limite:
+                    dia = fecha.strftime("%Y-%m-%d")
+                    tmb_por_dia[dia] = t.get("kcal_dia", 1700)
+            except:
+                continue
+    
+    quemado_por_dia = defaultdict(float)
+    if calorias_data:
+        for c in calorias_data:
+            try:
+                fecha = datetime.fromisoformat(c["timestamp"].replace("Z", "+00:00"))
+                if fecha.replace(tzinfo=None) >= fecha_limite:
+                    dia = fecha.strftime("%Y-%m-%d")
+                    quemado_por_dia[dia] += c.get("energia_kcal", 0)
+            except:
+                continue
+    
+    fechas = sorted(consumido_por_dia.keys())
+    
+    resultado = {
+        "fechas": fechas,
+        "consumido": [],
+        "quemado": [],
+        "deficit": [],
+        "tmb": []
+    }
+    
+    for fecha in fechas:
+        consumido = consumido_por_dia[fecha]
+        tmb = tmb_por_dia.get(fecha, 1700)
+        quemado = quemado_por_dia.get(fecha, 0)
+        
+        total_quemado = tmb + quemado if quemado > 0 else tmb
+        deficit = consumido - total_quemado
+        
+        resultado["consumido"].append(round(consumido, 0))
+        resultado["quemado"].append(round(total_quemado, 0))
+        resultado["deficit"].append(round(deficit, 0))
+        resultado["tmb"].append(round(tmb, 0))
+    
+    return resultado
