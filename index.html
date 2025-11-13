@@ -455,7 +455,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 13/11/2025 06:35 (Argentina)</p>
+                <p class="subtitle">Última actualización: 13/11/2025 07:05 (Argentina)</p>
             </header>
             
             
@@ -1119,70 +1119,58 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-13 06:35:18 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-13 07:05:05 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 83</p>
             <p>✅ <strong>Total registros peso:</strong> 37</p>
             <p>✅ <strong>Total registros pasos:</strong> 506</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4882 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3752 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-13 06:35:18,122 [INFO] - 
-2025-11-13 06:35:18,122 [INFO] - ================================================================================
-2025-11-13 06:35:18,122 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-13 06:35:18,122 [INFO] - ================================================================================
-2025-11-13 06:35:18,122 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-13 06:35:18,122 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-13 06:35:18,122 [INFO] - ================================================================================
-2025-11-13 06:35:18,122 [INFO] - 
-2025-11-13 06:35:18,123 [INFO] - ================================================================================
-2025-11-13 06:35:18,123 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-13 06:35:18,123 [INFO] - ================================================================================
-2025-11-13 06:35:18,187 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-13 06:35:18,189 [INFO] - Total archivos JSON encontrados: 163
-2025-11-13 06:35:18,190 [INFO] - Archivos ya procesados: 611
-2025-11-13 06:35:18,190 [INFO] - Archivos nuevos a procesar: 1
-2025-11-13 06:35:18,190 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-13_06-18-33.json&#x27;]
-2025-11-13 06:35:18,190 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-13_06-18-33.json
-2025-11-13 06:35:18,190 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-13_06-18-33.json
-2025-11-13 06:35:18,190 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;total_calories_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-13 06:35:18,190 [INFO] -   🗑️  Procesando 1 deletions...
-2025-11-13 06:35:18,191 [INFO] -   ℹ️  No se encontraron registros para borrar
-2025-11-13 06:35:18,191 [INFO] -   → Calorías totales agregadas: 1 días
-2025-11-13 06:35:18,191 [INFO] -     📊 Calorías Totales por fuente:
-2025-11-13 06:35:18,191 [INFO] -        • FitbitMobile: 1 registros (total: 86)
-2025-11-13 06:35:18,191 [INFO] -   Campos detectados: calorias_totales
-2025-11-13 06:35:18,192 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-13 06:35:18,192 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-13_06-18-33.json
-2025-11-13 06:35:18,421 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-13 06:35:18,421 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-13 06:35:18,421 [INFO] - ==================================================
-2025-11-13 06:35:18,421 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-13
-2025-11-13 06:35:18,421 [INFO] - Ventana de 7 días: 2025-11-07 a 2025-11-13
-2025-11-13 06:35:18,421 [INFO] - PAI TOTAL SEMANAL: 248.8
-2025-11-13 06:35:18,421 [INFO] - Entrenamientos en ventana: 25
-2025-11-13 06:35:18,421 [INFO] - ==================================================
-2025-11-13 06:35:18,422 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.78
-2025-11-13 06:35:18,422 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;8ddd338c-844b-31f8-9739-549575e571dc&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-12T08:23:40-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-12T08:23:40-03:00&#x27;, &#x27;masa_kg&#x27;: 56.78, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-13 06:35:18,422 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 506
-2025-11-13 06:35:18,424 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-06: 11,454 pasos (de 25 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-07: 11,101 pasos (de 26 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-08: 20,998 pasos (de 21 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-09: 8,694 pasos (de 23 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-10: 21,074 pasos (de 27 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-11: 20,092 pasos (de 28 registros)
-2025-11-13 06:35:18,425 [INFO] -    - 2025-11-12: 18,877 pasos (de 24 registros)
-2025-11-13 06:35:18,425 [INFO] - 📈 Pasos promedio calculado: 16,041 pasos/día (últimos 7 días)
-2025-11-13 06:35:18,432 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-13 06:35:18,510 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-13
-2025-11-13 06:35:18,510 [INFO] - 📊 Total registros de nutrition en cache: 252
-2025-11-13 06:35:18,511 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2025-11-13 06:35:18,514 [INFO] - ✅ Ejercicio HOY: 447.0 kcal
-2025-11-13 06:35:18,514 [INFO] - 📈 RESULTADO: Presupuesto=2147.0, Comido=0, Restante=2147.0
-2025-11-13 06:35:18,514 [INFO] - 🎯 Intentando generar plan de acción...
-2025-11-13 06:35:18,514 [INFO] - ✓ Plan de acción generado correctamente
-2025-11-13 06:35:18,514 [INFO] - ✓ HTML del plan renderizado correctamente
+        <pre id="logs-content" class="logs-hidden">2025-11-13 07:05:05,227 [INFO] - 
+2025-11-13 07:05:05,227 [INFO] - ================================================================================
+2025-11-13 07:05:05,227 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-13 07:05:05,227 [INFO] - ================================================================================
+2025-11-13 07:05:05,227 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-13 07:05:05,227 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-13 07:05:05,227 [INFO] - ================================================================================
+2025-11-13 07:05:05,227 [INFO] - 
+2025-11-13 07:05:05,227 [INFO] - ================================================================================
+2025-11-13 07:05:05,227 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-13 07:05:05,227 [INFO] - ================================================================================
+2025-11-13 07:05:05,296 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-13 07:05:05,298 [INFO] - Total archivos JSON encontrados: 163
+2025-11-13 07:05:05,299 [INFO] - Archivos ya procesados: 612
+2025-11-13 07:05:05,299 [INFO] - Archivos nuevos a procesar: 0
+2025-11-13 07:05:05,299 [INFO] - No hay archivos nuevos para procesar.
+2025-11-13 07:05:05,299 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-13 07:05:05,299 [INFO] - ==================================================
+2025-11-13 07:05:05,299 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-13
+2025-11-13 07:05:05,299 [INFO] - Ventana de 7 días: 2025-11-07 a 2025-11-13
+2025-11-13 07:05:05,299 [INFO] - PAI TOTAL SEMANAL: 248.8
+2025-11-13 07:05:05,299 [INFO] - Entrenamientos en ventana: 25
+2025-11-13 07:05:05,299 [INFO] - ==================================================
+2025-11-13 07:05:05,300 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.78
+2025-11-13 07:05:05,300 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;8ddd338c-844b-31f8-9739-549575e571dc&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-12T08:23:40-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-12T08:23:40-03:00&#x27;, &#x27;masa_kg&#x27;: 56.78, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-13 07:05:05,300 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 506
+2025-11-13 07:05:05,303 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-06: 11,454 pasos (de 25 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-07: 11,101 pasos (de 26 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-08: 20,998 pasos (de 21 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-09: 8,694 pasos (de 23 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-10: 21,074 pasos (de 27 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-11: 20,092 pasos (de 28 registros)
+2025-11-13 07:05:05,303 [INFO] -    - 2025-11-12: 18,877 pasos (de 24 registros)
+2025-11-13 07:05:05,303 [INFO] - 📈 Pasos promedio calculado: 16,041 pasos/día (últimos 7 días)
+2025-11-13 07:05:05,309 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-13 07:05:05,387 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-13
+2025-11-13 07:05:05,388 [INFO] - 📊 Total registros de nutrition en cache: 252
+2025-11-13 07:05:05,389 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
+2025-11-13 07:05:05,391 [INFO] - ✅ Ejercicio HOY: 447.0 kcal
+2025-11-13 07:05:05,391 [INFO] - 📈 RESULTADO: Presupuesto=2147.0, Comido=0, Restante=2147.0
+2025-11-13 07:05:05,392 [INFO] - 🎯 Intentando generar plan de acción...
+2025-11-13 07:05:05,392 [INFO] - ✓ Plan de acción generado correctamente
+2025-11-13 07:05:05,392 [INFO] - ✓ HTML del plan renderizado correctamente
 </pre>
     </div>
     
