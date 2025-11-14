@@ -455,7 +455,7 @@
         <div class="container">
             <header>
                 <h1>📊 Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 14/11/2025 11:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 14/11/2025 11:35 (Argentina)</p>
             </header>
             
             
@@ -807,7 +807,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">14,491</div>
+        <div class="metric-value" style="color: #3fb950;">14,497</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -912,7 +912,7 @@
                         <div style="position: relative; width: 200px; height: 200px; margin: 20px auto;">
                             <canvas id="circulo-calorias"></canvas>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1626.0</div>
+                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1652.0</div>
                                 <div style="font-size: 0.9em; color: #8b949e;">Restante</div>
                             </div>
                         </div>
@@ -925,11 +925,11 @@
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                                 <span style="color: #8b949e;">🔥 Ejercicio</span>
-                                <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">334.0</span>
+                                <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">360.0</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
                                 <span style="color: #8b949e;">Meta de ingesta:</span>
-                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">2054.0 kcal</span>
+                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">2080.0 kcal</span>
                             </div>
                         </div>
                         
@@ -1119,59 +1119,59 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-14 11:05:06 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-14 11:35:05 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 84</p>
             <p>✅ <strong>Total registros peso:</strong> 39</p>
-            <p>✅ <strong>Total registros pasos:</strong> 554</p>
+            <p>✅ <strong>Total registros pasos:</strong> 555</p>
             <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3815 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-14 11:05:06,527 [INFO] - 
-2025-11-14 11:05:06,527 [INFO] - ================================================================================
-2025-11-14 11:05:06,527 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-14 11:05:06,527 [INFO] - ================================================================================
-2025-11-14 11:05:06,527 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-14 11:05:06,527 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-14 11:05:06,527 [INFO] - ================================================================================
-2025-11-14 11:05:06,527 [INFO] - 
-2025-11-14 11:05:06,527 [INFO] - ================================================================================
-2025-11-14 11:05:06,527 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-14 11:05:06,527 [INFO] - ================================================================================
-2025-11-14 11:05:06,606 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-14 11:05:06,608 [INFO] - Total archivos JSON encontrados: 193
-2025-11-14 11:05:06,608 [INFO] - Archivos ya procesados: 651
-2025-11-14 11:05:06,608 [INFO] - Archivos nuevos a procesar: 0
-2025-11-14 11:05:06,608 [INFO] - No hay archivos nuevos para procesar.
-2025-11-14 11:05:06,608 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-14 11:05:06,608 [INFO] - ==================================================
-2025-11-14 11:05:06,609 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-14
-2025-11-14 11:05:06,609 [INFO] - Ventana de 7 días: 2025-11-08 a 2025-11-14
-2025-11-14 11:05:06,609 [INFO] - PAI TOTAL SEMANAL: 244.4
-2025-11-14 11:05:06,609 [INFO] - Entrenamientos en ventana: 24
-2025-11-14 11:05:06,609 [INFO] - ==================================================
-2025-11-14 11:05:06,609 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 57.39
-2025-11-14 11:05:06,610 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;aff6795f-f7c9-3316-9872-f5747e9b040b&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-14T09:09:17-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-14T09:09:17-03:00&#x27;, &#x27;masa_kg&#x27;: 57.39, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-14 11:05:06,610 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 554
-2025-11-14 11:05:06,612 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-14 11:05:06,612 [INFO] -    - 2025-11-08: 20,998 pasos (de 21 registros)
-2025-11-14 11:05:06,612 [INFO] -    - 2025-11-09: 8,694 pasos (de 23 registros)
-2025-11-14 11:05:06,613 [INFO] -    - 2025-11-10: 21,074 pasos (de 27 registros)
-2025-11-14 11:05:06,613 [INFO] -    - 2025-11-11: 20,128 pasos (de 29 registros)
-2025-11-14 11:05:06,613 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
-2025-11-14 11:05:06,613 [INFO] -    - 2025-11-13: 9,917 pasos (de 23 registros)
-2025-11-14 11:05:06,613 [INFO] -    - 2025-11-14: 1,477 pasos (de 8 registros)
-2025-11-14 11:05:06,613 [INFO] - 📈 Pasos promedio calculado: 14,491 pasos/día (últimos 7 días)
-2025-11-14 11:05:06,618 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-14 11:05:06,706 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-14
-2025-11-14 11:05:06,706 [INFO] - 📊 Total registros de nutrition en cache: 459
-2025-11-14 11:05:06,708 [INFO] - ✅ Registros de nutrition HOY: 4, Calorías: 428.0
-2025-11-14 11:05:06,709 [INFO] - ✅ TMB HOY: 1720.0 kcal
-2025-11-14 11:05:06,711 [INFO] - ✅ Ejercicio HOY: 334.0 kcal
-2025-11-14 11:05:06,711 [INFO] - 📈 RESULTADO: Presupuesto=2054.0, Comido=428.0, Restante=1626.0
-2025-11-14 11:05:06,712 [INFO] - 🎯 Intentando generar plan de acción...
-2025-11-14 11:05:06,712 [INFO] - ✓ Plan de acción generado correctamente
-2025-11-14 11:05:06,712 [INFO] - ✓ HTML del plan renderizado correctamente
+        <pre id="logs-content" class="logs-hidden">2025-11-14 11:35:05,024 [INFO] - 
+2025-11-14 11:35:05,024 [INFO] - ================================================================================
+2025-11-14 11:35:05,024 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-14 11:35:05,024 [INFO] - ================================================================================
+2025-11-14 11:35:05,024 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-14 11:35:05,024 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-14 11:35:05,024 [INFO] - ================================================================================
+2025-11-14 11:35:05,024 [INFO] - 
+2025-11-14 11:35:05,024 [INFO] - ================================================================================
+2025-11-14 11:35:05,024 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-14 11:35:05,024 [INFO] - ================================================================================
+2025-11-14 11:35:05,099 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-14 11:35:05,102 [INFO] - Total archivos JSON encontrados: 193
+2025-11-14 11:35:05,102 [INFO] - Archivos ya procesados: 652
+2025-11-14 11:35:05,102 [INFO] - Archivos nuevos a procesar: 0
+2025-11-14 11:35:05,102 [INFO] - No hay archivos nuevos para procesar.
+2025-11-14 11:35:05,102 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-14 11:35:05,102 [INFO] - ==================================================
+2025-11-14 11:35:05,102 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-14
+2025-11-14 11:35:05,102 [INFO] - Ventana de 7 días: 2025-11-08 a 2025-11-14
+2025-11-14 11:35:05,102 [INFO] - PAI TOTAL SEMANAL: 244.4
+2025-11-14 11:35:05,102 [INFO] - Entrenamientos en ventana: 24
+2025-11-14 11:35:05,102 [INFO] - ==================================================
+2025-11-14 11:35:05,103 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 57.39
+2025-11-14 11:35:05,103 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;aff6795f-f7c9-3316-9872-f5747e9b040b&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-14T09:09:17-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-14T09:09:17-03:00&#x27;, &#x27;masa_kg&#x27;: 57.39, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-14 11:35:05,103 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 555
+2025-11-14 11:35:05,106 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-14 11:35:05,106 [INFO] -    - 2025-11-08: 20,998 pasos (de 21 registros)
+2025-11-14 11:35:05,106 [INFO] -    - 2025-11-09: 8,694 pasos (de 23 registros)
+2025-11-14 11:35:05,106 [INFO] -    - 2025-11-10: 21,074 pasos (de 27 registros)
+2025-11-14 11:35:05,106 [INFO] -    - 2025-11-11: 20,128 pasos (de 29 registros)
+2025-11-14 11:35:05,106 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
+2025-11-14 11:35:05,107 [INFO] -    - 2025-11-13: 9,917 pasos (de 23 registros)
+2025-11-14 11:35:05,107 [INFO] -    - 2025-11-14: 1,520 pasos (de 9 registros)
+2025-11-14 11:35:05,107 [INFO] - 📈 Pasos promedio calculado: 14,497 pasos/día (últimos 7 días)
+2025-11-14 11:35:05,113 [INFO] - ✅ Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-14 11:35:05,200 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-14
+2025-11-14 11:35:05,201 [INFO] - 📊 Total registros de nutrition en cache: 459
+2025-11-14 11:35:05,203 [INFO] - ✅ Registros de nutrition HOY: 4, Calorías: 428.0
+2025-11-14 11:35:05,204 [INFO] - ✅ TMB HOY: 1720.0 kcal
+2025-11-14 11:35:05,206 [INFO] - ✅ Ejercicio HOY: 360.0 kcal
+2025-11-14 11:35:05,206 [INFO] - 📈 RESULTADO: Presupuesto=2080.0, Comido=428.0, Restante=1652.0
+2025-11-14 11:35:05,206 [INFO] - 🎯 Intentando generar plan de acción...
+2025-11-14 11:35:05,206 [INFO] - ✓ Plan de acción generado correctamente
+2025-11-14 11:35:05,207 [INFO] - ✓ HTML del plan renderizado correctamente
 </pre>
     </div>
     
@@ -1425,7 +1425,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14'],
-            y: [18820, 4554, 21398, 13455, 11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 1477],
+            y: [18820, 4554, 21398, 13455, 11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 1520],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -1452,7 +1452,7 @@
         // Calorías Totales
         Plotly.newPlot('calorias-chart', [{
             x: ['2025-10-02', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14'],
-            y: [17.0, 2091.0, 8701.0, 9744.0, 11087.0, 11417.0, 11814.0, 15751.0, 14283.0, 14014.0, 13292.0, 12751.0, 12718.0, 14042.0, 15712.0, 13096.0, 14867.0, 11549.0, 11922.0, 13272.0, 14108.0, 12309.0, 8006.0, 6870.0, 6894.0, 6797.0, 6500.0, 7187.0, 7793.0, 8795.0, 8810.0, 3031.0, 1625.0, 1624.0, 1863.0, 2592.0, 1539.0, 2306.0, 1626.0, 2622.0, 2516.0, 2362.0, 1820.0, 334.0],
+            y: [17.0, 2091.0, 8701.0, 9744.0, 11087.0, 11417.0, 11814.0, 15751.0, 14283.0, 14014.0, 13292.0, 12751.0, 12718.0, 14042.0, 15712.0, 13096.0, 14867.0, 11549.0, 11922.0, 13272.0, 14108.0, 12309.0, 8006.0, 6870.0, 6894.0, 6797.0, 6500.0, 7187.0, 7793.0, 8795.0, 8810.0, 3031.0, 1625.0, 1624.0, 1863.0, 2592.0, 1539.0, 2306.0, 1626.0, 2622.0, 2516.0, 2362.0, 1820.0, 360.0],
             type: 'bar',
             marker: { 
                 color: '#ffa657',
@@ -1589,10 +1589,10 @@
         // CÍRCULO DE CALORÍAS RESTANTES - Día actual
         // ═══════════════════════════════════════════════════════════════
         const circuloData = {
-            presupuesto: 2054.0,
+            presupuesto: 2080.0,
             comido: 428.0,
-            ejercicio: 334.0,
-            restante: 1626.0
+            ejercicio: 360.0,
+            restante: 1652.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1600,7 +1600,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [428.0, 1626.0],
+                    data: [428.0, 1652.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1617,11 +1617,11 @@
         });
         
         // Actualizar valores en el HTML
-        document.getElementById('restante-valor').textContent = Math.abs(1626.0);
+        document.getElementById('restante-valor').textContent = Math.abs(1652.0);
         document.getElementById('restante-valor').style.color = '#3fb950';
         document.getElementById('comido-valor').textContent = 428.0;
-        document.getElementById('ejercicio-valor').textContent = 334.0;
-        document.getElementById('presupuesto-valor').textContent = 2054.0;
+        document.getElementById('ejercicio-valor').textContent = 360.0;
+        document.getElementById('presupuesto-valor').textContent = 2080.0;
         
         // ═══════════════════════════════════════════════════════════════
         // MACROS EN PORCENTAJE - 3 círculos
@@ -1697,7 +1697,7 @@
                 datasets: [
                     {
                         label: 'Presupuesto',
-                        data: [10534.0, 4757.0, 3356.0, 3351.0, 3598.0, 4335.0, 3256.0, 4008.0, 3335.0, 4339.0, 4220.0, 4071.0, 3533.0, 2058.0],
+                        data: [10534.0, 4757.0, 3356.0, 3351.0, 3598.0, 4335.0, 3256.0, 4008.0, 3335.0, 4339.0, 4220.0, 4071.0, 3533.0, 2084.0],
                         borderColor: '#3b82f6',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
                         borderWidth: 2,
@@ -1719,7 +1719,7 @@
                     },
                     {
                         label: 'Ejercicio',
-                        data: [8810.0, 3031.0, 1625.0, 1624.0, 1863.0, 2592.0, 1539.0, 2306.0, 1626.0, 2622.0, 2516.0, 2362.0, 1820.0, 334.0],
+                        data: [8810.0, 3031.0, 1625.0, 1624.0, 1863.0, 2592.0, 1539.0, 2306.0, 1626.0, 2622.0, 2516.0, 2362.0, 1820.0, 360.0],
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         borderWidth: 2,
