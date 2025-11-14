@@ -101,11 +101,12 @@ def generar_healthspan_hero(healthspan_data):
     """
 
 
-def generar_seccion_nutrition(circulo_data, datos_graficos):
+def generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d=None):
     """
     ✅ REEMPLAZADO: Sección HTML de nutrición estilo Samsung Health
     - Círculo de calorías restantes (día actual)
     - 3 círculos de macros en porcentaje
+    - ✅ NUEVO: Comparación Recomendados vs Real (últimos 7 días)
     - Gráfico de presupuesto/consumo (14 días)
     """
     if not circulo_data:
@@ -126,6 +127,19 @@ def generar_seccion_nutrition(circulo_data, datos_graficos):
     else:
         estado_color = "#f85149"
         estado_texto = "🔺 En superávit: Ganando peso"
+    
+    # Datos de macros 7 días (si existen)
+    if macros_7d:
+        pct_prot_real = macros_7d.get("pct_proteinas", 0)
+        pct_carb_real = macros_7d.get("pct_carbohidratos", 0)
+        pct_gras_real = macros_7d.get("pct_grasas", 0)
+        
+        g_prot_real = macros_7d.get("proteinas_g", 0)
+        g_carb_real = macros_7d.get("carbohidratos_g", 0)
+        g_gras_real = macros_7d.get("grasas_g", 0)
+    else:
+        pct_prot_real = pct_carb_real = pct_gras_real = 0
+        g_prot_real = g_carb_real = g_gras_real = 0
     
     return f"""
             <div class="nutrition-section">
@@ -213,6 +227,44 @@ def generar_seccion_nutrition(circulo_data, datos_graficos):
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- ✅ NUEVO: COMPARACIÓN RECOMENDADOS VS REAL -->
+                <div class="nutrition-card" style="padding: 30px; margin-bottom: 30px;">
+                    <h3 style="text-align: center; margin-bottom: 30px;">📊 Comparación de Macronutrientes (promedio 7 días)</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                        
+                        <!-- RECOMENDADOS -->
+                        <div style="text-align: center;">
+                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
+                                <canvas id="macros-recomendados"></canvas>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Recomendados</div>
+                                <div style="color: #8b949e; font-size: 0.9em;">
+                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>55%</strong> &nbsp;
+                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>25%</strong> &nbsp;
+                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>20%</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- REAL -->
+                        <div style="text-align: center;">
+                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
+                                <canvas id="macros-reales"></canvas>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Real</div>
+                                <div style="color: #8b949e; font-size: 0.9em;">
+                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>{pct_carb_real}%</strong> ({g_carb_real}g) &nbsp;
+                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>{pct_gras_real}%</strong> ({g_gras_real}g) &nbsp;
+                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>{pct_prot_real}%</strong> ({g_prot_real}g)
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 

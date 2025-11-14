@@ -264,7 +264,86 @@ def generar_grafico_presupuesto_consumo(datos_deficit):
         """
 
 
-def generar_js_nutrition(datos_graficos, circulo_data):
+def generar_graficos_comparacion_macros(macros_7d):
+    """
+    ✅ NUEVO: Gráficos circulares de Recomendados vs Real
+    """
+    if not macros_7d:
+        pct_prot_real = pct_carb_real = pct_gras_real = 0
+    else:
+        pct_prot_real = macros_7d.get("pct_proteinas", 0)
+        pct_carb_real = macros_7d.get("pct_carbohidratos", 0)
+        pct_gras_real = macros_7d.get("pct_grasas", 0)
+    
+    # Porcentajes recomendados (fijos)
+    pct_carb_recom = 55
+    pct_gras_recom = 25
+    pct_prot_recom = 20
+    
+    return f"""
+        // ═══════════════════════════════════════════════════════════════
+        // GRÁFICOS COMPARACIÓN MACROS - Recomendados vs Real
+        // ═══════════════════════════════════════════════════════════════
+        
+        // RECOMENDADOS
+        new Chart(document.getElementById('macros-recomendados'), {{
+            type: 'pie',
+            data: {{
+                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                datasets: [{{
+                    data: [{pct_carb_recom}, {pct_gras_recom}, {pct_prot_recom}],
+                    backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
+                    borderWidth: 0
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {{
+                    legend: {{ display: false }},
+                    tooltip: {{
+                        enabled: true,
+                        callbacks: {{
+                            label: function(context) {{
+                                return context.label + ': ' + context.parsed + '%';
+                            }}
+                        }}
+                    }}
+                }}
+            }}
+        }});
+        
+        // REALES (últimos 7 días)
+        new Chart(document.getElementById('macros-reales'), {{
+            type: 'pie',
+            data: {{
+                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                datasets: [{{
+                    data: [{pct_carb_real}, {pct_gras_real}, {pct_prot_real}],
+                    backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
+                    borderWidth: 0
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {{
+                    legend: {{ display: false }},
+                    tooltip: {{
+                        enabled: true,
+                        callbacks: {{
+                            label: function(context) {{
+                                return context.label + ': ' + context.parsed + '%';
+                            }}
+                        }}
+                    }}
+                }}
+            }}
+        }});
+        """
+
+
+def generar_js_nutrition(datos_graficos, circulo_data, macros_7d=None):
     """
     ✅ FUNCIÓN PRINCIPAL: Genera todo el JS de nutrición
     """
@@ -274,6 +353,9 @@ def generar_js_nutrition(datos_graficos, circulo_data):
     if circulo_data:
         js += generar_circulo_calorias(circulo_data)
         js += generar_grafico_macros_porcentaje(circulo_data)
+    
+    # ✅ NUEVO: Gráficos de comparación (recomendados vs real)
+    js += generar_graficos_comparacion_macros(macros_7d)
     
     # Gráfico de presupuesto y consumo
     if datos_graficos.get("deficit"):

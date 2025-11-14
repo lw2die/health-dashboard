@@ -340,6 +340,109 @@ def generar_card_presion(metricas):
     """
 
 
+def generar_card_glucemia(metricas):
+    """Card Glucemia - Ayunas y Postprandial (7 días)"""
+    ayunas = metricas.get("glucemia_ayunas")
+    postprandial = metricas.get("glucemia_postprandial")
+    
+    if ayunas is None and postprandial is None:
+        return f"""
+        <div class="metric-card">
+            <div class="metric-label">🩸 Glucemia (7d)</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+        </div>
+        """
+    
+    # Colores para ayunas (normal: 70-100 mg/dL)
+    if ayunas:
+        if 70 <= ayunas <= 100:
+            color_ayunas = COLOR_EXCELENTE
+            estado_ayunas = "Normal"
+        elif 100 < ayunas <= 125:
+            color_ayunas = COLOR_BUENO
+            estado_ayunas = "Prediabetes"
+        else:
+            color_ayunas = COLOR_MALO
+            estado_ayunas = "Elevada"
+    else:
+        color_ayunas = "#8b949e"
+        estado_ayunas = "Sin datos"
+    
+    # Colores para postprandial (normal: <140 mg/dL a las 2h)
+    if postprandial:
+        if postprandial < 140:
+            color_post = COLOR_EXCELENTE
+            estado_post = "Normal"
+        elif 140 <= postprandial < 200:
+            color_post = COLOR_BUENO
+            estado_post = "Prediabetes"
+        else:
+            color_post = COLOR_MALO
+            estado_post = "Elevada"
+    else:
+        color_post = "#8b949e"
+        estado_post = "Sin datos"
+    
+    ayunas_texto = f"{ayunas:.0f}" if ayunas else "---"
+    post_texto = f"{postprandial:.0f}" if postprandial else "---"
+    
+    return f"""
+    <div class="metric-card">
+        <div class="metric-label">🩸 Glucemia (7d)</div>
+        <div class="metric-value" style="color: {color_ayunas}; font-size: 1.5em;">{ayunas_texto}</div>
+        <div class="metric-detail" style="color: {color_ayunas}; font-weight: 600;">Ayunas: {estado_ayunas}</div>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
+            <div class="metric-value" style="color: {color_post}; font-size: 1.3em;">{post_texto}</div>
+            <div class="metric-detail" style="color: {color_post}; font-weight: 600;">Postprandial: {estado_post}</div>
+        </div>
+    </div>
+    """
+
+
+def generar_card_gmi(metricas):
+    """Card GMI (Glucose Management Indicator) - 90 días"""
+    gmi = metricas.get("gmi")
+    glucosa_prom = metricas.get("gmi_glucosa_promedio")
+    num_mediciones = metricas.get("gmi_num_mediciones", 0)
+    
+    if gmi is None:
+        return f"""
+        <div class="metric-card">
+            <div class="metric-label">📈 GMI Estimado</div>
+            <div class="metric-value" style="color: #8b949e;">Sin datos</div>
+            <div class="metric-detail" style="font-size: 0.75em; color: #8b949e;">Requiere mediciones de glucosa</div>
+        </div>
+        """
+    
+    # Colores según niveles de HbA1c/GMI
+    # <5.7% = Normal, 5.7-6.4% = Prediabetes, ≥6.5% = Diabetes
+    if gmi < 5.7:
+        color = COLOR_EXCELENTE
+        estado = "Normal"
+    elif gmi < 6.5:
+        color = COLOR_BUENO
+        estado = "Prediabetes"
+    else:
+        color = COLOR_MALO
+        estado = "Diabetes"
+    
+    glucosa_texto = f"{glucosa_prom:.0f}" if glucosa_prom else "---"
+    
+    return f"""
+    <div class="metric-card">
+        <div class="metric-label">📈 GMI Estimado (90d)</div>
+        <div class="metric-value" style="color: {color};">{gmi:.1f}%</div>
+        <div class="metric-detail" style="color: {color}; font-weight: 600;">{estado}</div>
+        <div class="metric-detail" style="font-size: 0.8em; color: #8b949e; margin-top: 5px;">
+            Glucosa prom: {glucosa_texto} mg/dL
+        </div>
+        <div class="metric-detail" style="font-size: 0.75em; color: #8b949e;">
+            ⚠️ {num_mediciones} mediciones (estimación aproximada)
+        </div>
+    </div>
+    """
+
+
 def generar_card_score(metricas):
     """Card Score Longevidad"""
     score = metricas.get("score_longevidad", 0)

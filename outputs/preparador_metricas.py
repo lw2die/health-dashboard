@@ -14,11 +14,127 @@ from metricas.score import calcular_score_longevidad, generar_recomendaciones
 from metricas.healthspan import calcular_healthspan_index
 
 
+def calcular_glucemia_ayunas_postprandial(glucosa_data, dias=7):
+    """
+    Calcula promedios de glucemia en ayunas y postprandial.
+    
+    Criterios:
+    - Ayunas: Mediciones antes de las 10:00 AM
+    - Postprandial: Mediciones entre 1-3 horas después de comida (10:00 AM - 11:00 PM)
+    
+    Args:
+        glucosa_data: Lista de mediciones de glucosa
+        dias: Ventana de tiempo (default 7 días)
+    
+    Returns:
+        dict: {"ayunas": promedio, "postprandial": promedio}
+    """
+    if not glucosa_data:
+        return {"ayunas": None, "postprandial": None}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    
+    ayunas_valores = []
+    postprandial_valores = []
+    
+    for g in glucosa_data:
+        try:
+            fecha = datetime.fromisoformat(g["fecha"].replace("Z", "+00:00"))
+            if fecha.replace(tzinfo=None) < fecha_limite:
+                continue
+            
+            nivel = g.get("nivel_mg_dl", 0)
+            if nivel <= 0:
+                continue
+            
+            hora = fecha.hour
+            
+            # Ayunas: antes de las 10:00 AM
+            if hora < 10:
+                ayunas_valores.append(nivel)
+            # Postprandial: entre 10:00 AM y 11:00 PM
+            elif 10 <= hora <= 23:
+                postprandial_valores.append(nivel)
+                
+        except Exception as e:
+            logger.error(f"Error procesando glucosa: {e}")
+            continue
+    
+    ayunas_promedio = sum(ayunas_valores) / len(ayunas_valores) if ayunas_valores else None
+    postprandial_promedio = sum(postprandial_valores) / len(postprandial_valores) if postprandial_valores else None
+    
+    logger.info(f"🩸 Glucemia (últimos {dias} días):")
+    ayunas_texto = f"{ayunas_promedio:.1f}" if ayunas_promedio else "N/A"
+    post_texto = f"{postprandial_promedio:.1f}" if postprandial_promedio else "N/A"
+    logger.info(f"   - Ayunas: {len(ayunas_valores)} mediciones, promedio: {ayunas_texto} mg/dL")
+    logger.info(f"   - Postprandial: {len(postprandial_valores)} mediciones, promedio: {post_texto} mg/dL")
+    
+    return {
+        "ayunas": ayunas_promedio,
+        "postprandial": postprandial_promedio
+    }
+
+
+def calcular_gmi_estimado(glucosa_data, dias=90):
+    """
+    Calcula GMI (Glucose Management Indicator) estimado.
+    
+    Fórmula moderna (2018): GMI (%) = 3.31 + 0.02392 × [glucosa promedio en mg/dL]
+    
+    Args:
+        glucosa_data: Lista de mediciones de glucosa
+        dias: Ventana de tiempo (default 90 días, similar a HbA1c que refleja 2-3 meses)
+    
+    Returns:
+        dict: {"gmi": valor_gmi, "glucosa_promedio": promedio, "num_mediciones": cantidad}
+    """
+    if not glucosa_data:
+        return {"gmi": None, "glucosa_promedio": None, "num_mediciones": 0}
+    
+    fecha_limite = datetime.now() - timedelta(days=dias)
+    
+    valores_glucosa = []
+    for g in glucosa_data:
+        try:
+            fecha = datetime.fromisoformat(g["fecha"].replace("Z", "+00:00"))
+            if fecha.replace(tzinfo=None) < fecha_limite:
+                continue
+            
+            nivel = g.get("nivel_mg_dl", 0)
+            if nivel > 0:
+                valores_glucosa.append(nivel)
+        except Exception as e:
+            logger.error(f"Error procesando glucosa para GMI: {e}")
+            continue
+    
+    if not valores_glucosa:
+        return {"gmi": None, "glucosa_promedio": None, "num_mediciones": 0}
+    
+    glucosa_promedio = sum(valores_glucosa) / len(valores_glucosa)
+    
+    # Fórmula GMI moderna (2018)
+    gmi = 3.31 + 0.02392 * glucosa_promedio
+    
+    logger.info(f"📈 GMI Estimado (últimos {dias} días):")
+    logger.info(f"   - Mediciones: {len(valores_glucosa)}")
+    logger.info(f"   - Glucosa promedio: {glucosa_promedio:.1f} mg/dL")
+    logger.info(f"   - GMI: {gmi:.1f}%")
+    
+    return {
+        "gmi": round(gmi, 1),
+        "glucosa_promedio": round(glucosa_promedio, 1),
+        "num_mediciones": len(valores_glucosa)
+    }
+
+
 def calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal, 
                      masa_muscular, vo2max_medido, fc_reposo, pasos, 
-                     presion_arterial, nutrition, tasa_metabolica, calorias_totales):
+                     presion_arterial, nutrition, tasa_metabolica, calorias_totales, glucosa=None):
     """
     Calcula todas las métricas del dashboard.
+    
+    Args:
+        glucosa: Lista de mediciones de glucosa (nuevo parámetro)
     
     Returns:
         dict: Diccionario con todas las métricas calculadas
@@ -29,6 +145,19 @@ def calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal,
     
     # Peso actual
     peso_actual = peso[-1]["peso"] if peso else None
+    
+    # Peso hace 7 días (para calcular kg/semana)
+    peso_hace_7_dias = peso_actual  # Default si no hay datos
+    if peso:
+        fecha_limite = datetime.now() - timedelta(days=7)
+        for p in reversed(peso):  # Buscar desde el más reciente hacia atrás
+            try:
+                fecha = datetime.fromisoformat(p["fecha"].replace("Z", "+00:00"))
+                if fecha.replace(tzinfo=None) <= fecha_limite:
+                    peso_hace_7_dias = p.get("peso", peso_actual)
+                    break
+            except:
+                continue
     
     # VO2max MEDIDO
     vo2max = vo2max_medido[-1]["vo2max"] if vo2max_medido else None
@@ -113,6 +242,12 @@ def calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal,
         presion_sistolica = sum(p.get("sistolica", 0) for p in presion_recientes) / len(presion_recientes)
         presion_diastolica = sum(p.get("diastolica", 0) for p in presion_recientes) / len(presion_recientes)
     
+    # ✅ NUEVO: Glucemia en ayunas y postprandial (7 días)
+    glucemia_data = calcular_glucemia_ayunas_postprandial(glucosa, dias=7) if glucosa else {"ayunas": None, "postprandial": None}
+    
+    # ✅ NUEVO: GMI estimado (90 días)
+    gmi_data = calcular_gmi_estimado(glucosa, dias=90) if glucosa else {"gmi": None, "glucosa_promedio": None, "num_mediciones": 0}
+    
     # PROMEDIOS DE 7 DÍAS para Healthspan Index (largo plazo)
     peso_promedio_7d = None
     if peso:
@@ -163,9 +298,16 @@ def calcular_metricas(ejercicios, peso, sueno, spo2, grasa_corporal,
         **metricas_base,
         # Valores actuales para cards individuales
         "peso_actual": peso_actual,
+        "peso_hace_7_dias": peso_hace_7_dias,  # ✅ NUEVO
         "grasa_actual": grasa_actual,
         "masa_muscular_actual": masa_muscular_actual,
         "tsb_actual": tsb_actual,
+        # ✅ NUEVO: Glucemia y GMI
+        "glucemia_ayunas": glucemia_data.get("ayunas"),
+        "glucemia_postprandial": glucemia_data.get("postprandial"),
+        "gmi": gmi_data.get("gmi"),
+        "gmi_glucosa_promedio": gmi_data.get("glucosa_promedio"),
+        "gmi_num_mediciones": gmi_data.get("num_mediciones"),
         # Otros datos
         "tsb_dict": tsb_dict,
         "score_longevidad": score_longevidad,

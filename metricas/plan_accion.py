@@ -1,255 +1,275 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Plan de Acción Personalizado para Healthspan Index
-Genera roadmap temporal con metas específicas
+Plan de Acción - Sistema de Adherencia y Predicción
+Monitorea cumplimiento del plan de déficit calórico y proteína
 """
 
-def generar_plan_accion(healthspan_data, metricas):
+from datetime import datetime, timedelta
+
+
+def generar_plan_accion(metricas, nutrition_data, tmb_data, calorias_data):
     """
-    Genera plan de acción detallado con roadmap temporal.
-    
-    Returns:
-        dict: {
-            "meta_actual": int (healthspan actual),
-            "meta_6m": int (proyección 6 meses),
-            "meta_12m": int (proyección 12 meses),
-            "brecha_principal": str (score más bajo),
-            "acciones_2m": list,
-            "acciones_6m": list,
-            "acciones_12m": list,
-            "proyecciones": dict
-        }
+    Genera plan de acción basado en adherencia a 7 días.
     """
     
-    # DEBUG: Logging ANTES de todo
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.info("=" * 60)
-    logger.info("🎯 GENERANDO PLAN DE ACCIÓN")
-    logger.info("=" * 60)
-    logger.info(f"Keys en metricas recibidas: {list(metricas.keys())}")
-    logger.info(f"masa_muscular_actual en metricas: {'masa_muscular_actual' in metricas}")
-    if 'masa_muscular_actual' in metricas:
-        logger.info(f"Valor de masa_muscular_actual: {metricas['masa_muscular_actual']}")
-    logger.info("=" * 60)
+    print("=" * 60)
+    print("🎯 GENERANDO PLAN DE ACCIÓN - ADHERENCIA 7 DÍAS")
+    print("=" * 60)
     
-    # Scores actuales
-    fitness = healthspan_data["fitness_score"]
-    body = healthspan_data["body_score"]
-    recovery = healthspan_data["recovery_score"]
-    metabolic = healthspan_data["metabolic_score"]
-    functional = healthspan_data["functional_score"]
-    index_actual = healthspan_data["healthspan_index"]
-    
-    # Métricas actuales - Usar 'or' para convertir None a 0
-    grasa = metricas.get("grasa_actual") or 0
-    peso = metricas.get("peso_actual") or 0
-    masa_muscular = metricas.get("masa_muscular_actual") or 0  # ✅ Maneja None correctamente
-    pasos = metricas.get("pasos_promedio") or 0
-    pai = metricas.get("pai_semanal") or 0
-    vo2max = metricas.get("vo2max") or 0
-    
-    # DEBUG: Logging temporal
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.info(f"🔍 PLAN ACCIÓN - Métricas recibidas:")
-    logger.info(f"   Grasa: {grasa}%")
-    logger.info(f"   Peso: {peso} kg")
-    logger.info(f"   Masa muscular: {masa_muscular} kg")
-    logger.info(f"   Pasos: {pasos}")
-    logger.info(f"   PAI: {pai}")
-    
-    # Identificar score más bajo
-    scores = {
-        "Fitness": fitness,
-        "Body": body,
-        "Recovery": recovery,
-        "Metabolic": metabolic,
-        "Functional": functional
-    }
-    brecha_principal = min(scores, key=scores.get)
-    score_mas_bajo = scores[brecha_principal]
-    
-    # Generar plan según brecha principal
-    plan = {
-        "meta_actual": index_actual,
-        "brecha_principal": brecha_principal,
-        "score_mas_bajo": score_mas_bajo,
-        "acciones_2m": [],
-        "acciones_6m": [],
-        "acciones_12m": [],
-        "proyecciones": {}
-    }
+    # Constantes
+    PESO_META = 79.0
+    PROTEINA_META = 160  # gramos/día
+    DEFICIT_MIN = 0   # ✅ Cualquier déficit positivo cuenta
     
     # ═══════════════════════════════════════════════════════════════
-    # PLAN ESPECÍFICO SEGÚN BRECHA PRINCIPAL
+    # 1. CALCULAR DÉFICIT CALÓRICO DIARIO (últimos 7 días)
     # ═══════════════════════════════════════════════════════════════
     
-    if brecha_principal == "Body" and body < 70:
-        # Body Score es el cuello de botella
-        deficit_grasa = grasa - 18  # Objetivo intermedio: 18%
-        deficit_peso = peso - 79    # Objetivo de peso
-        
-        plan["acciones_2m"] = [
-            {
-                "titulo": "🎯 Déficit Calórico Moderado",
-                "descripcion": f"Reducir ingesta en 300-500 kcal/día. Meta: perder ~2 kg en 2 meses.",
-                "metrica": f"Peso actual: {peso:.1f} kg → Meta 2m: {peso - 2:.1f} kg",
-                "prioridad": "ALTA"
-            },
-            {
-                "titulo": "🥩 Proteína Alta",
-                "descripcion": f"Consumir 2g/kg de peso. Protege masa muscular durante el déficit.",
-                "metrica": f"Meta diaria: {int(peso * 2)}g de proteína",
-                "prioridad": "ALTA"
-            },
-            {
-                "titulo": "💪 Mantener Entrenamiento de Fuerza",
-                "descripcion": "3x semana, ejercicios compuestos. Evita pérdida muscular.",
-                "metrica": f"Masa muscular actual: {masa_muscular:.1f} kg (mantener)",
-                "prioridad": "ALTA"
-            }
-        ]
-        
-        plan["acciones_6m"] = [
-            {
-                "titulo": "📉 Continuar Déficit",
-                "descripcion": "Objetivo acumulado: -4 kg de grasa en 6 meses.",
-                "metrica": f"Grasa corporal: {grasa:.1f}% → Meta 6m: ~19%",
-                "prioridad": "ALTA"
-            },
-            {
-                "titulo": "📊 Ajustar Según Progreso",
-                "descripcion": "Si la pérdida se estanca, aumentar cardio o reducir 100 kcal más.",
-                "metrica": "Evaluar cada 4 semanas",
-                "prioridad": "MEDIA"
-            }
-        ]
-        
-        plan["acciones_12m"] = [
-            {
-                "titulo": "🏆 Meta Final: 15-17% Grasa",
-                "descripcion": "Composición corporal óptima para longevidad.",
-                "metrica": f"Grasa actual {grasa:.1f}% → Meta 12m: 15-17%",
-                "prioridad": "ALTA"
-            },
-            {
-                "titulo": "🔄 Fase de Mantenimiento",
-                "descripcion": "Una vez alcanzado el objetivo, aumentar calorías gradualmente.",
-                "metrica": "Estabilizar en peso objetivo: 78-79 kg",
-                "prioridad": "MEDIA"
-            }
-        ]
-        
-        # Proyecciones
-        plan["proyecciones"] = {
-            "2m": {
-                "body_score": min(body + 10, 100),
-                "healthspan": index_actual + 2,
-                "grasa": grasa - 1.5,
-                "peso": peso - 2
-            },
-            "6m": {
-                "body_score": min(body + 25, 100),
-                "healthspan": index_actual + 5,
-                "grasa": grasa - 4,
-                "peso": peso - 4
-            },
-            "12m": {
-                "body_score": 90,
-                "healthspan": min(index_actual + 10, 100),
-                "grasa": 16,
-                "peso": 78
-            }
-        }
+    from outputs.prep_graficos_activity import calcular_deficit_calorico
     
-    elif brecha_principal == "Metabolic":
-        plan["acciones_2m"] = [
-            {
-                "titulo": "🩺 Actualizar Laboratorios",
-                "descripcion": "Solicitar análisis completo: HbA1c, Vitamina D, B12, Ferritina.",
-                "metrica": "Laboratorios desactualizados detectados",
-                "prioridad": "ALTA"
-            }
-        ]
-        
-        plan["proyecciones"] = {
-            "2m": {
-                "metabolic_score": 100,
-                "healthspan": index_actual + 3
-            }
-        }
+    datos_deficit = calcular_deficit_calorico(nutrition_data, tmb_data, calorias_data, dias=7)
     
-    elif brecha_principal == "Recovery" and recovery < 85:
-        fc_reposo = metricas.get("fc_reposo_promedio", 60)  # ✅ Corregido
-        plan["acciones_2m"] = [
-            {
-                "titulo": "🏃 Cardio Base",
-                "descripcion": "Agregar 20-30 min de cardio zona 2 (conversacional), 3-4x/semana.",
-                "metrica": f"FC reposo actual: {fc_reposo:.0f} bpm → Meta: <55 bpm",
-                "prioridad": "MEDIA"
-            }
-        ]
-        
-        plan["proyecciones"] = {
-            "6m": {
-                "recovery_score": 100,
-                "healthspan": index_actual + 1
-            }
-        }
+    print(f"📊 Datos de déficit (7 días): {len(datos_deficit.get('fechas', []))} días")
+    print(f"   Déficits: {datos_deficit.get('deficit', [])}")
     
-    elif brecha_principal == "Functional" and functional < 80:
-        plan["acciones_2m"] = [
-            {
-                "titulo": "🚶 Aumentar Pasos",
-                "descripcion": "Objetivo: promedio ≥10,000 pasos/día.",
-                "metrica": f"Pasos actuales: {pasos:,.0f}/día → Meta: 10,000/día",
-                "prioridad": "MEDIA"
-            }
-        ]
-        
-        plan["proyecciones"] = {
-            "2m": {
-                "functional_score": 100,
-                "healthspan": index_actual + 1
-            }
-        }
+    # ═══════════════════════════════════════════════════════════════
+    # 2. ANALIZAR ADHERENCIA AL DÉFICIT CALÓRICO
+    # ═══════════════════════════════════════════════════════════════
     
+    dias_deficit_ok = 0
+    total_dias_deficit = 0
+    
+    deficits = datos_deficit.get("deficit", [])
+    
+    for deficit in deficits:
+        if deficit != 0:  # Solo contar días con datos
+            total_dias_deficit += 1
+            # Déficit debe ser positivo (comiste menos de lo presupuestado)
+            if deficit > DEFICIT_MIN:
+                dias_deficit_ok += 1
+    
+    porcentaje_adherencia_deficit = (dias_deficit_ok / total_dias_deficit * 100) if total_dias_deficit > 0 else 0
+    
+    print(f"✅ Adherencia déficit: {dias_deficit_ok}/{total_dias_deficit} días ({porcentaje_adherencia_deficit:.0f}%)")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # 3. ANALIZAR ADHERENCIA A PROTEÍNA
+    # ═══════════════════════════════════════════════════════════════
+    
+    dias_proteina_ok = 0
+    total_dias_proteina = 0
+    
+    # Agrupar nutrition_data por día
+    proteina_por_dia = {}
+    
+    print(f"📊 Total registros nutrition_data: {len(nutrition_data) if nutrition_data else 0}")
+    
+    if nutrition_data:
+        for n in nutrition_data:
+            try:
+                fecha = datetime.fromisoformat(n["timestamp"].replace("Z", "+00:00"))
+                dia = fecha.strftime("%Y-%m-%d")
+                
+                proteina = n.get("protein_g", 0)  # ✅ CORREGIDO: sin acento
+                
+                if dia not in proteina_por_dia:
+                    proteina_por_dia[dia] = 0
+                proteina_por_dia[dia] += proteina
+            except Exception as e:
+                continue
+    
+    print(f"📊 Días con datos de proteína: {list(proteina_por_dia.keys())[:10]}")  # Solo primeros 10
+    
+    # Analizar últimos 7 días
+    hoy = datetime.now()
+    ultimos_7_dias = []
+    for i in range(7):
+        dia = (hoy - timedelta(days=i)).strftime("%Y-%m-%d")
+        ultimos_7_dias.append(dia)
+        
+        if dia in proteina_por_dia:
+            total_dias_proteina += 1
+            prot = proteina_por_dia[dia]
+            cumple = prot >= PROTEINA_META
+            print(f"   {dia}: {prot:.0f}g {'✅' if cumple else '❌'}")
+            if cumple:
+                dias_proteina_ok += 1
+    
+    porcentaje_adherencia_proteina = (dias_proteina_ok / total_dias_proteina * 100) if total_dias_proteina > 0 else 0
+    
+    print(f"🥩 Adherencia proteína: {dias_proteina_ok}/{total_dias_proteina} días ({porcentaje_adherencia_proteina:.0f}%)")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # 4. BARRA DE PROGRESO DE PESO (VENTANA MÓVIL 7 DÍAS)
+    # ═══════════════════════════════════════════════════════════════
+    
+    peso_actual = metricas.get("peso_actual", 0)
+    peso_hace_7_dias = metricas.get("peso_hace_7_dias", peso_actual)  # Buscar en cache
+    
+    # Buscar peso inicial (hace 2 meses o el más viejo registrado)
+    peso_inicial = 83.0  # Valor de referencia fijo
+    
+    kg_perdidos_total = peso_inicial - peso_actual
+    kg_faltantes = peso_actual - PESO_META
+    
+    progreso_porcentaje = 0
+    if peso_inicial > PESO_META:
+        progreso_porcentaje = (kg_perdidos_total / (peso_inicial - PESO_META)) * 100
+    
+    print(f"⚖️  Peso inicial: {peso_inicial:.1f}kg")
+    print(f"⚖️  Peso actual: {peso_actual:.1f}kg")
+    print(f"⚖️  Peso hace 7 días: {peso_hace_7_dias:.1f}kg")
+    print(f"⚖️  Peso meta: {PESO_META}kg")
+    print(f"📊 Progreso total: {progreso_porcentaje:.1f}% ({kg_perdidos_total:.1f}kg perdidos, faltan {kg_faltantes:.1f}kg)")
+    
+    # ═══════════════════════════════════════════════════════════════
+    # 5. ALERTAS DINÁMICAS
+    # ═══════════════════════════════════════════════════════════════
+    
+    alertas = []
+    
+    # PAI
+    pai = metricas.get("pai_semanal", 0)
+    if pai < 100:
+        alertas.append({
+            "tipo": "warning",
+            "icono": "⚠️",
+            "titulo": "PAI Insuficiente",
+            "mensaje": f"PAI actual: {pai:.0f}/100. Meta: ≥100 para salud cardiovascular óptima."
+        })
     else:
-        # Ya está cerca de 100, dar recomendaciones de mantenimiento
-        plan["acciones_2m"] = [
-            {
-                "titulo": "✅ Mantener Nivel Actual",
-                "descripcion": "Tu Healthspan Index es excelente. Enfócate en consistencia.",
-                "metrica": f"Index actual: {index_actual}/100",
-                "prioridad": "BAJA"
-            }
-        ]
-        plan["proyecciones"] = {
-            "12m": {
-                "healthspan": index_actual
-            }
-        }
+        alertas.append({
+            "tipo": "success",
+            "icono": "✅",
+            "titulo": "PAI Excelente",
+            "mensaje": f"PAI: {pai:.0f}/100. ¡Mantén este nivel de actividad!"
+        })
     
-    # Calcular metas proyectadas
-    plan["meta_2m"] = plan["proyecciones"].get("2m", {}).get("healthspan", index_actual)
-    plan["meta_6m"] = plan["proyecciones"].get("6m", {}).get("healthspan", index_actual)
-    plan["meta_12m"] = plan["proyecciones"].get("12m", {}).get("healthspan", index_actual)
+    # Proteína baja últimos 3 días
+    ultimos_3_dias = []
+    for i in range(3):
+        dia = (hoy - timedelta(days=i)).strftime("%Y-%m-%d")
+        ultimos_3_dias.append(dia)
     
-    return plan
+    proteina_baja_consecutiva = all(
+        proteina_por_dia.get(d, 0) < PROTEINA_META for d in ultimos_3_dias if d in proteina_por_dia
+    )
+    
+    if proteina_baja_consecutiva and total_dias_proteina >= 3:
+        alertas.append({
+            "tipo": "danger",
+            "icono": "🥩",
+            "titulo": "Proteína Baja 3 Días Seguidos",
+            "mensaje": f"Riesgo de pérdida muscular. Meta: {PROTEINA_META}g/día. Agrega 1 snack proteico."
+        })
+    
+    # Adherencia general
+    adherencia_promedio = (porcentaje_adherencia_deficit + porcentaje_adherencia_proteina) / 2
+    
+    if adherencia_promedio >= 80:
+        alertas.append({
+            "tipo": "success",
+            "icono": "🎯",
+            "titulo": "Buena Adherencia al Plan",
+            "mensaje": f"{adherencia_promedio:.0f}% de cumplimiento. ¡Vas por buen camino!"
+        })
+    elif adherencia_promedio < 50 and total_dias_proteina > 0:
+        alertas.append({
+            "tipo": "danger",
+            "icono": "⚠️",
+            "titulo": "Adherencia Baja",
+            "mensaje": f"Solo {adherencia_promedio:.0f}% de cumplimiento. Revisa tu plan."
+        })
+    
+    # ═══════════════════════════════════════════════════════════════
+    # 6. PREDICCIÓN (VENTANA MÓVIL 7 DÍAS)
+    # ═══════════════════════════════════════════════════════════════
+    
+    # ✅ CORREGIDO: kg/semana = peso hace 7 días - peso actual
+    kg_por_semana = peso_hace_7_dias - peso_actual
+    
+    print(f"🔮 Cálculo kg/semana: {peso_hace_7_dias:.1f}kg (hace 7d) - {peso_actual:.1f}kg (hoy) = {kg_por_semana:.2f} kg/semana")
+    
+    # Si hay progreso, calcular semanas restantes
+    semanas_restantes = 0
+    tiempo_estimado = "N/A"
+    
+    if kg_por_semana > 0.05:  # Mínimo 50g/semana para considerar progreso real
+        semanas_restantes = kg_faltantes / kg_por_semana
+        
+        if semanas_restantes < 4:
+            tiempo_estimado = f"{int(semanas_restantes)} semanas"
+        else:
+            meses = int(semanas_restantes / 4)
+            semanas = int(semanas_restantes % 4)
+            tiempo_estimado = f"{meses} meses" + (f" y {semanas} semanas" if semanas > 0 else "")
+    
+    prediccion = {
+        "kg_por_semana": kg_por_semana,
+        "semanas_restantes": semanas_restantes,
+        "tiempo_estimado": tiempo_estimado,
+        "adherencia_actual": adherencia_promedio
+    }
+    
+    print(f"🔮 Predicción: {kg_por_semana:.2f} kg/semana → {tiempo_estimado} para llegar a meta")
+    print("=" * 60)
+    
+    # ═══════════════════════════════════════════════════════════════
+    # RETORNAR PLAN
+    # ═══════════════════════════════════════════════════════════════
+    
+    return {
+        "adherencia_deficit": {
+            "dias_cumplidos": dias_deficit_ok,
+            "total_dias": total_dias_deficit,
+            "porcentaje": porcentaje_adherencia_deficit
+        },
+        "adherencia_proteina": {
+            "dias_cumplidos": dias_proteina_ok,
+            "total_dias": total_dias_proteina,
+            "porcentaje": porcentaje_adherencia_proteina
+        },
+        "peso_inicial": peso_inicial,
+        "peso_actual": peso_actual,
+        "peso_meta": PESO_META,
+        "progreso_porcentaje": progreso_porcentaje,
+        "kg_perdidos": kg_perdidos_total,
+        "kg_faltantes": kg_faltantes,
+        "alertas": alertas,
+        "prediccion": prediccion
+    }
 
 
 def renderizar_plan_accion_html(plan):
     """
-    Genera HTML del plan de acción.
+    Genera HTML del plan de acción con adherencia.
     """
     
-    brecha = plan["brecha_principal"]
-    actual = plan["meta_actual"]
-    meta_2m = plan["meta_2m"]
-    meta_6m = plan["meta_6m"]
-    meta_12m = plan["meta_12m"]
+    adh_deficit = plan["adherencia_deficit"]
+    adh_proteina = plan["adherencia_proteina"]
+    
+    peso_inicial = plan["peso_inicial"]
+    peso_actual = plan["peso_actual"]
+    peso_meta = plan["peso_meta"]
+    progreso = plan["progreso_porcentaje"]
+    kg_perdidos = plan["kg_perdidos"]
+    kg_faltantes = plan["kg_faltantes"]
+    
+    alertas = plan["alertas"]
+    pred = plan["prediccion"]
+    
+    # Color según adherencia
+    def color_adherencia(pct):
+        if pct >= 80:
+            return "#3fb950"
+        elif pct >= 50:
+            return "#d29922"
+        else:
+            return "#f85149"
+    
+    color_deficit = color_adherencia(adh_deficit["porcentaje"])
+    color_proteina = color_adherencia(adh_proteina["porcentaje"])
     
     html = f"""
     <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%); 
@@ -257,108 +277,154 @@ def renderizar_plan_accion_html(plan):
                 border: 1px solid rgba(255,255,255,0.1);">
         
         <h2 style="color: #58a6ff; font-size: 24px; margin-bottom: 20px; display: flex; align-items: center;">
-            🎯 Plan de Acción Personalizado
+            📋 Plan de Implementación
         </h2>
         
+        <!-- Adherencia al Plan (7 días) -->
         <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
-                <div style="text-align: center;">
-                    <div style="color: #8b949e; font-size: 12px; margin-bottom: 5px;">ACTUAL</div>
-                    <div style="color: #58a6ff; font-size: 32px; font-weight: bold;">{actual}</div>
+            <h3 style="color: #c9d1d9; font-size: 18px; margin-bottom: 15px;">
+                1. Adherencia al Plan (7 días)
+            </h3>
+            
+            <!-- Déficit Calórico -->
+            <div style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #8b949e;">🔥 Déficit: Días en déficit calórico (>0 kcal)</span>
+                    <span style="color: {color_deficit}; font-weight: bold;">
+                        {adh_deficit["dias_cumplidos"]}/{adh_deficit["total_dias"]} días ({adh_deficit["porcentaje"]:.0f}%)
+                    </span>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: #8b949e; font-size: 12px; margin-bottom: 5px;">META 2 MESES</div>
-                    <div style="color: #3fb950; font-size: 32px; font-weight: bold;">{meta_2m}</div>
+                <div style="background: rgba(139, 148, 158, 0.3); height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: {color_deficit}; height: 100%; width: {adh_deficit['porcentaje']}%; transition: width 0.3s;"></div>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: #8b949e; font-size: 12px; margin-bottom: 5px;">META 6 MESES</div>
-                    <div style="color: #3fb950; font-size: 32px; font-weight: bold;">{meta_6m}</div>
+            </div>
+            
+            <!-- Proteína -->
+            <div style="margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                    <span style="color: #8b949e;">🥩 Proteína: >160g (tu meta)</span>
+                    <span style="color: {color_proteina}; font-weight: bold;">
+                        {adh_proteina["dias_cumplidos"]}/{adh_proteina["total_dias"]} días ({adh_proteina["porcentaje"]:.0f}%)
+                    </span>
                 </div>
-                <div style="text-align: center;">
-                    <div style="color: #8b949e; font-size: 12px; margin-bottom: 5px;">META 12 MESES</div>
-                    <div style="color: #f0883e; font-size: 32px; font-weight: bold;">{meta_12m}</div>
+                <div style="background: rgba(139, 148, 158, 0.3); height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: {color_proteina}; height: 100%; width: {adh_proteina['porcentaje']}%; transition: width 0.3s;"></div>
                 </div>
+            </div>
+            
+            <!-- % Cumplimiento -->
+            <div style="margin-top: 15px; padding: 10px; background: rgba(88, 166, 255, 0.1); border-radius: 6px;">
+                <span style="color: #58a6ff; font-size: 12px;">Calculado % días cumpliendo</span>
             </div>
         </div>
         
-        <div style="background: rgba(240, 136, 62, 0.1); border-left: 4px solid #f0883e; 
-                    padding: 15px; border-radius: 6px; margin-bottom: 25px;">
-            <strong style="color: #f0883e;">🎯 Prioridad Principal:</strong> 
-            <span style="color: #c9d1d9;">Mejorar {brecha} Score (actualmente: {plan["score_mas_bajo"]}/100)</span>
+        <!-- Barra de Progreso -->
+        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+            <h3 style="color: #c9d1d9; font-size: 18px; margin-bottom: 15px;">
+                2. Barra de Progreso
+            </h3>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="text-align: left;">
+                    <div style="color: #8b949e; font-size: 11px;">PESO INICIAL</div>
+                    <div style="color: #f85149; font-size: 18px; font-weight: bold;">{peso_inicial:.1f} kg</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: #8b949e; font-size: 11px;">PESO ACTUAL</div>
+                    <div style="color: #58a6ff; font-size: 18px; font-weight: bold;">{peso_actual:.1f} kg</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="color: #8b949e; font-size: 11px;">PESO META</div>
+                    <div style="color: #3fb950; font-size: 18px; font-weight: bold;">{peso_meta:.1f} kg</div>
+                </div>
+            </div>
+            
+            <!-- Barra de progreso -->
+            <div style="background: rgba(139, 148, 158, 0.3); height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 10px;">
+                <div style="background: linear-gradient(90deg, #3fb950 0%, #58a6ff 100%); height: 100%; width: {min(progreso, 100)}%; transition: width 0.5s;"></div>
+            </div>
+            
+            <div style="text-align: center; color: #c9d1d9; font-size: 14px;">
+                % progreso = ({kg_perdidos:.1f} kg perdidos / {peso_inicial - peso_meta:.1f} kg total) = {progreso:.1f}%
+            </div>
         </div>
+        
+        <!-- Alertas Dinámicas -->
+        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+            <h3 style="color: #c9d1d9; font-size: 18px; margin-bottom: 15px;">
+                3. Alertas Dinámicas
+            </h3>
     """
     
-    # Renderizar acciones por plazo
-    plazos = [
-        ("📅 Acciones Inmediatas (2 meses)", plan["acciones_2m"], "#3fb950"),
-        ("📅 Metas Mediano Plazo (6 meses)", plan["acciones_6m"], "#58a6ff"),
-        ("📅 Objetivo Final (12 meses)", plan["acciones_12m"], "#f0883e")
-    ]
-    
-    for titulo_plazo, acciones, color in plazos:
-        if acciones:
-            html += f"""
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: {color}; font-size: 18px; margin-bottom: 15px;">{titulo_plazo}</h3>
-            """
-            
-            for accion in acciones:
-                prioridad_color = {
-                    "ALTA": "#f85149",
-                    "MEDIA": "#d29922",
-                    "BAJA": "#3fb950"
-                }.get(accion["prioridad"], "#58a6ff")
-                
-                html += f"""
-                <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; 
-                            margin-bottom: 15px; border-left: 4px solid {prioridad_color};">
-                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
-                        <strong style="color: #c9d1d9; font-size: 16px;">{accion["titulo"]}</strong>
-                        <span style="background: {prioridad_color}; color: white; padding: 4px 12px; 
-                                     border-radius: 12px; font-size: 11px; font-weight: bold;">
-                            {accion["prioridad"]}
-                        </span>
-                    </div>
-                    <p style="color: #8b949e; margin: 10px 0; line-height: 1.6;">{accion["descripcion"]}</p>
-                    <div style="background: rgba(88, 166, 255, 0.1); padding: 10px; border-radius: 4px; margin-top: 10px;">
-                        <strong style="color: #58a6ff; font-size: 12px;">📊 Métrica:</strong>
-                        <span style="color: #c9d1d9; font-size: 14px;"> {accion["metrica"]}</span>
+    # Renderizar alertas
+    for alerta in alertas:
+        color_map = {
+            "success": "#3fb950",
+            "warning": "#d29922",
+            "danger": "#f85149"
+        }
+        color = color_map.get(alerta["tipo"], "#58a6ff")
+        
+        html += f"""
+            <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 6px; 
+                        margin-bottom: 10px; border-left: 4px solid {color};">
+                <div style="display: flex; align-items: start; gap: 10px;">
+                    <span style="font-size: 24px;">{alerta["icono"]}</span>
+                    <div>
+                        <div style="color: #c9d1d9; font-weight: bold; margin-bottom: 5px;">
+                            {alerta["titulo"]}
+                        </div>
+                        <div style="color: #8b949e; font-size: 14px;">
+                            {alerta["mensaje"]}
+                        </div>
                     </div>
                 </div>
-                """
-            
-            html += "</div>"
-    
-    # Proyecciones detalladas
-    if "2m" in plan["proyecciones"]:
-        proy = plan["proyecciones"]
-        html += """
-        <div style="margin-top: 30px;">
-            <h3 style="color: #58a6ff; font-size: 18px; margin-bottom: 15px;">📈 Proyecciones de Mejora</h3>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+            </div>
         """
-        
-        for plazo, datos in [("2 meses", "2m"), ("6 meses", "6m"), ("12 meses", "12m")]:
-            if datos in proy:
-                d = proy[datos]
-                html += f"""
-                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
-                    <div style="color: #8b949e; font-size: 12px; margin-bottom: 10px;">{plazo.upper()}</div>
-                """
-                
-                if "body_score" in d:
-                    html += f'<div style="color: #c9d1d9; margin: 5px 0;">Body: {d["body_score"]}/100</div>'
-                if "grasa" in d:
-                    html += f'<div style="color: #c9d1d9; margin: 5px 0;">Grasa: {d["grasa"]:.1f}%</div>'
-                if "peso" in d:
-                    html += f'<div style="color: #c9d1d9; margin: 5px 0;">Peso: {d["peso"]:.1f} kg</div>'
-                if "healthspan" in d:
-                    html += f'<div style="color: #3fb950; font-weight: bold; margin-top: 10px;">Index: {d["healthspan"]}/100</div>'
-                
-                html += "</div>"
-        
-        html += "</div></div>"
     
-    html += "</div>"
+    html += """
+        </div>
+        
+        <!-- Predicción -->
+        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px;">
+            <h3 style="color: #c9d1d9; font-size: 18px; margin-bottom: 15px;">
+                4. Predicción
+            </h3>
+    """
+    
+    if pred["kg_por_semana"] > 0.05:
+        html += f"""
+            <div style="margin-bottom: 15px;">
+                <div style="color: #8b949e; font-size: 14px; margin-bottom: 5px;">
+                    🎯 Ritmo actual: {pred["kg_por_semana"]:.2f} kg/semana
+                </div>
+                <div style="color: #c9d1d9; font-size: 16px; font-weight: bold;">
+                    Tiempo estimado: {pred["tiempo_estimado"]}
+                </div>
+            </div>
+            
+            <div style="background: rgba(88, 166, 255, 0.1); padding: 12px; border-radius: 6px;">
+                <div style="color: #58a6ff; font-size: 13px; margin-bottom: 8px;">
+                    📊 Para mantener el progreso:
+                </div>
+                <div style="color: #8b949e; font-size: 12px;">
+                    • Mantener déficit calórico consistente (comé menos de lo que quemás)<br>
+                    • Cumplir meta de proteína (≥160g) para preservar músculo<br>
+                    • Registrar todas las comidas para mejor seguimiento<br>
+                    • Adherencia actual: {pred["adherencia_actual"]:.0f}%
+                </div>
+            </div>
+        """
+    else:
+        html += """
+            <div style="color: #8b949e; text-align: center; padding: 20px;">
+                Necesitas más datos para generar predicciones (mínimo 50g/semana de cambio)
+            </div>
+        """
+    
+    html += """
+        </div>
+    </div>
+    """
     
     return html

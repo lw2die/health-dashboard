@@ -299,7 +299,8 @@ def calcular_deficit_calorico(nutrition_data, tmb_data, calorias_data, dias=14):
         "fechas": fechas_con_datos,
         "presupuesto": [],
         "comido": [],
-        "ejercicio": []
+        "ejercicio": [],
+        "deficit": []
     }
     
     for fecha in fechas_con_datos:
@@ -310,9 +311,13 @@ def calcular_deficit_calorico(nutrition_data, tmb_data, calorias_data, dias=14):
         # Presupuesto = TMB + Ejercicio (como Samsung Health)
         presupuesto = tmb + ejercicio
         
+        # Déficit = Presupuesto - Comido (negativo si comiste más de lo presupuestado)
+        deficit = presupuesto - comido
+        
         resultado["presupuesto"].append(round(presupuesto, 0))
         resultado["comido"].append(round(comido, 0))
         resultado["ejercicio"].append(round(ejercicio, 0))
+        resultado["deficit"].append(round(deficit, 0))
     
     return resultado
 
@@ -404,6 +409,72 @@ def calcular_circulo_hoy(nutrition_data, tmb_data, calorias_data):
         "proteinas_g": round(proteinas, 1),
         "carbohidratos_g": round(carbohidratos, 1),
         "grasas_g": round(grasas, 1),
+        "pct_proteinas": pct_proteinas,
+        "pct_carbohidratos": pct_carbohidratos,
+        "pct_grasas": pct_grasas
+    }
+
+
+def calcular_macros_promedio_7d(nutrition_data):
+    """
+    ✅ NUEVO: Calcula macros promedio de los últimos 7 días
+    Returns: dict con gramos y porcentajes promedio
+    """
+    if not nutrition_data:
+        return {
+            "proteinas_g": 0,
+            "carbohidratos_g": 0,
+            "grasas_g": 0,
+            "pct_proteinas": 0,
+            "pct_carbohidratos": 0,
+            "pct_grasas": 0
+        }
+    
+    # Agrupar por día
+    por_dia = defaultdict(lambda: {"proteinas": 0, "carbohidratos": 0, "grasas": 0})
+    
+    hoy = datetime.now()
+    for i in range(7):
+        dia = (hoy - timedelta(days=i)).strftime("%Y-%m-%d")
+        por_dia[dia] = {"proteinas": 0, "carbohidratos": 0, "grasas": 0}
+    
+    for n in nutrition_data:
+        try:
+            fecha = datetime.fromisoformat(n["timestamp"].replace("Z", "+00:00"))
+            dia = fecha.strftime("%Y-%m-%d")
+            
+            if dia in por_dia:
+                por_dia[dia]["proteinas"] += n.get("protein_g", 0)
+                por_dia[dia]["carbohidratos"] += n.get("carbs_g", 0)
+                por_dia[dia]["grasas"] += n.get("fat_total_g", 0)
+        except:
+            continue
+    
+    # Calcular promedios
+    total_proteinas = sum(d["proteinas"] for d in por_dia.values())
+    total_carbohidratos = sum(d["carbohidratos"] for d in por_dia.values())
+    total_grasas = sum(d["grasas"] for d in por_dia.values())
+    
+    proteinas_promedio = total_proteinas / 7
+    carbohidratos_promedio = total_carbohidratos / 7
+    grasas_promedio = total_grasas / 7
+    
+    # Calcular porcentajes
+    total_calorias_macros = (proteinas_promedio * 4) + (carbohidratos_promedio * 4) + (grasas_promedio * 9)
+    
+    if total_calorias_macros > 0:
+        pct_proteinas = round((proteinas_promedio * 4 / total_calorias_macros) * 100)
+        pct_carbohidratos = round((carbohidratos_promedio * 4 / total_calorias_macros) * 100)
+        pct_grasas = round((grasas_promedio * 9 / total_calorias_macros) * 100)
+    else:
+        pct_proteinas = 0
+        pct_carbohidratos = 0
+        pct_grasas = 0
+    
+    return {
+        "proteinas_g": round(proteinas_promedio, 1),
+        "carbohidratos_g": round(carbohidratos_promedio, 1),
+        "grasas_g": round(grasas_promedio, 1),
         "pct_proteinas": pct_proteinas,
         "pct_carbohidratos": pct_carbohidratos,
         "pct_grasas": pct_grasas

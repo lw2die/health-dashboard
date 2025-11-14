@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Dashboard Generator - Orquestador Principal MODULAR
-Coordina todos los módulos de generación del dashboard
+Coordina todos los mÃ³dulos de generaciÃ³n del dashboard
 """
 
 from datetime import datetime, timedelta
@@ -10,10 +10,10 @@ from config import OUTPUT_HTML, EDAD, ALTURA_CM
 from utils.logger import logger
 from utils.logs_helper import leer_ultimos_logs, generar_resumen_ejecucion, formatear_logs_html
 
-# Módulos de métricas
+# MÃ³dulos de mÃ©tricas
 from outputs.preparador_metricas import calcular_metricas
 
-# Módulos de preparación de gráficos
+# MÃ³dulos de preparaciÃ³n de grÃ¡ficos
 from outputs.prep_graficos_activity import (
     preparar_datos_pai_completo, preparar_datos_pasos, preparar_datos_sueno,
     preparar_datos_distancia, preparar_datos_calorias,
@@ -28,19 +28,20 @@ from outputs.prep_graficos_cardio import (
     preparar_datos_presion_arterial, preparar_datos_spo2, preparar_datos_glucosa
 )
 
-# Módulos de TSB
+# MÃ³dulos de TSB
 from metricas.fitness import preparar_datos_tsb_historico
 
-# Módulos de plan de acción
+# MÃ³dulos de plan de acciÃ³n
 from metricas.plan_accion import generar_plan_accion, renderizar_plan_accion_html
 from metricas.healthspan import generar_recomendaciones_healthspan
 
-# Módulos de dashboard
+# MÃ³dulos de dashboard
 from outputs.cards import (
     generar_card_pai, generar_card_peso, generar_card_vo2max,
     generar_card_tsb, generar_card_sueno, generar_card_spo2,
     generar_card_grasa, generar_card_masa_muscular, generar_card_fc_reposo,
-    generar_card_pasos, generar_card_presion, generar_card_score
+    generar_card_pasos, generar_card_presion, generar_card_glucemia,
+    generar_card_gmi, generar_card_score
 )
 from outputs.html_builder import construir_html_completo
 from outputs.laboratorio_renderer import (
@@ -53,16 +54,16 @@ try:
     from metricas.laboratorio import obtener_datos_laboratorio_y_alertas
     LABORATORIO_DISPONIBLE = True
 except ImportError:
-    logger.warning("⚠️ Módulo laboratorio no disponible")
+    logger.warning("âš ï¸ MÃ³dulo laboratorio no disponible")
     LABORATORIO_DISPONIBLE = False
 
 
 def generar_dashboard(cache):
     """
     Genera dashboard HTML completo.
-    Orquesta todos los módulos para construir el dashboard.
+    Orquesta todos los mÃ³dulos para construir el dashboard.
     """
-    logger.info("Generando dashboard HTML con gráficos...")
+    logger.info("Generando dashboard HTML con grÃ¡ficos...")
     
     # 1. EXTRAER DATOS DEL CACHE
     ejercicios = cache.get("ejercicio", [])
@@ -84,14 +85,14 @@ def generar_dashboard(cache):
     nutrition = cache.get("nutrition", [])
     frecuencia_cardiaca = cache.get("frecuencia_cardiaca", [])
     
-    # 2. CALCULAR MÉTRICAS
+    # 2. CALCULAR MÃ‰TRICAS
     metricas = calcular_metricas(
         ejercicios, peso, sueno, spo2, grasa_corporal,
         masa_muscular, vo2max_medido, fc_reposo, pasos, presion_arterial,
-        nutrition, tasa_metabolica, calorias_totales
+        nutrition, tasa_metabolica, calorias_totales, glucosa
     )
     
-    # 3. PROCESAR LABORATORIO (si está disponible)
+    # 3. PROCESAR LABORATORIO (si estÃ¡ disponible)
     datos_laboratorio = {}
     if LABORATORIO_DISPONIBLE:
         try:
@@ -102,12 +103,12 @@ def generar_dashboard(cache):
                 vo2max_medido=metricas.get("vo2max", 38),
                 glucemias_diarias=glucosa
             )
-            logger.info(f"✅ Laboratorio procesado: Longevity Score = {datos_laboratorio.get('longevity_score', 'N/A')}/100")
+            logger.info(f"âœ… Laboratorio procesado: Longevity Score = {datos_laboratorio.get('longevity_score', 'N/A')}/100")
         except Exception as e:
-            logger.error(f"❌ Error procesando laboratorio: {e}")
+            logger.error(f"âŒ Error procesando laboratorio: {e}")
     
-    # 4. PREPARAR DATOS PARA GRÁFICOS
-    # ✅ MODIFICADO: Nutrition ahora usa 14 días
+    # 4. PREPARAR DATOS PARA GRÃFICOS
+    # âœ… MODIFICADO: Nutrition ahora usa 14 dÃ­as
     datos_graficos = {
         "pai": preparar_datos_pai_completo(ejercicios),
         "peso": preparar_datos_peso_deduplicado(peso),
@@ -130,7 +131,7 @@ def generar_dashboard(cache):
         "deficit": calcular_deficit_calorico(nutrition, tasa_metabolica, calorias_totales, dias=14)
     }
     
-    # ✅ NUEVO: Calcular círculo del día actual
+    # âœ… NUEVO: Calcular cÃ­rculo del dÃ­a actual
     circulo_data = calcular_circulo_hoy(nutrition, tasa_metabolica, calorias_totales)
     
     # 5. GENERAR COMPONENTES HTML
@@ -150,21 +151,23 @@ def generar_dashboard(cache):
         generar_card_fc_reposo(metricas),
         generar_card_pasos(metricas),
         generar_card_presion(metricas),
+        generar_card_glucemia(metricas),
+        generar_card_gmi(metricas),
         generar_card_score(metricas)
     ])
     
     entrenamientos = _obtener_entrenamientos_recientes(ejercicios)
     entrenamientos_html = generar_tabla_entrenamientos(entrenamientos)
     
-    # PLAN DE ACCIÓN PERSONALIZADO
+    # PLAN DE ACCIÃ“N PERSONALIZADO
     try:
-        logger.info("🎯 Intentando generar plan de acción...")
-        plan_accion = generar_plan_accion(healthspan_data, metricas)
-        logger.info("✓ Plan de acción generado correctamente")
+        logger.info("ðŸŽ¯ Intentando generar plan de acciÃ³n...")
+        plan_accion = generar_plan_accion(metricas, nutrition, tasa_metabolica, calorias_totales)
+        logger.info("âœ“ Plan de acciÃ³n generado correctamente")
         plan_accion_html = renderizar_plan_accion_html(plan_accion)
-        logger.info("✓ HTML del plan renderizado correctamente")
+        logger.info("âœ“ HTML del plan renderizado correctamente")
     except Exception as e:
-        logger.error(f"❌ ERROR generando plan de acción: {e}")
+        logger.error(f"âŒ ERROR generando plan de acciÃ³n: {e}")
         import traceback
         logger.error(f"Traceback: {traceback.format_exc()}")
         plan_accion_html = ""
@@ -177,7 +180,7 @@ def generar_dashboard(cache):
     resumen_ejecucion = generar_resumen_ejecucion(cache)
     
     # 6. CONSTRUIR HTML COMPLETO
-    # ✅ MODIFICADO: Ahora pasa circulo_data en lugar de nutrition_data
+    # âœ… MODIFICADO: Ahora pasa circulo_data en lugar de nutrition_data
     html = construir_html_completo(
         html_laboratorio,
         cards_html,
@@ -199,7 +202,7 @@ def generar_dashboard(cache):
 
 
 def _obtener_entrenamientos_recientes(ejercicios, dias=7):
-    """Obtiene entrenamientos de los últimos N días"""
+    """Obtiene entrenamientos de los Ãºltimos N dÃ­as"""
     if not ejercicios:
         return []
     
