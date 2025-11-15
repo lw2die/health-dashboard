@@ -64,37 +64,12 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
         <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
         {generar_css()}
-        
-        <script>
-        async function actualizar() {{
-            const msg = document.getElementById('msg');
-            msg.textContent = '⏳ Actualizando...';
-            
-            try {{
-                const res = await fetch('http://TU_IP_PUBLICA:5000/actualizar', {{method: 'POST'}});
-                if (res.ok) {{
-                    msg.textContent = '✅ OK';
-                    setTimeout(() => location.reload(), 2000);
-                }} else {{
-                    msg.textContent = '❌ Error';
-                }}
-            }} catch (e) {{
-                msg.textContent = '❌ ' + e.message;
-            }}
-        }}
-        </script>
     </head>
     <body>
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
                 <p class="subtitle">Última actualización: {_obtener_hora_argentina().strftime("%d/%m/%Y %H:%M")} (Argentina)</p>
-                
-                <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
-                    🔄 Actualizar
-                </button>
-                <span id="msg" style="margin-left:10px;"></span>
-                
             </header>
             
             {healthspan_hero}
