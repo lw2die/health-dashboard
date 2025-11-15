@@ -22,9 +22,8 @@ def _obtener_hora_argentina():
     return datetime.utcnow() - timedelta(hours=3)
 
 
-def generar_javascript(datos_graficos, circulo_data=None):
+def generar_javascript(datos_graficos, circulo_data=None, macros_7d=None):
     """
-    ✅ MODIFICADO: Ahora recibe circulo_data
     Genera todo el JavaScript para los gráficos.
     Llama a todos los módulos JS especializados.
     """
@@ -35,7 +34,7 @@ def generar_javascript(datos_graficos, circulo_data=None):
     js += generar_js_activity(datos_graficos)
     js += generar_js_other(datos_graficos)
     js += generar_funciones_logs()
-    js += generar_js_nutrition(datos_graficos, circulo_data)
+    js += generar_js_nutrition(datos_graficos, circulo_data, macros_7d)  # ✅ CAMBIO: Pasar macros_7d
     
     return js
 
@@ -44,16 +43,15 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
                            recomendaciones_html, datos_graficos, 
                            logs_html_content="", resumen_ejecucion=None, 
                            healthspan_data=None, plan_accion_html="", 
-                           circulo_data=None):
+                           circulo_data=None, macros_7d=None):  # ✅ CAMBIO: Agregar macros_7d
     """
-    ✅ MODIFICADO: Ahora recibe circulo_data en lugar de nutrition_data
     Construye el HTML completo del dashboard.
     Es el orquestador principal que combina todos los componentes.
     """
     
     # Generar componentes HTML
     healthspan_hero = generar_healthspan_hero(healthspan_data) if healthspan_data else ""
-    seccion_nutrition = generar_seccion_nutrition(circulo_data, datos_graficos) if circulo_data else ""
+    seccion_nutrition = generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d) if circulo_data else ""  # ✅ CAMBIO: Pasar macros_7d
     seccion_logs = generar_seccion_logs(logs_html_content, resumen_ejecucion)
     
     return f"""
@@ -70,7 +68,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
     <body>
         <div class="container">
             <header>
-                <h1>📊 Dashboard de Salud</h1>
+                <h1>Dashboard de Salud</h1>
                 <p class="subtitle">Última actualización: {_obtener_hora_argentina().strftime("%d/%m/%Y %H:%M")} (Argentina)</p>
             </header>
             
@@ -85,7 +83,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
             </div>
             
             <div class="charts-section">
-                <h2>📈 Evolución Temporal</h2>
+                <h2>Evolución Temporal</h2>
                 <div class="charts-grid">
                     <div class="chart-container">
                         <h3>PAI (Diario + Ventana Móvil 7 días)</h3>
@@ -161,12 +159,12 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
             {seccion_nutrition}
             
             <div class="training-section">
-                <h2>🏃 Entrenamientos Recientes</h2>
+                <h2>Entrenamientos Recientes</h2>
                 {entrenamientos_html}
             </div>
             
             <div class="recommendations-section">
-                <h2>💡 Recomendaciones</h2>
+                <h2>Recomendaciones</h2>
                 {recomendaciones_html}
             </div>
             
@@ -174,7 +172,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
         </div>
         
         <script>
-            {generar_javascript(datos_graficos, circulo_data)}
+            {generar_javascript(datos_graficos, circulo_data, macros_7d)}
         </script>
     </body>
     </html>
