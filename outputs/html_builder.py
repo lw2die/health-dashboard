@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 HTML Builder - Constructor principal del dashboard
@@ -71,7 +70,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
             msg.textContent = '⏳ Actualizando...';
             
             try {{
-                const res = await fetch('http://TU_IP_PUBLICA:5000/actualizar', {{method: 'POST'}});
+                const res = await fetch('actualizar', {{method: 'POST'}});
                 if (res.ok) {{
                     msg.textContent = '✅ OK';
                     setTimeout(() => location.reload(), 2000);
