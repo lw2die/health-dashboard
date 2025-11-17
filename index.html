@@ -474,7 +474,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 17/11/2025 07:22 (Argentina)</p>
+                <p class="subtitle">Última actualización: 17/11/2025 07:55 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -636,11 +636,11 @@
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span style="color: #8b949e;">🥩 Proteína: >160g (tu meta)</span>
                     <span style="color: #3fb950; font-weight: bold;">
-                        6/6 días (100%)
+                        6/7 días (86%)
                     </span>
                 </div>
                 <div style="background: rgba(139, 148, 158, 0.3); height: 8px; border-radius: 4px; overflow: hidden;">
-                    <div style="background: #3fb950; height: 100%; width: 100.0%; transition: width 0.3s;"></div>
+                    <div style="background: #3fb950; height: 100%; width: 85.71428571428571%; transition: width 0.3s;"></div>
                 </div>
             </div>
             
@@ -727,7 +727,7 @@
                     • Mantener déficit calórico consistente (comé menos de lo que quemás)<br>
                     • Cumplir meta de proteína (≥160g) para preservar músculo<br>
                     • Registrar todas las comidas para mejor seguimiento<br>
-                    • Adherencia actual: 57%
+                    • Adherencia actual: 50%
                 </div>
             </div>
         
@@ -793,7 +793,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">14,418</div>
+        <div class="metric-value" style="color: #3fb950;">14,421</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -920,7 +920,7 @@
                         <div style="position: relative; width: 200px; height: 200px; margin: 20px auto;">
                             <canvas id="circulo-calorias"></canvas>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1663.0</div>
+                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1222.0</div>
                                 <div style="font-size: 0.9em; color: #8b949e;">Restante</div>
                             </div>
                         </div>
@@ -929,7 +929,7 @@
                         <div style="margin-top: 20px;">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                                 <span style="color: #8b949e;">🍽️ Comido</span>
-                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">0</span>
+                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">441.0</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                                 <span style="color: #8b949e;">🔥 Ejercicio</span>
@@ -956,12 +956,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-carbohidratos"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">0%</div>
+                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">63%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🍞 Carbohidrat...</div>
-                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">66.6g</div>
                                 </div>
                             </div>
                             
@@ -970,12 +970,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-proteinas"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">0%</div>
+                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">3%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🥩 Proteínas</div>
-                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">3.6g</div>
                                 </div>
                             </div>
                             
@@ -984,12 +984,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-grasas"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">0%</div>
+                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">34%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🥑 Grasas</div>
-                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">15.9g</div>
                                 </div>
                             </div>
                         </div>
@@ -1024,9 +1024,9 @@
                             <div style="margin-top: 20px;">
                                 <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Real</div>
                                 <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>46%</strong> (582.7g) &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>37%</strong> (207.5g) &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>18%</strong> (227.4g)
+                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>46%</strong> (598.9g) &nbsp;
+                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>37%</strong> (213.5g) &nbsp;
+                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>17%</strong> (228.6g)
                                 </div>
                             </div>
                         </div>
@@ -1165,113 +1165,93 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-17 07:22:51 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-17 07:55:46 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 100</p>
             <p>✅ <strong>Total registros peso:</strong> 42</p>
-            <p>✅ <strong>Total registros pasos:</strong> 611</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 8386 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 612</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 6573 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-17 07:22:50,587 [INFO] - 
-2025-11-17 07:22:50,588 [INFO] - ================================================================================
-2025-11-17 07:22:50,588 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-17 07:22:50,588 [INFO] - ================================================================================
-2025-11-17 07:22:50,588 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-17 07:22:50,588 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-17 07:22:50,588 [INFO] - ================================================================================
-2025-11-17 07:22:50,588 [INFO] - 
-2025-11-17 07:22:50,588 [INFO] - ================================================================================
-2025-11-17 07:22:50,588 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-17 07:22:50,588 [INFO] - ================================================================================
-2025-11-17 07:22:50,619 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-17 07:22:50,625 [INFO] - Total archivos JSON encontrados: 706
-2025-11-17 07:22:50,625 [INFO] - Archivos ya procesados: 707
-2025-11-17 07:22:50,625 [INFO] - Archivos nuevos a procesar: 2
-2025-11-17 07:22:50,625 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-17_07-09-44.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-17_07-21-59.json&#x27;]
-2025-11-17 07:22:50,626 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-17_07-09-44.json
-2025-11-17 07:22:50,626 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-17_07-09-44.json
-2025-11-17 07:22:50,626 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;weight_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-17 07:22:50,626 [INFO] -   → Peso agregado: 1 días (rechazados: 0)
-2025-11-17 07:22:50,626 [INFO] -      📊 Peso por fuente:
-2025-11-17 07:22:50,626 [INFO] -         • com.icomon.starfit.starfit: 1 registros
-2025-11-17 07:22:50,626 [INFO] -   → Grasa corporal agregada: 1
-2025-11-17 07:22:50,626 [INFO] -     📊 Grasa Corporal por fuente:
-2025-11-17 07:22:50,626 [INFO] -        • starfit: 1 registros (total: 25)
-2025-11-17 07:22:50,626 [INFO] -   → Masa ósea agregada: 1
-2025-11-17 07:22:50,627 [INFO] -     📊 Masa Ósea por fuente:
-2025-11-17 07:22:50,627 [INFO] -        • starfit: 1 registros (total: 4)
-2025-11-17 07:22:50,627 [INFO] -   → Tasa metabólica basal agregada: 1
-2025-11-17 07:22:50,627 [INFO] -     📊 BMR por fuente:
-2025-11-17 07:22:50,627 [INFO] -        • starfit: 1 registros (total: 1663)
-2025-11-17 07:22:50,627 [INFO] -   → Pasos agregados: 1
-2025-11-17 07:22:50,627 [INFO] -     📊 Pasos por fuente:
-2025-11-17 07:22:50,627 [INFO] -        • Samsung Health: 1 registros (total: 145)
-2025-11-17 07:22:50,627 [INFO] -   Campos detectados: peso, grasa_corporal, masa_osea, tasa_metabolica, pasos
-2025-11-17 07:22:50,627 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-17 07:22:50,628 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-17_07-09-44.json
-2025-11-17 07:22:50,628 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-17_07-21-59.json
-2025-11-17 07:22:50,628 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-17_07-21-59.json
-2025-11-17 07:22:50,628 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-17 07:22:50,628 [INFO] -   → Glucosa agregada: 2
-2025-11-17 07:22:50,628 [INFO] -     📊 Glucosa por fuente:
-2025-11-17 07:22:50,628 [INFO] -        • Samsung Health: 2 registros (total: 193)
-2025-11-17 07:22:50,628 [INFO] -   → Pasos agregados: 1
-2025-11-17 07:22:50,628 [INFO] -     📊 Pasos por fuente:
-2025-11-17 07:22:50,629 [INFO] -        • Samsung Health: 1 registros (total: 157)
-2025-11-17 07:22:50,629 [INFO] -   Campos detectados: glucosa, pasos
-2025-11-17 07:22:50,629 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-17 07:22:50,629 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-17_07-21-59.json
-2025-11-17 07:22:50,914 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-17 07:22:50,914 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-17 07:22:50,914 [INFO] - ==================================================
-2025-11-17 07:22:50,914 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-17
-2025-11-17 07:22:50,914 [INFO] - Ventana de 7 días: 2025-11-11 a 2025-11-17
-2025-11-17 07:22:50,914 [INFO] - PAI TOTAL SEMANAL: 202.1
-2025-11-17 07:22:50,914 [INFO] - Entrenamientos en ventana: 32
-2025-11-17 07:22:50,914 [INFO] - ==================================================
-2025-11-17 07:22:50,915 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.95
-2025-11-17 07:22:50,915 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;04f2f152-aa8d-3687-8e3d-ccf99cc0ed45&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-16T08:42:35-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-16T08:42:35-03:00&#x27;, &#x27;masa_kg&#x27;: 56.95, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-17 07:22:50,915 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 611
-2025-11-17 07:22:50,918 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-17 07:22:50,918 [INFO] -    - 2025-11-11: 20,128 pasos (de 29 registros)
-2025-11-17 07:22:50,918 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
-2025-11-17 07:22:50,918 [INFO] -    - 2025-11-13: 9,917 pasos (de 24 registros)
-2025-11-17 07:22:50,918 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
-2025-11-17 07:22:50,919 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
-2025-11-17 07:22:50,919 [INFO] -    - 2025-11-16: 10,499 pasos (de 26 registros)
-2025-11-17 07:22:50,919 [INFO] -    - 2025-11-17: 157 pasos (de 2 registros)
-2025-11-17 07:22:50,919 [INFO] - 📈 Pasos promedio calculado: 14,418 pasos/día (últimos 7 días)
-2025-11-17 07:22:50,919 [INFO] - 🩸 Glucemia (últimos 7 días):
-2025-11-17 07:22:50,919 [INFO] -    - Ayunas: 19 mediciones, promedio: 93.8 mg/dL
-2025-11-17 07:22:50,919 [INFO] -    - Postprandial: 6 mediciones, promedio: 105.4 mg/dL
-2025-11-17 07:22:50,919 [INFO] - 📈 GMI Estimado (últimos 90 días):
-2025-11-17 07:22:50,920 [INFO] -    - Mediciones: 87
-2025-11-17 07:22:50,920 [INFO] -    - Glucosa promedio: 99.8 mg/dL
-2025-11-17 07:22:50,920 [INFO] -    - GMI: 5.7%
-2025-11-17 07:22:50,927 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-17 07:22:51,022 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-17
-2025-11-17 07:22:51,022 [INFO] - 📊 Total registros de nutrition en cache: 539
-2025-11-17 07:22:51,024 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2025-11-17 07:22:51,025 [INFO] - ✅ TMB HOY: 1663.0 kcal
-2025-11-17 07:22:51,027 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2025-11-17 07:22:51,027 [INFO] - 📈 RESULTADO: Presupuesto=1663.0, Comido=0, Restante=1663.0
-2025-11-17 07:22:51,030 [INFO] - Intentando generar plan de acción...
+        <pre id="logs-content" class="logs-hidden">2025-11-17 07:55:45,614 [INFO] - 
+2025-11-17 07:55:45,614 [INFO] - ================================================================================
+2025-11-17 07:55:45,614 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-17 07:55:45,614 [INFO] - ================================================================================
+2025-11-17 07:55:45,614 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-17 07:55:45,614 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-17 07:55:45,614 [INFO] - ================================================================================
+2025-11-17 07:55:45,615 [INFO] - 
+2025-11-17 07:55:45,615 [INFO] - ================================================================================
+2025-11-17 07:55:45,615 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-17 07:55:45,615 [INFO] - ================================================================================
+2025-11-17 07:55:45,642 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-17 07:55:45,687 [INFO] - Total archivos JSON encontrados: 707
+2025-11-17 07:55:45,687 [INFO] - Archivos ya procesados: 709
+2025-11-17 07:55:45,687 [INFO] - Archivos nuevos a procesar: 1
+2025-11-17 07:55:45,687 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-17_07-39-11.json&#x27;]
+2025-11-17 07:55:45,687 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-17_07-39-11.json
+2025-11-17 07:55:45,688 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-17_07-39-11.json
+2025-11-17 07:55:45,688 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-17 07:55:45,688 [INFO] -   → Nutrición agregada: 7 alimentos
+2025-11-17 07:55:45,688 [INFO] -      🍽️  Por tipo de comida:
+2025-11-17 07:55:45,688 [INFO] -         • Desayuno: 7 alimentos
+2025-11-17 07:55:45,688 [INFO] -   → Pasos agregados: 1
+2025-11-17 07:55:45,688 [INFO] -     📊 Pasos por fuente:
+2025-11-17 07:55:45,688 [INFO] -        • Samsung Health: 1 registros (total: 177)
+2025-11-17 07:55:45,688 [INFO] -   Campos detectados: nutrition, pasos
+2025-11-17 07:55:45,688 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-17 07:55:45,691 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-17_07-39-11.json
+2025-11-17 07:55:45,936 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-17 07:55:45,937 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-17 07:55:45,937 [INFO] - ==================================================
+2025-11-17 07:55:45,937 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-17
+2025-11-17 07:55:45,937 [INFO] - Ventana de 7 días: 2025-11-11 a 2025-11-17
+2025-11-17 07:55:45,937 [INFO] - PAI TOTAL SEMANAL: 202.1
+2025-11-17 07:55:45,937 [INFO] - Entrenamientos en ventana: 32
+2025-11-17 07:55:45,937 [INFO] - ==================================================
+2025-11-17 07:55:45,938 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 56.95
+2025-11-17 07:55:45,938 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;04f2f152-aa8d-3687-8e3d-ccf99cc0ed45&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-16T08:42:35-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-16T08:42:35-03:00&#x27;, &#x27;masa_kg&#x27;: 56.95, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-17 07:55:45,938 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 612
+2025-11-17 07:55:45,985 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-17 07:55:45,985 [INFO] -    - 2025-11-11: 20,128 pasos (de 29 registros)
+2025-11-17 07:55:45,985 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
+2025-11-17 07:55:45,985 [INFO] -    - 2025-11-13: 9,917 pasos (de 24 registros)
+2025-11-17 07:55:45,985 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
+2025-11-17 07:55:45,986 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
+2025-11-17 07:55:45,986 [INFO] -    - 2025-11-16: 10,499 pasos (de 26 registros)
+2025-11-17 07:55:45,986 [INFO] -    - 2025-11-17: 177 pasos (de 3 registros)
+2025-11-17 07:55:45,986 [INFO] - 📈 Pasos promedio calculado: 14,421 pasos/día (últimos 7 días)
+2025-11-17 07:55:45,986 [INFO] - 🩸 Glucemia (últimos 7 días):
+2025-11-17 07:55:45,986 [INFO] -    - Ayunas: 19 mediciones, promedio: 93.8 mg/dL
+2025-11-17 07:55:45,986 [INFO] -    - Postprandial: 6 mediciones, promedio: 105.4 mg/dL
+2025-11-17 07:55:45,986 [INFO] - 📈 GMI Estimado (últimos 90 días):
+2025-11-17 07:55:45,986 [INFO] -    - Mediciones: 87
+2025-11-17 07:55:45,986 [INFO] -    - Glucosa promedio: 99.8 mg/dL
+2025-11-17 07:55:45,986 [INFO] -    - GMI: 5.7%
+2025-11-17 07:55:45,997 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-17 07:55:46,087 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-17
+2025-11-17 07:55:46,087 [INFO] - 📊 Total registros de nutrition en cache: 546
+2025-11-17 07:55:46,090 [INFO] - ✅ Registros de nutrition HOY: 4, Calorías: 441.0
+2025-11-17 07:55:46,091 [INFO] - ✅ TMB HOY: 1663.0 kcal
+2025-11-17 07:55:46,094 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2025-11-17 07:55:46,094 [INFO] - 📈 RESULTADO: Presupuesto=1663.0, Comido=441.0, Restante=1222.0
+2025-11-17 07:55:46,097 [INFO] - Intentando generar plan de acción...
 ============================================================
 🎯 GENERANDO PLAN DE ACCIÓN - ADHERENCIA 7 DÍAS
 ============================================================
 📊 Datos de déficit (7 días): 7 días
-   Déficits: [-5572.0, -3030.0, -1899.0, -399.0, -2345.0, -2842.0, 1663.0]
+   Déficits: [-5572.0, -3030.0, -1899.0, -399.0, -2345.0, -3283.0, 1222.0]
 ✅ Adherencia déficit: 1/7 días (14%)
-📊 Total registros nutrition_data: 539
+📊 Total registros nutrition_data: 546
 📊 Días con datos de proteína: [&#x27;2025-11-07&#x27;, &#x27;2025-11-08&#x27;, &#x27;2025-11-10&#x27;, &#x27;2025-11-11&#x27;, &#x27;2025-11-12&#x27;, &#x27;2025-11-13&#x27;, &#x27;2025-11-14&#x27;, &#x27;2025-11-15&#x27;, &#x27;2025-11-16&#x27;, &#x27;2025-11-03&#x27;]
-   2025-11-16: 296g ✅
+   2025-11-17: 4g ❌
+   2025-11-16: 301g ✅
    2025-11-15: 309g ✅
    2025-11-14: 277g ✅
    2025-11-13: 206g ✅
    2025-11-12: 215g ✅
    2025-11-11: 289g ✅
-🥩 Adherencia proteína: 6/6 días (100%)
+🥩 Adherencia proteína: 6/7 días (86%)
 ⚖️  Peso inicial: 83.0kg
 ⚖️  Peso actual: 79.8kg
 ⚖️  Peso hace 7 días: 81.5kg
@@ -1280,8 +1260,8 @@
 🔮 Cálculo kg/semana: 81.5kg (hace 7d) - 79.8kg (hoy) = 1.70 kg/semana
 🔮 Predicción: 1.70 kg/semana → 0 semanas para llegar a meta
 ============================================================
-2025-11-17 07:22:51,086 [INFO] - Plan de acción generado correctamente
-2025-11-17 07:22:51,086 [INFO] - HTML del plan renderizado correctamente
+2025-11-17 07:55:46,106 [INFO] - Plan de acción generado correctamente
+2025-11-17 07:55:46,106 [INFO] - HTML del plan renderizado correctamente
 </pre>
     </div>
     
@@ -1535,7 +1515,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17'],
-            y: [13455, 11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 157],
+            y: [13455, 11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 177],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -1700,9 +1680,9 @@
         // ═══════════════════════════════════════════════════════════════
         const circuloData = {
             presupuesto: 1663.0,
-            comido: 0,
+            comido: 441.0,
             ejercicio: 0,
-            restante: 1663.0
+            restante: 1222.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1710,7 +1690,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [0, 1663.0],
+                    data: [441.0, 1222.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1727,9 +1707,9 @@
         });
         
         // Actualizar valores en el HTML
-        document.getElementById('restante-valor').textContent = Math.abs(1663.0);
+        document.getElementById('restante-valor').textContent = Math.abs(1222.0);
         document.getElementById('restante-valor').style.color = '#3fb950';
-        document.getElementById('comido-valor').textContent = 0;
+        document.getElementById('comido-valor').textContent = 441.0;
         document.getElementById('ejercicio-valor').textContent = 0;
         document.getElementById('presupuesto-valor').textContent = 1663.0;
         
@@ -1742,7 +1722,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [3, 97],
                     backgroundColor: ['#a855f7', 'rgba(168, 85, 247, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1754,15 +1734,15 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('proteinas-pct').textContent = '0%';
-        document.getElementById('proteinas-g').textContent = '0g';
+        document.getElementById('proteinas-pct').textContent = '3%';
+        document.getElementById('proteinas-g').textContent = '3.6g';
         
         // Carbohidratos
         new Chart(document.getElementById('macro-carbohidratos'), {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [63, 37],
                     backgroundColor: ['#3b82f6', 'rgba(59, 130, 246, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1774,15 +1754,15 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('carbohidratos-pct').textContent = '0%';
-        document.getElementById('carbohidratos-g').textContent = '0g';
+        document.getElementById('carbohidratos-pct').textContent = '63%';
+        document.getElementById('carbohidratos-g').textContent = '66.6g';
         
         // Grasas
         new Chart(document.getElementById('macro-grasas'), {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [34, 66],
                     backgroundColor: ['#f59e0b', 'rgba(245, 158, 11, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1794,8 +1774,8 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('grasas-pct').textContent = '0%';
-        document.getElementById('grasas-g').textContent = '0g';
+        document.getElementById('grasas-pct').textContent = '34%';
+        document.getElementById('grasas-g').textContent = '15.9g';
         
         // ═══════════════════════════════════════════════════════════════
         // GRÁFICOS COMPARACIÓN MACROS - Recomendados vs Real
@@ -1835,7 +1815,7 @@
             data: {
                 labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
                 datasets: [{
-                    data: [46, 37, 18],
+                    data: [46, 37, 17],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
                     borderWidth: 0
                 }]
@@ -1878,7 +1858,7 @@
                     },
                     {
                         label: 'Comido',
-                        data: [2054.0, 1496.0, 954.0, 6210.0, 6616.0, 3302.0, 4980.0, 9792.0, 7101.0, 5432.0, 3626.0, 5100.0, 4897.0, 0],
+                        data: [2054.0, 1496.0, 954.0, 6210.0, 6616.0, 3302.0, 4980.0, 9792.0, 7101.0, 5432.0, 3626.0, 5100.0, 5338.0, 441.0],
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
