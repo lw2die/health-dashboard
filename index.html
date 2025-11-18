@@ -474,7 +474,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 18/11/2025 06:55 (Argentina)</p>
+                <p class="subtitle">Última actualización: 18/11/2025 08:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -623,11 +623,11 @@
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span style="color: #8b949e;">🔥 Déficit: Días en déficit calórico (>0 kcal)</span>
                     <span style="color: #f85149; font-weight: bold;">
-                        1/6 días (17%)
+                        2/7 días (29%)
                     </span>
                 </div>
                 <div style="background: rgba(139, 148, 158, 0.3); height: 8px; border-radius: 4px; overflow: hidden;">
-                    <div style="background: #f85149; height: 100%; width: 16.666666666666664%; transition: width 0.3s;"></div>
+                    <div style="background: #f85149; height: 100%; width: 28.57142857142857%; transition: width 0.3s;"></div>
                 </div>
             </div>
             
@@ -635,12 +635,12 @@
             <div style="margin-bottom: 10px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span style="color: #8b949e;">🥩 Proteína: >160g (tu meta)</span>
-                    <span style="color: #3fb950; font-weight: bold;">
-                        5/6 días (83%)
+                    <span style="color: #d29922; font-weight: bold;">
+                        5/7 días (71%)
                     </span>
                 </div>
                 <div style="background: rgba(139, 148, 158, 0.3); height: 8px; border-radius: 4px; overflow: hidden;">
-                    <div style="background: #3fb950; height: 100%; width: 83.33333333333334%; transition: width 0.3s;"></div>
+                    <div style="background: #d29922; height: 100%; width: 71.42857142857143%; transition: width 0.3s;"></div>
                 </div>
             </div>
             
@@ -663,7 +663,7 @@
                 </div>
                 <div style="text-align: center;">
                     <div style="color: #8b949e; font-size: 11px;">PESO ACTUAL</div>
-                    <div style="color: #58a6ff; font-size: 18px; font-weight: bold;">79.8 kg</div>
+                    <div style="color: #58a6ff; font-size: 18px; font-weight: bold;">80.3 kg</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="color: #8b949e; font-size: 11px;">PESO META</div>
@@ -673,11 +673,11 @@
             
             <!-- Barra de progreso -->
             <div style="background: rgba(139, 148, 158, 0.3); height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 10px;">
-                <div style="background: linear-gradient(90deg, #3fb950 0%, #58a6ff 100%); height: 100%; width: 79.99992370605469%; transition: width 0.5s;"></div>
+                <div style="background: linear-gradient(90deg, #3fb950 0%, #58a6ff 100%); height: 100%; width: 67.49992370605469%; transition: width 0.5s;"></div>
             </div>
             
             <div style="text-align: center; color: #c9d1d9; font-size: 14px;">
-                % progreso = (3.2 kg perdidos / 4.0 kg total) = 80.0%
+                % progreso = (2.7 kg perdidos / 4.0 kg total) = 67.5%
             </div>
         </div>
         
@@ -712,10 +712,10 @@
     
             <div style="margin-bottom: 15px;">
                 <div style="color: #8b949e; font-size: 14px; margin-bottom: 5px;">
-                    🎯 Ritmo actual: 1.70 kg/semana
+                    🎯 Ritmo actual: 1.20 kg/semana
                 </div>
                 <div style="color: #c9d1d9; font-size: 16px; font-weight: bold;">
-                    Tiempo estimado: 0 semanas
+                    Tiempo estimado: 1 semanas
                 </div>
             </div>
             
@@ -745,8 +745,8 @@
     
     <div class="metric-card">
         <div class="metric-label">Peso Actual</div>
-        <div class="metric-value" style="color: #3fb950;">79.8 kg</div>
-        <div class="metric-detail">En objetivo (+0.8 kg)</div>
+        <div class="metric-value" style="color: #3fb950;">80.3 kg</div>
+        <div class="metric-detail">En objetivo (+1.3 kg)</div>
     </div>
     
     <div class="metric-card">
@@ -776,7 +776,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Grasa Corporal</div>
-        <div class="metric-value" style="color: #f85149;">27.8%</div>
+        <div class="metric-value" style="color: #f85149;">23.5%</div>
         <div class="metric-detail">Alto</div>
     </div>
     
@@ -793,7 +793,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">13,237</div>
+        <div class="metric-value" style="color: #3fb950;">13,326</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -920,7 +920,7 @@
                         <div style="position: relative; width: 200px; height: 200px; margin: 20px auto;">
                             <canvas id="circulo-calorias"></canvas>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1700</div>
+                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">1079.0</div>
                                 <div style="font-size: 0.9em; color: #8b949e;">Restante</div>
                             </div>
                         </div>
@@ -929,7 +929,7 @@
                         <div style="margin-top: 20px;">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                                 <span style="color: #8b949e;">🍽️ Comido</span>
-                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">0</span>
+                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">619.0</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                                 <span style="color: #8b949e;">🔥 Ejercicio</span>
@@ -937,7 +937,7 @@
                             </div>
                             <div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
                                 <span style="color: #8b949e;">Meta de ingesta:</span>
-                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">1700 kcal</span>
+                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">1698.0 kcal</span>
                             </div>
                         </div>
                         
@@ -956,12 +956,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-carbohidratos"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">0%</div>
+                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">44%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🍞 Carbohidrat...</div>
-                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">69.9g</div>
                                 </div>
                             </div>
                             
@@ -970,12 +970,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-proteinas"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">0%</div>
+                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">19%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🥩 Proteínas</div>
-                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">29.7g</div>
                                 </div>
                             </div>
                             
@@ -984,12 +984,12 @@
                                 <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
                                     <canvas id="macro-grasas"></canvas>
                                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">0%</div>
+                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">37%</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px;">
                                     <div style="color: #8b949e; font-size: 0.85em;">🥑 Grasas</div>
-                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">0g</div>
+                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">26.3g</div>
                                 </div>
                             </div>
                         </div>
@@ -1024,9 +1024,9 @@
                             <div style="margin-top: 20px;">
                                 <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Real</div>
                                 <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>47%</strong> (484.7g) &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>33%</strong> (150.3g) &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>20%</strong> (200.7g)
+                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>47%</strong> (494.7g) &nbsp;
+                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>33%</strong> (154.0g) &nbsp;
+                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>20%</strong> (204.9g)
                                 </div>
                             </div>
                         </div>
@@ -1165,107 +1165,139 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-18 06:55:33 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-18 08:05:29 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 102</p>
-            <p>✅ <strong>Total registros peso:</strong> 42</p>
-            <p>✅ <strong>Total registros pasos:</strong> 633</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 6985 bytes</p>
+            <p>✅ <strong>Total registros peso:</strong> 43</p>
+            <p>✅ <strong>Total registros pasos:</strong> 636</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 9794 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-18 06:55:32,590 [INFO] - 
-2025-11-18 06:55:32,590 [INFO] - ================================================================================
-2025-11-18 06:55:32,590 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-18 06:55:32,590 [INFO] - ================================================================================
-2025-11-18 06:55:32,590 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-18 06:55:32,590 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-18 06:55:32,590 [INFO] - ================================================================================
-2025-11-18 06:55:32,590 [INFO] - 
-2025-11-18 06:55:32,590 [INFO] - ================================================================================
-2025-11-18 06:55:32,590 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-18 06:55:32,590 [INFO] - ================================================================================
-2025-11-18 06:55:32,618 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-18 06:55:32,624 [INFO] - Total archivos JSON encontrados: 731
-2025-11-18 06:55:32,624 [INFO] - Archivos ya procesados: 734
-2025-11-18 06:55:32,624 [INFO] - Archivos nuevos a procesar: 1
-2025-11-18 06:55:32,624 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-18_06-50-25.json&#x27;]
-2025-11-18 06:55:32,624 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-18_06-50-25.json
-2025-11-18 06:55:32,625 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-18_06-50-25.json
-2025-11-18 06:55:32,625 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;lean_body_mass_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-18 06:55:32,625 [INFO] -   → Masa muscular agregada: 1
-2025-11-18 06:55:32,625 [INFO] -     📊 Masa Muscular por fuente:
-2025-11-18 06:55:32,625 [INFO] -        • Withings: 1 registros (total: 58)
-2025-11-18 06:55:32,625 [INFO] -   → Frecuencia cardíaca agregada: 2 días
-2025-11-18 06:55:32,625 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-11-18 06:55:32,625 [INFO] -        • Samsung Health: 2 registros
-2025-11-18 06:55:32,625 [INFO] -   → Pasos agregados: 1
-2025-11-18 06:55:32,625 [INFO] -     📊 Pasos por fuente:
-2025-11-18 06:55:32,625 [INFO] -        • Samsung Health: 1 registros (total: 16)
-2025-11-18 06:55:32,625 [INFO] -   → Sueño agregado: 1 sesiones
-2025-11-18 06:55:32,625 [INFO] -      📊 Sueño por fuente:
-2025-11-18 06:55:32,626 [INFO] -         • com.sec.android.app.shealth: 1 sesiones
-2025-11-18 06:55:32,626 [INFO] -   Campos detectados: masa_muscular, frecuencia_cardiaca, pasos, sueno
-2025-11-18 06:55:32,626 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-18 06:55:32,626 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-18_06-50-25.json
-2025-11-18 06:55:32,929 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-18 06:55:32,930 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-18 06:55:32,930 [INFO] - ==================================================
-2025-11-18 06:55:32,930 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-18
-2025-11-18 06:55:32,930 [INFO] - Ventana de 7 días: 2025-11-12 a 2025-11-18
-2025-11-18 06:55:32,930 [INFO] - PAI TOTAL SEMANAL: 166.5
-2025-11-18 06:55:32,930 [INFO] - Entrenamientos en ventana: 24
-2025-11-18 06:55:32,930 [INFO] - ==================================================
-2025-11-18 06:55:32,931 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 58.0
-2025-11-18 06:55:32,931 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;67e30680-b660-390e-b298-5d7dcba3a0e9&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-17T17:19:09-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-17T17:19:09-03:00&#x27;, &#x27;masa_kg&#x27;: 58.0, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-18 06:55:32,931 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 633
-2025-11-18 06:55:32,934 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-13: 9,917 pasos (de 24 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-16: 10,499 pasos (de 26 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-17: 12,000 pasos (de 23 registros)
-2025-11-18 06:55:32,934 [INFO] -    - 2025-11-18: 16 pasos (de 1 registros)
-2025-11-18 06:55:32,934 [INFO] - 📈 Pasos promedio calculado: 13,237 pasos/día (últimos 7 días)
-2025-11-18 06:55:32,935 [INFO] - 🩸 Glucemia (últimos 7 días):
-2025-11-18 06:55:32,935 [INFO] -    - Ayunas: 13 mediciones, promedio: 93.8 mg/dL
-2025-11-18 06:55:32,935 [INFO] -    - Postprandial: 6 mediciones, promedio: 105.4 mg/dL
-2025-11-18 06:55:32,935 [INFO] - 📈 GMI Estimado (últimos 90 días):
-2025-11-18 06:55:32,935 [INFO] -    - Mediciones: 87
-2025-11-18 06:55:32,935 [INFO] -    - Glucosa promedio: 99.8 mg/dL
-2025-11-18 06:55:32,935 [INFO] -    - GMI: 5.7%
-2025-11-18 06:55:32,985 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-18 06:55:33,028 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-18
-2025-11-18 06:55:33,028 [INFO] - 📊 Total registros de nutrition en cache: 552
-2025-11-18 06:55:33,030 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2025-11-18 06:55:33,033 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2025-11-18 06:55:33,033 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=0, Restante=1700
-2025-11-18 06:55:33,086 [INFO] - Intentando generar plan de acción...
+        <pre id="logs-content" class="logs-hidden">2025-11-18 08:05:29,038 [INFO] - 
+2025-11-18 08:05:29,038 [INFO] - ================================================================================
+2025-11-18 08:05:29,038 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-18 08:05:29,038 [INFO] - ================================================================================
+2025-11-18 08:05:29,038 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-18 08:05:29,038 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-18 08:05:29,038 [INFO] - ================================================================================
+2025-11-18 08:05:29,038 [INFO] - 
+2025-11-18 08:05:29,038 [INFO] - ================================================================================
+2025-11-18 08:05:29,038 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-18 08:05:29,038 [INFO] - ================================================================================
+2025-11-18 08:05:29,112 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-18 08:05:29,119 [INFO] - Total archivos JSON encontrados: 734
+2025-11-18 08:05:29,119 [INFO] - Archivos ya procesados: 735
+2025-11-18 08:05:29,119 [INFO] - Archivos nuevos a procesar: 3
+2025-11-18 08:05:29,119 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-18_07-12-49.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-18_07-20-53.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-11-18_07-51-35.json&#x27;]
+2025-11-18 08:05:29,119 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-18_07-12-49.json
+2025-11-18 08:05:29,120 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-18_07-12-49.json
+2025-11-18 08:05:29,120 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;weight_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-18 08:05:29,120 [INFO] -   → Peso agregado: 1 días (rechazados: 0)
+2025-11-18 08:05:29,120 [INFO] -      📊 Peso por fuente:
+2025-11-18 08:05:29,120 [INFO] -         • com.icomon.starfit.starfit: 1 registros
+2025-11-18 08:05:29,120 [INFO] -   → Grasa corporal agregada: 1
+2025-11-18 08:05:29,121 [INFO] -     📊 Grasa Corporal por fuente:
+2025-11-18 08:05:29,121 [INFO] -        • starfit: 1 registros (total: 24)
+2025-11-18 08:05:29,121 [INFO] -   → Masa ósea agregada: 1
+2025-11-18 08:05:29,121 [INFO] -     📊 Masa Ósea por fuente:
+2025-11-18 08:05:29,121 [INFO] -        • starfit: 1 registros (total: 4)
+2025-11-18 08:05:29,121 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-11-18 08:05:29,121 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-11-18 08:05:29,121 [INFO] -        • Samsung Health: 1 registros
+2025-11-18 08:05:29,121 [INFO] -   → Tasa metabólica basal agregada: 1
+2025-11-18 08:05:29,121 [INFO] -     📊 BMR por fuente:
+2025-11-18 08:05:29,121 [INFO] -        • starfit: 1 registros (total: 1698)
+2025-11-18 08:05:29,121 [INFO] -   → Pasos agregados: 1
+2025-11-18 08:05:29,121 [INFO] -     📊 Pasos por fuente:
+2025-11-18 08:05:29,121 [INFO] -        • Samsung Health: 1 registros (total: 199)
+2025-11-18 08:05:29,122 [INFO] -   Campos detectados: peso, grasa_corporal, masa_osea, frecuencia_cardiaca, tasa_metabolica, pasos
+2025-11-18 08:05:29,122 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-18 08:05:29,123 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-18_07-12-49.json
+2025-11-18 08:05:29,123 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-18_07-20-53.json
+2025-11-18 08:05:29,123 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-18_07-20-53.json
+2025-11-18 08:05:29,123 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-18 08:05:29,123 [INFO] -   → Pasos agregados: 1
+2025-11-18 08:05:29,123 [INFO] -     📊 Pasos por fuente:
+2025-11-18 08:05:29,123 [INFO] -        • Samsung Health: 1 registros (total: 223)
+2025-11-18 08:05:29,123 [INFO] -   Campos detectados: pasos
+2025-11-18 08:05:29,123 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-18 08:05:29,124 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-18_07-20-53.json
+2025-11-18 08:05:29,124 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-18_07-51-35.json
+2025-11-18 08:05:29,124 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-18_07-51-35.json
+2025-11-18 08:05:29,124 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-18 08:05:29,125 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-11-18 08:05:29,125 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-11-18 08:05:29,125 [INFO] -        • Samsung Health: 1 registros
+2025-11-18 08:05:29,125 [INFO] -   → Nutrición agregada: 6 alimentos
+2025-11-18 08:05:29,125 [INFO] -      🍽️  Por tipo de comida:
+2025-11-18 08:05:29,125 [INFO] -         • Desayuno: 6 alimentos
+2025-11-18 08:05:29,125 [INFO] -   → Pasos agregados: 1
+2025-11-18 08:05:29,125 [INFO] -     📊 Pasos por fuente:
+2025-11-18 08:05:29,125 [INFO] -        • Samsung Health: 1 registros (total: 641)
+2025-11-18 08:05:29,125 [INFO] -   Campos detectados: frecuencia_cardiaca, nutrition, pasos
+2025-11-18 08:05:29,125 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-18 08:05:29,125 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-18_07-51-35.json
+2025-11-18 08:05:29,424 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-18 08:05:29,424 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-18 08:05:29,424 [INFO] - ==================================================
+2025-11-18 08:05:29,424 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-18
+2025-11-18 08:05:29,424 [INFO] - Ventana de 7 días: 2025-11-12 a 2025-11-18
+2025-11-18 08:05:29,425 [INFO] - PAI TOTAL SEMANAL: 166.5
+2025-11-18 08:05:29,425 [INFO] - Entrenamientos en ventana: 24
+2025-11-18 08:05:29,425 [INFO] - ==================================================
+2025-11-18 08:05:29,426 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 58.0
+2025-11-18 08:05:29,426 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;67e30680-b660-390e-b298-5d7dcba3a0e9&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-17T17:19:09-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-17T17:19:09-03:00&#x27;, &#x27;masa_kg&#x27;: 58.0, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-18 08:05:29,426 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 636
+2025-11-18 08:05:29,429 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-18 08:05:29,482 [INFO] -    - 2025-11-12: 19,151 pasos (de 25 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-13: 9,917 pasos (de 24 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-16: 10,499 pasos (de 26 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-17: 12,000 pasos (de 23 registros)
+2025-11-18 08:05:29,483 [INFO] -    - 2025-11-18: 641 pasos (de 4 registros)
+2025-11-18 08:05:29,483 [INFO] - 📈 Pasos promedio calculado: 13,326 pasos/día (últimos 7 días)
+2025-11-18 08:05:29,483 [INFO] - 🩸 Glucemia (últimos 7 días):
+2025-11-18 08:05:29,483 [INFO] -    - Ayunas: 13 mediciones, promedio: 93.8 mg/dL
+2025-11-18 08:05:29,483 [INFO] -    - Postprandial: 6 mediciones, promedio: 105.4 mg/dL
+2025-11-18 08:05:29,484 [INFO] - 📈 GMI Estimado (últimos 90 días):
+2025-11-18 08:05:29,484 [INFO] -    - Mediciones: 87
+2025-11-18 08:05:29,484 [INFO] -    - Glucosa promedio: 99.8 mg/dL
+2025-11-18 08:05:29,484 [INFO] -    - GMI: 5.7%
+2025-11-18 08:05:29,492 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-18 08:05:29,585 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-18
+2025-11-18 08:05:29,585 [INFO] - 📊 Total registros de nutrition en cache: 558
+2025-11-18 08:05:29,588 [INFO] - ✅ Registros de nutrition HOY: 6, Calorías: 619.0
+2025-11-18 08:05:29,588 [INFO] - ✅ TMB HOY: 1698.0 kcal
+2025-11-18 08:05:29,590 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2025-11-18 08:05:29,590 [INFO] - 📈 RESULTADO: Presupuesto=1698.0, Comido=619.0, Restante=1079.0
+2025-11-18 08:05:29,594 [INFO] - Intentando generar plan de acción...
 ============================================================
 🎯 GENERANDO PLAN DE ACCIÓN - ADHERENCIA 7 DÍAS
 ============================================================
-📊 Datos de déficit (7 días): 6 días
-   Déficits: [-3015.0, -1955.0, -450.0, -2379.0, -3268.0, 34.0]
-✅ Adherencia déficit: 1/6 días (17%)
-📊 Total registros nutrition_data: 552
+📊 Datos de déficit (7 días): 7 días
+   Déficits: [-3015.0, -1955.0, -450.0, -2379.0, -3268.0, 34.0, 1079.0]
+✅ Adherencia déficit: 2/7 días (29%)
+📊 Total registros nutrition_data: 558
 📊 Días con datos de proteína: [&#x27;2025-11-07&#x27;, &#x27;2025-11-08&#x27;, &#x27;2025-11-10&#x27;, &#x27;2025-11-11&#x27;, &#x27;2025-11-12&#x27;, &#x27;2025-11-13&#x27;, &#x27;2025-11-14&#x27;, &#x27;2025-11-15&#x27;, &#x27;2025-11-16&#x27;, &#x27;2025-11-03&#x27;]
+   2025-11-18: 30g ❌
    2025-11-17: 97g ❌
    2025-11-16: 301g ✅
    2025-11-15: 309g ✅
    2025-11-14: 277g ✅
    2025-11-13: 206g ✅
    2025-11-12: 215g ✅
-🥩 Adherencia proteína: 5/6 días (83%)
+🥩 Adherencia proteína: 5/7 días (71%)
 ⚖️  Peso inicial: 83.0kg
-⚖️  Peso actual: 79.8kg
+⚖️  Peso actual: 80.3kg
 ⚖️  Peso hace 7 días: 81.5kg
 ⚖️  Peso meta: 79.0kg
-📊 Progreso total: 80.0% (3.2kg perdidos, faltan 0.8kg)
-🔮 Cálculo kg/semana: 81.5kg (hace 7d) - 79.8kg (hoy) = 1.70 kg/semana
-🔮 Predicción: 1.70 kg/semana → 0 semanas para llegar a meta
+📊 Progreso total: 67.5% (2.7kg perdidos, faltan 1.3kg)
+🔮 Cálculo kg/semana: 81.5kg (hace 7d) - 80.3kg (hoy) = 1.20 kg/semana
+🔮 Predicción: 1.20 kg/semana → 1 semanas para llegar a meta
 ============================================================
-2025-11-18 06:55:33,096 [INFO] - Plan de acción generado correctamente
-2025-11-18 06:55:33,096 [INFO] - HTML del plan renderizado correctamente
+2025-11-18 08:05:29,603 [INFO] - Plan de acción generado correctamente
+2025-11-18 08:05:29,603 [INFO] - HTML del plan renderizado correctamente
 </pre>
     </div>
     
@@ -1358,8 +1390,8 @@
         
         // Peso
         const peso_data = {
-            x: ['2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17'],
-            y: [82.8, 82.9, 82.8, 82.36666666666666, 82.76666666666667, 82.875, 82.9, 83.3, 83.04, 82.925, 83.475, 83.5, 83.76666666666667, 83.85, 83.5, 83.045, 82.995, 82.6, 82.9, 83.12950000000001, 82.747, 82.5, 82.30000305175781, 82.19999694824219, 82.2, 82.0999984741211, 82.0999984741211, 82.5, 82.3, 82.8, 82.3, 81.69999694824219, 81.0999984741211, 81.5, 82.0, 81.69999694824219, 81.4000015258789, 81.4000015258789, 81.5, 81.19999694824219, 80.4000015258789, 79.80000305175781],
+            x: ['2025-10-06', '2025-10-07', '2025-10-08', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-13', '2025-10-14', '2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
+            y: [82.8, 82.9, 82.8, 82.36666666666666, 82.76666666666667, 82.875, 82.9, 83.3, 83.04, 82.925, 83.475, 83.5, 83.76666666666667, 83.85, 83.5, 83.045, 82.995, 82.6, 82.9, 83.12950000000001, 82.747, 82.5, 82.30000305175781, 82.19999694824219, 82.2, 82.0999984741211, 82.0999984741211, 82.5, 82.3, 82.8, 82.3, 81.69999694824219, 81.0999984741211, 81.5, 82.0, 81.69999694824219, 81.4000015258789, 81.4000015258789, 81.5, 81.19999694824219, 80.4000015258789, 79.80000305175781, 80.30000305175781],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#f85149', width: 2 },
@@ -1380,8 +1412,8 @@
         
         // Grasa Corporal
         Plotly.newPlot('grasa-chart', [{
-            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17'],
-            y: [25.421043598325458, 25.78375895451578, 25.002245577135444, 25.07642168446598, 25.035007076778644, 26.716117500220786, 25.003249645233154, 24.755749702453613, 25.317000071207683, 25.278804779052734, 25.10425043106079, 25.279499530792236, 25.473249435424805, 25.058000087738037, 23.821499824523926, 24.15025043487549, 24.41325044631958, 24.153499921162922, 23.239832741873606, 23.265392303466797, 24.406907653808595, 23.752309036254882, 25.078816223144532, 23.899999618530273, 24.791939735412598, 24.134822845458984, 24.580207109451294, 24.168437321980793, 24.700910568237305, 24.383413314819336, 24.080561637878418, 24.94297754764557, 23.938447189331054],
+            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
+            y: [25.421043598325458, 25.78375895451578, 25.002245577135444, 25.07642168446598, 25.035007076778644, 26.716117500220786, 25.003249645233154, 24.755749702453613, 25.317000071207683, 25.278804779052734, 25.10425043106079, 25.279499530792236, 25.473249435424805, 25.058000087738037, 23.821499824523926, 24.15025043487549, 24.41325044631958, 24.153499921162922, 23.239832741873606, 23.265392303466797, 24.406907653808595, 23.752309036254882, 25.078816223144532, 23.899999618530273, 24.791939735412598, 24.134822845458984, 24.580207109451294, 24.168437321980793, 24.700910568237305, 24.383413314819336, 24.080561637878418, 24.94297754764557, 23.938447189331054, 23.5],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#ffa657', width: 2 }
@@ -1406,8 +1438,8 @@
         
         // Masa Ósea
         Plotly.newPlot('masa-osea-chart', [{
-            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17'],
-            y: [3.8066665363311767, 3.78666662534078, 3.6449999046325683, 3.656666634877523, 3.8700001271565756, 3.6049999046325683, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.25, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.300000190734863, 4.300000190734863, 4.199999809265137, 4.300000190734863, 4.199999809265137, 4.099999904632568, 4.199999809265137, 4.199999809265137, 4.099999904632568, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.066666603088379, 4.049999952316284],
+            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
+            y: [3.8066665363311767, 3.78666662534078, 3.6449999046325683, 3.656666634877523, 3.8700001271565756, 3.6049999046325683, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.25, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.300000190734863, 4.300000190734863, 4.199999809265137, 4.300000190734863, 4.199999809265137, 4.099999904632568, 4.199999809265137, 4.199999809265137, 4.099999904632568, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.199999809265137, 4.066666603088379, 4.049999952316284, 4.099999904632568],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#79c0ff', width: 2 }
@@ -1449,7 +1481,7 @@
         Plotly.newPlot('fc-diurna-chart', [
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
-                y: [55, 53, 53, 52, 49, 47, 52, 48, 48, 47, 50, 50, 49, 48, 48, 47, 45, 48, 46, 53, 53, 47, 52, 43, 49, 50, 52, 49, 53, 58],
+                y: [55, 53, 53, 52, 49, 47, 52, 48, 48, 47, 50, 50, 49, 48, 48, 47, 45, 48, 46, 53, 53, 47, 52, 43, 49, 50, 52, 49, 53, 57],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Mínima',
@@ -1458,7 +1490,7 @@
             },
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
-                y: [72.93103448275862, 80.10884353741496, 75.21200980392156, 75.72, 60.138596491228064, 74.80351473922903, 68.0228601807549, 63.336604774535814, 59.021978021978015, 76.33333333333333, 75.99140211640211, 84.32539682539684, 73.48961840628509, 72.21884615384616, 66.38509529685999, 62.59027432712217, 60.509504132231406, 66.3928717948718, 71.78675213675214, 97.33208020050127, 70.51570048309178, 79.97970679012346, 75.61274509803923, 80.6758658008658, 68.46942355889723, 72.7932098765432, 79.85187074829932, 76.38881578947368, 74.6190476190476, 60.0],
+                y: [72.93103448275862, 80.10884353741496, 75.21200980392156, 75.72, 60.138596491228064, 74.80351473922903, 68.0228601807549, 63.336604774535814, 59.021978021978015, 76.33333333333333, 75.99140211640211, 84.32539682539684, 73.48961840628509, 72.21884615384616, 66.38509529685999, 62.59027432712217, 60.509504132231406, 66.3928717948718, 71.78675213675214, 97.33208020050127, 70.51570048309178, 79.97970679012346, 75.61274509803923, 80.6758658008658, 68.46942355889723, 72.7932098765432, 79.85187074829932, 76.38881578947368, 74.6190476190476, 61.166666666666664],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -1466,7 +1498,7 @@
             },
             {
                 x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
-                y: [135, 132, 143, 133, 96, 156, 101, 117, 100, 156, 151, 143, 142, 122, 106, 106, 101, 118, 121, 160, 116, 151, 152, 146, 104, 121, 150, 159, 146, 65],
+                y: [135, 132, 143, 133, 96, 156, 101, 117, 100, 156, 151, 143, 142, 122, 106, 106, 101, 118, 121, 160, 116, 151, 152, 146, 104, 121, 150, 159, 146, 76],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Máxima',
@@ -1519,7 +1551,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
-            y: [11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 12000, 16],
+            y: [11290, 20041, 24980, 21655, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 12000, 641],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -1585,8 +1617,8 @@
         
         // Tasa Metabólica Basal
         Plotly.newPlot('tmb-chart', [{
-            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17'],
-            y: [1723.25, 1730.75, 1729.0, 1736.1666666666667, 1749.857142857143, 1735.0, 1726.0, 1728.0, 1715.0, 1713.4285714285713, 1728.0, 1717.0, 1709.0, 1713.0, 1738.0, 1732.0, 1724.0, 1726.0, 1737.0, 1733.0, 1732.0, 1742.0, 1703.0, 1702.0, 1707.3333333333333, 1724.25, 1704.4285714285713, 1712.75, 1699.0, 1712.2, 1716.6666666666667, 1672.5714285714287, 1698.5],
+            x: ['2025-10-15', '2025-10-16', '2025-10-17', '2025-10-18', '2025-10-19', '2025-10-20', '2025-10-21', '2025-10-22', '2025-10-23', '2025-10-24', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18'],
+            y: [1723.25, 1730.75, 1729.0, 1736.1666666666667, 1749.857142857143, 1735.0, 1726.0, 1728.0, 1715.0, 1713.4285714285713, 1728.0, 1717.0, 1709.0, 1713.0, 1738.0, 1732.0, 1724.0, 1726.0, 1737.0, 1733.0, 1732.0, 1742.0, 1703.0, 1702.0, 1707.3333333333333, 1724.25, 1704.4285714285713, 1712.75, 1699.0, 1712.2, 1716.6666666666667, 1672.5714285714287, 1698.5, 1698.0],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#ffa657', width: 2 }
@@ -1683,10 +1715,10 @@
         // CÍRCULO DE CALORÍAS RESTANTES - Día actual
         // ═══════════════════════════════════════════════════════════════
         const circuloData = {
-            presupuesto: 1700,
-            comido: 0,
+            presupuesto: 1698.0,
+            comido: 619.0,
             ejercicio: 0,
-            restante: 1700
+            restante: 1079.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1694,7 +1726,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [0, 1700],
+                    data: [619.0, 1079.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1711,11 +1743,11 @@
         });
         
         // Actualizar valores en el HTML
-        document.getElementById('restante-valor').textContent = Math.abs(1700);
+        document.getElementById('restante-valor').textContent = Math.abs(1079.0);
         document.getElementById('restante-valor').style.color = '#3fb950';
-        document.getElementById('comido-valor').textContent = 0;
+        document.getElementById('comido-valor').textContent = 619.0;
         document.getElementById('ejercicio-valor').textContent = 0;
-        document.getElementById('presupuesto-valor').textContent = 1700;
+        document.getElementById('presupuesto-valor').textContent = 1698.0;
         
         // ═══════════════════════════════════════════════════════════════
         // MACROS EN PORCENTAJE - 3 círculos
@@ -1726,7 +1758,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [19, 81],
                     backgroundColor: ['#a855f7', 'rgba(168, 85, 247, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1738,15 +1770,15 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('proteinas-pct').textContent = '0%';
-        document.getElementById('proteinas-g').textContent = '0g';
+        document.getElementById('proteinas-pct').textContent = '19%';
+        document.getElementById('proteinas-g').textContent = '29.7g';
         
         // Carbohidratos
         new Chart(document.getElementById('macro-carbohidratos'), {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [44, 56],
                     backgroundColor: ['#3b82f6', 'rgba(59, 130, 246, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1758,15 +1790,15 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('carbohidratos-pct').textContent = '0%';
-        document.getElementById('carbohidratos-g').textContent = '0g';
+        document.getElementById('carbohidratos-pct').textContent = '44%';
+        document.getElementById('carbohidratos-g').textContent = '69.9g';
         
         // Grasas
         new Chart(document.getElementById('macro-grasas'), {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [0, 100],
+                    data: [37, 63],
                     backgroundColor: ['#f59e0b', 'rgba(245, 158, 11, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1778,8 +1810,8 @@
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('grasas-pct').textContent = '0%';
-        document.getElementById('grasas-g').textContent = '0g';
+        document.getElementById('grasas-pct').textContent = '37%';
+        document.getElementById('grasas-g').textContent = '26.3g';
         
         // ═══════════════════════════════════════════════════════════════
         // GRÁFICOS COMPARACIÓN MACROS - Recomendados vs Real
@@ -1847,11 +1879,11 @@
         new Chart(document.getElementById('presupuesto-consumo-chart'), {
             type: 'line',
             data: {
-                labels: ["2025-11-05", "2025-11-06", "2025-11-07", "2025-11-08", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-15", "2025-11-16", "2025-11-17"],
+                labels: ["2025-11-05", "2025-11-06", "2025-11-07", "2025-11-08", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-15", "2025-11-16", "2025-11-17", "2025-11-18"],
                 datasets: [
                     {
                         label: 'Presupuesto',
-                        data: [3586.0, 4331.0, 3269.0, 3230.0, 2108.0, 4368.0, 4223.0, 4086.0, 3477.0, 3176.0, 2721.0, 2070.0, 2271.0],
+                        data: [3586.0, 4331.0, 3269.0, 3230.0, 2108.0, 4368.0, 4223.0, 4086.0, 3477.0, 3176.0, 2721.0, 2070.0, 2271.0, 1698.0],
                         borderColor: '#3b82f6',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
                         borderWidth: 2,
@@ -1862,7 +1894,7 @@
                     },
                     {
                         label: 'Comido',
-                        data: [1496.0, 954.0, 6210.0, 6616.0, 3302.0, 4980.0, 9792.0, 7101.0, 5432.0, 3626.0, 5100.0, 5338.0, 2237.0],
+                        data: [1496.0, 954.0, 6210.0, 6616.0, 3302.0, 4980.0, 9792.0, 7101.0, 5432.0, 3626.0, 5100.0, 5338.0, 2237.0, 619.0],
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
@@ -1873,7 +1905,7 @@
                     },
                     {
                         label: 'Ejercicio',
-                        data: [1863.0, 2592.0, 1608.0, 1528.0, 404.0, 2622.0, 2516.0, 2362.0, 1820.0, 1503.0, 1027.0, 407.0, 530.0],
+                        data: [1863.0, 2592.0, 1608.0, 1528.0, 404.0, 2622.0, 2516.0, 2362.0, 1820.0, 1503.0, 1027.0, 407.0, 530.0, 0],
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         borderWidth: 2,
