@@ -457,7 +457,10 @@
             msg.textContent = '⏳ Actualizando...';
             
             try {
-                const res = await fetch('actualizar', {method: 'POST'});
+                // --- ESTA ES LA LÍNEA CORREGIDA ---
+                const res = await fetch('/actualizar', {method: 'POST'});
+                // -------------------------------
+        
                 if (res.ok) {
                     msg.textContent = '✅ OK';
                     setTimeout(() => location.reload(), 2000);
@@ -474,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 20/11/2025 19:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 20/11/2025 19:32 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -783,7 +786,7 @@
     
     <div class="metric-card">
         <div class="metric-label">SpO2 (7 días)</div>
-        <div class="metric-value" style="color: #3fb950;">97.6%</div>
+        <div class="metric-value" style="color: #3fb950;">97.9%</div>
         <div class="metric-detail">Normal</div>
     </div>
     
@@ -806,7 +809,7 @@
     
     <div class="metric-card">
         <div class="metric-label">Pasos (7d)</div>
-        <div class="metric-value" style="color: #3fb950;">13,730</div>
+        <div class="metric-value" style="color: #3fb950;">13,804</div>
         <div class="metric-detail">Excelente</div>
     </div>
     
@@ -921,137 +924,118 @@
             </div>
             
             
-            <div class="nutrition-section">
-                <h2>🍽️ Nutrición y Balance Calórico</h2>
-                
-                <!-- Grid principal: Círculo + Macros -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    
-                    <!-- CÍRCULO DE CALORÍAS RESTANTES -->
-                    <div class="nutrition-card" style="padding: 30px;">
-                        <h3>📊 Ingesta de alimentos</h3>
-                        <div style="position: relative; width: 200px; height: 200px; margin: 20px auto;">
-                            <canvas id="circulo-calorias"></canvas>
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: #3fb950;">656.0</div>
-                                <div style="font-size: 0.9em; color: #8b949e;">Restante</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Información del día -->
-                        <div style="margin-top: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span style="color: #8b949e;">🍽️ Comido</span>
-                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">1061.0</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span style="color: #8b949e;">🔥 Ejercicio</span>
-                                <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">0</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
-                                <span style="color: #8b949e;">Meta de ingesta:</span>
-                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">1717.0 kcal</span>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 15px; padding: 10px; background: rgba(139, 148, 158, 0.1); border-radius: 6px; text-align: center;">
-                            <small style="color: #3fb950; font-weight: 600;">✅ En déficit: Perdiendo peso</small>
-                        </div>
+    <h2 style="margin-top: 40px; margin-bottom: 20px; color: #d2a8ff;">🍽️ Nutrición y Balance</h2>
+
+    <div class="metrics-grid">
+        
+        <div class="nutrition-card">
+            <h3>📊 Balance Diario</h3>
+            <div style="position: relative; width: 100%; display: flex; justify-content: center; margin-bottom: 15px;">
+                <div style="position: relative; width: 70%; aspect-ratio: 1; max-height: 200px;">
+                    <canvas id="circulo-calorias"></canvas>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%;">
+                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">656.0</div>
+                        <div style="font-size: 0.7em; color: #8b949e;">Restante</div>
                     </div>
-                    
-                    <!-- MACROS EN PORCENTAJE -->
-                    <div class="nutrition-card" style="padding: 30px;">
-                        <h3>Macros</h3>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px;">
-                            
-                            <!-- Carbohidratos -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-carbohidratos"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">36%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🍞 Carbohidrat...</div>
-                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">97.5g</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Proteínas -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-proteinas"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">22%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🥩 Proteínas</div>
-                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">59.1g</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Grasas -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-grasas"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">41%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🥑 Grasas</div>
-                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">49.1g</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- ✅ NUEVO: COMPARACIÓN RECOMENDADOS VS REAL -->
-                <div class="nutrition-card" style="padding: 30px; margin-bottom: 30px;">
-                    <h3 style="text-align: center; margin-bottom: 30px;">📊 Comparación de Macronutrientes (promedio 7 días)</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                        
-                        <!-- RECOMENDADOS -->
-                        <div style="text-align: center;">
-                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
-                                <canvas id="macros-recomendados"></canvas>
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Recomendados</div>
-                                <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>55%</strong> &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>25%</strong> &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>20%</strong>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- REAL -->
-                        <div style="text-align: center;">
-                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
-                                <canvas id="macros-reales"></canvas>
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Real</div>
-                                <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>35%</strong> (185.5g) &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>42%</strong> (98.0g) &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>23%</strong> (121.9g)
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <!-- GRÁFICO DE PRESUPUESTO Y CONSUMO -->
-                <div class="chart-container">
-                    <canvas id="presupuesto-consumo-chart" style="height: 350px;"></canvas>
                 </div>
             </div>
+            
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;"><span style="color: #ff6384;">●</span> Comido</span>
+                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">1061.0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;"><span style="color: #10b981;">●</span> Ejercicio</span>
+                    <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">0</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid rgba(139, 148, 158, 0.2); margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;">Meta de ingesta:</span>
+                    <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">1717.0</span>
+                </div>
+
+                <div style="text-align: center; margin-top: 0.5rem; padding: 0.5rem; background: rgba(0,0,0,0.2); border-radius: 4px;">
+                    <small style="color: #3fb950; font-weight: 600;">✅ Déficit</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nutrition-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <h3>🧪 Macros Hoy</h3>
+            
+            <div style="display: flex; justify-content: space-around; align-items: flex-start; margin-bottom: 10px;">
+                
+                <div style="width: 45%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
+                        <canvas id="macro-carbohidratos"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">36%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Carbs</div>
+                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">97.5g</div>
+                </div>
+
+                <div style="width: 45%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
+                        <canvas id="macro-grasas"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">41%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Grasas</div>
+                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">49.1g</div>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center;">
+                <div style="width: 55%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 140px; margin: 0 auto;">
+                        <canvas id="macro-proteinas"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="proteinas-pct" style="font-size: 0.9em; font-weight: bold; color: #a855f7;">22%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.8em;">Prot</div>
+                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">59.1g</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nutrition-card">
+            <h3>⚖️ Adherencia (7d)</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1rem; width: 100%;">
+                
+                <div style="text-align: center; width: 100%;">
+                    <div style="position: relative; width: 60%; margin: 0 auto; aspect-ratio: 1; max-height: 140px;">
+                        <canvas id="macros-recomendados"></canvas>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #8b949e; font-size: 0.9em;">Meta</div>
+                </div>
+                
+                <div style="text-align: center; width: 100%;">
+                    <div style="position: relative; width: 60%; margin: 0 auto; aspect-ratio: 1; max-height: 140px;">
+                        <canvas id="macros-reales"></canvas>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #8b949e; font-size: 0.9em;">Real</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1rem; text-align: center; font-size: 0.75em; color: #8b949e; border-top: 1px solid rgba(139, 148, 158, 0.1); padding-top: 0.8rem;">
+                <span style="color: #3b82f6;">●</span> Carb: <strong>35%</strong>
+                <span style="color: #a855f7; margin-left: 8px;">●</span> Prot: <strong>23%</strong>
+                <span style="color: #f59e0b; margin-left: 8px;">●</span> Grasa: <strong>42%</strong>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nutrition-card" style="margin-top: 20px;">
+        <h3>📉 Histórico (14d)</h3>
+        <div style="position: relative; height: 22rem; width: 100%;">
+            <canvas id="presupuesto-consumo-chart"></canvas>
+        </div>
+    </div>
     
             
             <div class="training-section">
@@ -1178,64 +1162,80 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-20 19:05:11 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-20 19:32:59 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 108</p>
             <p>✅ <strong>Total registros peso:</strong> 44</p>
-            <p>✅ <strong>Total registros pasos:</strong> 683</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 5393 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 685</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 6827 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-20 19:05:11,491 [INFO] - 
-2025-11-20 19:05:11,491 [INFO] - ================================================================================
-2025-11-20 19:05:11,491 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-20 19:05:11,491 [INFO] - ================================================================================
-2025-11-20 19:05:11,491 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-20 19:05:11,491 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-20 19:05:11,491 [INFO] - ================================================================================
-2025-11-20 19:05:11,491 [INFO] - 
-2025-11-20 19:05:11,491 [INFO] - ================================================================================
-2025-11-20 19:05:11,491 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-20 19:05:11,491 [INFO] - ================================================================================
-2025-11-20 19:05:11,511 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-20 19:05:11,518 [INFO] - Total archivos JSON encontrados: 813
-2025-11-20 19:05:11,518 [INFO] - Archivos ya procesados: 813
-2025-11-20 19:05:11,518 [INFO] - Archivos nuevos a procesar: 0
-2025-11-20 19:05:11,518 [INFO] - No hay archivos nuevos para procesar.
-2025-11-20 19:05:11,518 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-20 19:05:11,519 [INFO] - ==================================================
-2025-11-20 19:05:11,519 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-20
-2025-11-20 19:05:11,519 [INFO] - Ventana de 7 días: 2025-11-14 a 2025-11-20
-2025-11-20 19:05:11,519 [INFO] - PAI TOTAL SEMANAL: 109.1
-2025-11-20 19:05:11,519 [INFO] - Entrenamientos en ventana: 24
-2025-11-20 19:05:11,519 [INFO] - ==================================================
-2025-11-20 19:05:11,520 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 57.29
-2025-11-20 19:05:11,520 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;28a2c58a-a930-39ed-8692-52c56784f8a8&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-19T05:37:03-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-19T05:37:03-03:00&#x27;, &#x27;masa_kg&#x27;: 57.29, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
-2025-11-20 19:05:11,520 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 683
-2025-11-20 19:05:11,523 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
-2025-11-20 19:05:11,523 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
-2025-11-20 19:05:11,523 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
-2025-11-20 19:05:11,523 [INFO] -    - 2025-11-16: 10,499 pasos (de 25 registros)
-2025-11-20 19:05:11,523 [INFO] -    - 2025-11-17: 12,000 pasos (de 23 registros)
-2025-11-20 19:05:11,524 [INFO] -    - 2025-11-18: 14,469 pasos (de 30 registros)
-2025-11-20 19:05:11,524 [INFO] -    - 2025-11-19: 12,846 pasos (de 27 registros)
-2025-11-20 19:05:11,524 [INFO] -    - 2025-11-20: 5,222 pasos (de 21 registros)
-2025-11-20 19:05:11,524 [INFO] - 📈 Pasos promedio calculado: 13,730 pasos/día (últimos 7 días)
-2025-11-20 19:05:11,524 [INFO] - 🩸 Glucemia (últimos 7 días):
-2025-11-20 19:05:11,524 [INFO] -    - Ayunas: 7 mediciones, promedio: 95.6 mg/dL
-2025-11-20 19:05:11,524 [INFO] -    - Postprandial: 2 mediciones, promedio: 109.9 mg/dL
-2025-11-20 19:05:11,524 [INFO] - 📈 GMI Estimado (últimos 90 días):
-2025-11-20 19:05:11,524 [INFO] -    - Mediciones: 33
-2025-11-20 19:05:11,524 [INFO] -    - Glucosa promedio: 101.4 mg/dL
-2025-11-20 19:05:11,524 [INFO] -    - GMI: 5.7%
-2025-11-20 19:05:11,583 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-20 19:05:11,607 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-20
-2025-11-20 19:05:11,607 [INFO] - 📊 Total registros de nutrition en cache: 189
-2025-11-20 19:05:11,608 [INFO] - ✅ Registros de nutrition HOY: 7, Calorías: 1061.0
-2025-11-20 19:05:11,608 [INFO] - ✅ TMB HOY: 1717.0 kcal
-2025-11-20 19:05:11,610 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2025-11-20 19:05:11,610 [INFO] - 📈 RESULTADO: Presupuesto=1717.0, Comido=1061.0, Restante=656.0
-2025-11-20 19:05:11,611 [INFO] - Intentando generar plan de acción...
+        <pre id="logs-content" class="logs-hidden">2025-11-20 19:32:59,112 [INFO] - 
+2025-11-20 19:32:59,112 [INFO] - ================================================================================
+2025-11-20 19:32:59,112 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-20 19:32:59,112 [INFO] - ================================================================================
+2025-11-20 19:32:59,112 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-20 19:32:59,112 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-20 19:32:59,112 [INFO] - ================================================================================
+2025-11-20 19:32:59,112 [INFO] - 
+2025-11-20 19:32:59,112 [INFO] - ================================================================================
+2025-11-20 19:32:59,112 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-20 19:32:59,112 [INFO] - ================================================================================
+2025-11-20 19:32:59,188 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-20 19:32:59,195 [INFO] - Total archivos JSON encontrados: 814
+2025-11-20 19:32:59,195 [INFO] - Archivos ya procesados: 814
+2025-11-20 19:32:59,195 [INFO] - Archivos nuevos a procesar: 1
+2025-11-20 19:32:59,195 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-20_19-27-40.json&#x27;]
+2025-11-20 19:32:59,195 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-20_19-27-40.json
+2025-11-20 19:32:59,196 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-20_19-27-40.json
+2025-11-20 19:32:59,196 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-20 19:32:59,196 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-11-20 19:32:59,196 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-11-20 19:32:59,196 [INFO] -        • Samsung Health: 1 registros
+2025-11-20 19:32:59,196 [INFO] -   → Pasos agregados: 1
+2025-11-20 19:32:59,196 [INFO] -     📊 Pasos por fuente:
+2025-11-20 19:32:59,196 [INFO] -        • Samsung Health: 1 registros (total: 5741)
+2025-11-20 19:32:59,196 [INFO] -   → SpO2 agregado: 2
+2025-11-20 19:32:59,196 [INFO] -     📊 SpO2 por fuente:
+2025-11-20 19:32:59,196 [INFO] -        • Samsung Health: 2 registros (total: 196)
+2025-11-20 19:32:59,196 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos, spo2
+2025-11-20 19:32:59,196 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-20 19:32:59,197 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-20_19-27-40.json
+2025-11-20 19:32:59,412 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-20 19:32:59,412 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-20 19:32:59,413 [INFO] - ==================================================
+2025-11-20 19:32:59,413 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-20
+2025-11-20 19:32:59,413 [INFO] - Ventana de 7 días: 2025-11-14 a 2025-11-20
+2025-11-20 19:32:59,413 [INFO] - PAI TOTAL SEMANAL: 109.1
+2025-11-20 19:32:59,413 [INFO] - Entrenamientos en ventana: 24
+2025-11-20 19:32:59,413 [INFO] - ==================================================
+2025-11-20 19:32:59,414 [INFO] - 🔍 DEBUG Masa Muscular: masa_muscular_actual = 57.29
+2025-11-20 19:32:59,414 [INFO] -    Último registro: {&#x27;record_id&#x27;: &#x27;28a2c58a-a930-39ed-8692-52c56784f8a8&#x27;, &#x27;timestamp&#x27;: &#x27;2025-11-19T05:37:03-03:00&#x27;, &#x27;fecha&#x27;: &#x27;2025-11-19T05:37:03-03:00&#x27;, &#x27;masa_kg&#x27;: 57.29, &#x27;fuente&#x27;: &#x27;com.withings.wiscale2&#x27;}
+2025-11-20 19:32:59,414 [INFO] - 🚶 DEBUG Pasos: Total registros en cache: 685
+2025-11-20 19:32:59,417 [INFO] - 📊 Pasos por día (últimos 7 DÍAS - MÁXIMO del día):
+2025-11-20 19:32:59,417 [INFO] -    - 2025-11-14: 18,593 pasos (de 30 registros)
+2025-11-20 19:32:59,417 [INFO] -    - 2025-11-15: 22,482 pasos (de 28 registros)
+2025-11-20 19:32:59,417 [INFO] -    - 2025-11-16: 10,499 pasos (de 25 registros)
+2025-11-20 19:32:59,417 [INFO] -    - 2025-11-17: 12,000 pasos (de 23 registros)
+2025-11-20 19:32:59,418 [INFO] -    - 2025-11-18: 14,469 pasos (de 30 registros)
+2025-11-20 19:32:59,418 [INFO] -    - 2025-11-19: 12,846 pasos (de 27 registros)
+2025-11-20 19:32:59,418 [INFO] -    - 2025-11-20: 5,741 pasos (de 23 registros)
+2025-11-20 19:32:59,418 [INFO] - 📈 Pasos promedio calculado: 13,804 pasos/día (últimos 7 días)
+2025-11-20 19:32:59,418 [INFO] - 🩸 Glucemia (últimos 7 días):
+2025-11-20 19:32:59,418 [INFO] -    - Ayunas: 7 mediciones, promedio: 95.6 mg/dL
+2025-11-20 19:32:59,418 [INFO] -    - Postprandial: 2 mediciones, promedio: 109.9 mg/dL
+2025-11-20 19:32:59,418 [INFO] - 📈 GMI Estimado (últimos 90 días):
+2025-11-20 19:32:59,418 [INFO] -    - Mediciones: 33
+2025-11-20 19:32:59,418 [INFO] -    - Glucosa promedio: 101.4 mg/dL
+2025-11-20 19:32:59,418 [INFO] -    - GMI: 5.7%
+2025-11-20 19:32:59,425 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-20 19:32:59,502 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-20
+2025-11-20 19:32:59,502 [INFO] - 📊 Total registros de nutrition en cache: 189
+2025-11-20 19:32:59,503 [INFO] - ✅ Registros de nutrition HOY: 7, Calorías: 1061.0
+2025-11-20 19:32:59,503 [INFO] - ✅ TMB HOY: 1717.0 kcal
+2025-11-20 19:32:59,505 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2025-11-20 19:32:59,505 [INFO] - 📈 RESULTADO: Presupuesto=1717.0, Comido=1061.0, Restante=656.0
+2025-11-20 19:32:59,506 [INFO] - Intentando generar plan de acción...
 ============================================================
 🎯 GENERANDO PLAN DE ACCIÓN - ADHERENCIA 7 DÍAS
 ============================================================
@@ -1260,8 +1260,8 @@
 🔮 Cálculo kg/semana: 81.4kg (hace 7d) - 81.6kg (hoy) = -0.20 kg/semana
 🔮 Predicción: -0.20 kg/semana → N/A para llegar a meta
 ============================================================
-2025-11-20 19:05:11,615 [INFO] - Plan de acción generado correctamente
-2025-11-20 19:05:11,615 [INFO] - HTML del plan renderizado correctamente
+2025-11-20 19:32:59,511 [INFO] - Plan de acción generado correctamente
+2025-11-20 19:32:59,511 [INFO] - HTML del plan renderizado correctamente
 </pre>
     </div>
     
@@ -1454,7 +1454,7 @@
             },
             {
                 x: ['2025-10-21', '2025-10-22', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20'],
-                y: [73.33333333333333, 75.12777777777777, 60.388888888888886, 74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 77.01587301587301, 76.27857142857144, 84.72, 73.54032258064517, 72.43684210526317, 66.7940170940171, 63.032671957671965, 60.714999999999996, 66.49057971014493, 72.23125, 99.52777777777779, 71.20833333333333, 80.29772727272727, 75.51282051282053, 81.25416666666666, 69.13888888888889, 70.77083333333334, 79.73076923076923, 76.53947368421052, 74.6190476190476, 74.52833333333334, 69.71052631578948, 60.45],
+                y: [73.33333333333333, 75.12777777777777, 60.388888888888886, 74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 77.01587301587301, 76.27857142857144, 84.72, 73.54032258064517, 72.43684210526317, 66.7940170940171, 63.032671957671965, 60.714999999999996, 66.49057971014493, 72.23125, 99.52777777777779, 71.20833333333333, 80.29772727272727, 75.51282051282053, 81.25416666666666, 69.13888888888889, 70.77083333333334, 79.73076923076923, 76.53947368421052, 74.6190476190476, 74.52833333333334, 69.71052631578948, 60.553921568627445],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -1502,7 +1502,7 @@
         // SpO2
         Plotly.newPlot('spo2-chart', [{
             x: ['2025-10-22', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-18', '2025-11-19', '2025-11-20'],
-            y: [97.66666666666667, 97.5, 98.0, 98.0, 97.66666666666667, 97.0, 97.0, 96.0, 96.5, 97.0, 96.5, 98.22222222222223, 98.0, 99.25, 98.66666666666667, 96.25, 94.0, 99.0, 98.33333333333333, 98.33333333333333, 97.0, 98.0, 98.0, 97.33333333333333, 99.0, 97.0, 97.0],
+            y: [97.66666666666667, 97.5, 98.0, 98.0, 97.66666666666667, 97.0, 97.0, 96.0, 96.5, 97.0, 96.5, 98.22222222222223, 98.0, 99.25, 98.66666666666667, 96.25, 94.0, 99.0, 98.33333333333333, 98.33333333333333, 97.0, 98.0, 98.0, 97.33333333333333, 99.0, 97.0, 97.66666666666667],
             type: 'scatter',
             mode: 'lines+markers',
             line: { color: '#79c0ff', width: 2 }
@@ -1515,7 +1515,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2025-10-22', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20'],
-            y: [24277, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 12000, 14469, 12846, 5222],
+            y: [24277, 4061, 12708, 9892, 8840, 3229, 12828, 15056, 22086, 21126, 12428, 5480, 3287, 3633, 11454, 11101, 20998, 8694, 21074, 20128, 19151, 9917, 18593, 22482, 10499, 12000, 14469, 12846, 5741],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -1675,9 +1675,6 @@
     // Ejecutar al cargar la página
     document.addEventListener('DOMContentLoaded', formatearLogs);
     
-        // ═══════════════════════════════════════════════════════════════
-        // CÍRCULO DE CALORÍAS RESTANTES - Día actual
-        // ═══════════════════════════════════════════════════════════════
         const circuloData = {
             presupuesto: 1717.0,
             comido: 1061.0,
@@ -1698,26 +1695,26 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '75%',
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: false }
-                }
+                cutout: '80%',
+                plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
         
-        // Actualizar valores en el HTML
-        document.getElementById('restante-valor').textContent = Math.abs(656.0);
-        document.getElementById('restante-valor').style.color = '#3fb950';
-        document.getElementById('comido-valor').textContent = 1061.0;
-        document.getElementById('ejercicio-valor').textContent = 0;
-        document.getElementById('presupuesto-valor').textContent = 1717.0;
+        // Actualizar valores texto
+        const restanteEl = document.getElementById('restante-valor');
+        if(restanteEl) {
+            restanteEl.textContent = Math.abs(656.0);
+            restanteEl.style.color = '#3fb950';
+        }
+        const comidoEl = document.getElementById('comido-valor');
+        if(comidoEl) comidoEl.textContent = 1061.0;
+        const ejercicioEl = document.getElementById('ejercicio-valor');
+        if(ejercicioEl) ejercicioEl.textContent = 0;
         
-        // ═══════════════════════════════════════════════════════════════
-        // MACROS EN PORCENTAJE - 3 círculos
-        // ═══════════════════════════════════════════════════════════════
+        // Recuperado: Actualizar presupuesto
+        const presupuestoEl = document.getElementById('presupuesto-valor');
+        if(presupuestoEl) presupuestoEl.textContent = 1717.0;
         
-        // Proteínas
         new Chart(document.getElementById('macro-proteinas'), {
             type: 'doughnut',
             data: {
@@ -1730,14 +1727,11 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('proteinas-pct').textContent = '22%';
-        document.getElementById('proteinas-g').textContent = '59.1g';
         
-        // Carbohidratos
         new Chart(document.getElementById('macro-carbohidratos'), {
             type: 'doughnut',
             data: {
@@ -1750,14 +1744,11 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('carbohidratos-pct').textContent = '36%';
-        document.getElementById('carbohidratos-g').textContent = '97.5g';
         
-        // Grasas
         new Chart(document.getElementById('macro-grasas'), {
             type: 'doughnut',
             data: {
@@ -1770,22 +1761,44 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: { legend: { display: false }, tooltip: { enabled: false } }
             }
         });
-        document.getElementById('grasas-pct').textContent = '41%';
-        document.getElementById('grasas-g').textContent = '49.1g';
         
-        // ═══════════════════════════════════════════════════════════════
-        // GRÁFICOS COMPARACIÓN MACROS - Recomendados vs Real
-        // ═══════════════════════════════════════════════════════════════
-        
-        // RECOMENDADOS
+        // Definir plugin localmente
+        const percentagePlugin = 
+    {
+        id: 'percentageLabels',
+        afterDatasetsDraw(chart, args, options) {
+            const {ctx} = chart;
+            ctx.save();
+            
+            chart.data.datasets.forEach((dataset, i) => {
+                chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
+                    const {x, y} = datapoint.tooltipPosition();
+                    const value = dataset.data[index];
+                    
+                    if (value > 5) { // Solo mostrar si es > 5% para que quepa
+                        ctx.font = 'bold 12px sans-serif';
+                        ctx.fillStyle = '#ffffff';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                        ctx.shadowBlur = 4;
+                        ctx.fillText(value + '%', x, y);
+                    }
+                });
+            });
+            ctx.restore();
+        }
+    }
+    ;
+
         new Chart(document.getElementById('macros-recomendados'), {
             type: 'pie',
             data: {
-                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                labels: ['Carb', 'Grasa', 'Prot'],
                 datasets: [{
                     data: [55, 25, 20],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
@@ -1795,25 +1808,16 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                            label: function(context) {
-                                return context.label + ': ' + context.parsed + '%';
-                            }
-                        }
-                    }
-                }
-            }
+                plugins: { legend: { display: false } },
+                layout: { padding: 10 }
+            },
+            plugins: [percentagePlugin]
         });
         
-        // REALES (últimos 7 días)
         new Chart(document.getElementById('macros-reales'), {
             type: 'pie',
             data: {
-                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                labels: ['Carb', 'Grasa', 'Prot'],
                 datasets: [{
                     data: [35, 42, 23],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
@@ -1823,23 +1827,12 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                            label: function(context) {
-                                return context.label + ': ' + context.parsed + '%';
-                            }
-                        }
-                    }
-                }
-            }
+                plugins: { legend: { display: false } },
+                layout: { padding: 10 }
+            },
+            plugins: [percentagePlugin]
         });
         
-        // ═══════════════════════════════════════════════════════════════
-        // GRÁFICO PRESUPUESTO Y CONSUMO - 14 días
-        // ═══════════════════════════════════════════════════════════════
         new Chart(document.getElementById('presupuesto-consumo-chart'), {
             type: 'line',
             data: {
@@ -1853,8 +1846,7 @@
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     },
                     {
                         label: 'Comido',
@@ -1864,8 +1856,7 @@
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     },
                     {
                         label: 'Ejercicio',
@@ -1875,8 +1866,7 @@
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     }
                 ]
             },
@@ -1884,43 +1874,14 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { 
-                        display: true, 
-                        position: 'bottom',
-                        labels: { 
-                            color: '#c9d1d9',
-                            usePointStyle: true,
-                            padding: 15,
-                            font: { size: 12 }
-                        }
-                    },
-                    title: { 
-                        display: true, 
-                        text: 'Presupuesto y Consumo', 
-                        color: '#79c0ff', 
-                        font: { size: 16 },
-                        padding: 20
-                    }
+                    legend: { display: true, position: 'bottom', labels: { color: '#8b949e', boxWidth: 10, padding: 10 } },
+                    title: { display: false }
                 },
                 scales: {
-                    x: { 
-                        ticks: { color: '#8b949e' }, 
-                        grid: { color: 'rgba(139, 148, 158, 0.1)' }
-                    },
-                    y: { 
-                        ticks: { color: '#8b949e' }, 
-                        grid: { color: 'rgba(139, 148, 158, 0.1)' },
-                        title: { 
-                            display: true, 
-                            text: 'Calorías (kcal)', 
-                            color: '#8b949e' 
-                        }
-                    }
+                    x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(139, 148, 158, 0.1)' } },
+                    y: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(139, 148, 158, 0.1)' } }
                 },
-                interaction: {
-                    mode: 'index',
-                    intersect: false
-                }
+                interaction: { mode: 'index', intersect: false }
             }
         });
         
