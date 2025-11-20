@@ -2,15 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 JavaScript - Gráficos de Nutrición
-✅ REEMPLAZADO: Círculo de calorías + Gráfico Presupuesto/Consumo (estilo Samsung Health)
+Compatible con aspect-ratio y etiquetas de datos (Data Labels) internas
 """
 
 
 def generar_circulo_calorias(circulo_data):
-    """
-    ✅ NUEVO: Genera círculo de calorías restantes del día actual
-    Estilo Samsung Health (imagen 2)
-    """
+    """Genera círculo de calorías restantes"""
     if not circulo_data:
         return ""
     
@@ -19,22 +16,14 @@ def generar_circulo_calorias(circulo_data):
     ejercicio = circulo_data.get("ejercicio", 0)
     restante = circulo_data.get("restante", 0)
     
-    # Determinar color del restante
     if restante > 0:
-        color_restante = "#3fb950"  # Verde (puedes comer más)
+        color_restante = "#3fb950"
     elif restante > -200:
-        color_restante = "#ffa657"  # Naranja (casi en meta)
+        color_restante = "#ffa657"
     else:
-        color_restante = "#f85149"  # Rojo (excediste)
-    
-    # Preparar datos para gráfico de dona
-    pct_comido = round((comido / presupuesto * 100), 1) if presupuesto > 0 else 0
-    pct_restante = max(0, 100 - pct_comido)
+        color_restante = "#f85149"
     
     return f"""
-        // ═══════════════════════════════════════════════════════════════
-        // CÍRCULO DE CALORÍAS RESTANTES - Día actual
-        // ═══════════════════════════════════════════════════════════════
         const circuloData = {{
             presupuesto: {presupuesto},
             comido: {comido},
@@ -55,28 +44,30 @@ def generar_circulo_calorias(circulo_data):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '75%',
-                plugins: {{
-                    legend: {{ display: false }},
-                    tooltip: {{ enabled: false }}
-                }}
+                cutout: '80%',
+                plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: false }} }}
             }}
         }});
         
-        // Actualizar valores en el HTML
-        document.getElementById('restante-valor').textContent = Math.abs({restante});
-        document.getElementById('restante-valor').style.color = '{color_restante}';
-        document.getElementById('comido-valor').textContent = {comido};
-        document.getElementById('ejercicio-valor').textContent = {ejercicio};
-        document.getElementById('presupuesto-valor').textContent = {presupuesto};
+        // Actualizar valores texto
+        const restanteEl = document.getElementById('restante-valor');
+        if(restanteEl) {{
+            restanteEl.textContent = Math.abs({restante});
+            restanteEl.style.color = '{color_restante}';
+        }}
+        const comidoEl = document.getElementById('comido-valor');
+        if(comidoEl) comidoEl.textContent = {comido};
+        const ejercicioEl = document.getElementById('ejercicio-valor');
+        if(ejercicioEl) ejercicioEl.textContent = {ejercicio};
+        
+        // Recuperado: Actualizar presupuesto
+        const presupuestoEl = document.getElementById('presupuesto-valor');
+        if(presupuestoEl) presupuestoEl.textContent = {presupuesto};
         """
 
 
 def generar_grafico_macros_porcentaje(circulo_data):
-    """
-    ✅ NUEVO: Genera los 3 círculos de macros en porcentaje
-    Estilo Samsung Health (imagen 2)
-    """
+    """Genera los 3 círculos de macros"""
     if not circulo_data:
         return ""
     
@@ -84,16 +75,7 @@ def generar_grafico_macros_porcentaje(circulo_data):
     pct_carbohidratos = circulo_data.get("pct_carbohidratos", 0)
     pct_grasas = circulo_data.get("pct_grasas", 0)
     
-    proteinas_g = circulo_data.get("proteinas_g", 0)
-    carbohidratos_g = circulo_data.get("carbohidratos_g", 0)
-    grasas_g = circulo_data.get("grasas_g", 0)
-    
     return f"""
-        // ═══════════════════════════════════════════════════════════════
-        // MACROS EN PORCENTAJE - 3 círculos
-        // ═══════════════════════════════════════════════════════════════
-        
-        // Proteínas
         new Chart(document.getElementById('macro-proteinas'), {{
             type: 'doughnut',
             data: {{
@@ -106,14 +88,11 @@ def generar_grafico_macros_porcentaje(circulo_data):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: false }} }}
             }}
         }});
-        document.getElementById('proteinas-pct').textContent = '{pct_proteinas}%';
-        document.getElementById('proteinas-g').textContent = '{proteinas_g}g';
         
-        // Carbohidratos
         new Chart(document.getElementById('macro-carbohidratos'), {{
             type: 'doughnut',
             data: {{
@@ -126,14 +105,11 @@ def generar_grafico_macros_porcentaje(circulo_data):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: false }} }}
             }}
         }});
-        document.getElementById('carbohidratos-pct').textContent = '{pct_carbohidratos}%';
-        document.getElementById('carbohidratos-g').textContent = '{carbohidratos_g}g';
         
-        // Grasas
         new Chart(document.getElementById('macro-grasas'), {{
             type: 'doughnut',
             data: {{
@@ -146,75 +122,58 @@ def generar_grafico_macros_porcentaje(circulo_data):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '75%',
                 plugins: {{ legend: {{ display: false }}, tooltip: {{ enabled: false }} }}
             }}
         }});
-        document.getElementById('grasas-pct').textContent = '{pct_grasas}%';
-        document.getElementById('grasas-g').textContent = '{grasas_g}g';
         """
 
 
 def generar_grafico_presupuesto_consumo(datos_deficit):
-    """
-    ✅ NUEVO: Gráfico de 14 días con 3 líneas
-    Estilo Samsung Health (imagen 3): Presupuesto vs Comido vs Ejercicio
-    """
+    """Gráfico de líneas histórico"""
     if not datos_deficit or not datos_deficit.get("fechas"):
         return ""
     
-    fechas = datos_deficit.get("fechas", [])
-    presupuesto = datos_deficit.get("presupuesto", [])
-    comido = datos_deficit.get("comido", [])
-    ejercicio = datos_deficit.get("ejercicio", [])
-    
-    # Convertir listas Python a formato JavaScript
-    fechas_js = str(fechas).replace("'", '"')
-    presupuesto_js = str(presupuesto)
-    comido_js = str(comido)
-    ejercicio_js = str(ejercicio)
+    fechas = str(datos_deficit.get("fechas", [])).replace("'", '"')
+    presupuesto = str(datos_deficit.get("presupuesto", []))
+    comido = str(datos_deficit.get("comido", []))
+    ejercicio = str(datos_deficit.get("ejercicio", []))
     
     return f"""
-        // ═══════════════════════════════════════════════════════════════
-        // GRÁFICO PRESUPUESTO Y CONSUMO - 14 días
-        // ═══════════════════════════════════════════════════════════════
         new Chart(document.getElementById('presupuesto-consumo-chart'), {{
             type: 'line',
             data: {{
-                labels: {fechas_js},
+                labels: {fechas},
                 datasets: [
                     {{
                         label: 'Presupuesto',
-                        data: {presupuesto_js},
+                        data: {presupuesto},
                         borderColor: '#3b82f6',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     }},
                     {{
                         label: 'Comido',
-                        data: {comido_js},
+                        data: {comido},
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     }},
                     {{
                         label: 'Ejercicio',
-                        data: {ejercicio_js},
+                        data: {ejercicio},
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         borderWidth: 2,
                         tension: 0.4,
                         fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+                        pointRadius: 3
                     }}
                 ]
             }},
@@ -222,43 +181,14 @@ def generar_grafico_presupuesto_consumo(datos_deficit):
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {{
-                    legend: {{ 
-                        display: true, 
-                        position: 'bottom',
-                        labels: {{ 
-                            color: '#c9d1d9',
-                            usePointStyle: true,
-                            padding: 15,
-                            font: {{ size: 12 }}
-                        }}
-                    }},
-                    title: {{ 
-                        display: true, 
-                        text: 'Presupuesto y Consumo', 
-                        color: '#79c0ff', 
-                        font: {{ size: 16 }},
-                        padding: 20
-                    }}
+                    legend: {{ display: true, position: 'bottom', labels: {{ color: '#8b949e', boxWidth: 10, padding: 10 }} }},
+                    title: {{ display: false }}
                 }},
                 scales: {{
-                    x: {{ 
-                        ticks: {{ color: '#8b949e' }}, 
-                        grid: {{ color: 'rgba(139, 148, 158, 0.1)' }}
-                    }},
-                    y: {{ 
-                        ticks: {{ color: '#8b949e' }}, 
-                        grid: {{ color: 'rgba(139, 148, 158, 0.1)' }},
-                        title: {{ 
-                            display: true, 
-                            text: 'Calorías (kcal)', 
-                            color: '#8b949e' 
-                        }}
-                    }}
+                    x: {{ ticks: {{ color: '#8b949e', font: {{ size: 10 }} }}, grid: {{ color: 'rgba(139, 148, 158, 0.1)' }} }},
+                    y: {{ ticks: {{ color: '#8b949e', font: {{ size: 10 }} }}, grid: {{ color: 'rgba(139, 148, 158, 0.1)' }} }}
                 }},
-                interaction: {{
-                    mode: 'index',
-                    intersect: false
-                }}
+                interaction: {{ mode: 'index', intersect: false }}
             }}
         }});
         """
@@ -266,7 +196,7 @@ def generar_grafico_presupuesto_consumo(datos_deficit):
 
 def generar_graficos_comparacion_macros(macros_7d):
     """
-    ✅ NUEVO: Gráficos circulares de Recomendados vs Real
+    Gráficos circulares con plugin INLINE para dibujar porcentajes dentro
     """
     if not macros_7d:
         pct_prot_real = pct_carb_real = pct_gras_real = 0
@@ -275,21 +205,47 @@ def generar_graficos_comparacion_macros(macros_7d):
         pct_carb_real = macros_7d.get("pct_carbohidratos", 0)
         pct_gras_real = macros_7d.get("pct_grasas", 0)
     
-    # Porcentajes recomendados (fijos)
     pct_carb_recom = 55
     pct_gras_recom = 25
     pct_prot_recom = 20
     
+    # Definimos un plugin inline para dibujar texto
+    plugin_labels = """
+    {
+        id: 'percentageLabels',
+        afterDatasetsDraw(chart, args, options) {
+            const {ctx} = chart;
+            ctx.save();
+            
+            chart.data.datasets.forEach((dataset, i) => {
+                chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
+                    const {x, y} = datapoint.tooltipPosition();
+                    const value = dataset.data[index];
+                    
+                    if (value > 5) { // Solo mostrar si es > 5% para que quepa
+                        ctx.font = 'bold 12px sans-serif';
+                        ctx.fillStyle = '#ffffff';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                        ctx.shadowBlur = 4;
+                        ctx.fillText(value + '%', x, y);
+                    }
+                });
+            });
+            ctx.restore();
+        }
+    }
+    """
+    
     return f"""
-        // ═══════════════════════════════════════════════════════════════
-        // GRÁFICOS COMPARACIÓN MACROS - Recomendados vs Real
-        // ═══════════════════════════════════════════════════════════════
-        
-        // RECOMENDADOS
+        // Definir plugin localmente
+        const percentagePlugin = {plugin_labels};
+
         new Chart(document.getElementById('macros-recomendados'), {{
             type: 'pie',
             data: {{
-                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                labels: ['Carb', 'Grasa', 'Prot'],
                 datasets: [{{
                     data: [{pct_carb_recom}, {pct_gras_recom}, {pct_prot_recom}],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
@@ -299,25 +255,16 @@ def generar_graficos_comparacion_macros(macros_7d):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {{
-                    legend: {{ display: false }},
-                    tooltip: {{
-                        enabled: true,
-                        callbacks: {{
-                            label: function(context) {{
-                                return context.label + ': ' + context.parsed + '%';
-                            }}
-                        }}
-                    }}
-                }}
-            }}
+                plugins: {{ legend: {{ display: false }} }},
+                layout: {{ padding: 10 }}
+            }},
+            plugins: [percentagePlugin]
         }});
         
-        // REALES (últimos 7 días)
         new Chart(document.getElementById('macros-reales'), {{
             type: 'pie',
             data: {{
-                labels: ['Carbohidratos', 'Grasas', 'Proteínas'],
+                labels: ['Carb', 'Grasa', 'Prot'],
                 datasets: [{{
                     data: [{pct_carb_real}, {pct_gras_real}, {pct_prot_real}],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
@@ -327,38 +274,21 @@ def generar_graficos_comparacion_macros(macros_7d):
             options: {{
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {{
-                    legend: {{ display: false }},
-                    tooltip: {{
-                        enabled: true,
-                        callbacks: {{
-                            label: function(context) {{
-                                return context.label + ': ' + context.parsed + '%';
-                            }}
-                        }}
-                    }}
-                }}
-            }}
+                plugins: {{ legend: {{ display: false }} }},
+                layout: {{ padding: 10 }}
+            }},
+            plugins: [percentagePlugin]
         }});
         """
 
 
 def generar_js_nutrition(datos_graficos, circulo_data, macros_7d=None):
-    """
-    ✅ FUNCIÓN PRINCIPAL: Genera todo el JS de nutrición
-    """
+    """Función principal JS"""
     js = ""
-    
-    # Círculo de calorías restantes
     if circulo_data:
         js += generar_circulo_calorias(circulo_data)
         js += generar_grafico_macros_porcentaje(circulo_data)
-    
-    # ✅ NUEVO: Gráficos de comparación (recomendados vs real)
     js += generar_graficos_comparacion_macros(macros_7d)
-    
-    # Gráfico de presupuesto y consumo
     if datos_graficos.get("deficit"):
         js += generar_grafico_presupuesto_consumo(datos_graficos["deficit"])
-    
     return js

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 HTML Builder - Constructor principal del dashboard
@@ -33,7 +34,7 @@ def generar_javascript(datos_graficos, circulo_data=None, macros_7d=None):
     js += generar_js_activity(datos_graficos)
     js += generar_js_other(datos_graficos)
     js += generar_funciones_logs()
-    js += generar_js_nutrition(datos_graficos, circulo_data, macros_7d)  # ✅ CAMBIO: Pasar macros_7d
+    js += generar_js_nutrition(datos_graficos, circulo_data, macros_7d)
     
     return js
 
@@ -42,7 +43,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
                            recomendaciones_html, datos_graficos, 
                            logs_html_content="", resumen_ejecucion=None, 
                            healthspan_data=None, plan_accion_html="", 
-                           circulo_data=None, macros_7d=None):  # ✅ CAMBIO: Agregar macros_7d
+                           circulo_data=None, macros_7d=None):
     """
     Construye el HTML completo del dashboard.
     Es el orquestador principal que combina todos los componentes.
@@ -50,7 +51,7 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
     
     # Generar componentes HTML
     healthspan_hero = generar_healthspan_hero(healthspan_data) if healthspan_data else ""
-    seccion_nutrition = generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d) if circulo_data else ""  # ✅ CAMBIO: Pasar macros_7d
+    seccion_nutrition = generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d) if circulo_data else ""
     seccion_logs = generar_seccion_logs(logs_html_content, resumen_ejecucion)
     
     return f"""
@@ -70,7 +71,10 @@ def construir_html_completo(html_laboratorio, cards_html, entrenamientos_html,
             msg.textContent = '⏳ Actualizando...';
             
             try {{
-                const res = await fetch('actualizar', {{method: 'POST'}});
+                // --- ESTA ES LA LÍNEA CORREGIDA ---
+                const res = await fetch('/actualizar', {{method: 'POST'}});
+                // -------------------------------
+        
                 if (res.ok) {{
                     msg.textContent = '✅ OK';
                     setTimeout(() => location.reload(), 2000);

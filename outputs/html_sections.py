@@ -103,11 +103,10 @@ def generar_healthspan_hero(healthspan_data):
 
 def generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d=None):
     """
-    ✅ REEMPLAZADO: Sección HTML de nutrición estilo Samsung Health
-    - Círculo de calorías restantes (día actual)
-    - 3 círculos de macros en porcentaje
-    - ✅ NUEVO: Comparación Recomendados vs Real (últimos 7 días)
-    - Gráfico de presupuesto/consumo (14 días)
+    Genera 4 tarjetas independientes para nutrición.
+    CORRECCIÓN CRÍTICA: 
+    - Usa Flexbox en lugar de Grid para la tarjeta de Macros para evitar superposición.
+    - Aplica max-height a los gráficos para que no 'exploten'.
     """
     if not circulo_data:
         return ""
@@ -120,15 +119,15 @@ def generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d=None):
     # Determinar color y texto del estado
     if restante > 0:
         estado_color = "#3fb950"
-        estado_texto = "✅ En déficit: Perdiendo peso"
+        estado_texto = "✅ Déficit"
     elif restante > -200:
         estado_color = "#ffa657"
-        estado_texto = "➡️ En mantenimiento"
+        estado_texto = "➡️ Mantenimiento"
     else:
         estado_color = "#f85149"
-        estado_texto = "🔺 En superávit: Ganando peso"
+        estado_texto = "🔺 Superávit"
     
-    # Datos de macros 7 días (si existen)
+    # Datos de macros 7 días
     if macros_7d:
         pct_prot_real = macros_7d.get("pct_proteinas", 0)
         pct_carb_real = macros_7d.get("pct_carbohidratos", 0)
@@ -142,137 +141,118 @@ def generar_seccion_nutrition(circulo_data, datos_graficos, macros_7d=None):
         g_prot_real = g_carb_real = g_gras_real = 0
     
     return f"""
-            <div class="nutrition-section">
-                <h2>🍽️ Nutrición y Balance Calórico</h2>
-                
-                <!-- Grid principal: Círculo + Macros -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    
-                    <!-- CÍRCULO DE CALORÍAS RESTANTES -->
-                    <div class="nutrition-card" style="padding: 30px;">
-                        <h3>📊 Ingesta de alimentos</h3>
-                        <div style="position: relative; width: 200px; height: 200px; margin: 20px auto;">
-                            <canvas id="circulo-calorias"></canvas>
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div id="restante-valor" style="font-size: 2.5em; font-weight: bold; color: {estado_color};">{abs(restante)}</div>
-                                <div style="font-size: 0.9em; color: #8b949e;">Restante</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Información del día -->
-                        <div style="margin-top: 20px;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span style="color: #8b949e;">🍽️ Comido</span>
-                                <span id="comido-valor" style="color: #ff6384; font-weight: bold;">{comido}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span style="color: #8b949e;">🔥 Ejercicio</span>
-                                <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">{ejercicio}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
-                                <span style="color: #8b949e;">Meta de ingesta:</span>
-                                <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">{presupuesto} kcal</span>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 15px; padding: 10px; background: rgba(139, 148, 158, 0.1); border-radius: 6px; text-align: center;">
-                            <small style="color: {estado_color}; font-weight: 600;">{estado_texto}</small>
-                        </div>
+    <h2 style="margin-top: 40px; margin-bottom: 20px; color: #d2a8ff;">🍽️ Nutrición y Balance</h2>
+
+    <div class="metrics-grid">
+        
+        <div class="nutrition-card">
+            <h3>📊 Balance Diario</h3>
+            <div style="position: relative; width: 100%; display: flex; justify-content: center; margin-bottom: 15px;">
+                <div style="position: relative; width: 70%; aspect-ratio: 1; max-height: 200px;">
+                    <canvas id="circulo-calorias"></canvas>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%;">
+                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: {estado_color};">{abs(restante)}</div>
+                        <div style="font-size: 0.7em; color: #8b949e;">Restante</div>
                     </div>
-                    
-                    <!-- MACROS EN PORCENTAJE -->
-                    <div class="nutrition-card" style="padding: 30px;">
-                        <h3>Macros</h3>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px;">
-                            
-                            <!-- Carbohidratos -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-carbohidratos"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="carbohidratos-pct" style="font-size: 1.4em; font-weight: bold; color: #3b82f6;">{circulo_data.get('pct_carbohidratos', 0)}%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🍞 Carbohidrat...</div>
-                                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold;">{circulo_data.get('carbohidratos_g', 0)}g</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Proteínas -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-proteinas"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="proteinas-pct" style="font-size: 1.4em; font-weight: bold; color: #a855f7;">{circulo_data.get('pct_proteinas', 0)}%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🥩 Proteínas</div>
-                                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold;">{circulo_data.get('proteinas_g', 0)}g</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Grasas -->
-                            <div style="text-align: center;">
-                                <div style="position: relative; width: 100px; height: 100px; margin: 0 auto;">
-                                    <canvas id="macro-grasas"></canvas>
-                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <div id="grasas-pct" style="font-size: 1.4em; font-weight: bold; color: #f59e0b;">{circulo_data.get('pct_grasas', 0)}%</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <div style="color: #8b949e; font-size: 0.85em;">🥑 Grasas</div>
-                                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold;">{circulo_data.get('grasas_g', 0)}g</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- ✅ NUEVO: COMPARACIÓN RECOMENDADOS VS REAL -->
-                <div class="nutrition-card" style="padding: 30px; margin-bottom: 30px;">
-                    <h3 style="text-align: center; margin-bottom: 30px;">📊 Comparación de Macronutrientes (promedio 7 días)</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                        
-                        <!-- RECOMENDADOS -->
-                        <div style="text-align: center;">
-                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
-                                <canvas id="macros-recomendados"></canvas>
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Recomendados</div>
-                                <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>55%</strong> &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>25%</strong> &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>20%</strong>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- REAL -->
-                        <div style="text-align: center;">
-                            <div style="position: relative; width: 250px; height: 250px; margin: 0 auto;">
-                                <canvas id="macros-reales"></canvas>
-                            </div>
-                            <div style="margin-top: 20px;">
-                                <div style="font-size: 1.2em; font-weight: bold; color: #c9d1d9; margin-bottom: 10px;">Real</div>
-                                <div style="color: #8b949e; font-size: 0.9em;">
-                                    <span style="color: #3b82f6;">⬤</span> Carb: <strong>{pct_carb_real}%</strong> ({g_carb_real}g) &nbsp;
-                                    <span style="color: #f59e0b;">⬤</span> Grasa: <strong>{pct_gras_real}%</strong> ({g_gras_real}g) &nbsp;
-                                    <span style="color: #a855f7;">⬤</span> Proteína: <strong>{pct_prot_real}%</strong> ({g_prot_real}g)
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <!-- GRÁFICO DE PRESUPUESTO Y CONSUMO -->
-                <div class="chart-container">
-                    <canvas id="presupuesto-consumo-chart" style="height: 350px;"></canvas>
                 </div>
             </div>
+            
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;"><span style="color: #ff6384;">●</span> Comido</span>
+                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">{comido}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;"><span style="color: #10b981;">●</span> Ejercicio</span>
+                    <span id="ejercicio-valor" style="color: #10b981; font-weight: bold;">{ejercicio}</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid rgba(139, 148, 158, 0.2); margin-bottom: 0.5rem; font-size: 0.85em;">
+                    <span style="color: #8b949e;">Meta de ingesta:</span>
+                    <span id="presupuesto-valor" style="color: #58a6ff; font-weight: bold;">{presupuesto}</span>
+                </div>
+
+                <div style="text-align: center; margin-top: 0.5rem; padding: 0.5rem; background: rgba(0,0,0,0.2); border-radius: 4px;">
+                    <small style="color: {estado_color}; font-weight: 600;">{estado_texto}</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nutrition-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <h3>🧪 Macros Hoy</h3>
+            
+            <div style="display: flex; justify-content: space-around; align-items: flex-start; margin-bottom: 10px;">
+                
+                <div style="width: 45%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
+                        <canvas id="macro-carbohidratos"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">{circulo_data.get('pct_carbohidratos', 0)}%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Carbs</div>
+                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">{circulo_data.get('carbohidratos_g', 0)}g</div>
+                </div>
+
+                <div style="width: 45%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
+                        <canvas id="macro-grasas"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">{circulo_data.get('pct_grasas', 0)}%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Grasas</div>
+                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">{circulo_data.get('grasas_g', 0)}g</div>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center;">
+                <div style="width: 55%; text-align: center;">
+                    <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 140px; margin: 0 auto;">
+                        <canvas id="macro-proteinas"></canvas>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <div id="proteinas-pct" style="font-size: 0.9em; font-weight: bold; color: #a855f7;">{circulo_data.get('pct_proteinas', 0)}%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5px; color: #8b949e; font-size: 0.8em;">Prot</div>
+                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">{circulo_data.get('proteinas_g', 0)}g</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nutrition-card">
+            <h3>⚖️ Adherencia (7d)</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1rem; width: 100%;">
+                
+                <div style="text-align: center; width: 100%;">
+                    <div style="position: relative; width: 60%; margin: 0 auto; aspect-ratio: 1; max-height: 140px;">
+                        <canvas id="macros-recomendados"></canvas>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #8b949e; font-size: 0.9em;">Meta</div>
+                </div>
+                
+                <div style="text-align: center; width: 100%;">
+                    <div style="position: relative; width: 60%; margin: 0 auto; aspect-ratio: 1; max-height: 140px;">
+                        <canvas id="macros-reales"></canvas>
+                    </div>
+                    <div style="margin-top: 0.5rem; color: #8b949e; font-size: 0.9em;">Real</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1rem; text-align: center; font-size: 0.75em; color: #8b949e; border-top: 1px solid rgba(139, 148, 158, 0.1); padding-top: 0.8rem;">
+                <span style="color: #3b82f6;">●</span> Carb: <strong>{pct_carb_real}%</strong>
+                <span style="color: #a855f7; margin-left: 8px;">●</span> Prot: <strong>{pct_prot_real}%</strong>
+                <span style="color: #f59e0b; margin-left: 8px;">●</span> Grasa: <strong>{pct_gras_real}%</strong>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nutrition-card" style="margin-top: 20px;">
+        <h3>📉 Histórico (14d)</h3>
+        <div style="position: relative; height: 22rem; width: 100%;">
+            <canvas id="presupuesto-consumo-chart"></canvas>
+        </div>
+    </div>
     """
 
 
