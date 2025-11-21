@@ -18,7 +18,7 @@ from outputs.prep_graficos_activity import (
     preparar_datos_pai_completo, preparar_datos_pasos, preparar_datos_sueno,
     preparar_datos_distancia, preparar_datos_calorias,
     preparar_datos_nutrition, calcular_deficit_calorico, calcular_circulo_hoy,
-    calcular_macros_promedio_7d  # ✅ CAMBIO 1: Agregar import
+    calcular_macros_promedio_7d
 )
 from outputs.prep_graficos_body import (
     preparar_datos_peso_deduplicado, preparar_datos_metrica_corporal,
@@ -42,7 +42,7 @@ from outputs.cards import (
     generar_card_tsb, generar_card_sueno, generar_card_spo2,
     generar_card_grasa, generar_card_masa_muscular, generar_card_fc_reposo,
     generar_card_pasos, generar_card_presion, generar_card_glucemia,
-    generar_card_gmi, generar_card_score
+    generar_card_hba1c, generar_card_score # ✅ CORREGIDO: Usamos hba1c en lugar de gmi
 )
 from outputs.html_builder import construir_html_completo
 from outputs.laboratorio_renderer import (
@@ -134,7 +134,7 @@ def generar_dashboard(cache):
     # Calcular círculo del día actual
     circulo_data = calcular_circulo_hoy(nutrition, tasa_metabolica, calorias_totales)
     
-    # ✅ CAMBIO 2: Calcular macros promedio 7 días
+    # Calcular macros promedio 7 días
     macros_7d = calcular_macros_promedio_7d(nutrition)
     
     # 5. GENERAR COMPONENTES HTML
@@ -155,7 +155,7 @@ def generar_dashboard(cache):
         generar_card_pasos(metricas),
         generar_card_presion(metricas),
         generar_card_glucemia(metricas),
-        generar_card_gmi(metricas),
+        generar_card_hba1c(metricas), # ✅ CORREGIDO: Llamada actualizada
         generar_card_score(metricas)
     ])
     
@@ -164,15 +164,10 @@ def generar_dashboard(cache):
     
     # PLAN DE ACCIÓN PERSONALIZADO
     try:
-        logger.info("Intentando generar plan de acción...")
         plan_accion = generar_plan_accion(metricas, nutrition, tasa_metabolica, calorias_totales)
-        logger.info("Plan de acción generado correctamente")
         plan_accion_html = renderizar_plan_accion_html(plan_accion)
-        logger.info("HTML del plan renderizado correctamente")
     except Exception as e:
         logger.error(f"ERROR generando plan de acción: {e}")
-        import traceback
-        logger.error(f"Traceback: {traceback.format_exc()}")
         plan_accion_html = ""
     
     recomendaciones_healthspan = generar_recomendaciones_healthspan(healthspan_data, metricas)
@@ -183,7 +178,6 @@ def generar_dashboard(cache):
     resumen_ejecucion = generar_resumen_ejecucion(cache)
     
     # 6. CONSTRUIR HTML COMPLETO
-    # ✅ CAMBIO 3: Pasar macros_7d a construir_html_completo
     html = construir_html_completo(
         html_laboratorio,
         cards_html,
@@ -195,7 +189,7 @@ def generar_dashboard(cache):
         healthspan_data,
         plan_accion_html,
         circulo_data=circulo_data,
-        macros_7d=macros_7d  # ✅ NUEVO PARÁMETRO
+        macros_7d=macros_7d
     )
     
     # 7. GUARDAR ARCHIVO

@@ -9,20 +9,65 @@ from outputs.js_helpers import tiene_datos
 
 
 def generar_grafico_fc_reposo(datos_graficos):
-    """Genera JavaScript para el gráfico de FC en reposo"""
-    if tiene_datos(datos_graficos.get('fc_reposo', {})):
+    """Genera JavaScript para el gráfico de FC en reposo con TENDENCIA"""
+    datos = datos_graficos.get('fc_reposo', {})
+    
+    if tiene_datos(datos):
+        fechas = datos.get('fechas', [])
+        valores = datos.get('valores', [])
+        tendencia = datos.get('tendencia')
+        
+        traces_js = f"""
+            {{
+                x: {fechas},
+                y: {valores},
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'FC Reposo',
+                line: {{ color: '#f85149', width: 2 }},
+                marker: {{ size: 6 }}
+            }}
+        """
+        
+        layout_extra = ""
+        if tendencia:
+            traces_js += f""",
+            {{
+                x: {tendencia['linea_x']},
+                y: {tendencia['linea_y']},
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Tendencia',
+                line: {{ color: '#c9d1d9', width: 2, dash: 'dot' }},
+                hoverinfo: 'skip'
+            }}
+            """
+            
+            # Texto con negrita usando HTML tags, no atributo 'weight'
+            layout_extra = f"""
+            annotations: [{{
+                xref: 'paper', yref: 'paper',
+                x: 0.05, y: 0.95,
+                xanchor: 'left', yanchor: 'top',
+                text: '<b>{tendencia['texto']}</b>',
+                showarrow: false,
+                font: {{ color: '#c9d1d9', size: 12 }},
+                bgcolor: 'rgba(22, 27, 34, 0.8)',
+                bordercolor: '#30363d',
+                borderwidth: 1,
+                borderpad: 4
+            }}],
+            """
+
         return f"""
-        // FC Reposo
-        Plotly.newPlot('fc-reposo-chart', [{{
-            x: {datos_graficos['fc_reposo']['fechas']},
-            y: {datos_graficos['fc_reposo']['valores']},
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: {{ color: '#f85149', width: 2 }}
-        }}], {{
+        // FC Reposo con Tendencia
+        Plotly.newPlot('fc-reposo-chart', [
+            {traces_js}
+        ], {{
             ...layout_config,
             yaxis: {{ title: 'FC (bpm)', gridcolor: '#30363d' }},
-            xaxis: {{ gridcolor: '#30363d' }}
+            xaxis: {{ gridcolor: '#30363d' }},
+            {layout_extra}
         }});
         """
     else:

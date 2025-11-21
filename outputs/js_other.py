@@ -9,18 +9,40 @@ from outputs.js_helpers import tiene_datos
 
 
 def generar_grafico_glucosa(datos_graficos):
-    """Genera JavaScript para el gráfico de glucosa en sangre"""
-    if tiene_datos(datos_graficos.get('glucosa', {})):
+    """
+    Genera JavaScript para el gráfico de glucosa en sangre.
+    Muestra dos series diferenciadas: Basal (Verde) y Postprandial (Naranja).
+    """
+    datos = datos_graficos.get('glucosa', {})
+    ayunas = datos.get('ayunas', {})
+    post = datos.get('post', {})
+    
+    hay_datos = (ayunas and len(ayunas.get('fechas', [])) > 0) or \
+                (post and len(post.get('fechas', [])) > 0)
+    
+    if hay_datos:
         return f"""
-        // Glucosa en Sangre
-        Plotly.newPlot('glucosa-chart', [{{
-            x: {datos_graficos['glucosa']['fechas']},
-            y: {datos_graficos['glucosa']['valores']},
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: {{ color: '#d29922', width: 2 }},
-            marker: {{ size: 8 }}
-        }}], {{
+        // Glucosa en Sangre (Basal vs Post)
+        Plotly.newPlot('glucosa-chart', [
+            {{
+                x: {ayunas.get('fechas', [])},
+                y: {ayunas.get('valores', [])},
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Basal (Ayunas)',
+                connectgaps: false, // No conectar puntos si hay huecos grandes
+                line: {{ color: '#3fb950', width: 2 }}, // Verde
+                marker: {{ size: 6, symbol: 'circle' }}
+            }},
+            {{
+                x: {post.get('fechas', [])},
+                y: {post.get('valores', [])},
+                type: 'scatter',
+                mode: 'markers', // Solo puntos para postprandial (menos tendencia lineal)
+                name: 'Postprandial',
+                marker: {{ color: '#d29922', size: 7, symbol: 'diamond' }} // Naranja
+            }}
+        ], {{
             ...layout_config,
             yaxis: {{ title: 'mg/dL', gridcolor: '#30363d' }},
             xaxis: {{ gridcolor: '#30363d' }},
@@ -29,10 +51,11 @@ def generar_grafico_glucosa(datos_graficos):
                     type: 'rect',
                     xref: 'paper',
                     x0: 0, x1: 1,
-                    y0: 70, y1: 100,
+                    y0: 70, y1: 100, // Rango saludable referencia
                     fillcolor: '#3fb950',
                     opacity: 0.1,
-                    line: {{ width: 0 }}
+                    line: {{ width: 0 }},
+                    layer: 'below'
                 }}
             ]
         }});
