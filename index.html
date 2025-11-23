@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 22/11/2025 22:26 (Argentina)</p>
+                <p class="subtitle">Última actualización: 22/11/2025 22:28 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -579,7 +579,7 @@
             
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
             <div style="font-weight: bold; color: #d29922;">⚠️ Glucemias en Rango Pre-diabético</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">Promedio de glucemias últimos 90 días: 101.8 mg/dL (objetivo: <100). Control glucémico subóptimo.</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">Promedio de glucemias últimos 90 días: 101.7 mg/dL (objetivo: <100). Control glucémico subóptimo.</div>
         </div>
         
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
@@ -758,7 +758,7 @@
         <div class="metric-value" style="color: #3fb950; font-size: 1.5em;">94</div>
         <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Ayunas</div>
         <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
-            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">109</div>
+            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">107</div>
             <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Postprandial</div>
         </div>
     </div>
@@ -768,7 +768,7 @@
         <div class="metric-value" style="color: #3fb950;">5.2%</div>
         <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Normal</div>
         <div class="metric-detail" style="font-size: 0.8em; color: #8b949e; margin-top: 5px;">
-            Gluc. prom: 101.8 mg/dL
+            Gluc. prom: 101.7 mg/dL
         </div>
     </div>
     <div class="metric-card"><div class="metric-label">Score Longevidad</div><div class="metric-value" style="color: #3fb950;">95/100</div><div class="metric-detail">Excelente</div></div>
@@ -1087,54 +1087,63 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-11-22 22:26:13 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-11-22 22:28:42 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 112</p>
             <p>✅ <strong>Total registros peso:</strong> 46</p>
-            <p>✅ <strong>Total registros pasos:</strong> 735</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3352 bytes</p>
+            <p>✅ <strong>Total registros pasos:</strong> 736</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4116 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-11-22 22:26:12,618 [INFO] - 
-2025-11-22 22:26:12,618 [INFO] - ================================================================================
-2025-11-22 22:26:12,618 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-11-22 22:26:12,618 [INFO] - ================================================================================
-2025-11-22 22:26:12,618 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-11-22 22:26:12,618 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-11-22 22:26:12,618 [INFO] - ================================================================================
-2025-11-22 22:26:12,618 [INFO] - 
-2025-11-22 22:26:12,618 [INFO] - ================================================================================
-2025-11-22 22:26:12,618 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-11-22 22:26:12,618 [INFO] - ================================================================================
-2025-11-22 22:26:12,699 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-22 22:26:12,707 [INFO] - Total archivos JSON encontrados: 870
-2025-11-22 22:26:12,707 [INFO] - Archivos ya procesados: 872
-2025-11-22 22:26:12,707 [INFO] - Archivos nuevos a procesar: 1
-2025-11-22 22:26:12,707 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-22_22-23-40.json&#x27;]
-2025-11-22 22:26:12,707 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-22_22-23-40.json
-2025-11-22 22:26:12,708 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-22_22-23-40.json
-2025-11-22 22:26:12,708 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;deletions&#x27;]
-2025-11-22 22:26:12,708 [INFO] -   → Pasos agregados: 1
-2025-11-22 22:26:12,708 [INFO] -     📊 Pasos por fuente:
-2025-11-22 22:26:12,708 [INFO] -        • Samsung Health: 1 registros (total: 21663)
-2025-11-22 22:26:12,708 [INFO] -   Campos detectados: pasos
-2025-11-22 22:26:12,708 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-11-22 22:26:12,708 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-22_22-23-40.json
-2025-11-22 22:26:12,986 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-11-22 22:26:12,986 [INFO] - Generando dashboard HTML con gráficos...
-2025-11-22 22:26:12,987 [INFO] - ==================================================
-2025-11-22 22:26:12,987 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-22
-2025-11-22 22:26:12,987 [INFO] - Ventana de 7 días: 2025-11-16 a 2025-11-22
-2025-11-22 22:26:12,987 [INFO] - PAI TOTAL SEMANAL: 156.4
-2025-11-22 22:26:12,987 [INFO] - Entrenamientos en ventana: 20
-2025-11-22 22:26:12,987 [INFO] - ==================================================
-2025-11-22 22:26:13,008 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-11-22 22:26:13,037 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-22
-2025-11-22 22:26:13,038 [INFO] - 📊 Total registros de nutrition en cache: 215
-2025-11-22 22:26:13,039 [INFO] - ✅ Registros de nutrition HOY: 10, Calorías: 2166.0
-2025-11-22 22:26:13,083 [INFO] - ✅ TMB HOY: 1750.0 kcal
-2025-11-22 22:26:13,085 [INFO] - ✅ Ejercicio HOY: 1593.0 kcal
-2025-11-22 22:26:13,085 [INFO] - 📈 RESULTADO: Presupuesto=3343.0, Comido=2166.0, Restante=1177.0
+        <pre id="logs-content" class="logs-hidden">2025-11-22 22:28:42,296 [INFO] - 
+2025-11-22 22:28:42,296 [INFO] - ================================================================================
+2025-11-22 22:28:42,296 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-11-22 22:28:42,296 [INFO] - ================================================================================
+2025-11-22 22:28:42,296 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-11-22 22:28:42,296 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-11-22 22:28:42,296 [INFO] - ================================================================================
+2025-11-22 22:28:42,296 [INFO] - 
+2025-11-22 22:28:42,296 [INFO] - ================================================================================
+2025-11-22 22:28:42,297 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-11-22 22:28:42,297 [INFO] - ================================================================================
+2025-11-22 22:28:42,321 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-22 22:28:42,330 [INFO] - Total archivos JSON encontrados: 871
+2025-11-22 22:28:42,330 [INFO] - Archivos ya procesados: 873
+2025-11-22 22:28:42,330 [INFO] - Archivos nuevos a procesar: 1
+2025-11-22 22:28:42,330 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-11-22_22-20-42.json&#x27;]
+2025-11-22 22:28:42,330 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-11-22_22-20-42.json
+2025-11-22 22:28:42,330 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-11-22_22-20-42.json
+2025-11-22 22:28:42,330 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
+2025-11-22 22:28:42,331 [INFO] -   → Presión arterial agregada: 1
+2025-11-22 22:28:42,331 [INFO] -     📊 Presión Arterial por fuente:
+2025-11-22 22:28:42,331 [INFO] -        • Samsung Health: 1 registros
+2025-11-22 22:28:42,331 [INFO] -   → Frecuencia cardíaca agregada: 1 días
+2025-11-22 22:28:42,331 [INFO] -     📊 Frecuencia Cardíaca por fuente:
+2025-11-22 22:28:42,331 [INFO] -        • Samsung Health: 1 registros
+2025-11-22 22:28:42,331 [INFO] -   → Glucosa agregada: 1
+2025-11-22 22:28:42,331 [INFO] -     📊 Glucosa por fuente:
+2025-11-22 22:28:42,331 [INFO] -        • Samsung Health: 1 registros (total: 98)
+2025-11-22 22:28:42,331 [INFO] -   → Pasos agregados: 1
+2025-11-22 22:28:42,331 [INFO] -     📊 Pasos por fuente:
+2025-11-22 22:28:42,331 [INFO] -        • Samsung Health: 1 registros (total: 21634)
+2025-11-22 22:28:42,331 [INFO] -   Campos detectados: presion_arterial, frecuencia_cardiaca, glucosa, pasos
+2025-11-22 22:28:42,331 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2025-11-22 22:28:42,331 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-11-22_22-20-42.json
+2025-11-22 22:28:42,600 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2025-11-22 22:28:42,600 [INFO] - Generando dashboard HTML con gráficos...
+2025-11-22 22:28:42,600 [INFO] - ==================================================
+2025-11-22 22:28:42,600 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-11-22
+2025-11-22 22:28:42,600 [INFO] - Ventana de 7 días: 2025-11-16 a 2025-11-22
+2025-11-22 22:28:42,600 [INFO] - PAI TOTAL SEMANAL: 156.4
+2025-11-22 22:28:42,600 [INFO] - Entrenamientos en ventana: 20
+2025-11-22 22:28:42,600 [INFO] - ==================================================
+2025-11-22 22:28:42,613 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-11-22 22:28:42,700 [INFO] - 🔍 Calculando círculo para HOY: 2025-11-22
+2025-11-22 22:28:42,700 [INFO] - 📊 Total registros de nutrition en cache: 215
+2025-11-22 22:28:42,701 [INFO] - ✅ Registros de nutrition HOY: 10, Calorías: 2166.0
+2025-11-22 22:28:42,701 [INFO] - ✅ TMB HOY: 1750.0 kcal
+2025-11-22 22:28:42,703 [INFO] - ✅ Ejercicio HOY: 1593.0 kcal
+2025-11-22 22:28:42,703 [INFO] - 📈 RESULTADO: Presupuesto=3343.0, Comido=2166.0, Restante=1177.0
 </pre>
     </div>
     
@@ -1436,7 +1445,7 @@
             },
             {
                 x: ['2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-28', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22'],
-                y: [60.388888888888886, 74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 77.01587301587301, 76.27857142857144, 84.72, 73.54032258064517, 72.43684210526317, 66.7940170940171, 63.032671957671965, 60.714999999999996, 66.49057971014493, 72.23125, 99.52777777777779, 71.20833333333333, 80.29772727272727, 75.51282051282053, 81.25416666666666, 69.13888888888889, 70.77083333333334, 79.73076923076923, 76.53947368421052, 74.6190476190476, 74.52833333333334, 69.71052631578948, 60.16228070175438, 73.01339285714286, 79.43398268398268],
+                y: [60.388888888888886, 74.80446428571429, 68.30718954248366, 63.372727272727275, 59.12121212121212, 77.01587301587301, 76.27857142857144, 84.72, 73.54032258064517, 72.43684210526317, 66.7940170940171, 63.032671957671965, 60.714999999999996, 66.49057971014493, 72.23125, 99.52777777777779, 71.20833333333333, 80.29772727272727, 75.51282051282053, 81.25416666666666, 69.13888888888889, 70.77083333333334, 79.73076923076923, 76.53947368421052, 74.6190476190476, 74.52833333333334, 69.71052631578948, 60.16228070175438, 73.01339285714286, 79.24120082815735],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -1461,7 +1470,7 @@
         Plotly.newPlot('presion-chart', [
             {
                 x: ['2025-10-21', '2025-10-22', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22'],
-                y: [128.0, 115.0, 110.33333333333333, 114.42857142857143, 117.33333333333333, 121.66666666666667, 122.0, 115.0, 117.0, 114.5, 116.11764705882354, 114.55172413793103, 113.6, 117.4, 114.375, 115.5, 116.0, 119.5, 112.0, 118.0, 115.0, 108.0, 111.0, 113.25, 104.0, 111.0, 115.0, 110.0, 120.5, 121.25],
+                y: [128.0, 115.0, 110.33333333333333, 114.42857142857143, 117.33333333333333, 121.66666666666667, 122.0, 115.0, 117.0, 114.5, 116.11764705882354, 114.55172413793103, 113.6, 117.4, 114.375, 115.5, 116.0, 119.5, 112.0, 118.0, 115.0, 108.0, 111.0, 113.25, 104.0, 111.0, 115.0, 110.0, 120.5, 121.8],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Sistólica',
@@ -1469,7 +1478,7 @@
             },
             {
                 x: ['2025-10-21', '2025-10-22', '2025-10-24', '2025-10-25', '2025-10-26', '2025-10-27', '2025-10-29', '2025-10-30', '2025-10-31', '2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22'],
-                y: [87.0, 76.0, 71.66666666666667, 74.42857142857143, 77.0, 76.33333333333333, 80.0, 71.5, 73.75, 74.25, 73.6470588235294, 73.89655172413794, 71.8, 74.4, 74.125, 76.5, 79.0, 76.0, 76.0, 70.0, 73.5, 70.25, 73.0, 72.75, 70.0, 67.0, 76.0, 72.0, 74.66666666666667, 75.0],
+                y: [87.0, 76.0, 71.66666666666667, 74.42857142857143, 77.0, 76.33333333333333, 80.0, 71.5, 73.75, 74.25, 73.6470588235294, 73.89655172413794, 71.8, 74.4, 74.125, 76.5, 79.0, 76.0, 76.0, 70.0, 73.5, 70.25, 73.0, 72.75, 70.0, 67.0, 76.0, 72.0, 74.66666666666667, 75.6],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Diastólica',
@@ -1549,8 +1558,8 @@
                 marker: { size: 6, symbol: 'circle' }
             },
             {
-                x: ['2025-10-22 11:00', '2025-10-26 10:52', '2025-10-29 11:59', '2025-10-30 09:46', '2025-10-31 10:51', '2025-11-01 11:24', '2025-11-02 10:54', '2025-11-02 10:54', '2025-11-02 10:54', '2025-11-03 10:25', '2025-11-05 14:11', '2025-11-05 16:34', '2025-11-05 18:03', '2025-11-05 18:59', '2025-11-06 09:24', '2025-11-07 10:34', '2025-11-08 09:21', '2025-11-09 09:38', '2025-11-10 08:24', '2025-11-12 08:25', '2025-11-16 08:44', '2025-11-18 14:22', '2025-11-19 08:08', '2025-11-19 14:48', '2025-11-21 16:50'],
-                y: [99.9, 92.9, 92.9, 93.9, 105.9, 99.9, 97.9, 97.9, 97.9, 95.9, 115.9, 99.9, 155.9, 124.9, 97.9, 101.9, 106.9, 100.9, 92.9, 87.9, 102.9, 119.9, 92.9, 99.9, 128.9],
+                x: ['2025-10-22 11:00', '2025-10-26 10:52', '2025-10-29 11:59', '2025-10-30 09:46', '2025-10-31 10:51', '2025-11-01 11:24', '2025-11-02 10:54', '2025-11-02 10:54', '2025-11-02 10:54', '2025-11-03 10:25', '2025-11-05 14:11', '2025-11-05 16:34', '2025-11-05 18:03', '2025-11-05 18:59', '2025-11-06 09:24', '2025-11-07 10:34', '2025-11-08 09:21', '2025-11-09 09:38', '2025-11-10 08:24', '2025-11-12 08:25', '2025-11-16 08:44', '2025-11-18 14:22', '2025-11-19 08:08', '2025-11-19 14:48', '2025-11-21 16:50', '2025-11-22 22:08'],
+                y: [99.9, 92.9, 92.9, 93.9, 105.9, 99.9, 97.9, 97.9, 97.9, 95.9, 115.9, 99.9, 155.9, 124.9, 97.9, 101.9, 106.9, 100.9, 92.9, 87.9, 102.9, 119.9, 92.9, 99.9, 128.9, 97.9],
                 type: 'scatter',
                 mode: 'markers', // Solo puntos para postprandial (menos tendencia lineal)
                 name: 'Postprandial',
