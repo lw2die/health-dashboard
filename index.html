@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 01/12/2025 20:58 (Argentina)</p>
+                <p class="subtitle">Última actualización: 01/12/2025 21:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1069,98 +1069,43 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-12-01 20:58:06 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-12-01 21:05:18 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 138</p>
             <p>✅ <strong>Total registros peso:</strong> 55</p>
             <p>✅ <strong>Total registros pasos:</strong> 978</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 7074 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2354 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-12-01 20:58:05,900 [INFO] - 
-2025-12-01 20:58:05,900 [INFO] - ================================================================================
-2025-12-01 20:58:05,900 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-12-01 20:58:05,900 [INFO] - ================================================================================
-2025-12-01 20:58:05,900 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-12-01 20:58:05,900 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-12-01 20:58:05,900 [INFO] - ================================================================================
-2025-12-01 20:58:05,900 [INFO] - 
-2025-12-01 20:58:05,901 [INFO] - ================================================================================
-2025-12-01 20:58:05,901 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-12-01 20:58:05,901 [INFO] - ================================================================================
-2025-12-01 20:58:05,983 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-01 20:58:05,996 [INFO] - Total archivos JSON encontrados: 1097
-2025-12-01 20:58:05,996 [INFO] - Archivos ya procesados: 1096
-2025-12-01 20:58:05,996 [INFO] - Archivos nuevos a procesar: 1
-2025-12-01 20:58:05,996 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-12-01_20-54-25.json&#x27;]
-2025-12-01 20:58:05,996 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-01_20-54-25.json
-2025-12-01 20:58:06,002 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-01_20-54-25.json
-2025-12-01 20:58:06,002 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;exercise_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;distance_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;total_calories_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;vo2max_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;blood_pressure_changes&#x27;, &#x27;height_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;weight_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-01 20:58:06,002 [INFO] -   → Ejercicios agregados: 14
-2025-12-01 20:58:06,002 [INFO] -     📊 Ejercicios por tipo:
-2025-12-01 20:58:06,002 [INFO] -        • Aparatos de Musculación: 5 sesiones (21 min)
-2025-12-01 20:58:06,002 [INFO] -        • Walking: 5 sesiones (157 min)
-2025-12-01 20:58:06,003 [INFO] -        • Press Banca: 3 sesiones (28 min)
-2025-12-01 20:58:06,003 [INFO] -        • Swimming: 1 sesiones (67 min)
-2025-12-01 20:58:06,003 [INFO] -   → Peso agregado: 1 días (rechazados: 25)
-2025-12-01 20:58:06,003 [INFO] -      📊 Peso por fuente:
-2025-12-01 20:58:06,003 [INFO] -         • com.sec.android.app.shealth: 26 registros
-2025-12-01 20:58:06,003 [INFO] -   → Grasa corporal agregada: 25
-2025-12-01 20:58:06,004 [INFO] -     📊 Grasa Corporal por fuente:
-2025-12-01 20:58:06,004 [INFO] -        • Samsung Health: 25 registros (total: 604)
-2025-12-01 20:58:06,004 [INFO] -   → FC en reposo agregada: 190 (desde heart_rate horario nocturno)
-2025-12-01 20:58:06,005 [INFO] -     📊 FC Reposo por fuente:
-2025-12-01 20:58:06,005 [INFO] -        • Samsung Health: 190 registros (total: 10001)
-2025-12-01 20:58:06,005 [INFO] -   → Presión arterial agregada: 58
-2025-12-01 20:58:06,005 [INFO] -     📊 Presión Arterial por fuente:
-2025-12-01 20:58:06,005 [INFO] -        • Samsung Health: 58 registros
-2025-12-01 20:58:06,005 [INFO] -   → VO2max registros agregados: 5
-2025-12-01 20:58:06,005 [INFO] -     📊 VO2max por fuente:
-2025-12-01 20:58:06,005 [INFO] -        • Samsung Health: 5 registros (total: 194)
-2025-12-01 20:58:06,009 [INFO] -   → Frecuencia cardíaca agregada: 28 días
-2025-12-01 20:58:06,009 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-12-01 20:58:06,009 [INFO] -        • Samsung Health: 28 registros
-2025-12-01 20:58:06,010 [INFO] -   → Glucosa agregada: 32
-2025-12-01 20:58:06,010 [INFO] -     📊 Glucosa por fuente:
-2025-12-01 20:58:06,010 [INFO] -        • Samsung Health: 32 registros (total: 3184)
-2025-12-01 20:58:06,010 [INFO] -   → Tasa metabólica basal agregada: 25
-2025-12-01 20:58:06,010 [INFO] -     📊 BMR por fuente:
-2025-12-01 20:58:06,010 [INFO] -        • Samsung Health: 25 registros (total: 42621)
-2025-12-01 20:58:06,010 [INFO] -   → Nutrición agregada: 1 alimentos
-2025-12-01 20:58:06,010 [INFO] -      🍽️  Por tipo de comida:
-2025-12-01 20:58:06,010 [INFO] -         • Snack: 1 alimentos
-2025-12-01 20:58:06,010 [INFO] -   → Pasos agregados: 28
-2025-12-01 20:58:06,011 [INFO] -     📊 Pasos por fuente:
-2025-12-01 20:58:06,011 [INFO] -        • Samsung Health: 28 registros (total: 386233)
-2025-12-01 20:58:06,011 [INFO] -   → Distancia agregada: 3 días
-2025-12-01 20:58:06,011 [INFO] -     📊 Distancia por fuente:
-2025-12-01 20:58:06,011 [INFO] -        • Samsung Health: 3 registros (total: 14)
-2025-12-01 20:58:06,011 [INFO] -   → Calorías totales agregadas: 3 días
-2025-12-01 20:58:06,011 [INFO] -     📊 Calorías Totales por fuente:
-2025-12-01 20:58:06,011 [INFO] -        • Samsung Health: 3 registros (total: 1620)
-2025-12-01 20:58:06,011 [INFO] -   → SpO2 agregado: 69
-2025-12-01 20:58:06,012 [INFO] -     📊 SpO2 por fuente:
-2025-12-01 20:58:06,012 [INFO] -        • Samsung Health: 69 registros (total: 6749)
-2025-12-01 20:58:06,014 [INFO] -   → Sueño agregado: 56 sesiones
-2025-12-01 20:58:06,014 [INFO] -      📊 Sueño por fuente:
-2025-12-01 20:58:06,015 [INFO] -         • com.sec.android.app.shealth: 56 sesiones
-2025-12-01 20:58:06,015 [INFO] -   Campos detectados: ejercicio, peso, grasa_corporal, fc_reposo, presion_arterial, vo2max, frecuencia_cardiaca, glucosa, tasa_metabolica, nutrition, pasos, distancia, calorias_totales, spo2, sueno
-2025-12-01 20:58:06,015 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-01 20:58:06,015 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-01_20-54-25.json
-2025-12-01 20:58:06,391 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-01 20:58:06,391 [INFO] - Generando dashboard HTML con gráficos...
-2025-12-01 20:58:06,391 [INFO] - ==================================================
-2025-12-01 20:58:06,391 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-01
-2025-12-01 20:58:06,391 [INFO] - Ventana de 7 días: 2025-11-25 a 2025-12-01
-2025-12-01 20:58:06,391 [INFO] - PAI TOTAL SEMANAL: 77.7
-2025-12-01 20:58:06,392 [INFO] - Entrenamientos en ventana: 8
-2025-12-01 20:58:06,392 [INFO] - ==================================================
-2025-12-01 20:58:06,405 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-12-01 20:58:06,498 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-01
-2025-12-01 20:58:06,498 [INFO] - 📊 Total registros de nutrition en cache: 300
-2025-12-01 20:58:06,500 [INFO] - ✅ Registros de nutrition HOY: 10, Calorías: 1180.0
-2025-12-01 20:58:06,502 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2025-12-01 20:58:06,502 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=1180.0, Restante=520.0
+        <pre id="logs-content" class="logs-hidden">2025-12-01 21:05:18,439 [INFO] - 
+2025-12-01 21:05:18,439 [INFO] - ================================================================================
+2025-12-01 21:05:18,439 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-12-01 21:05:18,439 [INFO] - ================================================================================
+2025-12-01 21:05:18,439 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-12-01 21:05:18,440 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-12-01 21:05:18,440 [INFO] - ================================================================================
+2025-12-01 21:05:18,440 [INFO] - 
+2025-12-01 21:05:18,440 [INFO] - ================================================================================
+2025-12-01 21:05:18,440 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-12-01 21:05:18,440 [INFO] - ================================================================================
+2025-12-01 21:05:18,518 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-12-01 21:05:18,530 [INFO] - Total archivos JSON encontrados: 1097
+2025-12-01 21:05:18,530 [INFO] - Archivos ya procesados: 1097
+2025-12-01 21:05:18,530 [INFO] - Archivos nuevos a procesar: 0
+2025-12-01 21:05:18,531 [INFO] - No hay archivos nuevos para procesar.
+2025-12-01 21:05:18,531 [INFO] - Generando dashboard HTML con gráficos...
+2025-12-01 21:05:18,531 [INFO] - ==================================================
+2025-12-01 21:05:18,531 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-01
+2025-12-01 21:05:18,531 [INFO] - Ventana de 7 días: 2025-11-25 a 2025-12-01
+2025-12-01 21:05:18,531 [INFO] - PAI TOTAL SEMANAL: 77.7
+2025-12-01 21:05:18,531 [INFO] - Entrenamientos en ventana: 8
+2025-12-01 21:05:18,531 [INFO] - ==================================================
+2025-12-01 21:05:18,543 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-12-01 21:05:18,617 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-01
+2025-12-01 21:05:18,618 [INFO] - 📊 Total registros de nutrition en cache: 300
+2025-12-01 21:05:18,619 [INFO] - ✅ Registros de nutrition HOY: 10, Calorías: 1180.0
+2025-12-01 21:05:18,621 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2025-12-01 21:05:18,621 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=1180.0, Restante=520.0
 </pre>
     </div>
     
@@ -1462,7 +1407,7 @@
             },
             {
                 x: ['2025-11-01', '2025-11-02', '2025-11-03', '2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22', '2025-11-23', '2025-11-24', '2025-11-25', '2025-11-26', '2025-11-27', '2025-11-28', '2025-11-29', '2025-12-01'],
-                y: [68.05, 72.43684210526317, 66.57677738927738, 62.79983109948786, 60.60735930735931, 66.35034722222223, 71.81813725490196, 97.94871794871796, 70.7927536231884, 79.87173913043478, 75.29012345679013, 80.709972394755, 68.64102564102564, 70.32756632064591, 79.38486312399355, 76.12083333333334, 75.41666666666666, 74.69365079365079, 69.56136363636364, 60.07708333333333, 72.93668831168831, 76.59113564910666, 75.53238095238095, 76.98787878787878, 76.65866666666666, 77.83541666666666, 71.7082497212932, 74.52638888888887, 62.74285714285715, 70.6923076923077],
+                y: [66.625, 72.43684210526317, 66.57677738927738, 62.79983109948786, 60.60735930735931, 66.35034722222223, 71.81813725490196, 97.94871794871796, 70.7927536231884, 79.87173913043478, 75.29012345679013, 80.709972394755, 68.64102564102564, 70.32756632064591, 79.38486312399355, 76.12083333333334, 75.41666666666666, 74.69365079365079, 69.56136363636364, 60.07708333333333, 72.93668831168831, 76.59113564910666, 75.53238095238095, 76.98787878787878, 76.65866666666666, 77.83541666666666, 71.7082497212932, 74.52638888888887, 62.74285714285715, 70.6923076923077],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
