@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 04/12/2025 19:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 04/12/2025 20:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1051,56 +1051,43 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-12-04 19:05:16 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-12-04 20:05:16 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 143</p>
             <p>✅ <strong>Total registros peso:</strong> 58</p>
             <p>✅ <strong>Total registros pasos:</strong> 1041</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3527 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2360 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-12-04 19:05:15,610 [INFO] - 
-2025-12-04 19:05:15,611 [INFO] - ================================================================================
-2025-12-04 19:05:15,611 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-12-04 19:05:15,611 [INFO] - ================================================================================
-2025-12-04 19:05:15,611 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-12-04 19:05:15,611 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-12-04 19:05:15,611 [INFO] - ================================================================================
-2025-12-04 19:05:15,611 [INFO] - 
-2025-12-04 19:05:15,611 [INFO] - ================================================================================
-2025-12-04 19:05:15,611 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-12-04 19:05:15,611 [INFO] - ================================================================================
-2025-12-04 19:05:15,696 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-04 19:05:15,710 [INFO] - Total archivos JSON encontrados: 1131
-2025-12-04 19:05:15,710 [INFO] - Archivos ya procesados: 1130
-2025-12-04 19:05:15,710 [INFO] - Archivos nuevos a procesar: 1
-2025-12-04 19:05:15,710 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-12-04_19-04-19.json&#x27;]
-2025-12-04 19:05:15,710 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-04_19-04-19.json
-2025-12-04 19:05:15,710 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-04_19-04-19.json
-2025-12-04 19:05:15,711 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-04 19:05:15,711 [INFO] -   → Nutrición agregada: 1 alimentos
-2025-12-04 19:05:15,711 [INFO] -      🍽️  Por tipo de comida:
-2025-12-04 19:05:15,711 [INFO] -         • Snack: 1 alimentos
-2025-12-04 19:05:15,711 [INFO] -   → Pasos agregados: 1
-2025-12-04 19:05:15,711 [INFO] -     📊 Pasos por fuente:
-2025-12-04 19:05:15,711 [INFO] -        • Samsung Health: 1 registros (total: 17708)
-2025-12-04 19:05:15,711 [INFO] -   Campos detectados: nutrition, pasos
-2025-12-04 19:05:15,711 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-04 19:05:15,711 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-04_19-04-19.json
-2025-12-04 19:05:16,098 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-04 19:05:16,098 [INFO] - Generando dashboard HTML con gráficos...
-2025-12-04 19:05:16,098 [INFO] - ==================================================
-2025-12-04 19:05:16,098 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-04
-2025-12-04 19:05:16,098 [INFO] - Ventana de 7 días: 2025-11-28 a 2025-12-04
-2025-12-04 19:05:16,099 [INFO] - PAI TOTAL SEMANAL: 37.9
-2025-12-04 19:05:16,099 [INFO] - Entrenamientos en ventana: 6
-2025-12-04 19:05:16,099 [INFO] - ==================================================
-2025-12-04 19:05:16,113 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-12-04 19:05:16,209 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-04
-2025-12-04 19:05:16,209 [INFO] - 📊 Total registros de nutrition en cache: 346
-2025-12-04 19:05:16,211 [INFO] - ✅ Registros de nutrition HOY: 8, Calorías: 2034.0
-2025-12-04 19:05:16,213 [INFO] - ✅ Ejercicio HOY: 1083.0 kcal
-2025-12-04 19:05:16,213 [INFO] - 📈 RESULTADO: Presupuesto=2783.0, Comido=2034.0, Restante=749.0
+        <pre id="logs-content" class="logs-hidden">2025-12-04 20:05:15,907 [INFO] - 
+2025-12-04 20:05:15,907 [INFO] - ================================================================================
+2025-12-04 20:05:15,907 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-12-04 20:05:15,907 [INFO] - ================================================================================
+2025-12-04 20:05:15,907 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-12-04 20:05:15,907 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-12-04 20:05:15,907 [INFO] - ================================================================================
+2025-12-04 20:05:15,907 [INFO] - 
+2025-12-04 20:05:15,907 [INFO] - ================================================================================
+2025-12-04 20:05:15,908 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-12-04 20:05:15,908 [INFO] - ================================================================================
+2025-12-04 20:05:15,991 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-12-04 20:05:16,005 [INFO] - Total archivos JSON encontrados: 1131
+2025-12-04 20:05:16,005 [INFO] - Archivos ya procesados: 1131
+2025-12-04 20:05:16,005 [INFO] - Archivos nuevos a procesar: 0
+2025-12-04 20:05:16,005 [INFO] - No hay archivos nuevos para procesar.
+2025-12-04 20:05:16,005 [INFO] - Generando dashboard HTML con gráficos...
+2025-12-04 20:05:16,005 [INFO] - ==================================================
+2025-12-04 20:05:16,005 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-04
+2025-12-04 20:05:16,005 [INFO] - Ventana de 7 días: 2025-11-28 a 2025-12-04
+2025-12-04 20:05:16,005 [INFO] - PAI TOTAL SEMANAL: 37.9
+2025-12-04 20:05:16,005 [INFO] - Entrenamientos en ventana: 6
+2025-12-04 20:05:16,005 [INFO] - ==================================================
+2025-12-04 20:05:16,018 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-12-04 20:05:16,108 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-04
+2025-12-04 20:05:16,108 [INFO] - 📊 Total registros de nutrition en cache: 346
+2025-12-04 20:05:16,110 [INFO] - ✅ Registros de nutrition HOY: 8, Calorías: 2034.0
+2025-12-04 20:05:16,112 [INFO] - ✅ Ejercicio HOY: 1083.0 kcal
+2025-12-04 20:05:16,112 [INFO] - 📈 RESULTADO: Presupuesto=2783.0, Comido=2034.0, Restante=749.0
 </pre>
     </div>
     
@@ -1402,7 +1389,7 @@
             },
             {
                 x: ['2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22', '2025-11-23', '2025-11-24', '2025-11-25', '2025-11-26', '2025-11-27', '2025-11-28', '2025-11-29', '2025-12-01', '2025-12-02', '2025-12-03', '2025-12-04'],
-                y: [63.22222222222222, 60.509504132231406, 66.30710256410256, 71.61883903133904, 96.96365914786968, 70.51570048309178, 79.73047839506172, 75.34803921568628, 80.44555806512328, 68.3170426065163, 70.08405954974583, 79.21278467908903, 75.81603174603175, 76.03703703703702, 74.8439393939394, 69.50357613401091, 59.999999999999986, 72.51586009898031, 76.5040895957045, 75.1857509157509, 76.73752066115702, 76.56121794871795, 77.68359010270775, 71.5467525496511, 74.37253333333332, 62.452380952380956, 68.47115384615385, 65.62250712250712, 70.21180555555556, 71.9],
+                y: [61.33333333333333, 60.509504132231406, 66.30710256410256, 71.61883903133904, 96.96365914786968, 70.51570048309178, 79.73047839506172, 75.34803921568628, 80.44555806512328, 68.3170426065163, 70.08405954974583, 79.21278467908903, 75.81603174603175, 76.03703703703702, 74.8439393939394, 69.50357613401091, 59.999999999999986, 72.51586009898031, 76.5040895957045, 75.1857509157509, 76.73752066115702, 76.56121794871795, 77.68359010270775, 71.5467525496511, 74.37253333333332, 62.452380952380956, 68.47115384615385, 65.62250712250712, 70.21180555555556, 71.9],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Promedio',
@@ -1410,7 +1397,7 @@
             },
             {
                 x: ['2025-11-04', '2025-11-05', '2025-11-06', '2025-11-07', '2025-11-08', '2025-11-09', '2025-11-10', '2025-11-11', '2025-11-12', '2025-11-13', '2025-11-14', '2025-11-15', '2025-11-16', '2025-11-17', '2025-11-18', '2025-11-19', '2025-11-20', '2025-11-21', '2025-11-22', '2025-11-23', '2025-11-24', '2025-11-25', '2025-11-26', '2025-11-27', '2025-11-28', '2025-11-29', '2025-12-01', '2025-12-02', '2025-12-03', '2025-12-04'],
-                y: [85, 101, 118, 121, 160, 116, 151, 152, 146, 104, 121, 150, 159, 146, 120, 110, 92, 124, 149, 142, 119, 136, 142, 118, 119, 82, 133, 99, 110, 110],
+                y: [81, 101, 118, 121, 160, 116, 151, 152, 146, 104, 121, 150, 159, 146, 120, 110, 92, 124, 149, 142, 119, 136, 142, 118, 119, 82, 133, 99, 110, 110],
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Máxima',
