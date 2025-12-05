@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 05/12/2025 13:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 05/12/2025 14:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1060,71 +1060,43 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-12-05 13:05:24 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-12-05 14:05:18 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 144</p>
             <p>✅ <strong>Total registros peso:</strong> 59</p>
             <p>✅ <strong>Total registros pasos:</strong> 1055</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4918 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2360 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-12-05 13:05:24,111 [INFO] - 
-2025-12-05 13:05:24,111 [INFO] - ================================================================================
-2025-12-05 13:05:24,111 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-12-05 13:05:24,111 [INFO] - ================================================================================
-2025-12-05 13:05:24,111 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-12-05 13:05:24,111 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-12-05 13:05:24,111 [INFO] - ================================================================================
-2025-12-05 13:05:24,111 [INFO] - 
-2025-12-05 13:05:24,111 [INFO] - ================================================================================
-2025-12-05 13:05:24,111 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-12-05 13:05:24,111 [INFO] - ================================================================================
-2025-12-05 13:05:24,195 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-05 13:05:24,210 [INFO] - Total archivos JSON encontrados: 1144
-2025-12-05 13:05:24,210 [INFO] - Archivos ya procesados: 1142
-2025-12-05 13:05:24,210 [INFO] - Archivos nuevos a procesar: 2
-2025-12-05 13:05:24,210 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-12-05_12-23-53.json&#x27;, &#x27;health_data_AUTO_DIFF_2025-12-05_12-54-08.json&#x27;]
-2025-12-05 13:05:24,210 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-05_12-23-53.json
-2025-12-05 13:05:24,210 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-05_12-23-53.json
-2025-12-05 13:05:24,210 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-05 13:05:24,211 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-12-05 13:05:24,211 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-12-05 13:05:24,211 [INFO] -        • Samsung Health: 1 registros
-2025-12-05 13:05:24,211 [INFO] -   → Nutrición agregada: 3 alimentos
-2025-12-05 13:05:24,211 [INFO] -      🍽️  Por tipo de comida:
-2025-12-05 13:05:24,211 [INFO] -         • Almuerzo: 3 alimentos
-2025-12-05 13:05:24,211 [INFO] -   → Pasos agregados: 1
-2025-12-05 13:05:24,211 [INFO] -     📊 Pasos por fuente:
-2025-12-05 13:05:24,211 [INFO] -        • Samsung Health: 1 registros (total: 12312)
-2025-12-05 13:05:24,211 [INFO] -   Campos detectados: frecuencia_cardiaca, nutrition, pasos
-2025-12-05 13:05:24,211 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-05 13:05:24,211 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-05_12-23-53.json
-2025-12-05 13:05:24,212 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-05_12-54-08.json
-2025-12-05 13:05:24,212 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-05_12-54-08.json
-2025-12-05 13:05:24,212 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-05 13:05:24,212 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2025-12-05 13:05:24,212 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2025-12-05 13:05:24,212 [INFO] -        • Samsung Health: 1 registros
-2025-12-05 13:05:24,212 [INFO] -   → Pasos agregados: 1
-2025-12-05 13:05:24,212 [INFO] -     📊 Pasos por fuente:
-2025-12-05 13:05:24,212 [INFO] -        • Samsung Health: 1 registros (total: 12780)
-2025-12-05 13:05:24,212 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos
-2025-12-05 13:05:24,212 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-05 13:05:24,212 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-05_12-54-08.json
-2025-12-05 13:05:24,610 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-05 13:05:24,610 [INFO] - Generando dashboard HTML con gráficos...
-2025-12-05 13:05:24,610 [INFO] - ==================================================
-2025-12-05 13:05:24,611 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-05
-2025-12-05 13:05:24,611 [INFO] - Ventana de 7 días: 2025-11-29 a 2025-12-05
-2025-12-05 13:05:24,611 [INFO] - PAI TOTAL SEMANAL: 52.8
-2025-12-05 13:05:24,611 [INFO] - Entrenamientos en ventana: 6
-2025-12-05 13:05:24,611 [INFO] - ==================================================
-2025-12-05 13:05:24,634 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-12-05 13:05:24,728 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-05
-2025-12-05 13:05:24,728 [INFO] - 📊 Total registros de nutrition en cache: 356
-2025-12-05 13:05:24,729 [INFO] - ✅ Registros de nutrition HOY: 7, Calorías: 1041.0
-2025-12-05 13:05:24,732 [INFO] - ✅ Ejercicio HOY: 532.0 kcal
-2025-12-05 13:05:24,732 [INFO] - 📈 RESULTADO: Presupuesto=2232.0, Comido=1041.0, Restante=1191.0
+        <pre id="logs-content" class="logs-hidden">2025-12-05 14:05:18,683 [INFO] - 
+2025-12-05 14:05:18,683 [INFO] - ================================================================================
+2025-12-05 14:05:18,683 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-12-05 14:05:18,683 [INFO] - ================================================================================
+2025-12-05 14:05:18,683 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-12-05 14:05:18,684 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-12-05 14:05:18,684 [INFO] - ================================================================================
+2025-12-05 14:05:18,684 [INFO] - 
+2025-12-05 14:05:18,684 [INFO] - ================================================================================
+2025-12-05 14:05:18,684 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-12-05 14:05:18,684 [INFO] - ================================================================================
+2025-12-05 14:05:18,720 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-12-05 14:05:18,783 [INFO] - Total archivos JSON encontrados: 1144
+2025-12-05 14:05:18,783 [INFO] - Archivos ya procesados: 1144
+2025-12-05 14:05:18,783 [INFO] - Archivos nuevos a procesar: 0
+2025-12-05 14:05:18,783 [INFO] - No hay archivos nuevos para procesar.
+2025-12-05 14:05:18,783 [INFO] - Generando dashboard HTML con gráficos...
+2025-12-05 14:05:18,783 [INFO] - ==================================================
+2025-12-05 14:05:18,783 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-05
+2025-12-05 14:05:18,783 [INFO] - Ventana de 7 días: 2025-11-29 a 2025-12-05
+2025-12-05 14:05:18,783 [INFO] - PAI TOTAL SEMANAL: 52.8
+2025-12-05 14:05:18,784 [INFO] - Entrenamientos en ventana: 6
+2025-12-05 14:05:18,784 [INFO] - ==================================================
+2025-12-05 14:05:18,797 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-12-05 14:05:18,899 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-05
+2025-12-05 14:05:18,899 [INFO] - 📊 Total registros de nutrition en cache: 356
+2025-12-05 14:05:18,900 [INFO] - ✅ Registros de nutrition HOY: 7, Calorías: 1041.0
+2025-12-05 14:05:18,903 [INFO] - ✅ Ejercicio HOY: 532.0 kcal
+2025-12-05 14:05:18,903 [INFO] - 📈 RESULTADO: Presupuesto=2232.0, Comido=1041.0, Restante=1191.0
 </pre>
     </div>
     
