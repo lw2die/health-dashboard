@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 11/12/2025 20:54 (Argentina)</p>
+                <p class="subtitle">Última actualización: 11/12/2025 21:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -758,7 +758,7 @@
         <div class="metric-value" style="color: #3fb950; font-size: 1.5em;">98</div>
         <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Ayunas</div>
         <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
-            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">133</div>
+            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">138</div>
             <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Postprandial</div>
         </div>
     </div>
@@ -1087,60 +1087,44 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-12-11 20:54:41 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-12-11 21:05:17 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 163</p>
             <p>✅ <strong>Total registros peso:</strong> 65</p>
             <p>✅ <strong>Total registros pasos:</strong> 1153</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3805 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2422 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-12-11 20:54:40,616 [INFO] - 
-2025-12-11 20:54:40,616 [INFO] - ================================================================================
-2025-12-11 20:54:40,616 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-12-11 20:54:40,616 [INFO] - ================================================================================
-2025-12-11 20:54:40,616 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-12-11 20:54:40,617 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-12-11 20:54:40,617 [INFO] - ================================================================================
-2025-12-11 20:54:40,617 [INFO] - 
-2025-12-11 20:54:40,617 [INFO] - ================================================================================
-2025-12-11 20:54:40,617 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-12-11 20:54:40,617 [INFO] - ================================================================================
-2025-12-11 20:54:40,702 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-11 20:54:40,718 [INFO] - Total archivos JSON encontrados: 1242
-2025-12-11 20:54:40,718 [INFO] - Archivos ya procesados: 1241
-2025-12-11 20:54:40,718 [INFO] - Archivos nuevos a procesar: 1
-2025-12-11 20:54:40,718 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-12-11_20-39-44.json&#x27;]
-2025-12-11 20:54:40,718 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-11_20-39-44.json
-2025-12-11 20:54:40,718 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-11_20-39-44.json
-2025-12-11 20:54:40,718 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;nutrition_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-11 20:54:40,718 [INFO] -   🗑️  Procesando 2 deletions...
-2025-12-11 20:54:40,720 [INFO] -   ℹ️  No se encontraron registros para borrar
-2025-12-11 20:54:40,720 [INFO] -   → Nutrición agregada: 7 alimentos
-2025-12-11 20:54:40,720 [INFO] -      🍽️  Por tipo de comida:
-2025-12-11 20:54:40,720 [INFO] -         • Cena: 2 alimentos
-2025-12-11 20:54:40,720 [INFO] -         • Snack: 5 alimentos
-2025-12-11 20:54:40,720 [INFO] -   → Pasos agregados: 1
-2025-12-11 20:54:40,720 [INFO] -     📊 Pasos por fuente:
-2025-12-11 20:54:40,720 [INFO] -        • Samsung Health: 1 registros (total: 20166)
-2025-12-11 20:54:40,720 [INFO] -   Campos detectados: nutrition, pasos
-2025-12-11 20:54:40,720 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-11 20:54:40,721 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-11_20-39-44.json
-2025-12-11 20:54:41,121 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-11 20:54:41,121 [INFO] - Generando dashboard HTML con gráficos...
-2025-12-11 20:54:41,121 [INFO] - ==================================================
-2025-12-11 20:54:41,121 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-11
-2025-12-11 20:54:41,121 [INFO] - Ventana de 7 días: 2025-12-05 a 2025-12-11
-2025-12-11 20:54:41,121 [INFO] - PAI TOTAL SEMANAL: 200.3
-2025-12-11 20:54:41,121 [INFO] - Entrenamientos en ventana: 20
-2025-12-11 20:54:41,121 [INFO] - ==================================================
-2025-12-11 20:54:41,193 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-12-11 20:54:41,288 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-11
-2025-12-11 20:54:41,288 [INFO] - 📊 Total registros de nutrition en cache: 410
-2025-12-11 20:54:41,290 [INFO] - ✅ Registros de nutrition HOY: 12, Calorías: 1513.0
-2025-12-11 20:54:41,291 [INFO] - ✅ TMB HOY: 1795.0 kcal
-2025-12-11 20:54:41,293 [INFO] - ✅ Ejercicio HOY: 1707.0 kcal
-2025-12-11 20:54:41,293 [INFO] - 📈 RESULTADO: Presupuesto=3502.0, Comido=1513.0, Restante=1989.0
+        <pre id="logs-content" class="logs-hidden">2025-12-11 21:05:17,463 [INFO] - 
+2025-12-11 21:05:17,463 [INFO] - ================================================================================
+2025-12-11 21:05:17,463 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-12-11 21:05:17,463 [INFO] - ================================================================================
+2025-12-11 21:05:17,463 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-12-11 21:05:17,464 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-12-11 21:05:17,464 [INFO] - ================================================================================
+2025-12-11 21:05:17,464 [INFO] - 
+2025-12-11 21:05:17,464 [INFO] - ================================================================================
+2025-12-11 21:05:17,464 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-12-11 21:05:17,464 [INFO] - ================================================================================
+2025-12-11 21:05:17,509 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-12-11 21:05:17,524 [INFO] - Total archivos JSON encontrados: 1242
+2025-12-11 21:05:17,524 [INFO] - Archivos ya procesados: 1242
+2025-12-11 21:05:17,524 [INFO] - Archivos nuevos a procesar: 0
+2025-12-11 21:05:17,525 [INFO] - No hay archivos nuevos para procesar.
+2025-12-11 21:05:17,525 [INFO] - Generando dashboard HTML con gráficos...
+2025-12-11 21:05:17,525 [INFO] - ==================================================
+2025-12-11 21:05:17,525 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-11
+2025-12-11 21:05:17,525 [INFO] - Ventana de 7 días: 2025-12-05 a 2025-12-11
+2025-12-11 21:05:17,525 [INFO] - PAI TOTAL SEMANAL: 200.3
+2025-12-11 21:05:17,525 [INFO] - Entrenamientos en ventana: 20
+2025-12-11 21:05:17,525 [INFO] - ==================================================
+2025-12-11 21:05:17,602 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-12-11 21:05:17,647 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-11
+2025-12-11 21:05:17,647 [INFO] - 📊 Total registros de nutrition en cache: 410
+2025-12-11 21:05:17,685 [INFO] - ✅ Registros de nutrition HOY: 12, Calorías: 1513.0
+2025-12-11 21:05:17,686 [INFO] - ✅ TMB HOY: 1795.0 kcal
+2025-12-11 21:05:17,689 [INFO] - ✅ Ejercicio HOY: 1707.0 kcal
+2025-12-11 21:05:17,689 [INFO] - 📈 RESULTADO: Presupuesto=3502.0, Comido=1513.0, Restante=1989.0
 </pre>
     </div>
     
