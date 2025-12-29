@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 29/12/2025 13:05 (Argentina)</p>
+                <p class="subtitle">Última actualización: 29/12/2025 14:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1072,56 +1072,43 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2025-12-29 13:05:22 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2025-12-29 14:05:19 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 251</p>
             <p>✅ <strong>Total registros peso:</strong> 79</p>
             <p>✅ <strong>Total registros pasos:</strong> 1360</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3513 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2344 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2025-12-29 13:05:21,584 [INFO] - 
-2025-12-29 13:05:21,584 [INFO] - ================================================================================
-2025-12-29 13:05:21,584 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2025-12-29 13:05:21,584 [INFO] - ================================================================================
-2025-12-29 13:05:21,584 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2025-12-29 13:05:21,584 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2025-12-29 13:05:21,584 [INFO] - ================================================================================
-2025-12-29 13:05:21,584 [INFO] - 
-2025-12-29 13:05:21,584 [INFO] - ================================================================================
-2025-12-29 13:05:21,584 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2025-12-29 13:05:21,584 [INFO] - ================================================================================
-2025-12-29 13:05:21,701 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-29 13:05:21,724 [INFO] - Total archivos JSON encontrados: 1443
-2025-12-29 13:05:21,725 [INFO] - Archivos ya procesados: 1442
-2025-12-29 13:05:21,725 [INFO] - Archivos nuevos a procesar: 1
-2025-12-29 13:05:21,725 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2025-12-29_12-32-41.json&#x27;]
-2025-12-29 13:05:21,725 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2025-12-29_12-32-41.json
-2025-12-29 13:05:21,726 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2025-12-29_12-32-41.json
-2025-12-29 13:05:21,726 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;deletions&#x27;]
-2025-12-29 13:05:21,728 [INFO] -   → Pasos agregados: 1
-2025-12-29 13:05:21,728 [INFO] -     📊 Pasos por fuente:
-2025-12-29 13:05:21,728 [INFO] -        • HealthSync: 1 registros (total: 14863)
-2025-12-29 13:05:21,728 [INFO] -   → Sueño agregado: 2 sesiones
-2025-12-29 13:05:21,728 [INFO] -      📊 Sueño por fuente:
-2025-12-29 13:05:21,728 [INFO] -         • com.huami.watch.hmwatchmanager: 2 sesiones
-2025-12-29 13:05:21,728 [INFO] -   Campos detectados: pasos, sueno
-2025-12-29 13:05:21,728 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2025-12-29 13:05:21,730 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2025-12-29_12-32-41.json
-2025-12-29 13:05:22,489 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2025-12-29 13:05:22,489 [INFO] - Generando dashboard HTML con gráficos...
-2025-12-29 13:05:22,489 [INFO] - ==================================================
-2025-12-29 13:05:22,489 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-29
-2025-12-29 13:05:22,489 [INFO] - Ventana de 7 días: 2025-12-23 a 2025-12-29
-2025-12-29 13:05:22,490 [INFO] - PAI TOTAL SEMANAL: 155.8
-2025-12-29 13:05:22,490 [INFO] - Entrenamientos en ventana: 20
-2025-12-29 13:05:22,490 [INFO] - ==================================================
-2025-12-29 13:05:22,507 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2025-12-29 13:05:22,612 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-29
-2025-12-29 13:05:22,612 [INFO] - 📊 Total registros de nutrition en cache: 595
-2025-12-29 13:05:22,615 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2025-12-29 13:05:22,618 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2025-12-29 13:05:22,618 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=0, Restante=1700
+        <pre id="logs-content" class="logs-hidden">2025-12-29 14:05:19,216 [INFO] - 
+2025-12-29 14:05:19,216 [INFO] - ================================================================================
+2025-12-29 14:05:19,216 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2025-12-29 14:05:19,216 [INFO] - ================================================================================
+2025-12-29 14:05:19,216 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2025-12-29 14:05:19,216 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2025-12-29 14:05:19,216 [INFO] - ================================================================================
+2025-12-29 14:05:19,216 [INFO] - 
+2025-12-29 14:05:19,216 [INFO] - ================================================================================
+2025-12-29 14:05:19,216 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2025-12-29 14:05:19,216 [INFO] - ================================================================================
+2025-12-29 14:05:19,329 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2025-12-29 14:05:19,400 [INFO] - Total archivos JSON encontrados: 1443
+2025-12-29 14:05:19,400 [INFO] - Archivos ya procesados: 1443
+2025-12-29 14:05:19,400 [INFO] - Archivos nuevos a procesar: 0
+2025-12-29 14:05:19,400 [INFO] - No hay archivos nuevos para procesar.
+2025-12-29 14:05:19,400 [INFO] - Generando dashboard HTML con gráficos...
+2025-12-29 14:05:19,400 [INFO] - ==================================================
+2025-12-29 14:05:19,400 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2025-12-29
+2025-12-29 14:05:19,400 [INFO] - Ventana de 7 días: 2025-12-23 a 2025-12-29
+2025-12-29 14:05:19,400 [INFO] - PAI TOTAL SEMANAL: 155.8
+2025-12-29 14:05:19,400 [INFO] - Entrenamientos en ventana: 20
+2025-12-29 14:05:19,400 [INFO] - ==================================================
+2025-12-29 14:05:19,417 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2025-12-29 14:05:19,514 [INFO] - 🔍 Calculando círculo para HOY: 2025-12-29
+2025-12-29 14:05:19,514 [INFO] - 📊 Total registros de nutrition en cache: 595
+2025-12-29 14:05:19,517 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
+2025-12-29 14:05:19,520 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2025-12-29 14:05:19,520 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=0, Restante=1700
 </pre>
     </div>
     
