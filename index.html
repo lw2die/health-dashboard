@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 18/01/2026 07:00 (Argentina)</p>
+                <p class="subtitle">Última actualización: 18/01/2026 07:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1072,141 +1072,44 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-01-18 07:00:32 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-01-18 07:05:29 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 277</p>
             <p>✅ <strong>Total registros peso:</strong> 89</p>
             <p>✅ <strong>Total registros pasos:</strong> 1675</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 11094 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2406 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2026-01-18 07:00:30,604 [INFO] - 
-2026-01-18 07:00:30,604 [INFO] - ================================================================================
-2026-01-18 07:00:30,604 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2026-01-18 07:00:30,604 [INFO] - ================================================================================
-2026-01-18 07:00:30,604 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2026-01-18 07:00:30,604 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2026-01-18 07:00:30,604 [INFO] - ================================================================================
-2026-01-18 07:00:30,604 [INFO] - 
-2026-01-18 07:00:30,604 [INFO] - ================================================================================
-2026-01-18 07:00:30,605 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2026-01-18 07:00:30,605 [INFO] - ================================================================================
-2026-01-18 07:00:30,722 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2026-01-18 07:00:30,806 [INFO] - Total archivos JSON encontrados: 1725
-2026-01-18 07:00:30,806 [INFO] - Archivos ya procesados: 1719
-2026-01-18 07:00:30,807 [INFO] - Archivos nuevos a procesar: 6
-2026-01-18 07:00:30,807 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2026-01-17_21-55-04.json&#x27;, &#x27;health_data_AUTO_DIFF_2026-01-17_22-55-10.json&#x27;, &#x27;health_data_AUTO_DIFF_2026-01-17_23-25-22.json&#x27;, &#x27;health_data_AUTO_DIFF_2026-01-18_00-53-49.json&#x27;, &#x27;health_data_AUTO_DIFF_2026-01-18_06-19-23.json&#x27;, &#x27;health_data_AUTO_DIFF_2026-01-18_06-54-35.json&#x27;]
-2026-01-18 07:00:30,807 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-17_21-55-04.json
-2026-01-18 07:00:30,807 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-17_21-55-04.json
-2026-01-18 07:00:30,807 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,807 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2026-01-18 07:00:30,807 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2026-01-18 07:00:30,807 [INFO] -        • Samsung Health: 1 registros
-2026-01-18 07:00:30,807 [INFO] -   → Pasos agregados: 1
-2026-01-18 07:00:30,807 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,808 [INFO] -        • Samsung Health: 1 registros (total: 16656)
-2026-01-18 07:00:30,808 [INFO] -   Campos detectados: frecuencia_cardiaca, pasos
-2026-01-18 07:00:30,808 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,808 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-17_21-55-04.json
-2026-01-18 07:00:30,808 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-17_22-55-10.json
-2026-01-18 07:00:30,808 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-17_22-55-10.json
-2026-01-18 07:00:30,808 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,808 [INFO] -   → Pasos agregados: 1
-2026-01-18 07:00:30,808 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,808 [INFO] -        • Samsung Health: 1 registros (total: 16694)
-2026-01-18 07:00:30,809 [INFO] -   Campos detectados: pasos
-2026-01-18 07:00:30,809 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,809 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-17_22-55-10.json
-2026-01-18 07:00:30,809 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-17_23-25-22.json
-2026-01-18 07:00:30,809 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-17_23-25-22.json
-2026-01-18 07:00:30,809 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,809 [INFO] -   → Pasos agregados: 1
-2026-01-18 07:00:30,809 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,809 [INFO] -        • Samsung Health: 1 registros (total: 16932)
-2026-01-18 07:00:30,809 [INFO] -   Campos detectados: pasos
-2026-01-18 07:00:30,809 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,810 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-17_23-25-22.json
-2026-01-18 07:00:30,810 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-18_00-53-49.json
-2026-01-18 07:00:30,810 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-18_00-53-49.json
-2026-01-18 07:00:30,810 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,810 [INFO] -   → Pasos agregados: 2
-2026-01-18 07:00:30,810 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,810 [INFO] -        • Samsung Health: 2 registros (total: 17005)
-2026-01-18 07:00:30,810 [INFO] -   Campos detectados: pasos
-2026-01-18 07:00:30,810 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,811 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-18_00-53-49.json
-2026-01-18 07:00:30,811 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-18_06-19-23.json
-2026-01-18 07:00:30,811 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-18_06-19-23.json
-2026-01-18 07:00:30,811 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,811 [INFO] -   → FC en reposo agregada: 7 (desde heart_rate horario nocturno)
-2026-01-18 07:00:30,811 [INFO] -     📊 FC Reposo por fuente:
-2026-01-18 07:00:30,811 [INFO] -        • Samsung Health: 7 registros (total: 402)
-2026-01-18 07:00:30,811 [INFO] -   → Frecuencia cardíaca agregada: 2 días
-2026-01-18 07:00:30,812 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2026-01-18 07:00:30,812 [INFO] -        • Samsung Health: 2 registros
-2026-01-18 07:00:30,812 [INFO] -   → Pasos agregados: 2
-2026-01-18 07:00:30,812 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,812 [INFO] -        • Samsung Health: 2 registros (total: 17264)
-2026-01-18 07:00:30,812 [INFO] -   → SpO2 agregado: 1
-2026-01-18 07:00:30,812 [INFO] -     📊 SpO2 por fuente:
-2026-01-18 07:00:30,812 [INFO] -        • Samsung Health: 1 registros (total: 97)
-2026-01-18 07:00:30,812 [INFO] -   → Sueño agregado: 1 sesiones
-2026-01-18 07:00:30,812 [INFO] -      📊 Sueño por fuente:
-2026-01-18 07:00:30,812 [INFO] -         • com.sec.android.app.shealth: 1 sesiones
-2026-01-18 07:00:30,812 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca, pasos, spo2, sueno
-2026-01-18 07:00:30,812 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,813 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-18_06-19-23.json
-2026-01-18 07:00:30,813 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-18_06-54-35.json
-2026-01-18 07:00:30,813 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-18_06-54-35.json
-2026-01-18 07:00:30,813 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;bone_mass_changes&#x27;, &#x27;basal_metabolic_rate_changes&#x27;, &#x27;body_fat_changes&#x27;, &#x27;steps_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;blood_glucose_changes&#x27;, &#x27;weight_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-18 07:00:30,814 [INFO] -   → Peso agregado: 2 días (rechazados: 1)
-2026-01-18 07:00:30,814 [INFO] -      📊 Peso por fuente:
-2026-01-18 07:00:30,814 [INFO] -         • com.icomon.starfit.starfit: 4 registros
-2026-01-18 07:00:30,814 [INFO] -   → Grasa corporal agregada: 4
-2026-01-18 07:00:30,814 [INFO] -     📊 Grasa Corporal por fuente:
-2026-01-18 07:00:30,814 [INFO] -        • starfit: 4 registros (total: 94)
-2026-01-18 07:00:30,814 [INFO] -   → Masa ósea agregada: 4
-2026-01-18 07:00:30,814 [INFO] -     📊 Masa Ósea por fuente:
-2026-01-18 07:00:30,814 [INFO] -        • starfit: 4 registros (total: 17)
-2026-01-18 07:00:30,814 [INFO] -   → FC en reposo agregada: 3 (desde heart_rate horario nocturno)
-2026-01-18 07:00:30,814 [INFO] -     📊 FC Reposo por fuente:
-2026-01-18 07:00:30,814 [INFO] -        • Samsung Health: 3 registros (total: 156)
-2026-01-18 07:00:30,815 [INFO] -   → Frecuencia cardíaca agregada: 1 días
-2026-01-18 07:00:30,815 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2026-01-18 07:00:30,815 [INFO] -        • Samsung Health: 1 registros
-2026-01-18 07:00:30,815 [INFO] -   → Glucosa agregada: 1
-2026-01-18 07:00:30,815 [INFO] -     📊 Glucosa por fuente:
-2026-01-18 07:00:30,815 [INFO] -        • Samsung Health: 1 registros (total: 90)
-2026-01-18 07:00:30,815 [INFO] -   → Tasa metabólica basal agregada: 4
-2026-01-18 07:00:30,815 [INFO] -     📊 BMR por fuente:
-2026-01-18 07:00:30,815 [INFO] -        • starfit: 4 registros (total: 7073)
-2026-01-18 07:00:30,815 [INFO] -   → Pasos agregados: 1
-2026-01-18 07:00:30,815 [INFO] -     📊 Pasos por fuente:
-2026-01-18 07:00:30,815 [INFO] -        • Samsung Health: 1 registros (total: 445)
-2026-01-18 07:00:30,815 [INFO] -   → SpO2 agregado: 1
-2026-01-18 07:00:30,815 [INFO] -     📊 SpO2 por fuente:
-2026-01-18 07:00:30,816 [INFO] -        • Samsung Health: 1 registros (total: 99)
-2026-01-18 07:00:30,816 [INFO] -   → Sueño agregado: 1 sesiones
-2026-01-18 07:00:30,816 [INFO] -      📊 Sueño por fuente:
-2026-01-18 07:00:30,816 [INFO] -         • com.sec.android.app.shealth: 1 sesiones
-2026-01-18 07:00:30,816 [INFO] -   Campos detectados: peso, grasa_corporal, masa_osea, fc_reposo, frecuencia_cardiaca, glucosa, tasa_metabolica, pasos, spo2, sueno
-2026-01-18 07:00:30,816 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-18 07:00:30,816 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-18_06-54-35.json
-2026-01-18 07:00:31,736 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2026-01-18 07:00:31,736 [INFO] - Generando dashboard HTML con gráficos...
-2026-01-18 07:00:31,736 [INFO] - ==================================================
-2026-01-18 07:00:31,736 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-18
-2026-01-18 07:00:31,736 [INFO] - Ventana de 7 días: 2026-01-12 a 2026-01-18
-2026-01-18 07:00:31,783 [INFO] - PAI TOTAL SEMANAL: 219.4
-2026-01-18 07:00:31,783 [INFO] - Entrenamientos en ventana: 16
-2026-01-18 07:00:31,783 [INFO] - ==================================================
-2026-01-18 07:00:31,806 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2026-01-18 07:00:31,916 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-18
-2026-01-18 07:00:31,916 [INFO] - 📊 Total registros de nutrition en cache: 693
-2026-01-18 07:00:31,920 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2026-01-18 07:00:31,920 [INFO] - ✅ TMB HOY: 1778.0 kcal
-2026-01-18 07:00:31,923 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2026-01-18 07:00:31,923 [INFO] - 📈 RESULTADO: Presupuesto=1778.0, Comido=0, Restante=1778.0
+        <pre id="logs-content" class="logs-hidden">2026-01-18 07:05:29,509 [INFO] - 
+2026-01-18 07:05:29,509 [INFO] - ================================================================================
+2026-01-18 07:05:29,509 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2026-01-18 07:05:29,509 [INFO] - ================================================================================
+2026-01-18 07:05:29,510 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2026-01-18 07:05:29,510 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2026-01-18 07:05:29,510 [INFO] - ================================================================================
+2026-01-18 07:05:29,510 [INFO] - 
+2026-01-18 07:05:29,510 [INFO] - ================================================================================
+2026-01-18 07:05:29,510 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2026-01-18 07:05:29,510 [INFO] - ================================================================================
+2026-01-18 07:05:29,655 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2026-01-18 07:05:29,728 [INFO] - Total archivos JSON encontrados: 1725
+2026-01-18 07:05:29,729 [INFO] - Archivos ya procesados: 1725
+2026-01-18 07:05:29,729 [INFO] - Archivos nuevos a procesar: 0
+2026-01-18 07:05:29,729 [INFO] - No hay archivos nuevos para procesar.
+2026-01-18 07:05:29,729 [INFO] - Generando dashboard HTML con gráficos...
+2026-01-18 07:05:29,729 [INFO] - ==================================================
+2026-01-18 07:05:29,729 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-18
+2026-01-18 07:05:29,729 [INFO] - Ventana de 7 días: 2026-01-12 a 2026-01-18
+2026-01-18 07:05:29,729 [INFO] - PAI TOTAL SEMANAL: 219.4
+2026-01-18 07:05:29,729 [INFO] - Entrenamientos en ventana: 16
+2026-01-18 07:05:29,729 [INFO] - ==================================================
+2026-01-18 07:05:29,783 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2026-01-18 07:05:29,884 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-18
+2026-01-18 07:05:29,884 [INFO] - 📊 Total registros de nutrition en cache: 693
+2026-01-18 07:05:29,887 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
+2026-01-18 07:05:29,888 [INFO] - ✅ TMB HOY: 1778.0 kcal
+2026-01-18 07:05:29,891 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2026-01-18 07:05:29,891 [INFO] - 📈 RESULTADO: Presupuesto=1778.0, Comido=0, Restante=1778.0
 </pre>
     </div>
     
