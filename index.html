@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 19/01/2026 06:00 (Argentina)</p>
+                <p class="subtitle">Última actualización: 19/01/2026 06:05 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -1072,65 +1072,43 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-01-19 06:00:23 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-01-19 06:05:22 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 277</p>
             <p>✅ <strong>Total registros peso:</strong> 89</p>
             <p>✅ <strong>Total registros pasos:</strong> 1702</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 4276 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2344 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2026-01-19 06:00:21,693 [INFO] - 
-2026-01-19 06:00:21,693 [INFO] - ================================================================================
-2026-01-19 06:00:21,693 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2026-01-19 06:00:21,693 [INFO] - ================================================================================
-2026-01-19 06:00:21,693 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2026-01-19 06:00:21,693 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2026-01-19 06:00:21,693 [INFO] - ================================================================================
-2026-01-19 06:00:21,693 [INFO] - 
-2026-01-19 06:00:21,693 [INFO] - ================================================================================
-2026-01-19 06:00:21,694 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2026-01-19 06:00:21,694 [INFO] - ================================================================================
-2026-01-19 06:00:21,826 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2026-01-19 06:00:21,904 [INFO] - Total archivos JSON encontrados: 1751
-2026-01-19 06:00:21,904 [INFO] - Archivos ya procesados: 1750
-2026-01-19 06:00:21,904 [INFO] - Archivos nuevos a procesar: 1
-2026-01-19 06:00:21,905 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2026-01-19_05-54-30.json&#x27;]
-2026-01-19 06:00:21,905 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-19_05-54-30.json
-2026-01-19 06:00:21,905 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-19_05-54-30.json
-2026-01-19 06:00:21,905 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;steps_changes&#x27;, &#x27;oxygen_saturation_changes&#x27;, &#x27;sleep_changes&#x27;, &#x27;heart_rate_changes&#x27;, &#x27;deletions&#x27;]
-2026-01-19 06:00:21,905 [INFO] -   → FC en reposo agregada: 9 (desde heart_rate horario nocturno)
-2026-01-19 06:00:21,905 [INFO] -     📊 FC Reposo por fuente:
-2026-01-19 06:00:21,905 [INFO] -        • Samsung Health: 9 registros (total: 461)
-2026-01-19 06:00:21,905 [INFO] -   → Frecuencia cardíaca agregada: 2 días
-2026-01-19 06:00:21,906 [INFO] -     📊 Frecuencia Cardíaca por fuente:
-2026-01-19 06:00:21,906 [INFO] -        • Samsung Health: 2 registros
-2026-01-19 06:00:21,906 [INFO] -   → Pasos agregados: 2
-2026-01-19 06:00:21,906 [INFO] -     📊 Pasos por fuente:
-2026-01-19 06:00:21,906 [INFO] -        • Samsung Health: 2 registros (total: 10032)
-2026-01-19 06:00:21,906 [INFO] -   → SpO2 agregado: 1
-2026-01-19 06:00:21,906 [INFO] -     📊 SpO2 por fuente:
-2026-01-19 06:00:21,906 [INFO] -        • Samsung Health: 1 registros (total: 99)
-2026-01-19 06:00:21,906 [INFO] -   → Sueño agregado: 1 sesiones
-2026-01-19 06:00:21,906 [INFO] -      📊 Sueño por fuente:
-2026-01-19 06:00:21,906 [INFO] -         • com.sec.android.app.shealth: 1 sesiones
-2026-01-19 06:00:21,906 [INFO] -   Campos detectados: fc_reposo, frecuencia_cardiaca, pasos, spo2, sueno
-2026-01-19 06:00:21,906 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
-2026-01-19 06:00:21,909 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-19_05-54-30.json
-2026-01-19 06:00:22,809 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
-2026-01-19 06:00:22,810 [INFO] - Generando dashboard HTML con gráficos...
-2026-01-19 06:00:22,810 [INFO] - ==================================================
-2026-01-19 06:00:22,810 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-19
-2026-01-19 06:00:22,810 [INFO] - Ventana de 7 días: 2026-01-13 a 2026-01-19
-2026-01-19 06:00:22,810 [INFO] - PAI TOTAL SEMANAL: 167.7
-2026-01-19 06:00:22,810 [INFO] - Entrenamientos en ventana: 11
-2026-01-19 06:00:22,810 [INFO] - ==================================================
-2026-01-19 06:00:22,892 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2026-01-19 06:00:22,997 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-19
-2026-01-19 06:00:22,998 [INFO] - 📊 Total registros de nutrition en cache: 695
-2026-01-19 06:00:23,001 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
-2026-01-19 06:00:23,004 [INFO] - ✅ Ejercicio HOY: 0 kcal
-2026-01-19 06:00:23,004 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=0, Restante=1700
+        <pre id="logs-content" class="logs-hidden">2026-01-19 06:05:22,336 [INFO] - 
+2026-01-19 06:05:22,336 [INFO] - ================================================================================
+2026-01-19 06:05:22,336 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2026-01-19 06:05:22,336 [INFO] - ================================================================================
+2026-01-19 06:05:22,336 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2026-01-19 06:05:22,337 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2026-01-19 06:05:22,337 [INFO] - ================================================================================
+2026-01-19 06:05:22,337 [INFO] - 
+2026-01-19 06:05:22,337 [INFO] - ================================================================================
+2026-01-19 06:05:22,337 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2026-01-19 06:05:22,337 [INFO] - ================================================================================
+2026-01-19 06:05:22,506 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2026-01-19 06:05:22,586 [INFO] - Total archivos JSON encontrados: 1751
+2026-01-19 06:05:22,587 [INFO] - Archivos ya procesados: 1751
+2026-01-19 06:05:22,587 [INFO] - Archivos nuevos a procesar: 0
+2026-01-19 06:05:22,587 [INFO] - No hay archivos nuevos para procesar.
+2026-01-19 06:05:22,587 [INFO] - Generando dashboard HTML con gráficos...
+2026-01-19 06:05:22,587 [INFO] - ==================================================
+2026-01-19 06:05:22,587 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-19
+2026-01-19 06:05:22,587 [INFO] - Ventana de 7 días: 2026-01-13 a 2026-01-19
+2026-01-19 06:05:22,587 [INFO] - PAI TOTAL SEMANAL: 167.7
+2026-01-19 06:05:22,587 [INFO] - Entrenamientos en ventana: 11
+2026-01-19 06:05:22,588 [INFO] - ==================================================
+2026-01-19 06:05:22,607 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2026-01-19 06:05:22,707 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-19
+2026-01-19 06:05:22,707 [INFO] - 📊 Total registros de nutrition en cache: 695
+2026-01-19 06:05:22,710 [INFO] - ✅ Registros de nutrition HOY: 0, Calorías: 0
+2026-01-19 06:05:22,714 [INFO] - ✅ Ejercicio HOY: 0 kcal
+2026-01-19 06:05:22,714 [INFO] - 📈 RESULTADO: Presupuesto=1700, Comido=0, Restante=1700
 </pre>
     </div>
     
