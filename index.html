@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 26/01/2026 13:45 (Argentina)</p>
+                <p class="subtitle">Última actualización: 26/01/2026 13:48 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -859,7 +859,7 @@
                 <div style="position: relative; width: 70%; aspect-ratio: 1; max-height: 200px;">
                     <canvas id="circulo-calorias"></canvas>
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%;">
-                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">2397.0</div>
+                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">2047.0</div>
                         <div style="font-size: 0.7em; color: #8b949e;">Restante</div>
                     </div>
                 </div>
@@ -868,7 +868,7 @@
             <div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #ff6384;">●</span> Comido</span>
-                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">447.0</span>
+                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">797.0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #10b981;">●</span> Ejercicio</span>
@@ -895,11 +895,11 @@
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
                         <canvas id="macro-carbohidratos"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">54%</div>
+                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">52%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Carbs</div>
-                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">64.5g</div>
+                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">106.5g</div>
                 </div>
 
                 <div style="width: 45%; text-align: center;">
@@ -910,7 +910,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Grasas</div>
-                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">18.8g</div>
+                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">32.8g</div>
                 </div>
             </div>
             
@@ -919,11 +919,11 @@
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 140px; margin: 0 auto;">
                         <canvas id="macro-proteinas"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="proteinas-pct" style="font-size: 0.9em; font-weight: bold; color: #a855f7;">10%</div>
+                            <div id="proteinas-pct" style="font-size: 0.9em; font-weight: bold; color: #a855f7;">13%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.8em;">Prot</div>
-                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">12.0g</div>
+                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">26.0g</div>
                 </div>
             </div>
         </div>
@@ -1087,44 +1087,56 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-01-26 13:45:25 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-01-26 13:48:45 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 312</p>
             <p>✅ <strong>Total registros peso:</strong> 97</p>
             <p>✅ <strong>Total registros pasos:</strong> 1920</p>
-            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 2419 bytes</p>
+            <p style='color: #8b949e; font-size: 0.9em;'>📄 Log file: 3510 bytes</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
-        <pre id="logs-content" class="logs-hidden">2026-01-26 13:45:24,696 [INFO] - 
-2026-01-26 13:45:24,697 [INFO] - ================================================================================
-2026-01-26 13:45:24,697 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
-2026-01-26 13:45:24,697 [INFO] - ================================================================================
-2026-01-26 13:45:24,697 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
-2026-01-26 13:45:24,697 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
-2026-01-26 13:45:24,697 [INFO] - ================================================================================
-2026-01-26 13:45:24,697 [INFO] - 
-2026-01-26 13:45:24,697 [INFO] - ================================================================================
-2026-01-26 13:45:24,697 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
-2026-01-26 13:45:24,697 [INFO] - ================================================================================
-2026-01-26 13:45:24,843 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
-2026-01-26 13:45:24,935 [INFO] - Total archivos JSON encontrados: 1976
-2026-01-26 13:45:24,935 [INFO] - Archivos ya procesados: 1976
-2026-01-26 13:45:24,935 [INFO] - Archivos nuevos a procesar: 0
-2026-01-26 13:45:24,936 [INFO] - No hay archivos nuevos para procesar.
-2026-01-26 13:45:24,936 [INFO] - Generando dashboard HTML con gráficos...
-2026-01-26 13:45:24,936 [INFO] - ==================================================
-2026-01-26 13:45:24,936 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-26
-2026-01-26 13:45:24,936 [INFO] - Ventana de 7 días: 2026-01-20 a 2026-01-26
-2026-01-26 13:45:24,936 [INFO] - PAI TOTAL SEMANAL: 342.7
-2026-01-26 13:45:24,936 [INFO] - Entrenamientos en ventana: 30
-2026-01-26 13:45:24,936 [INFO] - ==================================================
-2026-01-26 13:45:24,991 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
-2026-01-26 13:45:25,095 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-26
-2026-01-26 13:45:25,096 [INFO] - 📊 Total registros de nutrition en cache: 789
-2026-01-26 13:45:25,099 [INFO] - ✅ Registros de nutrition HOY: 3, Calorías: 447.0
-2026-01-26 13:45:25,101 [INFO] - ✅ TMB HOY: 1789.0 kcal
-2026-01-26 13:45:25,103 [INFO] - ✅ Ejercicio HOY: 1055.0 kcal
-2026-01-26 13:45:25,103 [INFO] - 📈 RESULTADO: Presupuesto=2844.0, Comido=447.0, Restante=2397.0
+        <pre id="logs-content" class="logs-hidden">2026-01-26 13:48:44,038 [INFO] - 
+2026-01-26 13:48:44,038 [INFO] - ================================================================================
+2026-01-26 13:48:44,038 [INFO] - MONITOR DE LONGEVIDAD v4.0 - SIN LOOP DE CRON
+2026-01-26 13:48:44,038 [INFO] - ================================================================================
+2026-01-26 13:48:44,038 [INFO] - Configuración: SIN LIMPIEZA - datos limpios desde origen
+2026-01-26 13:48:44,038 [INFO] - Ejecución: Un ciclo, controlado por Crontab de Ubuntu.
+2026-01-26 13:48:44,038 [INFO] - ================================================================================
+2026-01-26 13:48:44,038 [INFO] - 
+2026-01-26 13:48:44,038 [INFO] - ================================================================================
+2026-01-26 13:48:44,038 [INFO] - PROCESAMIENTO - Monitor de Longevidad v4.0 [REPORTE POR FUENTE]
+2026-01-26 13:48:44,038 [INFO] - ================================================================================
+2026-01-26 13:48:44,241 [INFO] - Cache cargado: /home/ubuntu/proyecto/cache_datos.json
+2026-01-26 13:48:44,312 [INFO] - Total archivos JSON encontrados: 1977
+2026-01-26 13:48:44,313 [INFO] - Archivos ya procesados: 1976
+2026-01-26 13:48:44,313 [INFO] - Archivos nuevos a procesar: 1
+2026-01-26 13:48:44,313 [INFO] - Archivos nuevos encontrados: [&#x27;health_data_AUTO_DIFF_2026-01-26_13-45-49.json&#x27;]
+2026-01-26 13:48:44,313 [INFO] - → Procesando [DIFF]: health_data_AUTO_DIFF_2026-01-26_13-45-49.json
+2026-01-26 13:48:44,313 [INFO] - Procesando archivo: health_data_AUTO_DIFF_2026-01-26_13-45-49.json
+2026-01-26 13:48:44,313 [INFO] - Claves raíz del JSON: [&#x27;export_type&#x27;, &#x27;timestamp&#x27;, &#x27;data_source&#x27;, &#x27;nutrition_changes&#x27;, &#x27;deletions&#x27;]
+2026-01-26 13:48:44,313 [INFO] -   🗑️  Procesando 1 deletions...
+2026-01-26 13:48:44,316 [INFO] -   ℹ️  No se encontraron registros para borrar
+2026-01-26 13:48:44,316 [INFO] -   → Nutrición agregada: 1 alimentos
+2026-01-26 13:48:44,316 [INFO] -      🍽️  Por tipo de comida:
+2026-01-26 13:48:44,316 [INFO] -         • Snack: 1 alimentos
+2026-01-26 13:48:44,316 [INFO] -   Campos detectados: nutrition
+2026-01-26 13:48:44,316 [INFO] -   ✓ Archivo procesado sin limpieza (datos confiables)
+2026-01-26 13:48:44,317 [INFO] -   ✓ Archivo movido a: procesados/health_data_AUTO_DIFF_2026-01-26_13-45-49.json
+2026-01-26 13:48:45,337 [INFO] - Cache guardado: /home/ubuntu/proyecto/cache_datos.json
+2026-01-26 13:48:45,337 [INFO] - Generando dashboard HTML con gráficos...
+2026-01-26 13:48:45,337 [INFO] - ==================================================
+2026-01-26 13:48:45,337 [INFO] - CÁLCULO PAI SEMANAL - Fecha actual: 2026-01-26
+2026-01-26 13:48:45,337 [INFO] - Ventana de 7 días: 2026-01-20 a 2026-01-26
+2026-01-26 13:48:45,337 [INFO] - PAI TOTAL SEMANAL: 342.7
+2026-01-26 13:48:45,337 [INFO] - Entrenamientos en ventana: 30
+2026-01-26 13:48:45,337 [INFO] - ==================================================
+2026-01-26 13:48:45,404 [INFO] - Laboratorio procesado: Longevity Score = 85.5/100
+2026-01-26 13:48:45,516 [INFO] - 🔍 Calculando círculo para HOY: 2026-01-26
+2026-01-26 13:48:45,516 [INFO] - 📊 Total registros de nutrition en cache: 790
+2026-01-26 13:48:45,520 [INFO] - ✅ Registros de nutrition HOY: 4, Calorías: 797.0
+2026-01-26 13:48:45,521 [INFO] - ✅ TMB HOY: 1789.0 kcal
+2026-01-26 13:48:45,523 [INFO] - ✅ Ejercicio HOY: 1055.0 kcal
+2026-01-26 13:48:45,523 [INFO] - 📈 RESULTADO: Presupuesto=2844.0, Comido=797.0, Restante=2047.0
 </pre>
     </div>
     
@@ -1662,9 +1674,9 @@
     
         const circuloData = {
             presupuesto: 2844.0,
-            comido: 447.0,
+            comido: 797.0,
             ejercicio: 1055.0,
-            restante: 2397.0
+            restante: 2047.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1672,7 +1684,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [447.0, 2397.0],
+                    data: [797.0, 2047.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1688,11 +1700,11 @@
         // Actualizar valores texto
         const restanteEl = document.getElementById('restante-valor');
         if(restanteEl) {
-            restanteEl.textContent = Math.abs(2397.0);
+            restanteEl.textContent = Math.abs(2047.0);
             restanteEl.style.color = '#3fb950';
         }
         const comidoEl = document.getElementById('comido-valor');
-        if(comidoEl) comidoEl.textContent = 447.0;
+        if(comidoEl) comidoEl.textContent = 797.0;
         const ejercicioEl = document.getElementById('ejercicio-valor');
         if(ejercicioEl) ejercicioEl.textContent = 1055.0;
         
@@ -1704,7 +1716,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [10, 90],
+                    data: [13, 87],
                     backgroundColor: ['#a855f7', 'rgba(168, 85, 247, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1721,7 +1733,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [54, 46],
+                    data: [52, 48],
                     backgroundColor: ['#3b82f6', 'rgba(59, 130, 246, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1835,7 +1847,7 @@
                     },
                     {
                         label: 'Comido',
-                        data: [2334.0, 2303.0, 2636.0, 1756.0, 0, 213.0, 3076.0, 1804.0, 2435.0, 1517.0, 2662.0, 2302.0, 2365.0, 447.0],
+                        data: [2334.0, 2303.0, 2636.0, 1756.0, 0, 213.0, 3076.0, 1804.0, 2435.0, 1517.0, 2662.0, 2302.0, 2365.0, 797.0],
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
