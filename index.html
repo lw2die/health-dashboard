@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 28/01/2026 21:40 (Argentina)</p>
+                <p class="subtitle">Última actualización: 28/01/2026 21:44 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -666,7 +666,7 @@
                 </div>
                 <div style="text-align: center;">
                     <div style="color: #8b949e; font-size: 11px;">PESO ACTUAL</div>
-                    <div style="color: #58a6ff; font-size: 18px; font-weight: bold;">80.4 kg</div>
+                    <div style="color: #58a6ff; font-size: 18px; font-weight: bold;">83.1 kg</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="color: #8b949e; font-size: 11px;">PESO META</div>
@@ -676,11 +676,11 @@
             
             <!-- Barra de progreso -->
             <div style="background: rgba(139, 148, 158, 0.3); height: 20px; border-radius: 10px; overflow: hidden; margin-bottom: 10px;">
-                <div style="background: linear-gradient(90deg, #3fb950 0%, #58a6ff 100%); height: 100%; width: 64.99999999999986%; transition: width 0.5s;"></div>
+                <div style="background: linear-gradient(90deg, #3fb950 0%, #58a6ff 100%); height: 100%; width: -2.4999618530273438%; transition: width 0.5s;"></div>
             </div>
             
             <div style="text-align: center; color: #c9d1d9; font-size: 14px;">
-                % progreso = (2.6 kg perdidos / 4.0 kg total) = 65.0%
+                % progreso = (-0.1 kg perdidos / 4.0 kg total) = -2.5%
             </div>
         </div>
         
@@ -743,8 +743,25 @@
                 4. Predicción
             </h3>
     
-            <div style="color: #8b949e; text-align: center; padding: 20px;">
-                Necesitas más datos para generar predicciones (mínimo 50g/semana de cambio)
+            <div style="margin-bottom: 15px;">
+                <div style="color: #8b949e; font-size: 14px; margin-bottom: 5px;">
+                    🎯 Ritmo actual: 0.30 kg/semana
+                </div>
+                <div style="color: #c9d1d9; font-size: 16px; font-weight: bold;">
+                    Tiempo estimado: 3 meses y 1 semanas
+                </div>
+            </div>
+            
+            <div style="background: rgba(88, 166, 255, 0.1); padding: 12px; border-radius: 6px;">
+                <div style="color: #58a6ff; font-size: 13px; margin-bottom: 8px;">
+                    📊 Para mantener el progreso:
+                </div>
+                <div style="color: #8b949e; font-size: 12px;">
+                    • Mantener déficit calórico consistente (comé menos de lo que quemás)<br>
+                    • Cumplir meta de proteína (≥160g) para preservar músculo<br>
+                    • Registrar todas las comidas para mejor seguimiento<br>
+                    • Adherencia actual: 43%
+                </div>
             </div>
         
         </div>
@@ -752,7 +769,7 @@
     
             
             <div class="metrics-grid">
-                <div class="metric-card"><div class="metric-label">PAI Semanal</div><div class="metric-value" style="color: #3fb950;">355</div><div class="metric-detail">Óptimo (Objetivo: 100)</div></div><div class="metric-card"><div class="metric-label">Peso Actual</div><div class="metric-value" style="color: #3fb950;">80.4 kg</div><div class="metric-detail">En objetivo (+1.4 kg)</div></div><div class="metric-card"><div class="metric-label">VO2max (Medido)</div><div class="metric-value" style="color: #d29922;">38.1</div><div class="metric-detail">Bueno</div></div><div class="metric-card"><div class="metric-label">TSB Actual</div><div class="metric-value" style="color: #f85149;">-22.3</div><div class="metric-detail">Fatiga</div><div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 39.8 | ATL: 62.1</div></div><div class="metric-card"><div class="metric-label">Sueño (7 días)</div><div class="metric-value" style="color: #f85149;">5.4h</div><div class="metric-detail">Insuficiente</div></div><div class="metric-card"><div class="metric-label">SpO2 (7 días)</div><div class="metric-value" style="color: #3fb950;">97.6%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Grasa Corporal</div><div class="metric-value" style="color: #d29922;">22.9%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Masa Muscular</div><div class="metric-value" style="color: #d29922;">58.0 kg</div></div><div class="metric-card"><div class="metric-label">FC Reposo (7d)</div><div class="metric-value" style="color: #3fb950;">57 bpm</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Pasos (7d)</div><div class="metric-value" style="color: #3fb950;">16,847</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Presión (7d)</div><div class="metric-value" style="color: #d29922;">122/76</div><div class="metric-detail">Elevada</div></div>
+                <div class="metric-card"><div class="metric-label">PAI Semanal</div><div class="metric-value" style="color: #3fb950;">355</div><div class="metric-detail">Óptimo (Objetivo: 100)</div></div><div class="metric-card"><div class="metric-label">Peso Actual</div><div class="metric-value" style="color: #d29922;">83.1 kg</div><div class="metric-detail">Cerca (+4.1 kg)</div></div><div class="metric-card"><div class="metric-label">VO2max (Medido)</div><div class="metric-value" style="color: #d29922;">38.1</div><div class="metric-detail">Bueno</div></div><div class="metric-card"><div class="metric-label">TSB Actual</div><div class="metric-value" style="color: #f85149;">-22.3</div><div class="metric-detail">Fatiga</div><div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 39.8 | ATL: 62.1</div></div><div class="metric-card"><div class="metric-label">Sueño (7 días)</div><div class="metric-value" style="color: #f85149;">5.4h</div><div class="metric-detail">Insuficiente</div></div><div class="metric-card"><div class="metric-label">SpO2 (7 días)</div><div class="metric-value" style="color: #3fb950;">97.6%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Grasa Corporal</div><div class="metric-value" style="color: #d29922;">22.6%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Masa Muscular</div><div class="metric-value" style="color: #d29922;">60.8 kg</div></div><div class="metric-card"><div class="metric-label">FC Reposo (7d)</div><div class="metric-value" style="color: #3fb950;">57 bpm</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Pasos (7d)</div><div class="metric-value" style="color: #3fb950;">16,847</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Presión (7d)</div><div class="metric-value" style="color: #d29922;">122/76</div><div class="metric-detail">Elevada</div></div>
     <div class="metric-card">
         <div class="metric-label">🩸 Glucemia (7d)</div>
         <div class="metric-value" style="color: #3fb950; font-size: 1.5em;">97</div>
@@ -771,7 +788,7 @@
             Gluc. prom: 102.1 mg/dL
         </div>
     </div>
-    <div class="metric-card"><div class="metric-label">Score Longevidad</div><div class="metric-value" style="color: #3fb950;">90/100</div><div class="metric-detail">Excelente</div></div>
+    <div class="metric-card"><div class="metric-label">Score Longevidad</div><div class="metric-value" style="color: #3fb950;">85/100</div><div class="metric-detail">Excelente</div></div>
             </div>
             
             <div class="charts-section">
@@ -1087,7 +1104,7 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-01-28 21:40:09 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-01-28 21:44:12 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 328</p>
             <p>✅ <strong>Total registros peso:</strong> 99</p>
@@ -1115,7 +1132,7 @@
         // PAI: Diario + Ventana Móvil 7 días
         const pai_diario = {
             x: ['2025-12-29', '2026-01-10', '2026-01-11', '2026-01-12', '2026-01-13', '2026-01-14', '2026-01-17', '2026-01-19', '2026-01-20', '2026-01-21', '2026-01-22', '2026-01-23', '2026-01-24', '2026-01-25', '2026-01-26', '2026-01-28'],
-            y: [26.4, 10.8, 96.6, 51.7, 86.1, 77.9, 3.7, 53.4, 15.2, 62.099999999999994, 48.300000000000004, 50.9, 94.4, 22.1, 59.89999999999999, 79.69999999999999],
+            y: [26.4, 10.8, 96.6, 51.7, 86.1, 77.9, 3.7, 53.4, 15.2, 62.099999999999994, 48.300000000000004, 50.9, 94.4, 22.1, 59.89999999999999, 79.7],
             type: 'bar',
             name: 'PAI Diario',
             marker: { color: '#58a6ff' }
