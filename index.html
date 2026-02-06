@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 06/02/2026 17:30 (Argentina)</p>
+                <p class="subtitle">Última actualización: 06/02/2026 17:40 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -876,7 +876,7 @@
                 <div style="position: relative; width: 70%; aspect-ratio: 1; max-height: 200px;">
                     <canvas id="circulo-calorias"></canvas>
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%;">
-                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">1134.0</div>
+                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">729.0</div>
                         <div style="font-size: 0.7em; color: #8b949e;">Restante</div>
                     </div>
                 </div>
@@ -885,7 +885,7 @@
             <div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #ff6384;">●</span> Comido</span>
-                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">883.0</span>
+                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">1288.0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #10b981;">●</span> Ejercicio</span>
@@ -912,7 +912,7 @@
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
                         <canvas id="macro-carbohidratos"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">10%</div>
+                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">7%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Carbs</div>
@@ -923,11 +923,11 @@
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
                         <canvas id="macro-grasas"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">60%</div>
+                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">63%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Grasas</div>
-                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">62.1g</div>
+                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">93.6g</div>
                 </div>
             </div>
             
@@ -940,7 +940,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.8em;">Prot</div>
-                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">69.4g</div>
+                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">100.9g</div>
                 </div>
             </div>
         </div>
@@ -965,7 +965,7 @@
             </div>
             
             <div style="margin-top: 1rem; text-align: center; font-size: 0.75em; color: #8b949e; border-top: 1px solid rgba(139, 148, 158, 0.1); padding-top: 0.8rem;">
-                <span style="color: #3b82f6;">●</span> Carb: <strong>29%</strong>
+                <span style="color: #3b82f6;">●</span> Carb: <strong>28%</strong>
                 <span style="color: #a855f7; margin-left: 8px;">●</span> Prot: <strong>24%</strong>
                 <span style="color: #f59e0b; margin-left: 8px;">●</span> Grasa: <strong>47%</strong>
             </div>
@@ -1104,7 +1104,7 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-02-06 17:30:12 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-02-06 17:40:14 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 369</p>
             <p>✅ <strong>Total registros peso:</strong> 108</p>
@@ -1650,9 +1650,9 @@
     
         const circuloData = {
             presupuesto: 2017.0,
-            comido: 883.0,
+            comido: 1288.0,
             ejercicio: 256.0,
-            restante: 1134.0
+            restante: 729.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1660,7 +1660,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [883.0, 1134.0],
+                    data: [1288.0, 729.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1676,11 +1676,11 @@
         // Actualizar valores texto
         const restanteEl = document.getElementById('restante-valor');
         if(restanteEl) {
-            restanteEl.textContent = Math.abs(1134.0);
+            restanteEl.textContent = Math.abs(729.0);
             restanteEl.style.color = '#3fb950';
         }
         const comidoEl = document.getElementById('comido-valor');
-        if(comidoEl) comidoEl.textContent = 883.0;
+        if(comidoEl) comidoEl.textContent = 1288.0;
         const ejercicioEl = document.getElementById('ejercicio-valor');
         if(ejercicioEl) ejercicioEl.textContent = 256.0;
         
@@ -1709,7 +1709,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [10, 90],
+                    data: [7, 93],
                     backgroundColor: ['#3b82f6', 'rgba(59, 130, 246, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1726,7 +1726,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [60, 40],
+                    data: [63, 37],
                     backgroundColor: ['#f59e0b', 'rgba(245, 158, 11, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1792,7 +1792,7 @@
             data: {
                 labels: ['Carb', 'Grasa', 'Prot'],
                 datasets: [{
-                    data: [29, 47, 24],
+                    data: [28, 47, 24],
                     backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7'],
                     borderWidth: 0
                 }]
@@ -1823,7 +1823,7 @@
                     },
                     {
                         label: 'Comido',
-                        data: [2302.0, 2365.0, 2085.0, 1754.0, 1984.0, 1402.0, 2835.0, 3020.0, 2647.0, 1622.0, 2570.0, 323.0, 306.0, 883.0],
+                        data: [2302.0, 2365.0, 2085.0, 1754.0, 1984.0, 1402.0, 2835.0, 3020.0, 2647.0, 1622.0, 2570.0, 323.0, 306.0, 1288.0],
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
