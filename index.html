@@ -477,7 +477,7 @@
         <div class="container">
             <header>
                 <h1>Dashboard de Salud</h1>
-                <p class="subtitle">Última actualización: 01/03/2026 19:50 (Argentina)</p>
+                <p class="subtitle">Última actualización: 01/03/2026 20:00 (Argentina)</p>
                 
                 <button onclick="actualizar()" style="background:#3fb950;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;margin-left:20px;">
                     🔄 Actualizar
@@ -578,8 +578,8 @@
             <h3>⚠️ Alertas</h3>
             
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
-            <div style="font-weight: bold; color: #d29922;">✅ Control Glucémico Actual: EXCELENTE</div>
-            <div style="color: #c9d1d9; margin-top: 5px;">Glucemias recientes bien controladas (promedio: 99.9 mg/dL). Tu tratamiento funciona correctamente.</div>
+            <div style="font-weight: bold; color: #d29922;">⚠️ Glucemias en Rango Pre-diabético</div>
+            <div style="color: #c9d1d9; margin-top: 5px;">Promedio de glucemias últimos 90 días: 100.0 mg/dL (objetivo: <100). Control glucémico subóptimo.</div>
         </div>
         
         <div class="alerta-item" style="border-left: 4px solid #d29922;">
@@ -754,13 +754,13 @@
     
             
             <div class="metrics-grid">
-                <div class="metric-card"><div class="metric-label">PAI Semanal</div><div class="metric-value" style="color: #3fb950;">286</div><div class="metric-detail">Óptimo (Objetivo: 100)</div></div><div class="metric-card"><div class="metric-label">Peso Actual</div><div class="metric-value" style="color: #3fb950;">79.3 kg</div><div class="metric-detail">En objetivo (+0.3 kg)</div></div><div class="metric-card"><div class="metric-label">VO2max (Medido)</div><div class="metric-value" style="color: #3fb950;">40.2</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">TSB Actual</div><div class="metric-value" style="color: #3fb950;">-3.0</div><div class="metric-detail">Forma óptima</div><div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 34.9 | ATL: 37.9</div></div><div class="metric-card"><div class="metric-label">Sueño (7 días)</div><div class="metric-value" style="color: #3fb950;">92.0h</div><div class="metric-detail">Óptimo</div></div><div class="metric-card"><div class="metric-label">SpO2 (7 días)</div><div class="metric-value" style="color: #3fb950;">97.6%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Grasa Corporal</div><div class="metric-value" style="color: #d29922;">19.9%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Masa Muscular</div><div class="metric-value" style="color: #d29922;">61.0 kg</div></div><div class="metric-card"><div class="metric-label">FC Reposo (7d)</div><div class="metric-value" style="color: #3fb950;">47 bpm</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Pasos (7d)</div><div class="metric-value" style="color: #3fb950;">15,239</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Presión (7d)</div><div class="metric-value" style="color: #3fb950;">116/77</div><div class="metric-detail">Normal</div></div>
+                <div class="metric-card"><div class="metric-label">PAI Semanal</div><div class="metric-value" style="color: #3fb950;">286</div><div class="metric-detail">Óptimo (Objetivo: 100)</div></div><div class="metric-card"><div class="metric-label">Peso Actual</div><div class="metric-value" style="color: #3fb950;">79.3 kg</div><div class="metric-detail">En objetivo (+0.3 kg)</div></div><div class="metric-card"><div class="metric-label">VO2max (Medido)</div><div class="metric-value" style="color: #3fb950;">40.2</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">TSB Actual</div><div class="metric-value" style="color: #3fb950;">-3.0</div><div class="metric-detail">Forma óptima</div><div class="metric-detail" style="font-size: 0.8em; color: #8b949e;">CTL: 34.9 | ATL: 37.9</div></div><div class="metric-card"><div class="metric-label">Sueño (7 días)</div><div class="metric-value" style="color: #3fb950;">92.0h</div><div class="metric-detail">Óptimo</div></div><div class="metric-card"><div class="metric-label">SpO2 (7 días)</div><div class="metric-value" style="color: #3fb950;">97.6%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Grasa Corporal</div><div class="metric-value" style="color: #d29922;">19.9%</div><div class="metric-detail">Normal</div></div><div class="metric-card"><div class="metric-label">Masa Muscular</div><div class="metric-value" style="color: #d29922;">61.0 kg</div></div><div class="metric-card"><div class="metric-label">FC Reposo (7d)</div><div class="metric-value" style="color: #3fb950;">47 bpm</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Pasos (7d)</div><div class="metric-value" style="color: #3fb950;">15,247</div><div class="metric-detail">Excelente</div></div><div class="metric-card"><div class="metric-label">Presión (7d)</div><div class="metric-value" style="color: #3fb950;">111/74</div><div class="metric-detail">Normal</div></div>
     <div class="metric-card">
         <div class="metric-label">🩸 Glucemia (7d)</div>
         <div class="metric-value" style="color: #3fb950; font-size: 1.5em;">98</div>
         <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Ayunas</div>
         <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 148, 158, 0.2);">
-            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">91</div>
+            <div class="metric-value" style="color: #3fb950; font-size: 1.3em;">96</div>
             <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Postprandial</div>
         </div>
     </div>
@@ -770,7 +770,7 @@
         <div class="metric-value" style="color: #3fb950;">5.1%</div>
         <div class="metric-detail" style="color: #3fb950; font-weight: 600;">Normal</div>
         <div class="metric-detail" style="font-size: 0.8em; color: #8b949e; margin-top: 5px;">
-            Gluc. prom: 99.9 mg/dL
+            Gluc. prom: 100.0 mg/dL
         </div>
     </div>
     <div class="metric-card"><div class="metric-label">Score Longevidad</div><div class="metric-value" style="color: #3fb950;">100/100</div><div class="metric-detail">Excelente</div></div>
@@ -861,7 +861,7 @@
                 <div style="position: relative; width: 70%; aspect-ratio: 1; max-height: 200px;">
                     <canvas id="circulo-calorias"></canvas>
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; width: 100%;">
-                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">2508.0</div>
+                        <div id="restante-valor" style="font-size: 1.8em; font-weight: bold; color: #3fb950;">2430.0</div>
                         <div style="font-size: 0.7em; color: #8b949e;">Restante</div>
                     </div>
                 </div>
@@ -870,7 +870,7 @@
             <div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #ff6384;">●</span> Comido</span>
-                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">1297.0</span>
+                    <span id="comido-valor" style="color: #ff6384; font-weight: bold;">1375.0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85em;">
                     <span style="color: #8b949e;"><span style="color: #10b981;">●</span> Ejercicio</span>
@@ -897,22 +897,22 @@
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
                         <canvas id="macro-carbohidratos"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">25%</div>
+                            <div id="carbohidratos-pct" style="font-size: 0.8em; font-weight: bold; color: #3b82f6;">24%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Carbs</div>
-                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">77.3g</div>
+                    <div id="carbohidratos-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">77.9g</div>
                 </div>
 
                 <div style="width: 45%; text-align: center;">
                     <div style="position: relative; width: 100%; aspect-ratio: 1; max-height: 120px; margin: 0 auto;">
                         <canvas id="macro-grasas"></canvas>
                         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">47%</div>
+                            <div id="grasas-pct" style="font-size: 0.8em; font-weight: bold; color: #f59e0b;">48%</div>
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.75em;">Grasas</div>
-                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">64.7g</div>
+                    <div id="grasas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.8em;">69.9g</div>
                 </div>
             </div>
             
@@ -925,7 +925,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 5px; color: #8b949e; font-size: 0.8em;">Prot</div>
-                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">86.5g</div>
+                    <div id="proteinas-g" style="color: #c9d1d9; font-weight: bold; font-size: 0.9em;">92.8g</div>
                 </div>
             </div>
         </div>
@@ -1089,11 +1089,11 @@
     <div class="logs-section">
         <h2>📋 Última Ejecución</h2>
         <div class="logs-summary">
-            <p>✅ <strong>Fecha:</strong> 2026-03-01 19:50:11 (ARG)</p>
+            <p>✅ <strong>Fecha:</strong> 2026-03-01 20:00:15 (ARG)</p>
             <p>✅ <strong>Archivos procesados:</strong> 0</p>
             <p>✅ <strong>Total ejercicios:</strong> 452</p>
             <p>✅ <strong>Total registros peso:</strong> 129</p>
-            <p>✅ <strong>Total registros pasos:</strong> 3075</p>
+            <p>✅ <strong>Total registros pasos:</strong> 3076</p>
             <p style='color: #f85149; font-size: 0.9em;'>⚠️ Archivo de log no encontrado</p>
             <button id="logs-toggle-btn" class="logs-toggle-btn" onclick="toggleLogs()">▼ Ver logs completos (últimas 500 líneas)</button>
         </div>
@@ -1424,7 +1424,7 @@
         Plotly.newPlot('presion-chart', [
             {
                 x: ['2025-12-01', '2025-12-02', '2025-12-03', '2025-12-04', '2025-12-05', '2025-12-06', '2025-12-07', '2025-12-08', '2025-12-09', '2025-12-10', '2025-12-11', '2025-12-12', '2025-12-13', '2025-12-14', '2025-12-15', '2025-12-16', '2025-12-17', '2025-12-18', '2025-12-19', '2025-12-20', '2025-12-21', '2025-12-22', '2025-12-23', '2025-12-24', '2025-12-25', '2025-12-26', '2025-12-27', '2025-12-28', '2025-12-31', '2026-01-01', '2026-01-03', '2026-01-28', '2026-01-29', '2026-01-30', '2026-01-31', '2026-02-01', '2026-02-02', '2026-02-03', '2026-02-04', '2026-02-05', '2026-02-06', '2026-02-07', '2026-02-08', '2026-02-09', '2026-02-10', '2026-02-11', '2026-02-12', '2026-02-13', '2026-02-14', '2026-02-15', '2026-02-16', '2026-02-17', '2026-02-18', '2026-02-20', '2026-02-21', '2026-02-22', '2026-02-23', '2026-02-24', '2026-02-25', '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01'],
-                y: [122.0, 121.5, 115.0, 95.5, 118.6, 120.75, 119.0, 115.0, 113.0, 112.0, 117.0, 114.0, 109.0, 105.15384615384616, 111.25, 99.0, 107.51428571428572, 111.0, 107.5, 115.6, 107.0, 112.71428571428571, 111.75, 113.0, 109.8, 111.6, 107.75, 114.375, 116.0, 107.0, 109.0, 105.0, 113.0, 107.4, 119.0, 111.0, 108.28571428571429, 110.0, 119.0, 109.5, 118.0, 104.29411764705883, 101.0, 112.66666666666667, 112.0, 110.5, 108.0, 106.47619047619048, 109.1875, 108.0, 106.0, 123.71428571428571, 107.61111111111111, 115.5, 118.27272727272727, 116.44444444444444, 118.75, 114.46666666666667, 102.07142857142857, 118.27272727272727, 106.08333333333333, 112.1, 116.6],
+                y: [122.0, 121.5, 115.0, 95.5, 118.6, 120.75, 119.0, 115.0, 113.0, 112.0, 117.0, 114.0, 109.0, 105.15384615384616, 111.25, 99.0, 107.51428571428572, 111.0, 107.5, 115.6, 107.0, 112.71428571428571, 111.75, 113.0, 109.8, 111.6, 107.75, 114.375, 116.0, 107.0, 109.0, 105.0, 113.0, 107.4, 119.0, 111.0, 108.28571428571429, 110.0, 119.0, 109.5, 118.0, 104.29411764705883, 101.0, 112.66666666666667, 112.0, 110.5, 108.0, 106.47619047619048, 109.1875, 108.0, 106.0, 123.71428571428571, 107.61111111111111, 115.5, 118.27272727272727, 116.44444444444444, 118.75, 114.46666666666667, 102.07142857142857, 118.27272727272727, 106.08333333333333, 112.1, 114.75],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Sistólica',
@@ -1432,7 +1432,7 @@
             },
             {
                 x: ['2025-12-01', '2025-12-02', '2025-12-03', '2025-12-04', '2025-12-05', '2025-12-06', '2025-12-07', '2025-12-08', '2025-12-09', '2025-12-10', '2025-12-11', '2025-12-12', '2025-12-13', '2025-12-14', '2025-12-15', '2025-12-16', '2025-12-17', '2025-12-18', '2025-12-19', '2025-12-20', '2025-12-21', '2025-12-22', '2025-12-23', '2025-12-24', '2025-12-25', '2025-12-26', '2025-12-27', '2025-12-28', '2025-12-31', '2026-01-01', '2026-01-03', '2026-01-28', '2026-01-29', '2026-01-30', '2026-01-31', '2026-02-01', '2026-02-02', '2026-02-03', '2026-02-04', '2026-02-05', '2026-02-06', '2026-02-07', '2026-02-08', '2026-02-09', '2026-02-10', '2026-02-11', '2026-02-12', '2026-02-13', '2026-02-14', '2026-02-15', '2026-02-16', '2026-02-17', '2026-02-18', '2026-02-20', '2026-02-21', '2026-02-22', '2026-02-23', '2026-02-24', '2026-02-25', '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01'],
-                y: [77.0, 76.75, 72.4, 61.0, 76.6, 76.5, 80.0, 75.0, 73.0, 75.0, 72.0, 76.0, 71.5, 69.23076923076923, 74.125, 61.0, 73.31428571428572, 74.0, 73.0, 76.4, 65.0, 76.14285714285714, 76.0, 77.0, 76.0, 75.8, 72.75, 79.625, 78.5, 73.0, 74.0, 64.0, 77.0, 71.0, 73.0, 68.0, 68.28571428571429, 72.0, 78.66666666666667, 72.5, 69.0, 68.76470588235294, 67.52173913043478, 71.0, 73.5, 73.625, 71.0, 73.04761904761905, 70.25, 73.0, 74.0, 77.57142857142857, 70.38888888888889, 75.0, 74.18181818181819, 72.27777777777777, 77.33333333333333, 75.46666666666667, 66.92857142857143, 74.45454545454545, 68.58333333333333, 73.95, 76.9],
+                y: [77.0, 76.75, 72.4, 61.0, 76.6, 76.5, 80.0, 75.0, 73.0, 75.0, 72.0, 76.0, 71.5, 69.23076923076923, 74.125, 61.0, 73.31428571428572, 74.0, 73.0, 76.4, 65.0, 76.14285714285714, 76.0, 77.0, 76.0, 75.8, 72.75, 79.625, 78.5, 73.0, 74.0, 64.0, 77.0, 71.0, 73.0, 68.0, 68.28571428571429, 72.0, 78.66666666666667, 72.5, 69.0, 68.76470588235294, 67.52173913043478, 71.0, 73.5, 73.625, 71.0, 73.04761904761905, 70.25, 73.0, 74.0, 77.57142857142857, 70.38888888888889, 75.0, 74.18181818181819, 72.27777777777777, 77.33333333333333, 75.46666666666667, 66.92857142857143, 74.45454545454545, 68.58333333333333, 73.95, 76.0],
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Diastólica',
@@ -1460,7 +1460,7 @@
         // Pasos
         Plotly.newPlot('pasos-chart', [{
             x: ['2026-01-31', '2026-02-01', '2026-02-02', '2026-02-03', '2026-02-04', '2026-02-05', '2026-02-06', '2026-02-07', '2026-02-08', '2026-02-09', '2026-02-10', '2026-02-11', '2026-02-12', '2026-02-13', '2026-02-14', '2026-02-15', '2026-02-16', '2026-02-17', '2026-02-18', '2026-02-19', '2026-02-20', '2026-02-21', '2026-02-22', '2026-02-23', '2026-02-24', '2026-02-25', '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01'],
-            y: [29063, 16401, 16692, 25526, 8599, 18403, 17890, 26102, 20938, 13503, 10780, 18962, 23513, 25327, 18049, 6740, 21161, 25685, 12603, 10803, 23657, 25701, 20246, 11293, 10951, 19628, 15036, 11830, 17954, 19982],
+            y: [29063, 16401, 16692, 25526, 8599, 18403, 17890, 26102, 20938, 13503, 10780, 18962, 23513, 25327, 18049, 6740, 21161, 25685, 12603, 10803, 23657, 25701, 20246, 11293, 10951, 19628, 15036, 11830, 17954, 20035],
             type: 'bar',
             marker: { color: '#58a6ff' }
         }], {
@@ -1512,8 +1512,8 @@
                 marker: { size: 6, symbol: 'circle' }
             },
             {
-                x: ['2025-12-04 21:05', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-19 21:23', '2025-12-19 21:23', '2025-12-20 13:53', '2025-12-20 13:53', '2025-12-25 10:02', '2025-12-25 10:02', '2025-12-25 18:54', '2025-12-25 18:54', '2025-12-26 08:13', '2025-12-26 08:13', '2025-12-27 08:03', '2025-12-27 08:03', '2025-12-27 08:03', '2025-12-30 15:51', '2025-12-30 15:51', '2026-01-08 08:42', '2026-01-09 08:09', '2026-01-11 08:16', '2026-01-12 08:02', '2026-01-13 08:13', '2026-01-20 14:45', '2026-01-22 08:33', '2026-01-25 16:06', '2026-01-28 15:44', '2026-01-29 08:21', '2026-01-30 14:10', '2026-02-02 09:22', '2026-02-03 13:19', '2026-02-04 17:55', '2026-02-05 11:32', '2026-02-06 14:03', '2026-02-07 14:48', '2026-02-07 21:37', '2026-02-08 08:16', '2026-02-09 15:33', '2026-02-11 10:27', '2026-02-11 16:01', '2026-02-14 12:26', '2026-02-17 18:45', '2026-02-21 20:34', '2026-02-22 14:38', '2026-02-22 23:33', '2026-02-23 20:15', '2026-02-24 20:38', '2026-02-27 08:38', '2026-02-28 09:45', '2026-02-28 14:58', '2026-03-01 14:23'],
-                y: [123.9, 155.9, 155.9, 155.9, 155.9, 119.9, 119.9, 119.9, 119.9, 95.9, 95.9, 95.9, 95.9, 87.9, 87.9, 87.9, 87.9, 110.9, 110.9, 110.9, 110.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 107.9, 107.9, 90.9, 90.9, 104.9, 104.9, 129.9, 129.9, 100.9, 100.9, 99.9, 99.9, 99.9, 106.9, 106.9, 107.9, 101.9, 98.9, 92.9, 107.9, 128.9, 108.9, 126.9, 100.9, 97.9, 114.9, 92.9, 93.9, 86.9, 85.9, 75.9, 96.9, 174.8, 101.9, 82.9, 83.9, 84.9, 87.9, 86.9, 125.9, 84.9, 83.9, 84.9, 73.9, 99.9, 98.9, 96.9, 99.9],
+                x: ['2025-12-04 21:05', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-10 14:33', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-11 13:08', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 11:19', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-12 14:15', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-13 22:22', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-14 13:45', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-16 13:37', '2025-12-19 21:23', '2025-12-19 21:23', '2025-12-20 13:53', '2025-12-20 13:53', '2025-12-25 10:02', '2025-12-25 10:02', '2025-12-25 18:54', '2025-12-25 18:54', '2025-12-26 08:13', '2025-12-26 08:13', '2025-12-27 08:03', '2025-12-27 08:03', '2025-12-27 08:03', '2025-12-30 15:51', '2025-12-30 15:51', '2026-01-08 08:42', '2026-01-09 08:09', '2026-01-11 08:16', '2026-01-12 08:02', '2026-01-13 08:13', '2026-01-20 14:45', '2026-01-22 08:33', '2026-01-25 16:06', '2026-01-28 15:44', '2026-01-29 08:21', '2026-01-30 14:10', '2026-02-02 09:22', '2026-02-03 13:19', '2026-02-04 17:55', '2026-02-05 11:32', '2026-02-06 14:03', '2026-02-07 14:48', '2026-02-07 21:37', '2026-02-08 08:16', '2026-02-09 15:33', '2026-02-11 10:27', '2026-02-11 16:01', '2026-02-14 12:26', '2026-02-17 18:45', '2026-02-21 20:34', '2026-02-22 14:38', '2026-02-22 23:33', '2026-02-23 20:15', '2026-02-24 20:38', '2026-02-27 08:38', '2026-02-28 09:45', '2026-02-28 14:58', '2026-03-01 14:23', '2026-03-01 19:38'],
+                y: [123.9, 155.9, 155.9, 155.9, 155.9, 119.9, 119.9, 119.9, 119.9, 95.9, 95.9, 95.9, 95.9, 87.9, 87.9, 87.9, 87.9, 110.9, 110.9, 110.9, 110.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 102.9, 107.9, 107.9, 90.9, 90.9, 104.9, 104.9, 129.9, 129.9, 100.9, 100.9, 99.9, 99.9, 99.9, 106.9, 106.9, 107.9, 101.9, 98.9, 92.9, 107.9, 128.9, 108.9, 126.9, 100.9, 97.9, 114.9, 92.9, 93.9, 86.9, 85.9, 75.9, 96.9, 174.8, 101.9, 82.9, 83.9, 84.9, 87.9, 86.9, 125.9, 84.9, 83.9, 84.9, 73.9, 99.9, 98.9, 96.9, 99.9, 131.9],
                 type: 'scatter',
                 mode: 'markers', // Solo puntos para postprandial (menos tendencia lineal)
                 name: 'Postprandial',
@@ -1635,9 +1635,9 @@
     
         const circuloData = {
             presupuesto: 3805.0,
-            comido: 1297.0,
+            comido: 1375.0,
             ejercicio: 2075.0,
-            restante: 2508.0
+            restante: 2430.0
         };
         
         new Chart(document.getElementById('circulo-calorias'), {
@@ -1645,7 +1645,7 @@
             data: {
                 labels: ['Comido', 'Restante'],
                 datasets: [{
-                    data: [1297.0, 2508.0],
+                    data: [1375.0, 2430.0],
                     backgroundColor: ['#ff6384', '#3fb950'],
                     borderWidth: 0
                 }]
@@ -1661,11 +1661,11 @@
         // Actualizar valores texto
         const restanteEl = document.getElementById('restante-valor');
         if(restanteEl) {
-            restanteEl.textContent = Math.abs(2508.0);
+            restanteEl.textContent = Math.abs(2430.0);
             restanteEl.style.color = '#3fb950';
         }
         const comidoEl = document.getElementById('comido-valor');
-        if(comidoEl) comidoEl.textContent = 1297.0;
+        if(comidoEl) comidoEl.textContent = 1375.0;
         const ejercicioEl = document.getElementById('ejercicio-valor');
         if(ejercicioEl) ejercicioEl.textContent = 2075.0;
         
@@ -1694,7 +1694,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [25, 75],
+                    data: [24, 76],
                     backgroundColor: ['#3b82f6', 'rgba(59, 130, 246, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1711,7 +1711,7 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [47, 53],
+                    data: [48, 52],
                     backgroundColor: ['#f59e0b', 'rgba(245, 158, 11, 0.1)'],
                     borderWidth: 0
                 }]
@@ -1808,7 +1808,7 @@
                     },
                     {
                         label: 'Comido',
-                        data: [909.0, 1200.0, 755.0, 1276.0, 985.0, 5.0, 0, 0, 0, 968.0, 984.0, 906.0, 710.0, 1297.0],
+                        data: [909.0, 1200.0, 755.0, 1276.0, 985.0, 5.0, 0, 0, 0, 968.0, 984.0, 906.0, 710.0, 1375.0],
                         borderColor: '#f59e0b',
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         borderWidth: 2,
